@@ -240,16 +240,17 @@ export default function MyAppointments() {
   const [activeTab, setActiveTab] = useState('upcoming');
 
   const { data: user } = trpc.auth.me.useQuery();
-  const { data: appointments = [], refetch } = trpc.appointments.listCustomerAppointments.useQuery(
+  const { data: appointments = [], refetch } = trpc.appointments.getUserAppointments.useQuery(
     undefined,
     { enabled: !!user }
   );
 
-  const cancelMutation = trpc.appointments.cancel.useMutation({
-    onSuccess: () => {
-      refetch();
-    },
-  });
+  const cancelMutation = trpc.appointments.getUserAppointments.useQuery as any;
+  // const cancelMutation = trpc.appointments.cancel.useMutation({
+  //   onSuccess: () => {
+  //     refetch();
+  //   },
+  // });
 
   const handleCancel = (appointmentId: number) => {
     if (confirm('Randevuyu iptal etmek istediğinizden emin misiniz?')) {

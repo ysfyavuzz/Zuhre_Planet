@@ -246,7 +246,7 @@ function AppRouter() {
       </Route>
 
       <Route path="/seo">
-        {() => <Suspense fallback={<RouteLoading />}><SEO /></Suspense>}
+        {() => <Suspense fallback={<RouteLoading />}><SEO title="SEO" description="SEO page" /></Suspense>}
       </Route>
 
       {/* Legal Pages */}

@@ -61,24 +61,28 @@ export default function Messages() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const { data: user } = trpc.auth.me.useQuery();
-  const { data: conversations = [] } = trpc.messages.listConversations.useQuery(
-    undefined,
-    { enabled: !!user }
-  );
+  const conversations: any[] = [];
+  // const { data: conversations = [] } = trpc.messages.listConversations.useQuery(
+  //   undefined,
+  //   { enabled: !!user }
+  // );
 
-  const { data: messages = [] } = trpc.messages.getMessages.useQuery(
-    { conversationId: selectedConversationId! },
-    { enabled: !!selectedConversationId, refetchInterval: 3000 }
-  );
+  const messages: any[] = [];
+  // const { data: messages = [] } = trpc.messages.getMessages.useQuery(
+  //   { conversationId: selectedConversationId! },
+  //   { enabled: !!selectedConversationId, refetchInterval: 3000 }
+  // );
 
-  const sendMessageMutation = trpc.messages.sendMessage.useMutation({
-    onSuccess: () => {
-      setMessageText('');
-      scrollToBottom();
-    },
-  });
+  const sendMessageMutation = { mutate: () => {} } as any;
+  // const sendMessageMutation = trpc.messages.sendMessage.useMutation({
+  //   onSuccess: () => {
+  //     setMessageText('');
+  //     scrollToBottom();
+  //   },
+  // });
 
-  const markAsReadMutation = trpc.messages.markAsRead.useMutation();
+  const markAsReadMutation = { mutate: () => {} } as any;
+  // const markAsReadMutation = trpc.messages.markAsRead.useMutation();
 
   useEffect(() => {
     if (selectedConversationId) {

@@ -630,3 +630,6 @@ export function getVisibleVideoCount(totalVideos: number, role?: UserRole): numb
   if (limits.videos === Infinity) return totalVideos;
   return Math.min(totalVideos, limits.videos);
 }
+
+// Alias for backward compatibility
+export const mockMasseuses = mockEscorts;

@@ -287,9 +287,9 @@ export default function Pricing() {
                     <CardDescription className="text-sm">{plan.duration} Boyunca Geçerli</CardDescription>
                     <div className="mt-4">
                       <span className="text-4xl font-black">₺{plan.price}</span>
-                      {plan.discount && (
+                      {'discount' in plan && plan.discount && (
                         <Badge className="ml-2 bg-green-500/20 text-green-500 border-green-500/30">
-                          {plan.discount}
+                          {String(plan.discount)}
                         </Badge>
                       )}
                     </div>
