@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /masseuse/dashboard/
+Disallow: /messages/
+Disallow: /favorites/
+Disallow: /appointments/
+
+Sitemap: https://escort-platform.com/sitemap.xml

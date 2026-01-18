@@ -1,0 +1,59 @@
+{
+  "name": "Escort Platform - Türkiye'nin Premier Escort İlan Sitesi",
+  "short_name": "Escort Platform",
+  "description": "Türkiye'nin en güvenilir ve kaliteli escort ilan platformu. Gerçek profiller, güvenli iletişim ve premium özellikler.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#1a1a2e",
+  "theme_color": "#8b5cf6",
+  "lang": "tr",
+  "dir": "ltr",
+  "categories": ["lifestyle", "social", "dating"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Profilleri Görüntüle",
+      "short_name": "Profiller",
+      "description": "Tüm escort profillerini görüntüleyin",
+      "url": "/escorts"
+    },
+    {
+      "name": "Harita Görünümü",
+      "short_name": "Harita",
+      "description": "Escort konumlarını haritada görüntüleyin",
+      "url": "/map"
+    },
+    {
+      "name": "Mesajlar",
+      "short_name": "Mesajlar",
+      "description": "Mesajlarınızı görüntüleyin",
+      "url": "/messages"
+    },
+    {
+      "name": "Favoriler",
+      "short_name": "Favoriler",
+      "description": "Favori profillerinizi görüntüleyin",
+      "url": "/favorites"
+    }
+  ],
+  "serviceworker": {
+    "src": "/sw.js",
+    "scope": "/"
+  },
+  "offline_enabled": true
+}
