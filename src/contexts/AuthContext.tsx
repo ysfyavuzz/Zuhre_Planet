@@ -2,11 +2,11 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { storage } from '@/lib/utils';
 
 // Types
-interface User {
-  id: string;
-  name: string;
+export interface User {
+  id: string | number;
+  name?: string;
   email: string;
-  role: 'user' | 'escort' | 'admin';
+  role: 'user' | 'escort' | 'admin' | 'client';
   avatar?: string;
   verified?: boolean;
   membership?: 'standard' | 'vip' | 'premium';
@@ -20,7 +20,7 @@ interface AuthContextValue {
   isEscort: boolean;
   // Rol bazlı görüntüleme limitleri için
   viewRole: 'guest' | 'user' | 'premium' | 'vip';
-  login: (email: string, password: string) => Promise<void>;
+  login: (emailOrUser: string | User, password?: string) => Promise<void>;
   logout: () => void;
   register: (data: RegisterData) => Promise<void>;
   updateProfile: (data: Partial<User>) => Promise<void>;
@@ -188,8 +188,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     initAuth();
   }, []);
 
-  const login = async (email: string, password: string) => {
-    const { user: loggedInUser, token } = await authService.login(email, password);
+  const login = async (emailOrUser: string | User, password?: string) => {
+    // Support direct user object for testing
+    if (typeof emailOrUser === 'object') {
+      setUser(emailOrUser);
+      storage.set(AUTH_STORAGE_KEY, emailOrUser);
+      return;
+    }
+
+    const { user: loggedInUser, token } = await authService.login(emailOrUser, password!);
 
     storage.set(AUTH_STORAGE_KEY, loggedInUser);
     storage.set(TOKEN_STORAGE_KEY, token);

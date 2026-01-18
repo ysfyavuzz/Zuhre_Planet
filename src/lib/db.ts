@@ -47,7 +47,7 @@
  */
 
 import { drizzle } from 'drizzle-orm/libsql';
-import { createClient } from '@libsql-client';
+import { createClient } from '@libsql/client';
 import { users, escortProfiles, escortPhotos } from '../drizzle/schema';
 import { eq, desc, like, and, or, sql } from 'drizzle-orm';
 
@@ -125,7 +125,7 @@ export async function closeDatabaseConnection(): Promise<void> {
 }
 
 // Export schema types
-export * from '@/schema';
+export * from '../drizzle/schema';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HELPER FUNCTIONS
@@ -253,9 +253,16 @@ export async function getCities() {
 }
 
 // Payment & Credit Functions (Mock implementations)
-export async function createCreditTransaction(userId: number, amount: number, type: 'purchase' | 'spend') {
+export async function createCreditTransaction(userId: number, amount: number, type: 'purchase' | 'spend'): Promise<any>;
+export async function createCreditTransaction(data: any): Promise<any>;
+export async function createCreditTransaction(userIdOrData: number | any, amount?: number, type?: 'purchase' | 'spend') {
+  // Handle both signatures
+  if (typeof userIdOrData === 'object') {
+    // TODO: Implement actual credit transaction logic with full data object
+    return { success: true, balance: userIdOrData.balanceAfter || 0 };
+  }
   // TODO: Implement actual credit transaction logic
-  return { success: true, balance: amount };
+  return { success: true, balance: amount || 0 };
 }
 
 export async function getUserCredits(userId: number) {
@@ -263,7 +270,187 @@ export async function getUserCredits(userId: number) {
   return 0;
 }
 
-export async function activateVip(profileId: number, duration: number) {
+export async function activateVip(profileId: number, duration: number | string) {
   // TODO: Implement VIP activation logic
   return { success: true };
+}
+
+// User Management Functions
+export async function getUserBalance(userId: number) {
+  // TODO: Implement actual balance retrieval
+  return 0;
+}
+
+export async function updateUserBalance(userId: number, amount: number) {
+  // TODO: Implement actual balance update
+  return { success: true, balance: amount };
+}
+
+export async function getUserFavorites(userId: number, limit?: number, offset?: number) {
+  // TODO: Implement favorites retrieval
+  return [];
+}
+
+export async function addFavorite(userId: number, escortId: number) {
+  // TODO: Implement add favorite
+  return { success: true };
+}
+
+export async function removeFavorite(userId: number, escortId: number) {
+  // TODO: Implement remove favorite
+  return { success: true };
+}
+
+export async function isFavorite(userId: number, escortId: number) {
+  // TODO: Implement favorite check
+  return false;
+}
+
+export async function getUserById(userId: number) {
+  // TODO: Implement user retrieval
+  return null;
+}
+
+export async function getAllUsers(limit?: number, offset?: number) {
+  // TODO: Implement all users retrieval
+  return [];
+}
+
+export async function blockUser(userId: number) {
+  // TODO: Implement block user
+  return { success: true };
+}
+
+export async function unblockUser(userId: number) {
+  // TODO: Implement unblock user
+  return { success: true };
+}
+
+export async function deleteUser(userId: number) {
+  // TODO: Implement delete user
+  return { success: true };
+}
+
+export async function updateLastActive(userId: number) {
+  // TODO: Implement update last active
+  return { success: true };
+}
+
+// Escort Management Functions
+export async function getPendingEscorts() {
+  // TODO: Implement pending escorts retrieval
+  return [];
+}
+
+export async function getAllEscortsByStatus(status: string) {
+  // TODO: Implement escorts by status retrieval
+  return [];
+}
+
+export async function updateEscortStatus(escortId: number, status: string) {
+  // TODO: Implement escort status update
+  return { success: true };
+}
+
+export async function updateEscortVerifiedBadge(escortId: number, verified: boolean) {
+  // TODO: Implement verified badge update
+  return { success: true };
+}
+
+export async function deactivateVip(escortId: number) {
+  // TODO: Implement VIP deactivation
+  return { success: true };
+}
+
+export async function getAllEscorts(limit?: number, offset?: number) {
+  // TODO: Implement all escorts retrieval
+  return [];
+}
+
+export async function updateEscortProfile(escortId: number, data: any) {
+  // TODO: Implement escort profile update
+  return { success: true };
+}
+
+export async function deleteEscort(escortId: number) {
+  // TODO: Implement escort deletion
+  return { success: true };
+}
+
+export async function updateEscortVisibility(escortId: number, visible: boolean) {
+  // TODO: Implement visibility update
+  return { success: true };
+}
+
+export async function createEscortProfile(data: any) {
+  // TODO: Implement escort profile creation
+  return { success: true, id: 1 };
+}
+
+export async function addEscortPhoto(escortIdOrData: number | any, photoUrl?: string, isPrimary: boolean = false) {
+  // Handle both signatures
+  if (typeof escortIdOrData === 'object') {
+    // TODO: Implement photo addition with full data object
+    return { success: true };
+  }
+  // TODO: Implement photo addition
+  return { success: true };
+}
+
+export async function getVipEscorts(limit?: number) {
+  // TODO: Implement VIP escorts retrieval
+  return [];
+}
+
+// Review Management Functions
+export async function getPendingReviews() {
+  // TODO: Implement pending reviews retrieval
+  return [];
+}
+
+export async function updateReviewVerification(reviewId: number, verified: boolean) {
+  // TODO: Implement review verification update
+  return { success: true };
+}
+
+export async function deleteReview(reviewId: number) {
+  // TODO: Implement review deletion
+  return { success: true };
+}
+
+export async function updateReview(reviewId: number, data: any) {
+  // TODO: Implement review update
+  return { success: true };
+}
+
+export async function getAllReviews(limit?: number, offset?: number) {
+  // TODO: Implement all reviews retrieval
+  return [];
+}
+
+// Statistics Functions
+export async function getTotalUsersCount() {
+  // TODO: Implement total users count
+  return 0;
+}
+
+export async function getTotalEscortsCount() {
+  // TODO: Implement total escorts count
+  return 0;
+}
+
+// Appointment Functions
+export async function createAppointment(data: any) {
+  // TODO: Implement appointment creation
+  return { success: true, id: 1 };
+}
+
+export async function getUserAppointments(userId: number) {
+  // TODO: Implement user appointments retrieval
+  return [];
+}
+
+export async function getEscortAppointments(escortId: number) {
+  // TODO: Implement escort appointments retrieval
+  return [];
 }

@@ -109,8 +109,8 @@ export interface HSTSConfig {
  */
 export interface SecurityHeadersConfig {
   cors?: CORSConfig;
-  csp?: CSPConfig;
-  hsts?: HSTSConfig;
+  csp?: CSPConfig | false;
+  hsts?: HSTSConfig | false;
 }
 
 // ============================================================================

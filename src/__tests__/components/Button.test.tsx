@@ -5,6 +5,7 @@
  * Tests variants, sizes, states, and accessibility.
  */
 
+import '../setup';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

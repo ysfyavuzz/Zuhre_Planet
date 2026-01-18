@@ -282,7 +282,7 @@ export default function EscortList() {
             </div>
             <div className="flex items-center gap-3">
               <Button
-                variant={showFilters ? "primary" : "outline"}
+                variant={showFilters ? "default" : "outline"}
                 onClick={() => setShowFilters(!showFilters)}
                 className="gap-2 font-bold"
               >
@@ -543,7 +543,7 @@ export default function EscortList() {
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
                       <Checkbox
                         checked={verifiedOnly}
-                        onCheckedChange={setVerifiedOnly}
+                        onCheckedChange={(checked) => setVerifiedOnly(checked === true)}
                         className="border-border/50"
                       />
                       <span className="flex items-center gap-1">
@@ -557,7 +557,7 @@ export default function EscortList() {
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
                       <Checkbox
                         checked={vipOnly}
-                        onCheckedChange={setVipOnly}
+                        onCheckedChange={(checked) => setVipOnly(checked === true)}
                         className="border-border/50"
                       />
                       <span className="flex items-center gap-1">
@@ -571,7 +571,7 @@ export default function EscortList() {
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
                       <Checkbox
                         checked={hasPhotos}
-                        onCheckedChange={setHasPhotos}
+                        onCheckedChange={(checked) => setHasPhotos(checked === true)}
                         className="border-border/50"
                       />
                       <span className="flex items-center gap-1">
@@ -585,7 +585,7 @@ export default function EscortList() {
                     <label className="flex items-center gap-2 text-sm cursor-pointer">
                       <Checkbox
                         checked={hasVideos}
-                        onCheckedChange={setHasVideos}
+                        onCheckedChange={(checked) => setHasVideos(checked === true)}
                         className="border-border/50"
                       />
                       <span className="flex items-center gap-1">

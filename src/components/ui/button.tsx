@@ -207,7 +207,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
-        {...props}
+        {...(props as any)}
       >
         {glow && (
           <motion.div

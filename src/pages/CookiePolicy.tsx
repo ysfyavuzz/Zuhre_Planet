@@ -39,8 +39,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
-  Cookie, Info, Settings, Smartphone, Chrome, Safari, 
-  Firefox, Trash2, ChevronDown, ArrowUp, AlertCircle, CheckCircle2
+  Cookie, Info, Settings, Smartphone, Chrome,
+  Trash2, ChevronDown, ArrowUp, AlertCircle, CheckCircle2
 } from 'lucide-react';
 
 interface Section {
@@ -646,8 +646,8 @@ export default function CookiePolicy() {
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                         {[
                           { id: 'chrome' as const, label: 'Chrome', icon: Chrome },
-                          { id: 'firefox' as const, label: 'Firefox', icon: Firefox },
-                          { id: 'safari' as const, label: 'Safari', icon: Safari },
+                          { id: 'firefox' as const, label: 'Firefox', icon: Chrome },
+                          { id: 'safari' as const, label: 'Safari', icon: Smartphone },
                           { id: 'edge' as const, label: 'Edge', icon: Chrome }
                         ].map(({ id, label, icon: Icon }) => (
                           <button

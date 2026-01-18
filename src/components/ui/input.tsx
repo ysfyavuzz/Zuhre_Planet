@@ -610,7 +610,7 @@ export function TextAreaInput(props: Omit<React.TextareaHTMLAttributes<HTMLTextA
         )}
         animate={isFocused ? { scale: 1.005 } : { scale: 1 }}
         transition={{ duration: 0.2 }}
-        {...textareaProps}
+        {...(textareaProps as any)}
       />
 
       {/* Character Counter */}

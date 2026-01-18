@@ -170,13 +170,13 @@ export const passwordSchema = z
  */
 export const nameSchema = z
   .string()
+  .trim()
   .min(2, 'Name must be at least 2 characters')
   .max(50, 'Name must be less than 50 characters')
   .refine(
     (name) => /^[a-zA-ZçğıöşüÇĞİÖŞÜ\s\-']+$/.test(name),
     'Name can only contain letters, spaces, hyphens, and apostrophes'
-  )
-  .trim();
+  );
 
 /**
  * Username validation schema

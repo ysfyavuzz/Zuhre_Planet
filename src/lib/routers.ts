@@ -89,8 +89,8 @@ export const appRouter = router({
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      const cookieOptions = getSessionCookieOptions();
+      ctx.res?.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
       return {
         success: true,
       } as const;
@@ -528,7 +528,7 @@ export const appRouter = router({
         const buffer = Buffer.from(input.photoData, 'base64');
         const fileName = `escort-${profile.id}-${Date.now()}.jpg`;
         
-        const { url } = await storagePut(fileName, buffer, 'image/jpeg');
+        const { url } = await storagePut(fileName, buffer, { contentType: 'image/jpeg' });
 
         return await db.addEscortPhoto({
           profileId: profile.id,

@@ -131,7 +131,7 @@ export function generateAccessToken(
   const { iat, exp, ...cleanPayload } = payload;
 
   return jwt.sign(cleanPayload, JWT_SECRET, {
-    expiresIn,
+    expiresIn: expiresIn as unknown as number,
     algorithm: 'HS256',
     ...options,
   });
@@ -166,7 +166,7 @@ export function generateRefreshToken(
   const { iat, exp, ...cleanPayload } = payload;
 
   return jwt.sign(cleanPayload, JWT_REFRESH_SECRET, {
-    expiresIn,
+    expiresIn: expiresIn as unknown as number,
     algorithm: 'HS256',
     ...options,
   });

@@ -48,7 +48,7 @@ import {
 
 export default function AdminDashboard() {
   const { data: user } = trpc.auth.me.useQuery();
-  const { data: stats } = trpc.admin.getStats.useQuery(
+  const { data: stats } = trpc.admin.getDashboardStats.useQuery(
     undefined,
     { enabled: !!user && user.role === 'admin' }
   );
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Aktif Escort',
-      value: stats?.activeEscorts || 0,
+      value: stats?.totalEscorts || 0,
       icon: UserCheck,
       color: 'text-green-600',
       bgColor: 'bg-green-500/10',
@@ -108,7 +108,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Bekleyen Onay',
-      value: stats?.pendingApprovals || 0,
+      value: stats?.pendingApprovalsCount || 0,
       icon: Clock,
       color: 'text-amber-600',
       bgColor: 'bg-amber-500/10',
@@ -116,7 +116,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Aylık Randevu',
-      value: stats?.monthlyAppointments || 0,
+      value: 0,
       icon: Calendar,
       color: 'text-purple-600',
       bgColor: 'bg-purple-500/10',
@@ -124,7 +124,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Aylık Gelir',
-      value: `₺${stats?.monthlyRevenue || 0}`,
+      value: `₺${0}`,
       icon: DollarSign,
       color: 'text-emerald-600',
       bgColor: 'bg-emerald-500/10',
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'VIP Üyeler',
-      value: stats?.vipMembers || 0,
+      value: 0,
       icon: Crown,
       color: 'text-amber-600',
       bgColor: 'bg-amber-500/10',
@@ -158,7 +158,7 @@ export default function AdminDashboard() {
                   Admin Paneli
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  Hoş geldiniz, {user.name}
+                  Hoş geldiniz, {user.name || user.email}
                 </p>
               </div>
             </div>

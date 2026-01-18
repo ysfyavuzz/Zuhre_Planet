@@ -175,7 +175,7 @@ export default class ErrorBoundary extends Component<Props, State> {
       }));
     }, backoffDelay);
 
-    this.retryTimeouts.push(timeout);
+    this.retryTimeouts.push(timeout as unknown as number);
   };
 
   /**

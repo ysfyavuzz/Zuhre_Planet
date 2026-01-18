@@ -904,7 +904,7 @@ export default function EscortRegister() {
                     id="terms-escort"
                     className="w-5 h-5 rounded border-border mt-0.5 flex-shrink-0"
                   />
-                  <span htmlFor="terms-escort" className="text-sm">
+                  <span className="text-sm">
                     <a href="#" className="text-primary hover:underline">Kullanım koşullarını</a> ve{' '}
                     <a href="#" className="text-primary hover:underline">gizlilik politikasını</a> okudum ve kabul ediyorum
                   </span>

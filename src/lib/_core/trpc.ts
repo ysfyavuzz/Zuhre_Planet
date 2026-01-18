@@ -68,7 +68,19 @@
 import { initTRPC, TRPCError } from '@trpc/server';
 import { z } from 'zod';
 
-export const t = initTRPC.create();
+// Define the context type
+export interface TRPCContext {
+  req?: any;
+  res?: any;
+  user?: {
+    id: number;
+    email: string;
+    name?: string;
+    role: 'admin' | 'escort' | 'client';
+  };
+}
+
+export const t = initTRPC.context<TRPCContext>().create();
 
 export const router = t.router;
 export const publicProcedure = t.procedure;

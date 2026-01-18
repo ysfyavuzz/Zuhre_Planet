@@ -5,6 +5,7 @@
  * Tests authentication state, login/logout, and context provider.
  */
 
+import '../setup';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useAuth, AuthProvider } from '@/contexts/AuthContext';
