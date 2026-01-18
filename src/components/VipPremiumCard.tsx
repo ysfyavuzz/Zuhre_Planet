@@ -111,13 +111,14 @@ export function VipPremiumCard({ escort }: VipPremiumCardProps) {
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-[400px] aspect-[3/4.5] group cursor-pointer"
+      className="relative w-full max-w-[450px] aspect-[3/4.8] group cursor-pointer"
     >
       <Link href={`/escort/${escort.id}`}>
-        <Card className="w-full h-full vip-premium-frame overflow-hidden rounded-3xl bg-black border-0">
+        <Card className="w-full h-full vip-premium-frame overflow-hidden rounded-3xl bg-black border-0 shadow-2xl">
           <CardContent className="p-0 h-full relative">
-            {/* 3D Glow Effect */}
+            {/* 3D Glow Effect - Enhanced */}
             <div className="vip-card-glow" />
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-transparent to-gold-500/20 pointer-events-none animate-pulse" />
             
             {/* Image Section */}
             <div className="absolute inset-0 z-0">

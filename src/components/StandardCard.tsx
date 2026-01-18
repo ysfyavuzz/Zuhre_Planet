@@ -202,7 +202,7 @@ export function StandardCard({ escort, stats, type = 'normal' }: StandardCardPro
   const mouseXSpring = useSpring(x, springConfig);
   const mouseYSpring = useSpring(y, springConfig);
 
-  const rotateRange = isLowPowerMode ? ["0deg", "0deg"] : ["5deg", "-5deg"];
+  const rotateRange = isLowPowerMode ? ["0deg", "0deg"] : isBoost ? ["8deg", "-8deg"] : ["5deg", "-5deg"];
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], rotateRange);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], rotateRange);
 
@@ -224,12 +224,15 @@ export function StandardCard({ escort, stats, type = 'normal' }: StandardCardPro
   };
 
   const frameClass = isBoost ? 'boost-frame' : isVerified ? 'verified-frame' : 'normal-card-3d';
-  const glowClass = isVerified ? 'verified-card-glow' : 'normal-card-glow';
+  const glowClass = isBoost ? 'boost-card-glow' : isVerified ? 'verified-card-glow' : 'normal-card-glow';
 
   // Hesaplamalar
   const reliabilityScore = calculateReliabilityScore(stats);
   const reliabilityConfig = getReliabilityConfig(reliabilityScore);
   const onlineStatus = getOnlineStatus(escort);
+
+  // Boost kartları için daha büyük boyut
+  const aspectRatio = isBoost ? "aspect-[3/4.5]" : "aspect-[3/4.2]";
 
   return (
     <motion.div
@@ -240,13 +243,17 @@ export function StandardCard({ escort, stats, type = 'normal' }: StandardCardPro
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full aspect-[3/4.2] group cursor-pointer"
+      className={`relative w-full ${aspectRatio} group cursor-pointer ${isBoost ? 'scale-105 z-10' : ''}`}
     >
       <Link href={`/escort/${escort.id}`}>
-        <Card className={`w-full h-full ${frameClass} overflow-hidden rounded-2xl bg-card border-white/5`}>
+        <Card className={`w-full h-full ${frameClass} overflow-hidden rounded-2xl bg-card border-white/5 ${isBoost ? 'shadow-xl ring-2 ring-orange-500/50' : ''}`}>
           <CardContent className="p-0 h-full relative">
             {/* Glow Effect */}
             <div className={glowClass} />
+            {/* Boost pulsing glow */}
+            {isBoost && (
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-red-500/10 pointer-events-none animate-pulse" />
+            )}
 
             {/* Image Section */}
             <div className="relative aspect-[3/3.5] overflow-hidden">
@@ -268,8 +275,8 @@ export function StandardCard({ escort, stats, type = 'normal' }: StandardCardPro
               {/* Badges */}
               <div className="absolute top-3 left-3 flex flex-col gap-2" style={{ transform: "translateZ(20px)" }}>
                 {isBoost && (
-                  <Badge className="bg-gradient-to-r from-orange-500 to-red-600 text-white border-0 shadow-lg text-[10px] font-bold">
-                    <Flame className="w-3 h-3 mr-1" /> BOOST
+                  <Badge className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 text-white border-0 shadow-2xl text-xs font-black px-3 py-1.5 animate-bounce">
+                    <Flame className="w-4 h-4 mr-1 animate-pulse" /> ⚡ BOOST
                   </Badge>
                 )}
                 {isVerified && (

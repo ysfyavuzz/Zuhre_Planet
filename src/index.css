@@ -321,6 +321,21 @@
     100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
   }
 
+  .boost-card-glow {
+    position: absolute;
+    inset: -15px;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.1), transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 16px;
+    animation: pulse-glow 2s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+
   /* Verified Frame (Blue/Silver) - 3D */
   .verified-frame {
     position: relative;

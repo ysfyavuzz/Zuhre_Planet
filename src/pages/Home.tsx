@@ -180,7 +180,7 @@ export default function Home() {
             }}
           >
             {vipEscorts.length > 0 ? vipEscorts.map((escort) => (
-              <SwiperSlide key={escort.id} className="!h-auto !w-[350px] md:!w-[400px] py-10">
+              <SwiperSlide key={escort.id} className="!h-auto !w-[380px] md:!w-[450px] py-10">
                 <VipPremiumCard escort={escort} />
               </SwiperSlide>
             )) : (
