@@ -1,3 +1,54 @@
+/**
+ * tRPC React Client Module (trpc.tsx)
+ * 
+ * React-specific tRPC client setup with Query Client provider.
+ * Handles client-side communication with the tRPC backend.
+ * Provides React hooks and context provider for tRPC queries and mutations.
+ * 
+ * @module lib/trpc
+ * @category Library - API
+ * 
+ * Features:
+ * - tRPC React client initialization
+ * - Query Client with optimized default options
+ * - HTTP batch link for efficient API calls
+ * - Authentication header injection
+ * - Server-side rendering (SSR) client support
+ * - React context provider component
+ * 
+ * Default Query Options:
+ * - staleTime: 60 seconds
+ * - refetchOnWindowFocus: disabled
+ * 
+ * Client Initialization:
+ * - Browser: Single QueryClient instance reused across renders
+ * - Server: New QueryClient created per request
+ * 
+ * @example
+ * ```typescript
+ * import { TRPCProvider, useTRPC } from '@/lib/trpc';
+ * 
+ * // Wrap app with provider
+ * export function App() {
+ *   return (
+ *     <TRPCProvider>
+ *       <YourApp />
+ *     </TRPCProvider>
+ *   );
+ * }
+ * 
+ * // Use tRPC in components
+ * function MyComponent() {
+ *   const trpc = useTRPC();
+ *   const { data, isLoading } = trpc.catalog.list.useQuery();
+ *   
+ *   return <div>{data?.length} escorts found</div>;
+ * }
+ * ```
+ * 
+ * @typedef {import('@/routers').AppRouter} AppRouter
+ */
+
 import { useState, useEffect } from 'react';
 import { createTRPCReact } from '@trpc/react-query';
 import type { AppRouter } from '@/routers';

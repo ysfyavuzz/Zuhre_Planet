@@ -1,3 +1,43 @@
+/**
+ * Home Page
+ * 
+ * Landing page showcasing the platform with hero section, VIP carousel, and main escort catalog.
+ * Features responsive design with advertisements, statistics, and intuitive navigation elements.
+ * Serves as the primary entry point for users discovering and browsing the platform.
+ * 
+ * @module pages/Home
+ * @category Pages - Public
+ * 
+ * Features:
+ * - Hero section with platform branding and value proposition
+ * - Search bar for escort name/category search
+ * - VIP showcase carousel with coverflow effect
+ * - Latest listings grid with responsive layout
+ * - Horizontal and vertical advertisement placements
+ * - Platform statistics display (active listings, daily visits, verified users)
+ * - Responsive navigation for mobile and desktop
+ * - Animated elements using Framer Motion
+ * - Swiper carousel for VIP showcase
+ * - Filter buttons for sorting (newest, popular)
+ * - Load more functionality for pagination
+ * - Footer with quick links and legal information
+ * - Real-time data from database with mock fallback
+ * - SEO meta tags for search engine optimization
+ * 
+ * Data Sources:
+ * - VIP escorts from trpc.vip.getFeatured
+ * - All escorts from trpc.catalog.list
+ * - Cities from trpc.catalog.getCities
+ * - Mock data fallback when database is empty
+ * 
+ * @example
+ * ```tsx
+ * // Route: /
+ * // Home landing page
+ * <Home />
+ * ```
+ */
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

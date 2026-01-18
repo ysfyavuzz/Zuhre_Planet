@@ -1,3 +1,39 @@
+/**
+ * Catalog Page
+ * 
+ * Advanced escort catalog and discovery page with city-based filtering and service categorization.
+ * Displays VIP/Premium and standard escorts in organized sections with full search capabilities.
+ * Provides intuitive navigation through the platform's escort inventory.
+ * 
+ * @module pages/Catalog
+ * @category Pages - Public
+ * 
+ * Features:
+ * - City-based escort filtering with dynamic city list
+ * - VIP and Premium escort showcase sections
+ * - Standard escort grid with pagination
+ * - Service category filtering and search
+ * - Advanced sorting options (newest, popular, rating)
+ * - Responsive grid layouts (mobile-friendly)
+ * - Quick preview and detail navigation
+ * - Favorite/bookmark functionality
+ * - Real-time data from database with fallback mock data
+ * - URL-based filter persistence for bookmarking
+ * 
+ * Data:
+ * - Fetches VIP escorts from trpc.vip.getFeatured
+ * - Fetches all escorts from trpc.catalog.list
+ * - Fetches cities from trpc.catalog.getCities
+ * - Falls back to mock data if database is empty
+ * 
+ * @example
+ * ```tsx
+ * // Route: /catalog
+ * // Route with filters: /catalog?city=Istanbul&filter=vip
+ * <Catalog />
+ * ```
+ */
+
 import { useState } from 'react';
 import { useSearchParams } from 'wouter';
 import Header from '@/components/Header';

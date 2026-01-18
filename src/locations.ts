@@ -1,3 +1,58 @@
+/**
+ * Location Data Module (locations.ts)
+ * 
+ * Geographic location data for Turkey including cities and districts.
+ * Used for search filters, profile location selection, and location-based queries.
+ * 
+ * @module locations
+ * @category Data
+ * 
+ * Features:
+ * - City and district hierarchical structure
+ * - 6 major cities with 25+ districts total
+ * - Turkish naming conventions
+ * - Helper functions for location queries
+ * - Backward compatibility with Marmara region format
+ * 
+ * Supported Cities:
+ * - İstanbul (10 districts)
+ * - Bursa (5 districts)
+ * - Kocaeli (5 districts)
+ * - Ankara (5 districts)
+ * - İzmir (5 districts)
+ * - Antalya (5 districts)
+ * 
+ * Istanbul Districts:
+ * Kadıköy, Beşiktaş, Sarıyer, Şişli, Bakırköy, Fatih, Üsküdar, Beyoğlu, Maltepe, Kartal
+ * 
+ * @example
+ * ```typescript
+ * import { 
+ *   locations, 
+ *   getAllCities, 
+ *   getDistrictsByCity,
+ *   getCityByName 
+ * } from '@/locations';
+ * 
+ * // Get all cities
+ * const cities = getAllCities(); // ['İstanbul', 'Bursa', 'Kocaeli', ...]
+ * 
+ * // Get districts for a city
+ * const districts = getDistrictsByCity('İstanbul');
+ * // ['Kadıköy', 'Beşiktaş', 'Sarıyer', ...]
+ * 
+ * // Get city details
+ * const city = getCityByName('Bursa');
+ * ```
+ * 
+ * @typedef {import('./locations').Location} Location
+ * @typedef {import('./locations').District} District
+ * 
+ * @todo Add more cities and districts
+ * @todo Add geographic coordinates
+ * @todo Add timezone information
+ */
+
 // Location data for Turkey cities
 
 export interface Location {

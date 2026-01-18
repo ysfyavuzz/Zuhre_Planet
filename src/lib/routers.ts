@@ -1,3 +1,60 @@
+/**
+ * Application Router Module (routers.ts)
+ * 
+ * Main tRPC router that combines all API routers and procedures for the application.
+ * Includes authentication, catalog browsing, admin management, appointments, profiles, and VIP features.
+ * 
+ * @module lib/routers
+ * @category Library - API
+ * 
+ * Features:
+ * - Authentication and session management (auth router)
+ * - System health checks (system router)
+ * - Payment and credit management (payments router)
+ * - Escort catalog browsing and search (catalog router)
+ * - Admin panel and user management (admin router)
+ * - Appointment scheduling and management (appointments router)
+ * - Escort profile CRUD operations (profile router)
+ * - VIP membership features (vip router)
+ * 
+ * Permission Levels:
+ * - Public: Available to unauthenticated users
+ * - Protected: Requires authentication
+ * - Escort-only: Requires escort or admin role
+ * - Admin-only: Requires admin role
+ * 
+ * Key Routers:
+ * - system: Health checks and version info
+ * - payments: Credit and VIP purchases
+ * - auth: Authentication and logout
+ * - catalog: Browse and search escorts
+ * - admin: Administration and moderation
+ * - appointments: Booking management
+ * - profile: Escort profile management
+ * - vip: VIP features and featured listings
+ * 
+ * @example
+ * ```typescript
+ * import { trpc } from '@/lib/trpc';
+ * import type { AppRouter } from '@/routers';
+ * 
+ * // Browse catalog
+ * const { data: escorts } = trpc.catalog.list.useQuery();
+ * 
+ * // Search with filters
+ * const searchResults = trpc.catalog.search.useQuery({
+ *   city: 'İstanbul',
+ *   minPrice: 1000,
+ *   maxPrice: 3000
+ * });
+ * 
+ * // Admin: Get pending profiles
+ * const pendingProfiles = trpc.admin.getPendingProfiles.useQuery();
+ * ```
+ * 
+ * @typedef {import('./routers').AppRouter} AppRouter
+ */
+
 import { COOKIE_NAME } from "./_core/cookies";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";

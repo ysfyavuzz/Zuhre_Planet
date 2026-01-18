@@ -1,3 +1,47 @@
+/**
+ * Escort Profile Page
+ * 
+ * Detailed individual escort profile page with comprehensive information display.
+ * Shows photo gallery, video content, bio, services, availability, rates, and contact options.
+ * Implements VIP content locks and social proof elements for premium profiles.
+ * 
+ * @module pages/EscortProfile
+ * @category Pages - Public
+ * 
+ * Features:
+ * - High-resolution photo gallery with fullscreen lightbox viewer
+ * - Photo carousel with navigation arrows and counter
+ * - Video content gallery with thumbnail previews
+ * - Fullscreen video player modal with playback controls
+ * - Complete bio and personal description
+ * - Services offered with detailed descriptions
+ * - Hourly, overnight, and custom rate displays
+ * - Real-time availability status
+ * - Verified badge and profile badges
+ * - Review section with ratings and testimonials
+ * - Recommendation and booking statistics
+ * - Contact buttons (call, message, WhatsApp)
+ * - Add to favorites functionality
+ * - Responsive design for mobile and desktop
+ * - VIP content locks for premium information
+ * 
+ * Profile Sections:
+ * - Header: Photo, name, rating, verification badges
+ * - Gallery: Photo lightbox, video gallery with modal player
+ * - About: Bio, personality description, languages
+ * - Services: Full service menu with pricing
+ * - Availability: Schedule display
+ * - Reviews: Client testimonials and ratings
+ * - Contact: Multiple contact methods
+ * 
+ * @example
+ * ```tsx
+ * // Route: /escort/:id
+ * // Route: /profile/:escortId
+ * <EscortProfile />
+ * ```
+ */
+
 import { useState, useMemo } from 'react';
 import { useParams, Link } from 'wouter';
 import { Button } from '@/components/ui/button';

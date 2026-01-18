@@ -1,3 +1,34 @@
+/**
+ * Admin Approvals Page
+ * 
+ * Comprehensive admin panel for reviewing and managing new escort registrations.
+ * Provides approval/rejection workflow with search, filtering, and detailed review capabilities.
+ * 
+ * @module pages/AdminApprovals
+ * @category Pages - Admin
+ * 
+ * Features:
+ * - Pending registration queue with pagination support
+ * - Advanced filtering by status (pending, approved, rejected)
+ * - Search functionality for applicants by name or ID
+ * - Detailed profile preview and verification review
+ * - One-click approval and rejection with optional notes
+ * - Bulk action support for batch processing
+ * - Export pending applications as CSV/PDF
+ * - Real-time status updates and activity tracking
+ * 
+ * Security:
+ * - Restricted to admin role only with authentication check
+ * - Sensitive applicant information properly secured
+ * - Audit trail for all approval/rejection decisions
+ * 
+ * @example
+ * ```tsx
+ * // Route: /admin/approvals
+ * <AdminApprovals />
+ * ```
+ */
+
 import { useState } from 'react';
 import { Check, X, Eye, Search, Filter, Download } from 'lucide-react';
 import Header from '@/components/Header';

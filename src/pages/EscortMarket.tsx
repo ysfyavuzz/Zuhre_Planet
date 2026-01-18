@@ -1,3 +1,41 @@
+/**
+ * Escort Market Page
+ * 
+ * Premium membership marketplace displaying VIP packages and premium features.
+ * Showcases membership tiers with features, benefits, and purchase buttons.
+ * Enables escorts to upgrade their presence and visibility on the platform.
+ * 
+ * @module pages/EscortMarket
+ * @category Pages - Public
+ * 
+ * Features:
+ * - VIP membership tier display (Weekly, Monthly, Premium)
+ * - Detailed feature comparison across packages
+ * - Pricing display with benefits breakdown
+ * - One-click purchase functionality
+ * - Current subscription status display
+ * - Upgrade/downgrade capability
+ * - Platform statistics (total packages, active users)
+ * - Performance metrics for premium features
+ * - Credit package display and purchasing
+ * - Testimonials from premium members
+ * - FAQ section for membership questions
+ * - Billing history and invoice management
+ * 
+ * Package Tiers:
+ * - Weekly: Basic premium features, limited visibility boost
+ * - Monthly: Enhanced features, improved search ranking
+ * - Premium: All features, top placement, priority support
+ * - Yearly: Best value, exclusive perks and bonuses
+ * 
+ * @example
+ * ```tsx
+ * // Route: /escort/market
+ * // Route: /pricing (alias)
+ * <EscortMarket />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { trpc } from '../lib/trpc';

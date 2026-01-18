@@ -1,3 +1,40 @@
+/**
+ * App Root Router Page
+ * 
+ * Central routing and layout component that orchestrates the entire application.
+ * Implements route configuration with code splitting, error boundaries, and loading states.
+ * Provides global UI providers (tooltips, notifications) and lazy-loaded route definitions.
+ * 
+ * @module pages/App
+ * @category Pages - Dashboard
+ * 
+ * Features:
+ * - Lazy-loaded route definitions for optimal code splitting
+ * - Comprehensive route organization (Home, Auth, Dashboard, Admin)
+ * - Error boundary wrapping for route-level error handling
+ * - Suspense fallback with loading state component
+ * - Global UI providers (Tooltip, Toaster for notifications)
+ * - 404 fallback page for undefined routes
+ * - Route-level performance optimization
+ * - Responsive layout with mobile navigation support
+ * - Protected route implementation for authenticated pages
+ * - Loading states during route transitions
+ * 
+ * Routes:
+ * - Public: Home, Catalog, EscortList, EscortProfile, Pricing
+ * - Auth: ClientLogin, ClientRegister, EscortLogin, EscortRegister
+ * - User: MyFavorites, Messages, MyAppointments
+ * - Escort: EscortDashboard, EscortMarket
+ * - Admin: AdminDashboard, AdminApprovals
+ * - Utilities: SEO, NotFound
+ * 
+ * @example
+ * ```tsx
+ * // Root application entry point
+ * <App />
+ * ```
+ */
+
 import React, { Suspense, lazy } from 'react';
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";

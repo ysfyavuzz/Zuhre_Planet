@@ -1,3 +1,45 @@
+/**
+ * My Favorites Page
+ * 
+ * Customer favorites management page displaying saved escort profiles and bookmarked listings.
+ * Provides quick access to preferred escorts with actions for viewing and contacting.
+ * Enables users to organize, manage, and maintain their favorite escort collection.
+ * 
+ * @module pages/MyFavorites
+ * @category Pages - Dashboard
+ * 
+ * Features:
+ * - Display all saved favorite escorts
+ * - Escort profile cards with photo preview
+ * - Rating and review summary display
+ * - Location and availability status
+ * - Quick view profile button
+ * - Contact escort directly (call, message)
+ * - Remove from favorites option
+ * - Add notes to favorite profiles
+ * - Sort favorites (newest, rating, price)
+ * - Filter by city or specialty
+ * - Search within favorites
+ * - Grid and list view toggle
+ * - Empty state with suggestions
+ * - One-click booking from favorites
+ * - Share favorite profile feature
+ * - Last viewed date tracking
+ * 
+ * Favorite Management:
+ * - Add to favorites from escort profiles
+ * - Remove from favorites with confirmation
+ * - Organize into custom lists/categories
+ * - Add personal notes and tags
+ * - Track view history
+ * 
+ * @example
+ * ```tsx
+ * // Route: /favorites
+ * <MyFavorites />
+ * ```
+ */
+
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { Heart, Star, MapPin, Phone, MessageCircle, Trash2 } from 'lucide-react';

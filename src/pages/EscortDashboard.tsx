@@ -1,3 +1,41 @@
+/**
+ * Escort Dashboard Page
+ * 
+ * Comprehensive profile management hub for escort service providers.
+ * Provides tabbed interface for profile editing, gallery management, appointments, and messaging.
+ * Enables escorts to manage their presence, availability, and client interactions.
+ * 
+ * @module pages/EscortDashboard
+ * @category Pages - Dashboard
+ * 
+ * Features:
+ * - Tabbed navigation (Overview, Profile, Gallery, Appointments, Messages, Settings)
+ * - Profile information editing (bio, services, rates, availability)
+ * - Photo and video gallery management with upload
+ * - Appointment management with acceptance/rejection
+ * - Real-time messaging with clients
+ * - Service and availability configuration
+ * - Verification status and profile completeness tracking
+ * - Earnings and booking statistics
+ * - Review and rating management
+ * - Notification center for alerts and updates
+ * - Account settings and profile customization
+ * 
+ * Dashboard Sections:
+ * - Overview: Quick stats and recent activity
+ * - Profile: Edit bio, services, rates, verification
+ * - Gallery: Upload, organize, and manage photos/videos
+ * - Appointments: View, manage, and confirm bookings
+ * - Messages: Chat with clients and respond to inquiries
+ * - Settings: Account preferences and privacy controls
+ * 
+ * @example
+ * ```tsx
+ * // Route: /escort/dashboard
+ * <EscortDashboard />
+ * ```
+ */
+
 import { useState } from 'react';
 import { Link, Route } from 'wouter';
 import {

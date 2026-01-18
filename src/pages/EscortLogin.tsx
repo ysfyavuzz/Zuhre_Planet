@@ -1,3 +1,39 @@
+/**
+ * Escort Login Page
+ * 
+ * Authentication interface for escort service providers to access their profiles and dashboards.
+ * Provides email/password login with navigation to registration and client login pages.
+ * Implements secure authentication flow with professional UI and error handling.
+ * 
+ * @module pages/EscortLogin
+ * @category Pages - Auth
+ * 
+ * Features:
+ * - Email and password authentication form
+ * - Show/hide password toggle functionality
+ * - Remember me option for persistent login
+ * - Error message display and validation
+ * - Loading state during authentication process
+ * - Password reset link with email verification
+ * - Escort features and benefits showcase
+ * - Navigation to registration for new escorts
+ * - Quick link to client login page
+ * - Responsive mobile design
+ * - Professional UI with motion animations
+ * 
+ * Authentication:
+ * - Integrates with AuthContext for login management
+ * - Redirects to escort dashboard on successful login
+ * - Role-based access control enforcement
+ * - Session persistence across page reloads
+ * 
+ * @example
+ * ```tsx
+ * // Route: /escort/login
+ * <EscortLogin />
+ * ```
+ */
+
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';

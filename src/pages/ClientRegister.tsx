@@ -1,3 +1,38 @@
+/**
+ * Client Registration Page
+ * 
+ * Multi-step registration flow for new customers to create platform accounts.
+ * Implements 3-step verification process including phone verification and referral support.
+ * Provides comprehensive onboarding with profile setup and security features.
+ * 
+ * @module pages/ClientRegister
+ * @category Pages - Auth
+ * 
+ * Features:
+ * - Multi-step registration flow (3 steps total)
+ * - Email and password creation with validation
+ * - Phone number verification via SMS/OTP
+ * - Referral code support for program participation
+ * - Profile information completion (name, age, preferences)
+ * - Terms and conditions acceptance
+ * - Password strength indicator
+ * - Real-time email/phone availability checking
+ * - Error handling and validation feedback
+ * - Progress indicator for step tracking
+ * - Auto-login after successful registration
+ * 
+ * Registration Steps:
+ * 1. Basic account info (email, password, confirm password)
+ * 2. Phone verification (phone number, OTP verification)
+ * 3. Profile completion (name, age, city, preferences, referral code)
+ * 
+ * @example
+ * ```tsx
+ * // Route: /client/register
+ * <ClientRegister />
+ * ```
+ */
+
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';

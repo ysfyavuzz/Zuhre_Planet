@@ -1,3 +1,47 @@
+/**
+ * Payment Router Module (paymentRouter.ts)
+ * 
+ * Handles payment-related tRPC procedures for credit purchases and VIP membership management.
+ * Integrates with payment providers (currently using mock implementations for Iyzico/PayTR API).
+ * All procedures require authentication.
+ * 
+ * @module lib/paymentRouter
+ * @category Library - API
+ * 
+ * Features:
+ * - Initiate payment for credit packages
+ * - Purchase VIP membership plans (monthly, quarterly, yearly)
+ * - Balance/credit queries for authenticated users
+ * - Transaction logging and history tracking
+ * 
+ * Protected Procedures:
+ * - All procedures require user authentication via protectedProcedure
+ * 
+ * Environment Variables:
+ * - IYZICO_API_KEY: Iyzico payment API key (when implemented)
+ * - PAYTR_MERCHANT_KEY: PayTR merchant key (when implemented)
+ * 
+ * @example
+ * ```typescript
+ * import { trpc } from '@/lib/trpc';
+ * 
+ * // Initiate a credit purchase
+ * const paymentMutation = trpc.payments.initiatePurchase.useMutation();
+ * paymentMutation.mutate({
+ *   packageId: 'credits-100',
+ *   amount: 500,
+ * });
+ * 
+ * // Get current balance
+ * const { data: balance } = trpc.payments.getBalance.useQuery();
+ * ```
+ * 
+ * @todo Implement Iyzico API integration
+ * @todo Implement PayTR API integration
+ * @todo Add payment webhook handling
+ * @todo Implement transaction verification
+ */
+
 import { z } from "zod";
 import { protectedProcedure, router } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";

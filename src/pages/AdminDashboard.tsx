@@ -1,3 +1,37 @@
+/**
+ * Admin Dashboard Page
+ * 
+ * Main administration hub providing comprehensive platform oversight and management.
+ * Displays real-time statistics, recent activities, and quick action controls for admins.
+ * Enables monitoring of platform health, user activities, and system performance.
+ * 
+ * @module pages/AdminDashboard
+ * @category Pages - Admin
+ * 
+ * Features:
+ * - Real-time platform statistics (users, listings, revenue)
+ * - User management with approval/suspension capabilities
+ * - Activity feed showing recent platform events
+ * - Quick action cards for common admin tasks
+ * - Tabbed interface for organized data navigation
+ * - User role filtering (clients, escorts, VIP users)
+ * - Status indicators for pending approvals and alerts
+ * - Direct access to approval queue and reporting system
+ * - Performance metrics and trend analysis
+ * - Admin settings and system configuration access
+ * 
+ * Security:
+ * - Admin role authentication required
+ * - Restricted access to platform-sensitive data
+ * - Role-based permission enforcement
+ * 
+ * @example
+ * ```tsx
+ * // Route: /admin
+ * <AdminDashboard />
+ * ```
+ */
+
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { trpc } from '../lib/trpc';

@@ -1,3 +1,51 @@
+/**
+ * Database Module (db.ts)
+ * 
+ * Core database configuration and initialization using Drizzle ORM with Turso (libsql) backend.
+ * This module provides the main database client instance and helper functions for querying
+ * escort profiles, photos, users, and related data.
+ * 
+ * @module lib/db
+ * @category Library - Database
+ * 
+ * Features:
+ * - Database connection setup for production (Turso/libsql)
+ * - Health check functionality for database connectivity
+ * - Escort profile queries (list, search, get by ID)
+ * - Photo management functions
+ * - City/location queries
+ * - Credit and VIP management (mock implementations)
+ * 
+ * Database Provider:
+ * - Primary: Turso (libsql) - SQLite-compatible cloud database
+ * - Alternative providers supported: PostgreSQL, MySQL, SQLite
+ * 
+ * Environment Variables Required:
+ * - VITE_TURSO_URL: Database connection URL
+ * - VITE_TURSO_AUTH_TOKEN: Authentication token for database
+ * 
+ * @example
+ * ```typescript
+ * import { db, getEscortProfileById, searchEscortsAdvanced } from '@/lib/db';
+ * 
+ * // Get single escort profile
+ * const profile = await getEscortProfileById(1);
+ * 
+ * // Search with filters
+ * const results = await searchEscortsAdvanced({
+ *   city: 'İstanbul',
+ *   minAge: 18,
+ *   maxAge: 35,
+ *   minRate: 1000,
+ *   limit: 20
+ * });
+ * ```
+ * 
+ * @todo Implement actual credit transaction logic
+ * @todo Implement actual VIP activation persistence
+ * @todo Add proper view count tracking with separate table
+ */
+
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql-client';
 import { users, escortProfiles, escortPhotos } from '../drizzle/schema';

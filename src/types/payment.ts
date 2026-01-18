@@ -1,3 +1,74 @@
+/**
+ * Payment & Transaction System Module
+ * 
+ * Secure payment processing and transaction management system for the escort platform.
+ * Implements PCI DSS Level 1 compliance, fraud detection, escrow payments, dispute resolution,
+ * refund processing, and loyalty points integration. Handles payment methods, commission
+ * calculations, and customer/escort protections.
+ * 
+ * @module types/payment
+ * @category Types - Financial & Security
+ * 
+ * Exported Types:
+ * - PaymentStatus: Union type for payment states (pending, processing, completed, refunded, disputed)
+ * - PaymentMethod: Union type for available payment methods (card, bank transfer, mobile, crypto)
+ * - Payment: Core payment transaction with booking, customer, escort, and status info
+ * - PaymentSecurity: Security compliance flags (SSL, PCI DSS, encryption, 2FA)
+ * - RefundRequest: Refund request with reason, evidence, and resolution status
+ * - DisputeResolution: Dispute handling with evidence, investigation, and resolution details
+ * 
+ * Constants & Configurations:
+ * - PAYMENT_SECURITY: Security standards documentation (AES-256, TLS 1.3, PCI DSS Level 1)
+ * - PAYMENT_METHODS: Supported payment methods with status and fees
+ * - CUSTOMER_PAYMENT_SECURITY: Customer-facing payment protection features and refund policy
+ * - ESCORT_PAYMENT_SECURITY: Escort payment guarantees, bad customer protection, commission rates
+ * - BOOKING_STATUS_POINTS: Loyalty points impact for different booking outcomes
+ * 
+ * Functions:
+ * - calculatePlatformFee(): Calculates platform commission based on booking tier
+ * - calculateEscortNet(): Calculates net payment to escort after platform fee
+ * - calculateBookingPoints(): Calculates loyalty points with multipliers for booking outcomes
+ * 
+ * Key Features:
+ * - Escrow payment system: Customer payment held until booking completion
+ * - 48-hour refund window for customer protection
+ * - Auto-refund on no-show scenarios (escort or customer)
+ * - Tiered commission structure: 20% (new) → 15% (50+ bookings) → 10% (200+ bookings) → 5% (VIP)
+ * - Fraud detection with device fingerprinting, behavior analysis, IP checking
+ * - Full PCI DSS Level 1 compliance with AES-256 encryption and TLS 1.3
+ * - Comprehensive dispute resolution process with evidence review
+ * - Points system integration for successful and failed bookings
+ * - Multiple payment method support with future mobile/crypto expansion
+ * 
+ * @example
+ * ```typescript
+ * import {
+ *   Payment,
+ *   PaymentStatus,
+ *   DisputeResolution,
+ *   calculatePlatformFee,
+ *   calculateEscortNet,
+ *   calculateBookingPoints,
+ *   PAYMENT_SECURITY,
+ *   CUSTOMER_PAYMENT_SECURITY
+ * } from '@/types/payment';
+ * 
+ * // Calculate commission and net payment
+ * const amount = 500; // TL
+ * const totalBookings = 75;
+ * const fee = calculatePlatformFee(amount, totalBookings); // 75 TL (15%)
+ * const net = calculateEscortNet(amount, totalBookings); // 425 TL
+ * 
+ * // Calculate loyalty points
+ * const points = calculateBookingPoints(
+ *   'completed_5star',
+ *   'customer',
+ *   50,
+ *   { isFiveStar: true, isRepeat: true }
+ * );
+ * ```
+ */
+
 // Güvenli Ödeme Sistemi
 // Platform üzerinden güvenli ödeme ve iade garantisi
 

@@ -1,3 +1,46 @@
+/**
+ * My Appointments Page
+ * 
+ * Customer appointment management interface displaying upcoming and past bookings.
+ * Shows appointment status, escort details, dates/times, and action buttons.
+ * Enables users to view, modify, cancel, or complete appointment processes.
+ * 
+ * @module pages/MyAppointments
+ * @category Pages - Dashboard
+ * 
+ * Features:
+ * - Upcoming appointments list with countdown timers
+ * - Past appointments history with review options
+ * - Appointment status indicators (pending, confirmed, completed)
+ * - Escort profile details in appointment cards
+ * - Appointment date, time, and duration display
+ * - Location/venue information
+ * - Service details and rate confirmation
+ * - Cancellation option with refund information
+ * - Reschedule functionality
+ * - Message escort directly from appointment
+ * - Appointment confirmation before meeting
+ * - Review and rating after completion
+ * - Receipt and invoice viewing
+ * - Calendar view option
+ * - Filter by status (upcoming, completed, cancelled)
+ * 
+ * Appointment Actions:
+ * - Confirm appointment
+ * - Cancel with refund option
+ * - Reschedule to different date/time
+ * - View escort profile
+ * - Message escort
+ * - Mark as completed
+ * - Leave review and rating
+ * 
+ * @example
+ * ```tsx
+ * // Route: /appointments
+ * <MyAppointments />
+ * ```
+ */
+
 import { useState } from 'react';
 import { Link } from 'wouter';
 import { trpc } from '../lib/trpc';

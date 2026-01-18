@@ -1,3 +1,43 @@
+/**
+ * Not Found Page (404)
+ * 
+ * Error page displayed when users navigate to non-existent or invalid routes.
+ * Provides friendly error messaging with navigation options to return to main content.
+ * Helps users recover from navigation errors with helpful suggestions and links.
+ * 
+ * @module pages/NotFound
+ * @category Pages - Public
+ * 
+ * Features:
+ * - Large 404 error code display with emoji overlay
+ * - Friendly error message in Turkish
+ * - Return to home button
+ * - Go back navigation button
+ * - Helpful links to main sections (catalog, favorites, register)
+ * - Search suggestions and popular pages
+ * - Support contact information
+ * - Responsive design for all device sizes
+ * - Graceful error handling
+ * - Mobile-optimized layout
+ * - Quick navigation to key pages
+ * 
+ * Navigation Options:
+ * - Return to home page
+ * - Go back to previous page
+ * - Browse catalog
+ * - View favorites
+ * - Register new account
+ * - Search by category
+ * - Contact support
+ * 
+ * @example
+ * ```tsx
+ * // Route: /404
+ * // Any non-existent route
+ * <NotFound />
+ * ```
+ */
+
 import { useLocation } from 'wouter';
 import { Home, Search, ArrowLeft } from 'lucide-react';
 import Header from '@/components/Header';

@@ -1,3 +1,44 @@
+/**
+ * SEO Component Page
+ * 
+ * Dynamic SEO meta tag manager for setting page-specific meta information.
+ * Handles Open Graph tags, canonical links, JSON-LD schema markup, and meta descriptions.
+ * Improves search engine visibility and social media sharing with comprehensive metadata.
+ * 
+ * @module pages/SEO
+ * @category Pages - Utilities
+ * 
+ * Features:
+ * - Dynamic page title management
+ * - Meta description optimization
+ * - Keywords configuration for search engines
+ * - Open Graph tags (og:title, og:description, og:image, og:url)
+ * - Twitter Card tags for social media sharing
+ * - Canonical URL specification for duplicate prevention
+ * - JSON-LD DirectoryWebSite schema markup implementation
+ * - DirectoryWebSite schema with SearchAction for structured data
+ * - Language and locale meta tags
+ * - Robots index/follow configuration
+ * - Charset (UTF-8) specification
+ * - Dynamic meta tag injection into document head
+ * 
+ * Implementation:
+ * - Creates and manages DirectoryWebSite schema for search results
+ * - Injects script tags with JSON-LD schema into document head
+ * - Updates all meta tags dynamically on prop changes
+ * - Ensures proper encoding for Turkish characters
+ * 
+ * @example
+ * ```tsx
+ * // Usage in Home.tsx
+ * <SEO 
+ *   title="Marmara Escort İlanları | İstanbul, Bursa, Kocaeli VIP Escort"
+ *   description="Marmara bölgesinin en seçkin escort ilan platformu..."
+ *   keywords="istanbul escort, bursa escort, kocaeli escort"
+ * />
+ * ```
+ */
+
 import { useEffect } from 'react';
 
 interface SEOProps {

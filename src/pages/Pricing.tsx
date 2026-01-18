@@ -1,3 +1,43 @@
+/**
+ * Pricing Page
+ * 
+ * VIP membership pricing and credit packages page for customers and escorts.
+ * Displays membership tiers (weekly, monthly, yearly) with features and benefits.
+ * Enables users to purchase premium services and credits to boost their listings.
+ * 
+ * @module pages/Pricing
+ * @category Pages - Public
+ * 
+ * Features:
+ * - Multiple membership tiers (Standard, VIP, Premium, Platinum)
+ * - Weekly and monthly billing cycle options
+ * - Detailed feature comparison across packages
+ * - Pricing display with clear rate information
+ * - Feature benefit breakdown per tier
+ * - One-click purchase and upgrade flow
+ * - Current subscription status display
+ * - Billing history and invoice management
+ * - Credit package options (custom amounts available)
+ * - Boost packages (featured listing, top placement, premium options)
+ * - FAQ section with common membership questions
+ * - Annual billing discount options
+ * - Payment method selection
+ * 
+ * Package Types:
+ * - VIP Weekly: Limited features, 7-day subscription
+ * - VIP Monthly: Enhanced features, 30-day subscription
+ * - Premium: All features, 30-day subscription
+ * - Platinum: Premium perks, 365-day subscription
+ * - Credit Packages: 100, 500, 1000, 5000 credits
+ * - Boost Packages: Featured, top placement, premium listing
+ * 
+ * @example
+ * ```tsx
+ * // Route: /pricing
+ * <Pricing />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../components/ui/button';

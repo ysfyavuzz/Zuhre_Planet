@@ -1,3 +1,39 @@
+/**
+ * Client Login Page
+ * 
+ * Customer authentication interface for clients to access their account and dashboard.
+ * Provides email/password login form with benefits showcase and registration/escort login links.
+ * Implements secure authentication flow with error handling and loading states.
+ * 
+ * @module pages/ClientLogin
+ * @category Pages - Auth
+ * 
+ * Features:
+ * - Email and password authentication form
+ * - Show/hide password toggle with icon feedback
+ * - Remember me functionality with persistent login
+ * - Error message display and validation feedback
+ * - Loading state during authentication
+ * - Password reset link with email verification
+ * - Client benefits showcase section
+ * - Navigation to registration page for new clients
+ * - Quick navigation to escort login
+ * - Responsive design with mobile optimization
+ * - Form input validation and accessibility
+ * 
+ * Authentication:
+ * - Integrates with AuthContext for login management
+ * - Redirects to home page on successful login
+ * - Displays role-specific dashboard on login
+ * - Maintains session across page reloads
+ * 
+ * @example
+ * ```tsx
+ * // Route: /client/login
+ * <ClientLogin />
+ * ```
+ */
+
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';

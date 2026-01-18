@@ -1,3 +1,71 @@
+/**
+ * Mock Data Module (mockData.ts)
+ * 
+ * Mock data and type definitions for development and testing.
+ * Contains sample escort profiles, service definitions, and view limits.
+ * Used for frontend development without backend connectivity.
+ * 
+ * @module mockData
+ * @category Data
+ * 
+ * Features:
+ * - Escort profile interfaces and mock data
+ * - Service type definitions (30+ service categories)
+ * - Service categories and detailed descriptions
+ * - Mock advertisements
+ * - View limit configurations for different user roles
+ * - Helper functions for view limit calculations
+ * 
+ * Data Includes:
+ * - Escort profile mock data (6 sample profiles)
+ * - Physical attributes (height, weight, body type, etc.)
+ * - Service offerings with pricing modifiers
+ * - Language support
+ * - Online status and statistics
+ * - Mock ads for promotions
+ * 
+ * User Roles:
+ * - guest: Limited preview (5 photos, no videos)
+ * - user: Basic member (10 photos, 1 video)
+ * - premium: Premium member (20 photos, 5 videos)
+ * - vip: VIP member (unlimited photos and videos)
+ * 
+ * Service Categories:
+ * - Classic massage services (8 types)
+ * - Special services (8 types)
+ * - Wellness & care (8 types)
+ * - Sensory play (8 types)
+ * - BDSM & Fetish (9 types)
+ * - Fetish services (7 types)
+ * - Group services (5 types)
+ * 
+ * @example
+ * ```typescript
+ * import { 
+ *   mockEscorts, 
+ *   SERVICE_CATEGORIES, 
+ *   getVisiblePhotoCount 
+ * } from '@/mockData';
+ * 
+ * // Get mock profiles
+ * const profile = mockEscorts[0];
+ * 
+ * // Calculate visible items for user role
+ * const photoCount = getVisiblePhotoCount(20, 'premium');
+ * 
+ * // Get service category
+ * const classicServices = SERVICE_CATEGORIES.hizmet.services;
+ * ```
+ * 
+ * @typedef {import('./mockData').Escort} Escort
+ * @typedef {import('./mockData').ServiceType} ServiceType
+ * @typedef {import('./mockData').UserRole} UserRole
+ * 
+ * @todo Replace with real data from backend
+ * @todo Implement dynamic mock data generation
+ * @todo Add performance statistics to profiles
+ */
+
 // Mock data for development and testing
 
 export interface EscortStats {

@@ -1,3 +1,84 @@
+/**
+ * Reviews & Trust System Module
+ * 
+ * Review and trust management system for the escort platform. Manages escort reviews,
+ * customer warnings (visible only to other escorts), trust scoring, and trust-building
+ * guidance. Implements verification mechanisms, helpful vote tracking, and admin moderation.
+ * 
+ * @module types/reviews
+ * @category Types - Trust & Reputation
+ * 
+ * Exported Types/Interfaces:
+ * - Review: Escort review from customer with rating, comment, verification, and helpfulness tracking
+ * - CustomerWarning: Warning about customer behavior for escort-to-escort visibility (not to customers)
+ * - EscortTrustScore: Trust metrics including review count, ratings, response rate, and trust level
+ * 
+ * Constants & Configurations:
+ * - TRUST_LEVEL_CONFIG: Configuration for 4 trust levels (New → Established → Trusted → Top-Rated)
+ * - WARNING_TYPE_CONFIG: Customer warning categories with icons and descriptions
+ * - TRUST_TIPS: 10 best practices for escorts to build trust and earn positive reviews
+ * - TRUST_BUILDING_CONTENT: Educational content explaining reviews and trust system
+ * - sampleReviews: Example review data for development and testing
+ * - sampleWarnings: Example customer warning data (escort-only visibility)
+ * 
+ * Functions:
+ * - calculateTrustLevel(): Calculates trust level based on review count and average rating
+ * 
+ * Trust Level Criteria:
+ * - 'new': < 5 reviews
+ * - 'established': 5-19 reviews with avg rating ≥ 4.5
+ * - 'trusted': 20+ reviews with avg rating ≥ 4.5
+ * - 'top-rated': 50+ reviews with avg rating ≥ 4.8
+ * 
+ * Key Features:
+ * - Verified review system (confirmed bookings only)
+ * - Anonymous customer names (A***, B***, etc.)
+ * - Helpful vote tracking for community validation
+ * - Review flagging system for moderation
+ * - Escort response capability with optional replies
+ * - Customer warning system visible only to other escorts (not customers)
+ * - Warning verification by admins
+ * - Warning upvote system for community confirmation
+ * - Response time and response rate metrics for trust score
+ * - Warning types: behavior, payment, safety, respect, other
+ * - Warning severity levels: low, medium, high
+ * 
+ * Privacy & Moderation:
+ * - Customer identities are anonymized in reviews
+ * - Customer warnings are only visible to escorts, not to the public or other customers
+ * - Reviews must be verified (from actual bookings)
+ * - Flagged reviews can be hidden pending admin review
+ * - Admin verification for high-severity warnings
+ * 
+ * @example
+ * ```typescript
+ * import {
+ *   Review,
+ *   CustomerWarning,
+ *   EscortTrustScore,
+ *   calculateTrustLevel,
+ *   TRUST_LEVEL_CONFIG,
+ *   WARNING_TYPE_CONFIG
+ * } from '@/types/reviews';
+ * 
+ * // Calculate trust level
+ * const score: EscortTrustScore = {
+ *   escortId: 'escort_123',
+ *   totalReviews: 45,
+ *   averageRating: 4.7,
+ *   responseRate: 0.95,
+ *   responseTime: 2.5,
+ *   verifiedReviews: 43,
+ *   trustLevel: 'trusted'
+ * };
+ * 
+ * const trustLevel = calculateTrustLevel(score); // 'trusted'
+ * const config = TRUST_LEVEL_CONFIG[trustLevel];
+ * console.log(config.label); // 'Güvenilir'
+ * console.log(config.icon); // '🏆'
+ * ```
+ */
+
 // Review types for the escort platform
 
 export interface Review {

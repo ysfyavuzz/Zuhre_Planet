@@ -1,3 +1,71 @@
+/**
+ * Loyalty & Points System Module
+ * 
+ * Comprehensive reward and loyalty system for the escort platform. Manages user loyalty levels,
+ * points transactions, referral programs, visibility boosts, and profile completeness rewards.
+ * This system incentivizes user engagement through tiered benefits and multiple earning mechanisms.
+ * 
+ * @module types/loyalty
+ * @category Types - Loyalty & Rewards
+ * 
+ * Exported Types/Interfaces:
+ * - LoyaltyPoints: User's current and lifetime loyalty points with level information
+ * - PointsTransaction: Individual points earning/spending transactions with categorization
+ * - ReferralCode: Referral code with rewards configuration and usage tracking
+ * - VisibilityBoost: Temporary visibility multiplier configuration for profile boosting
+ * - ProfileCompleteness: Profile completion tracking with bonus rewards structure
+ * 
+ * Constants & Configurations:
+ * - LOYALTY_LEVELS: 5-tier loyalty system (Bronze → Silver → Gold → Platinum → Diamond)
+ * - POINTS_EARNING: Points earning methods for customers and escorts with point values
+ * - POINTS_SPENDING: Point redemption options with costs and benefits
+ * - VISIBILITY_MULTIPLIERS: Visibility boost multipliers for different user statuses
+ * - REFERRAL_SYSTEM: Referral program configuration and reward structure
+ * - LOYALTY_CONTENT: User-facing content explaining the loyalty system
+ * 
+ * Functions:
+ * - calculateProfileCompleteness(): Calculates profile completion percentage and associated bonuses
+ * - calculateVisibilityScore(): Calculates final visibility score with multiple multiplier factors
+ * 
+ * Key Features:
+ * - Multi-tier loyalty levels with progressive benefits
+ * - Points earning from reviews, appointments, referrals, and profile completion
+ * - Visibility multipliers based on loyalty status, profile completeness, verification
+ * - Referral system with different rewards for customers and escorts
+ * - Profile completeness bonuses (points, discounts, visibility boost)
+ * - Points spending options for visibility boost, badges, and coupons
+ * 
+ * @example
+ * ```typescript
+ * import { 
+ *   LoyaltyPoints, 
+ *   calculateProfileCompleteness,
+ *   calculateVisibilityScore,
+ *   LOYALTY_LEVELS 
+ * } from '@/types/loyalty';
+ * 
+ * // Calculate profile completeness
+ * const completeness = calculateProfileCompleteness({
+ *   avatar: true,
+ *   coverPhoto: true,
+ *   personalInfo: true,
+ *   description: true,
+ *   services: true,
+ *   location: true,
+ *   contact: true,
+ *   workingHours: true,
+ *   photos: 12
+ * });
+ * 
+ * // Calculate visibility score with multipliers
+ * const visibility = calculateVisibilityScore(100, {
+ *   loyaltyLevel: 'gold',
+ *   isCompleteProfile: true,
+ *   isVerified: true
+ * });
+ * ```
+ */
+
 // Sadakat ve Puan Sistemi
 // Escort platformu için kapsamlı ödül sistemi
 

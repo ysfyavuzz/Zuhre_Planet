@@ -1,3 +1,43 @@
+/**
+ * Messages Page
+ * 
+ * Real-time messaging interface for users to communicate with escorts and contacts.
+ * Provides conversation list, chat area with message history, and message sending.
+ * Supports both clients and escorts with role-appropriate messaging features.
+ * 
+ * @module pages/Messages
+ * @category Pages - Dashboard
+ * 
+ * Features:
+ * - Conversation list with latest messages and timestamps
+ * - Search functionality for finding conversations
+ * - Individual chat interface with message history
+ * - Real-time message sending and receiving
+ * - Typing indicators showing active composition
+ * - Message read/unread status tracking
+ * - User presence indicators (online/offline status)
+ * - Notification badges for unread messages
+ * - Message formatting support
+ * - Edit sent messages functionality
+ * - Delete message capability
+ * - Message timestamps (relative and absolute)
+ * - Auto-scroll to latest messages
+ * - Conversation archive and management options
+ * - Block user functionality for safety
+ * 
+ * Message Types:
+ * - Text messages with formatting
+ * - System messages (appointment confirmations, status updates)
+ * - Notification messages
+ * - Formatted message content
+ * 
+ * @example
+ * ```tsx
+ * // Route: /messages
+ * <Messages />
+ * ```
+ */
+
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
 import { trpc } from '../lib/trpc';

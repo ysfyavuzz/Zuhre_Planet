@@ -1,3 +1,44 @@
+/**
+ * Escort List Page
+ * 
+ * Advanced escort search and discovery page with comprehensive filtering capabilities.
+ * Provides extensive physical attribute filtering, verification status toggles, and pagination.
+ * Enables users to find escorts matching specific preferences with refined search criteria.
+ * 
+ * @module pages/EscortList
+ * @category Pages - Public
+ * 
+ * Features:
+ * - Full-text search by name, bio, or keywords
+ * - Physical attribute filters (age range, height, body type, ethnicity)
+ * - Service-based filtering (available services)
+ * - Price range filtering (hourly to overnight rates)
+ * - Availability status filtering
+ * - VIP and verified escort toggles
+ * - Sorting options (newest, popular, rating, price)
+ * - Pagination with adjustable results per page
+ * - Grid and list view toggle
+ * - Real-time search results update
+ * - Mobile-responsive filter sidebar with toggle
+ * - Active filter count display
+ * - Clear filters button for quick reset
+ * 
+ * Filters:
+ * - Age, Height, Weight, Body Type
+ * - Hair Color, Ethnicity, Nationality
+ * - Languages Spoken, Services Offered
+ * - City/Location, Availability
+ * - Price Range, Rating Range
+ * - Verification Status, VIP Status
+ * 
+ * @example
+ * ```tsx
+ * // Route: /escorts
+ * // Route with filters: /escorts?age=20-30&city=Istanbul&services=companion
+ * <EscortList />
+ * ```
+ */
+
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { Button } from '../components/ui/button';

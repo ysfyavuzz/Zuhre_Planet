@@ -1,3 +1,67 @@
+/**
+ * Notifications & Messaging System Module
+ * 
+ * Comprehensive notification and messaging system for the escort platform. Handles in-app
+ * notifications, email notifications, push notifications, user warnings, chat rules enforcement,
+ * and message sanitization. Includes profanity filtering, spam detection, and content moderation.
+ * 
+ * @module types/notifications
+ * @category Types - Communications & Safety
+ * 
+ * Exported Types/Interfaces:
+ * - NotificationType: Union type of all notification types (messages, bookings, reviews, warnings, etc.)
+ * - Notification: Core notification object with user, type, content, and read status
+ * - EmailNotification: Email-specific notification configuration
+ * - UserWarning: User warning record with type, severity, and action information
+ * 
+ * Constants & Configurations:
+ * - NOTIFICATION_CONFIG: Email settings, TTL (time-to-live), and preference defaults
+ * - NOTIFICATION_TEMPLATES: Template definitions for all notification types with placeholders
+ * - CHAT_RULES: Platform rules for escorts and customers with severity levels
+ * - PROFANITY_FILTER: Profanity and inappropriate content word lists and patterns
+ * - MESSAGE_RULES: Message length limits, forbidden content patterns, and spam detection thresholds
+ * - WARNING_LEVELS: Warning severity levels with associated actions and UI styling
+ * - BOOKING_REMINDERS: Reminder messages before/after bookings and reminder timing
+ * 
+ * Functions:
+ * - createUserWarning(): Factory function for creating user warning records
+ * - sanitizeMessage(): Sanitizes message content by filtering profanity and blocking contact info
+ * - checkSpam(): Detects spam patterns including repeated messages, rate limiting, and caps lock
+ * - createNotification(): Factory function for creating notification objects from templates
+ * 
+ * Key Features:
+ * - 13+ notification types (messages, bookings, reviews, profile, VIP, points, warnings)
+ * - Configurable notification preferences per channel (email, push, SMS)
+ * - Profanity filtering in Turkish, English, and inappropriate terms
+ * - Phone number and email address masking to prevent external contact
+ * - Spam detection with rate limiting and pattern matching
+ * - User warning system with severity levels and automatic actions
+ * - Chat rules enforcement for both escorts and customers
+ * - Template-based notification generation with data interpolation
+ * 
+ * @example
+ * ```typescript
+ * import {
+ *   Notification,
+ *   UserWarning,
+ *   sanitizeMessage,
+ *   createNotification,
+ *   NOTIFICATION_TEMPLATES
+ * } from '@/types/notifications';
+ * 
+ * // Sanitize user message
+ * const { clean, violations } = sanitizeMessage('Call me at 05551234567');
+ * console.log(clean); // 'Call me at ***'
+ * console.log(violations); // ['Phone number sharing', ...]
+ * 
+ * // Create notification from template
+ * const notif = createNotification('user_123', 'new_message', {
+ *   sender: 'John Doe',
+ *   actionUrl: '/messages/conv_456'
+ * });
+ * ```
+ */
+
 // Bildirim ve Mesajlaşma Sistemi
 
 // Bildirim türleri

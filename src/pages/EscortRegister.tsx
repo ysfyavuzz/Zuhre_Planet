@@ -1,3 +1,43 @@
+/**
+ * Escort Registration Page
+ * 
+ * Comprehensive multi-step registration flow for new escort service providers.
+ * Implements 6-step verification process including phone verification, ID verification, and service setup.
+ * Provides complete onboarding with profile customization and platform rules acceptance.
+ * 
+ * @module pages/EscortRegister
+ * @category Pages - Auth
+ * 
+ * Features:
+ * - Multi-step registration flow (6 steps total)
+ * - Account information setup (email, password, username)
+ * - Phone number verification via SMS/OTP
+ * - ID/Document verification upload
+ * - Physical features and appearance input
+ * - Services and rates configuration
+ * - Profile preview and final review
+ * - Terms and conditions acceptance
+ * - Commission rate disclosure
+ * - Profile photo upload
+ * - Availability schedule setup
+ * - Payment method configuration
+ * - Background check initiation
+ * 
+ * Registration Steps:
+ * 1. Account Info (email, password, username, language)
+ * 2. Phone Verification (phone number, OTP)
+ * 3. Physical Features (age, height, weight, body type, ethnicity)
+ * 4. Services & Rates (services offered, pricing, specialties)
+ * 5. Profile Setup (bio, photos, availability, working hours)
+ * 6. Review & Confirm (preview, terms acceptance, submit)
+ * 
+ * @example
+ * ```tsx
+ * // Route: /escort/register
+ * <EscortRegister />
+ * ```
+ */
+
 import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';

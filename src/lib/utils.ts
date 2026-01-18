@@ -1,3 +1,62 @@
+/**
+ * Utility Functions Module (utils.ts)
+ * 
+ * Collection of general-purpose utility functions used throughout the application.
+ * Includes formatting functions, validation helpers, DOM utilities, and storage helpers.
+ * 
+ * @module lib/utils
+ * @category Library - Utils
+ * 
+ * Features:
+ * - CSS class merging (cn function using clsx and tailwind-merge)
+ * - Currency formatting (Turkish Lira support)
+ * - Date and time formatting (locale-aware)
+ * - Text utilities (truncation, slugification)
+ * - Validation functions (email, phone)
+ * - Phone number formatting (Turkish format)
+ * - Age calculation from birthdate
+ * - Performance utilities (debounce, throttle)
+ * - Array utilities (random selection, shuffling)
+ * - Query parameter handling
+ * - Local storage and session storage wrappers
+ * 
+ * Locale:
+ * - All date/time formatting uses Turkish locale (tr-TR)
+ * - Currency defaults to Turkish Lira (TRY)
+ * - Relative time uses Turkish phrases
+ * 
+ * @example
+ * ```typescript
+ * import { 
+ *   cn, 
+ *   formatCurrency, 
+ *   formatDate, 
+ *   isValidEmail,
+ *   storage 
+ * } from '@/lib/utils';
+ * 
+ * // Merge CSS classes
+ * const classes = cn('px-4', condition && 'text-blue-500');
+ * 
+ * // Format values
+ * const price = formatCurrency(1500); // "1.500,00 ₺"
+ * const date = formatDate(new Date()); // "31.12.2024"
+ * 
+ * // Validate input
+ * if (isValidEmail('user@example.com')) { ... }
+ * 
+ * // Storage operations
+ * storage.set('user-preference', { theme: 'dark' });
+ * const prefs = storage.get('user-preference');
+ * ```
+ * 
+ * Storage Helpers:
+ * - localStorage helpers with try-catch error handling
+ * - sessionStorage helpers with try-catch error handling
+ * - JSON serialization/deserialization
+ * - Default value support
+ */
+
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
