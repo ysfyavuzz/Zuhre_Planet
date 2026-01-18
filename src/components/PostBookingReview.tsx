@@ -1,3 +1,40 @@
+/**
+ * PostBookingReview Component
+ * 
+ * Post-appointment review form for customers to rate their experience.
+ * Simplified review process immediately after booking completion.
+ * 
+ * @module components/PostBookingReview
+ * @category Components - Reviews
+ * 
+ * Features:
+ * - Quick star rating (1-5)
+ * - Multi-category ratings (cleanliness, service, attitude, location)
+ * - Optional text comment
+ * - "Would return" recommendation toggle
+ * - Emoji feedback indicators
+ * - Fast submission process
+ * - Mobile-optimized interface
+ * 
+ * Rating Categories:
+ * - Overall satisfaction
+ * - Cleanliness
+ * - Service quality
+ * - Attitude/professionalism
+ * - Location/venue
+ * - Would return (yes/no)
+ * 
+ * @example
+ * ```tsx
+ * <PostBookingReview
+ *   bookingId="booking-123"
+ *   escortId="escort-456"
+ *   escortName="Ayşe Y."
+ *   onSubmit={(review) => console.log(review)}
+ * />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -10,6 +47,9 @@ import {
   Shield, TrendingUp
 } from 'lucide-react';
 
+/**
+ * Review form data structure
+ */
 export interface ReviewFormData {
   overallRating: number; // 1-5 yıldız
   cleanliness: number; // 1-5

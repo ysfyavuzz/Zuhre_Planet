@@ -1,3 +1,45 @@
+/**
+ * PaymentSecurity Component
+ * 
+ * Displays payment security information, guarantees, and platform fee structure.
+ * Educates users about secure payment handling and dispute resolution.
+ * 
+ * @module components/PaymentSecurity
+ * @category Components - Payments
+ * 
+ * Features:
+ * - Payment security guarantees display
+ * - Platform fee calculation visualization
+ * - Customer protection policies
+ * - Escort payout information
+ * - Secure payment methods showcase
+ * - Dispute resolution process
+ * - Transaction timeline
+ * - Payment status tracking
+ * 
+ * Security Features:
+ * - PCI-DSS compliance information
+ * - 3D Secure verification
+ * - Money-back guarantee details
+ * - Escrow service explanation
+ * - ID verification requirements
+ * 
+ * Fee Structure:
+ * - Platform commission: 15-20%
+ * - Payment processing: 2-3%
+ * - Net payout calculation
+ * - VIP member discounts
+ * 
+ * @example
+ * ```tsx
+ * <PaymentSecurity
+ *   userType="customer"
+ *   bookingAmount={500}
+ *   showFeeBreakdown={true}
+ * />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';

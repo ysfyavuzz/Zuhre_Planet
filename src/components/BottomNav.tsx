@@ -1,3 +1,31 @@
+/**
+ * BottomNav Component
+ * 
+ * Mobile-responsive bottom navigation bar for quick access to main features.
+ * Displays active state and smooth animations on route changes.
+ * 
+ * @module components/BottomNav
+ * @category Components - Navigation
+ * 
+ * Features:
+ * - Persistent bottom navigation for mobile devices
+ * - Active route highlighting
+ * - Smooth transition animations
+ * - Icon-based navigation
+ * 
+ * Navigation Items:
+ * - Home (/)
+ * - Search (/catalog)
+ * - Favorites (/favorites)
+ * - Messages (/messages)
+ * - Profile (/login or /escort/dashboard)
+ * 
+ * @example
+ * ```tsx
+ * <BottomNav />
+ * ```
+ */
+
 import { Link, useLocation } from 'wouter';
 import { Home, Search, Heart, MessageCircle, User } from 'lucide-react';
 import { motion } from 'framer-motion';

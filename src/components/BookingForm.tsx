@@ -1,3 +1,38 @@
+/**
+ * BookingForm Component
+ * 
+ * Comprehensive booking form for scheduling appointments with escorts.
+ * Features multi-step validation, price calculation, and message sanitization.
+ * 
+ * @module components/BookingForm
+ * @category Components - Booking
+ * 
+ * Features:
+ * - Date/time selection with validation
+ * - Duration-based price calculation
+ * - Customer information collection
+ * - Message sanitization for safety
+ * - Reminder preferences
+ * - Terms acceptance
+ * - Real-time validation feedback
+ * 
+ * Security:
+ * - Input sanitization (XSS prevention)
+ * - Contact info validation
+ * - Message content filtering
+ * 
+ * @example
+ * ```tsx
+ * <BookingForm
+ *   escortId="123"
+ *   escortName="Ayşe Y."
+ *   hourlyRate={500}
+ *   availableHours={['10:00', '14:00', '18:00']}
+ *   onSubmit={(data) => console.log(data)}
+ * />
+ * ```
+ */
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -13,6 +48,9 @@ import {
 } from 'lucide-react';
 import { BOOKING_REMINDERS, MESSAGE_RULES, sanitizeMessage } from '@/types/notifications';
 
+/**
+ * Props for BookingForm component
+ */
 interface BookingFormProps {
   escortId: string;
   escortName: string;

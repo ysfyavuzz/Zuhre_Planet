@@ -1,3 +1,41 @@
+/**
+ * NotificationsPanel Component
+ * 
+ * Comprehensive notification management panel for users.
+ * Displays various notification types with filtering, marking read/unread, and deletion.
+ * 
+ * @module components/NotificationsPanel
+ * @category Components - Notifications
+ * 
+ * Features:
+ * - Real-time notification display
+ * - Categorized tabs (all, messages, bookings, reviews, system)
+ * - Mark as read/unread
+ * - Bulk actions (mark all read, delete read)
+ * - Notification filtering
+ * - Unread count badge
+ * - Notification preferences
+ * - Email notification toggle
+ * - Auto-expiry for old notifications
+ * 
+ * Notification Types:
+ * - Messages: New messages received
+ * - Bookings: Appointment confirmations, cancellations, reminders
+ * - Reviews: New reviews and ratings
+ * - System: Profile approvals, VIP expiry warnings
+ * - Marketing: Promotions and offers (opt-in)
+ * 
+ * @example
+ * ```tsx
+ * <NotificationsPanel
+ *   notifications={notificationsList}
+ *   unreadCount={5}
+ *   onMarkRead={(id) => console.log(id)}
+ *   onDelete={(id) => console.log(id)}
+ * />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -15,6 +53,9 @@ import {
   WARNING_LEVELS
 } from '@/types/notifications';
 
+/**
+ * Props for NotificationsPanel component
+ */
 interface NotificationsPanelProps {
   notifications: Notification[];
   unreadCount: number;

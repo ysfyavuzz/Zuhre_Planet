@@ -1,6 +1,39 @@
+/**
+ * ErrorBoundary Component
+ * 
+ * React Error Boundary for gracefully handling runtime errors in component tree.
+ * Catches errors, logs them, and displays user-friendly fallback UI.
+ * 
+ * @module components/ErrorBoundary
+ * @category Components - Error Handling
+ * 
+ * Features:
+ * - Catches JavaScript errors anywhere in child component tree
+ * - Logs error information for debugging
+ * - Displays fallback UI
+ * - Error recovery options
+ * - Integration ready for error tracking services (Sentry, LogRocket)
+ * - Development vs production error display
+ * 
+ * Usage:
+ * Wrap your component tree or specific sections that might throw errors.
+ * 
+ * @example
+ * ```tsx
+ * <ErrorBoundary>
+ *   <YourApp />
+ * </ErrorBoundary>
+ * ```
+ * 
+ * @see {@link https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary}
+ */
+
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { ErrorFallback } from './ErrorDisplay';
 
+/**
+ * Props for ErrorBoundary component
+ */
 interface Props {
   children: ReactNode;
   fallback?: ReactNode;

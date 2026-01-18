@@ -1,3 +1,44 @@
+/**
+ * PlatformBenefits Component
+ * 
+ * Educational component showcasing platform benefits, safety features, and comparisons.
+ * Helps users understand why they should use the platform vs direct booking.
+ * 
+ * @module components/PlatformBenefits
+ * @category Components - Marketing
+ * 
+ * Features:
+ * - Role-specific benefits (customer vs escort)
+ * - Safety and verification features
+ * - Platform advantages over direct booking
+ * - Warning about off-platform risks
+ * - Comparison table
+ * - Trust badges and certifications
+ * - Success stories (planned)
+ * 
+ * Customer Benefits:
+ * - Verified escorts only
+ * - Secure payment escrow
+ * - Dispute resolution
+ * - Privacy protection
+ * - Review system
+ * - 24/7 support
+ * 
+ * Escort Benefits:
+ * - Income protection
+ * - No-show coverage
+ * - Marketing and visibility
+ * - Professional profile
+ * - Client verification
+ * - Payment guarantee
+ * 
+ * @example
+ * ```tsx
+ * <PlatformBenefits userType="customer" />
+ * <PlatformBenefits userType="escort" />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -10,6 +51,9 @@ import {
   Lock, Zap, Target, Crown, Heart, Ban
 } from 'lucide-react';
 
+/**
+ * Props for PlatformBenefits component
+ */
 interface PlatformBenefitsProps {
   userType: 'customer' | 'escort';
 }

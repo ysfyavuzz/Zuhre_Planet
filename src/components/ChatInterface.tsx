@@ -1,3 +1,41 @@
+/**
+ * ChatInterface Component
+ * 
+ * Real-time messaging interface for communication between users and escorts.
+ * Features message sanitization, typing indicators, and conversation management.
+ * 
+ * @module components/ChatInterface
+ * @category Components - Messaging
+ * 
+ * Features:
+ * - Real-time message display
+ * - Message sanitization (XSS prevention)
+ * - Typing indicators
+ * - Read receipts
+ * - Conversation list
+ * - Search conversations
+ * - File attachment support (planned)
+ * - Emoji support
+ * - Auto-scroll to latest message
+ * - Message timestamps
+ * - Online/offline status
+ * 
+ * Security:
+ * - Content sanitization
+ * - Spam detection
+ * - Prohibited word filtering
+ * - Contact info masking
+ * 
+ * @example
+ * ```tsx
+ * <ChatInterface
+ *   userId="user-123"
+ *   userName="Ahmet Y."
+ *   userAvatar="https://..."
+ * />
+ * ```
+ */
+
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';

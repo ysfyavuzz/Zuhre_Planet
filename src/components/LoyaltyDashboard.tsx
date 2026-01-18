@@ -1,3 +1,45 @@
+/**
+ * LoyaltyDashboard Component
+ * 
+ * Comprehensive loyalty program dashboard for escorts showing points, levels, and rewards.
+ * Gamification features to encourage engagement and profile quality.
+ * 
+ * @module components/LoyaltyDashboard
+ * @category Components - Gamification
+ * 
+ * Features:
+ * - Loyalty level display with progress
+ * - Points balance and earning history
+ * - Referral program tracking
+ * - Profile completeness score
+ * - Reward redemption options
+ * - Visibility multiplier benefits
+ * - Achievement badges
+ * - Leaderboard (planned)
+ * 
+ * Loyalty Levels:
+ * - Bronze (0-999 points)
+ * - Silver (1000-2999 points)
+ * - Gold (3000-5999 points)
+ * - Platinum (6000-9999 points)
+ * - Diamond (10000+ points)
+ * 
+ * Points Earning:
+ * - Profile completion: 100 points
+ * - First booking: 50 points
+ * - 5-star review: 25 points
+ * - Referral: 200 points
+ * 
+ * @example
+ * ```tsx
+ * <LoyaltyDashboard
+ *   userId="escort-123"
+ *   currentPoints={2500}
+ *   level="silver"
+ * />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';

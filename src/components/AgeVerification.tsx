@@ -1,6 +1,40 @@
+/**
+ * AgeVerification Component
+ * 
+ * Modal component for verifying user age before accessing adult content.
+ * Stores verification status in localStorage to avoid repeated prompts.
+ * Includes HOC and hook for protecting components/routes.
+ * 
+ * @module components/AgeVerification
+ * @category Components - Security
+ * 
+ * Features:
+ * - 18+ age verification modal
+ * - localStorage persistence
+ * - Non-dismissable until action taken
+ * - Redirect option for underage users
+ * - HOC for component protection
+ * - Custom hook for verification status
+ * 
+ * @example
+ * ```tsx
+ * // Direct usage
+ * <AgeVerification onConfirm={() => console.log('Verified')} minimumAge={18} />
+ * 
+ * // Using HOC
+ * const ProtectedPage = withAgeVerification(MyPage);
+ * 
+ * // Using hook
+ * const isVerified = useAgeVerification();
+ * ```
+ */
+
 import { useState, useEffect } from 'react';
 import { Shield, Calendar, X } from 'lucide-react';
 
+/**
+ * Props for AgeVerification component
+ */
 interface AgeVerificationProps {
   onConfirm: () => void;
   minimumAge?: number;

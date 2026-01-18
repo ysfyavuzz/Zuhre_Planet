@@ -1,6 +1,29 @@
+/**
+ * AdBanner Component
+ * 
+ * Displays advertisement banners in various formats (horizontal, vertical, native).
+ * Supports animated transitions and responsive layouts.
+ * 
+ * @module components/AdBanner
+ * @category Components
+ * 
+ * @example
+ * ```tsx
+ * <AdBanner 
+ *   type="horizontal" 
+ *   title="VIP Üyelik"
+ *   description="Şimdi %50 indirimle"
+ *   link="https://example.com/vip"
+ * />
+ * ```
+ */
+
 import { motion } from 'framer-motion';
 import { ExternalLink, Info } from 'lucide-react';
 
+/**
+ * Props for AdBanner component
+ */
 interface AdBannerProps {
   type: 'horizontal' | 'vertical' | 'native';
   title?: string;

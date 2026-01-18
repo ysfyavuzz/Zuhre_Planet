@@ -1,3 +1,50 @@
+/**
+ * StandardCard Component
+ * 
+ * Standard escort profile card for catalog listings.
+ * Shows essential information with hover effects and responsive design.
+ * 
+ * @module components/StandardCard
+ * @category Components - Cards
+ * 
+ * Features:
+ * - Escort profile photo display
+ * - Key information (name, location, rating, price)
+ * - Verification badges
+ * - Online status indicator
+ * - Trust level visualization
+ * - Quick action buttons (favorite, message, book)
+ * - Responsive image loading
+ * - Hover animations
+ * - Stats preview (bookings, reviews, response rate)
+ * 
+ * Displayed Information:
+ * - Profile photo
+ * - Display name
+ * - Age (optional)
+ * - City and district
+ * - Hourly rate
+ * - Average rating
+ * - Review count
+ * - Verification status
+ * - Online/offline status
+ * - Last seen timestamp
+ * 
+ * @example
+ * ```tsx
+ * <StandardCard
+ *   id="escort-123"
+ *   displayName="Ayşe Y."
+ *   city="Istanbul"
+ *   district="Şişli"
+ *   hourlyRate={500}
+ *   rating={4.8}
+ *   isVerified={true}
+ *   profilePhoto="https://..."
+ * />
+ * ```
+ */
+
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +56,9 @@ import {
 } from "lucide-react";
 import { calculateTrustLevel } from '@/types/reviews';
 
+/**
+ * Escort statistics interface
+ */
 interface EscortStats {
   totalBookings: number;
   totalReviews: number;

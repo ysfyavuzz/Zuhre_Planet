@@ -1,3 +1,36 @@
+/**
+ * Header Component
+ * 
+ * Main navigation header with authentication, search, and theme controls.
+ * Responsive design with mobile menu and user dropdown menus.
+ * 
+ * @module components/Header
+ * @category Components - Navigation
+ * 
+ * Features:
+ * - Responsive navigation (desktop + mobile)
+ * - User authentication state display
+ * - Login/Register dropdowns
+ * - User profile dropdown
+ * - Theme toggle (dark/light mode)
+ * - Search functionality
+ * - Notification bell
+ * - VIP badge display
+ * - Scroll-based background blur
+ * - Mobile hamburger menu
+ * 
+ * Authentication States:
+ * - Guest: Login/Register options
+ * - User: Profile menu, favorites, messages, appointments
+ * - Escort: Dashboard access, market access
+ * - Admin: Admin dashboard access
+ * 
+ * @example
+ * ```tsx
+ * <Header />
+ * ```
+ */
+
 import { Link, useLocation } from 'wouter';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';

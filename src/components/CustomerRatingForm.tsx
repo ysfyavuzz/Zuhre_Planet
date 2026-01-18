@@ -1,3 +1,41 @@
+/**
+ * CustomerRatingForm Component
+ * 
+ * Comprehensive rating and review form for customers to evaluate their experience.
+ * Multi-category rating system with detailed feedback options.
+ * 
+ * @module components/CustomerRatingForm
+ * @category Components - Reviews
+ * 
+ * Features:
+ * - Multi-category star ratings (professionalism, communication, value, etc.)
+ * - Tag-based feedback selection
+ * - Written review with character limit
+ * - Photo upload capability
+ * - Anonymous review option
+ * - Real-time validation
+ * - Rating summary visualization
+ * 
+ * Rating Categories:
+ * - Overall satisfaction
+ * - Professionalism
+ * - Communication
+ * - Appearance
+ * - Value for money
+ * - Punctuality
+ * - Service quality
+ * 
+ * @example
+ * ```tsx
+ * <CustomerRatingForm
+ *   escortId="escort-123"
+ *   escortName="Ayşe Y."
+ *   bookingId="booking-456"
+ *   onSubmit={(rating) => console.log(rating)}
+ * />
+ * ```
+ */
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
