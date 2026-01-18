@@ -226,7 +226,14 @@ export async function storagePut(
 
     // S3-compatible storage
     if (config.provider === 's3' || config.provider === 'r2') {
-      // Note: In production, you would import and use AWS SDK or similar:
+      // ═══════════════════════════════════════════════════════════════
+      // PRODUCTION IMPLEMENTATION:
+      // ═══════════════════════════════════════════════════════════════
+      // To enable real S3/R2 storage, install AWS SDK:
+      //   npm install @aws-sdk/client-s3 @aws-sdk/s3-request-presigner
+      // 
+      // Then uncomment and use the following implementation:
+      // 
       // import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
       // 
       // const client = new S3Client({
@@ -235,7 +242,7 @@ export async function storagePut(
       //     accessKeyId: config.accessKey!,
       //     secretAccessKey: config.secretKey!,
       //   },
-      //   endpoint: config.endpoint,
+      //   endpoint: config.endpoint, // For R2, Spaces, etc.
       // });
       //
       // await client.send(new PutObjectCommand({
@@ -246,6 +253,7 @@ export async function storagePut(
       //   CacheControl: options?.cacheControl,
       //   Metadata: options?.metadata,
       // }));
+      // ═══════════════════════════════════════════════════════════════
 
       const url = config.endpoint
         ? `${config.endpoint}/${config.bucket}/${safeKey}`

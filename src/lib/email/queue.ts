@@ -43,7 +43,19 @@ interface QueuedEmail {
 
 /**
  * Email queue (in-memory)
- * For production, use a proper queue system like Bull/BullMQ with Redis
+ * 
+ * ⚠️ PRODUCTION WARNING:
+ * This in-memory queue is suitable for development and small-scale deployments only.
+ * For production use with high volume or distributed systems, implement one of:
+ * - Redis with Bull/BullMQ
+ * - AWS SQS
+ * - RabbitMQ
+ * - Other persistent message queue
+ * 
+ * Current limitations:
+ * - Does not persist across restarts
+ * - Does not scale horizontally
+ * - Limited to single process
  */
 const emailQueue: QueuedEmail[] = [];
 let isProcessing = false;
