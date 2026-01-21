@@ -2,14 +2,15 @@
  * Mock Data Index
  * 
  * Central export point for all mock data modules.
- * Provides easy access to customers, escorts, conversations, appointments, and reviews.
+ * Provides easy access to customers, escorts, conversations, appointments, reviews,
+ * notifications, transactions, and earnings data.
  * 
  * @module data/mockData
  * @category MockData
  * 
  * @example
  * ```typescript
- * import { mockCustomers, mockEscorts, mockReviews } from '@/data/mockData';
+ * import { mockCustomers, mockEscorts, mockReviews, mockNotifications } from '@/data/mockData';
  * 
  * // Get all customers
  * const customers = mockCustomers;
@@ -19,6 +20,9 @@
  * 
  * // Get reviews for escort
  * const reviews = getEscortReviews('esc-001');
+ * 
+ * // Get notifications for user
+ * const notifications = getNotificationsByUserId('cust-001');
  * ```
  */
 
@@ -36,3 +40,12 @@ export * from './appointments';
 
 // Reviews
 export * from './reviews';
+
+// Notifications
+export * from './notifications';
+
+// Transactions
+export * from './transactions';
+
+// Earnings
+export * from './earnings';
