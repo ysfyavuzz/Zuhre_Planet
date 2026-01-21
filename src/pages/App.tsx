@@ -22,12 +22,14 @@
  * 
  * Routes:
  * - Public: Home, Catalog, EscortList, EscortProfile, Pricing, Contact, Blog
- * - Legal: TermsOfService, PrivacyPolicy, CookiePolicy, KVKK
+ * - Legal: TermsOfService, PrivacyPolicy, CookiePolicy, KVKK, Safety
  * - Auth: ClientLogin, ClientRegister, EscortLogin, EscortRegister
  * - User: MyFavorites, Messages, MyAppointments
- * - Escort: EscortDashboard, EscortMarket, VerificationCenter
- * - Payment: PaymentResult
- * - Admin: AdminDashboard, AdminApprovals
+ * - Escort Panel: EscortDashboard, EscortMarket, ProfileEdit, Photos, Calendar, Earnings
+ * - Customer Panel: CustomerDashboard, CustomerSettings, Notifications, History, Wallet
+ * - Payment: PaymentResult, MembershipUpgrade, BillingDashboard
+ * - Admin: AdminDashboard, AdminApprovals, AdminPanel, AdminReports, AdminRealTimeMonitoring
+ * - General: About, FAQ, HowItWorks, Support, Report
  * - Utilities: SEO, NotFound
  * 
  * @example
@@ -133,6 +135,20 @@ const About = lazy(() => import("@/pages/general/About").then(m => ({ default: m
 const FAQ = lazy(() => import("@/pages/general/FAQ").then(m => ({ default: m.default })));
 const HowItWorks = lazy(() => import("@/pages/general/HowItWorks").then(m => ({ default: m.default })));
 const SupportPage = lazy(() => import("@/pages/general/Support").then(m => ({ default: m.default })));
+
+// Phase 2 - Escort Panel Pages (Faz 2)
+const EscortProfileEdit = lazy(() => import("@/pages/escort/ProfileEdit").then(m => ({ default: m.default })));
+const EscortPhotos = lazy(() => import("@/pages/escort/PhotoManager").then(m => ({ default: m.default })));
+const EscortCalendar = lazy(() => import("@/pages/escort/CalendarManager").then(m => ({ default: m.default })));
+const EscortEarnings = lazy(() => import("@/pages/escort/EarningsReport").then(m => ({ default: m.default })));
+
+// Phase 2 - Customer Panel Pages (Faz 2)
+const CustomerNotifications = lazy(() => import("@/pages/customer/Notifications").then(m => ({ default: m.default })));
+const CustomerHistory = lazy(() => import("@/pages/customer/History").then(m => ({ default: m.default })));
+const CustomerWallet = lazy(() => import("@/pages/customer/Wallet").then(m => ({ default: m.default })));
+
+// Phase 2 - General Pages (Faz 2)
+const ReportPage = lazy(() => import("@/pages/Report").then(m => ({ default: m.default })));
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LOADING FALLBACK COMPONENT
@@ -271,6 +287,23 @@ function AppRouter() {
         {() => <Suspense fallback={<RouteLoading />}><EscortAnalyticsDashboard /></Suspense>}
       </Route>
 
+      {/* Escort Panel Pages - Phase 2 (Faz 2) */}
+      <Route path="/escort/profile/edit">
+        {() => <Suspense fallback={<RouteLoading />}><EscortProfileEdit /></Suspense>}
+      </Route>
+
+      <Route path="/escort/photos">
+        {() => <Suspense fallback={<RouteLoading />}><EscortPhotos /></Suspense>}
+      </Route>
+
+      <Route path="/escort/calendar">
+        {() => <Suspense fallback={<RouteLoading />}><EscortCalendar /></Suspense>}
+      </Route>
+
+      <Route path="/escort/earnings">
+        {() => <Suspense fallback={<RouteLoading />}><EscortEarnings /></Suspense>}
+      </Route>
+
       {/* Client/Customer Routes */}
       <Route path="/login">
         {() => <Suspense fallback={<RouteLoading />}><Login /></Suspense>}
@@ -333,6 +366,19 @@ function AppRouter() {
         {() => <Suspense fallback={<RouteLoading />}><CustomerSettings /></Suspense>}
       </Route>
 
+      {/* Customer Panel Pages - Phase 2 (Faz 2) */}
+      <Route path="/customer/notifications">
+        {() => <Suspense fallback={<RouteLoading />}><CustomerNotifications /></Suspense>}
+      </Route>
+
+      <Route path="/customer/history">
+        {() => <Suspense fallback={<RouteLoading />}><CustomerHistory /></Suspense>}
+      </Route>
+
+      <Route path="/customer/wallet">
+        {() => <Suspense fallback={<RouteLoading />}><CustomerWallet /></Suspense>}
+      </Route>
+
       {/* General Pages */}
       <Route path="/about">
         {() => <Suspense fallback={<RouteLoading />}><About /></Suspense>}
@@ -348,6 +394,11 @@ function AppRouter() {
 
       <Route path="/support">
         {() => <Suspense fallback={<RouteLoading />}><SupportPage /></Suspense>}
+      </Route>
+
+      {/* Report Page - Phase 2 (Faz 2) */}
+      <Route path="/report">
+        {() => <Suspense fallback={<RouteLoading />}><ReportPage /></Suspense>}
       </Route>
 
       {/* Other */}
