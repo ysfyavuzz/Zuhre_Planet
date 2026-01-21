@@ -64,8 +64,8 @@ export default function EscortLogin() {
     try {
       // Escort login with escort role
       await login(email, password);
-      // Redirect to dashboard after successful login
-      setLocation('/escort/dashboard');
+      // Redirect to private dashboard after successful login
+      setLocation('/escort/dashboard/private');
     } catch (err) {
       setError('Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
     } finally {

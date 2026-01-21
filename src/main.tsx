@@ -71,6 +71,7 @@ import { AuthProvider } from './contexts/AuthContext';
 // Components
 import ErrorBoundary from './components/ErrorBoundary';
 import AgeVerification from './components/AgeVerification';
+import RoleSelector from './components/RoleSelector';
 import App from './pages/App';
 
 // Styles
@@ -85,16 +86,30 @@ function Root() {
   const [isAgeVerified, setIsAgeVerified] = React.useState(() => {
     return localStorage.getItem('age-verified') !== null;
   });
+  const [showRoleSelector, setShowRoleSelector] = React.useState(false);
 
   React.useEffect(() => {
     if (isAgeVerified) {
       setShowAgeVerification(false);
+      // Check if role selection is needed
+      const storedRole = localStorage.getItem('user-role-selection');
+      const roleDate = localStorage.getItem('role-selection-date');
+      const isRoleValid = roleDate && (Date.now() - parseInt(roleDate)) < (7 * 24 * 60 * 60 * 1000);
+
+      if (!storedRole || !isRoleValid) {
+        // Show role selector if not yet selected or expired
+        setTimeout(() => setShowRoleSelector(true), 500);
+      }
     }
   }, [isAgeVerified]);
 
   const handleAgeConfirm = () => {
     setIsAgeVerified(true);
     setShowAgeVerification(false);
+  };
+
+  const handleRoleSelect = () => {
+    setShowRoleSelector(false);
   };
 
   return (
@@ -110,6 +125,11 @@ function Root() {
               {/* Age Verification Modal */}
               {showAgeVerification && (
                 <AgeVerification onConfirm={handleAgeConfirm} />
+              )}
+
+              {/* Role Selection Modal */}
+              {showRoleSelector && (
+                <RoleSelector onRoleSelect={handleRoleSelect} />
               )}
             </AuthProvider>
           </ThemeProvider>

@@ -110,9 +110,13 @@ export interface Escort {
   // Ek bilgiler
   languages?: string[];
   about?: string;
+  description?: string; // İlan açıklaması
   // Online durum ve istatistikler
   lastSeen?: Date | string;
   stats?: EscortStats;
+  isVerified?: boolean; // Doğrulanmış hesap
+  createdAt?: Date | string; // Kayıt tarihi
+  viewCount?: number; // Profil görüntülenme sayısı
 }
 
 // Hizmet türleri

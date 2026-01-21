@@ -1066,3 +1066,20 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TOOLTIP Z-INDEX FIX
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Force Radix UI Tooltip to appear above all elements */
+[data-radix-tooltip-content] {
+  z-index: 9999 !important;
+  position: fixed !important;
+}
+
+/* Ensure tooltip portal appears above navigation bar */
+[data-radix-tooltip-content][data-state='delayed-open'],
+[data-radix-tooltip-content][data-state='instant-open'] {
+  z-index: 9999 !important;
+  position: fixed !important;
+}

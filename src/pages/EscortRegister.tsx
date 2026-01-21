@@ -160,7 +160,7 @@ export default function EscortRegister() {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       console.log('Registration data:', formData);
-      setLocation('/escort/dashboard?pending=true');
+      setLocation('/escort/dashboard/private');
     } catch (err) {
       setError('Kayıt başarısız. Lütfen tekrar deneyin.');
     } finally {

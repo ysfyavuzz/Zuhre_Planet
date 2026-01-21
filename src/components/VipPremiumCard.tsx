@@ -47,6 +47,7 @@
  * ```
  */
 
+import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -70,7 +71,7 @@ interface VipPremiumCardProps {
   escort: any;
 }
 
-export function VipPremiumCard({ escort }: VipPremiumCardProps) {
+export const VipPremiumCard = React.memo(function VipPremiumCard({ escort }: VipPremiumCardProps) {
   const { isLowPowerMode, isMobile } = usePerformance();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -194,6 +195,6 @@ export function VipPremiumCard({ escort }: VipPremiumCardProps) {
       </Link>
     </motion.div>
   );
-}
+});
 
 export default VipPremiumCard;

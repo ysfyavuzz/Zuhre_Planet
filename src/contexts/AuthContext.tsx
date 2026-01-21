@@ -10,6 +10,8 @@ export interface User {
   avatar?: string;
   verified?: boolean;
   membership?: 'standard' | 'vip' | 'premium';
+  hasCustomerAccount?: boolean;
+  hasEscortAccount?: boolean;
 }
 
 interface AuthContextValue {
@@ -20,6 +22,8 @@ interface AuthContextValue {
   isEscort: boolean;
   // Rol bazlı görüntüleme limitleri için
   viewRole: 'guest' | 'user' | 'premium' | 'vip';
+  // Kullanıcının rolü (customer, escort, admin)
+  userRole: 'customer' | 'escort' | 'admin' | null;
   login: (emailOrUser: string | User, password?: string) => Promise<void>;
   logout: () => void;
   register: (data: RegisterData) => Promise<void>;
@@ -239,6 +243,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     storage.set(TOKEN_STORAGE_KEY, newToken);
   };
 
+  // userRole değerini hesapla
+  const userRole: 'customer' | 'escort' | 'admin' | null = user?.role === 'admin'
+    ? 'admin'
+    : user?.role === 'escort'
+      ? 'escort'
+      : user?.role === 'user'
+        ? 'customer'
+        : null;
+
   const value: AuthContextValue = {
     user,
     isAuthenticated: !!user,
@@ -246,6 +259,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isAdmin: user?.role === 'admin',
     isEscort: user?.role === 'escort',
     viewRole,
+    userRole,
     login,
     logout,
     register,

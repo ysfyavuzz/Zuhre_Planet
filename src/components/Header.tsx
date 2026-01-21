@@ -31,6 +31,7 @@
  * ```
  */
 
+import React from 'react';
 import { Link, useLocation } from 'wouter';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
@@ -43,12 +44,13 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
 
-export function Header() {
+export const Header = React.memo(function Header() {
   const [location] = useLocation();
   const { user, isAuthenticated, login, logout, isLoading } = useAuth();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [showLoginDropdown, setShowLoginDropdown] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
 
@@ -107,52 +109,97 @@ export function Header() {
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/80 backdrop-blur-xl border-b border-white/5 py-3' : 'bg-transparent py-5'
+      isScrolled ? 'bg-background/60 backdrop-blur-xl border-b border-white/5 py-2' : 'bg-transparent/60 backdrop-blur-sm py-3'
     }`}>
       <div className="container flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/">
-          <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
-              <Crown className="w-6 h-6 text-white" />
-            </div>
-            <h1 className="text-xl font-black tracking-tighter hidden sm:block">
-              ESCORT<span className="text-primary">PLATFORM</span>
-            </h1>
-          </div>
-        </Link>
+        {/* Left: Toggle + Logo */}
+        <div className="flex items-center gap-3">
+          {/* Nav Toggle Button - Desktop */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsNavExpanded(!isNavExpanded)}
+            className="hidden md:flex hover:bg-white/10 transition-all"
+            title={isNavExpanded ? "Menüyü Gizle" : "Menüyü Göster"}
+          >
+            <Menu className={`w-5 h-5 transition-transform duration-300 ${isNavExpanded ? 'rotate-90' : ''}`} />
+          </Button>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <Link href="/escorts" className={`text-sm font-bold hover:text-primary transition-colors ${location === '/escorts' ? 'text-primary' : ''}`}>İLANLAR</Link>
+          {/* Mobile Hamburger */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden hover:bg-white/10 transition-all"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </Button>
+
+          {/* Logo */}
+          <Link href="/">
+            <div className="flex items-center gap-2 cursor-pointer group">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
+                <Crown className="w-4 h-4 text-white" />
+              </div>
+              <h1 className={`font-black tracking-tighter hidden sm:block transition-all duration-300 ${isNavExpanded ? 'text-lg' : 'text-sm'}`}>
+                ESCORT<span className="text-primary">PLATFORM</span>
+              </h1>
+            </div>
+          </Link>
+        </div>
+
+        {/* Desktop Nav - Expandable */}
+        <AnimatePresence mode="wait">
+          {(isNavExpanded || window.innerWidth < 768) && (
+            <motion.nav
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: 'auto' }}
+              exit={{ opacity: 0, width: 0 }}
+              transition={{ duration: 0.3 }}
+              className="hidden md:flex items-center gap-3 overflow-hidden"
+            >
+          <Link href="/escorts" className={`text-xs font-bold hover:text-primary transition-colors ${location === '/escorts' ? 'text-primary' : ''}`}>İLANLAR</Link>
           {isAuthenticated && user?.role === 'escort' ? (
             <>
-              <Link href="/escort/market" className={`text-sm font-bold hover:text-primary transition-colors ${location === '/maseuse/market' ? 'text-primary' : ''}`}>MARKET</Link>
-              <Link href="/escort/dashboard" className={`text-sm font-bold hover:text-primary transition-colors ${location === '/escort/dashboard' ? 'text-primary' : ''}`}>PANELİM</Link>
+              <Link href="/escort/market" className={`text-xs font-bold hover:text-primary transition-colors ${location === '/maseuse/market' ? 'text-primary' : ''}`}>MARKET</Link>
+              <Link href="/escort/dashboard" className={`text-xs font-bold hover:text-primary transition-colors ${location === '/escort/dashboard' ? 'text-primary' : ''}`}>PANELİM</Link>
             </>
           ) : (
             <>
-              <Link href="/vip" className={`text-sm font-bold hover:text-primary transition-colors ${location === '/vip' ? 'text-primary' : ''}`}>VIP MODELLER</Link>
-              <Link href="/safety" className="text-sm font-bold hover:text-primary transition-colors">GÜVENLİK</Link>
+              <Link href="/vip" className={`text-xs font-bold hover:text-primary transition-colors ${location === '/vip' ? 'text-primary' : ''}`}>VIP MODELLER</Link>
+              <Link href="/safety" className="text-xs font-bold hover:text-primary transition-colors">GÜVENLİK</Link>
             </>
           )}
-        </nav>
+            </motion.nav>
+          )}
+        </AnimatePresence>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
-          {/* İlan Ver Button */}
-          <Link href="/register-escort">
-            <Button className="hidden sm:flex bg-gradient-to-r from-primary to-accent font-bold shadow-lg shadow-primary/20">
-              <PlusCircle className="w-4 h-4 mr-2" /> İLAN VER
-            </Button>
-          </Link>
+        <div className="flex items-center gap-1">
+          {/* İlan Ver Button - Only show when nav is expanded */}
+          <AnimatePresence>
+            {isNavExpanded && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Link href="/register-escort">
+                  <Button className="hidden sm:flex bg-gradient-to-r from-primary to-accent font-bold shadow-lg shadow-primary/20 text-xs px-3 py-1 h-8">
+                    <PlusCircle className="w-3 h-3 mr-1" /> İLAN VER
+                  </Button>
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Notifications */}
           {isAuthenticated && (
             <Link href="/messages">
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="w-5 h-5" />
-                <span className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-background" />
+              <Button variant="ghost" size="icon" className="relative h-8 w-8 hover:bg-white/10">
+                <Bell className="w-4 h-4" />
+                <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-primary rounded-full border border-background" />
               </Button>
             </Link>
           )}
@@ -163,10 +210,10 @@ export function Header() {
               {/* Login Button - Opens Quick Login Form */}
               <Button
                 onClick={() => setShowLoginDropdown(!showLoginDropdown)}
-                className="bg-gradient-to-r from-primary to-accent font-bold"
+                className="bg-gradient-to-r from-primary to-accent font-bold text-xs px-3 py-1 h-8"
               >
-                <User className="w-4 h-4 mr-2" />
-                Giriş Yap
+                <User className="w-3 h-3 mr-1" />
+                Giriş
               </Button>
 
               {/* Quick Login Dropdown */}
@@ -292,12 +339,12 @@ export function Header() {
           ) : (
             <div className="relative" ref={userDropdownRef}>
               <Button
-                variant="outline"
+                variant="ghost"
+                size="icon"
                 onClick={() => setShowUserDropdown(!showUserDropdown)}
-                className="rounded-full border-white/10 bg-white/5 hover:bg-white/10"
+                className="h-8 w-8 hover:bg-white/10 rounded-full"
               >
-                <User className="w-4 h-4 mr-2" />
-                <span className="hidden sm:inline text-sm font-medium">{user?.name}</span>
+                <User className="w-4 h-4" />
               </Button>
 
               {/* User Dropdown Menu */}
@@ -381,6 +428,6 @@ export function Header() {
       </div>
     </header>
   );
-}
+});
 
 export default Header;

@@ -45,6 +45,7 @@
  * ```
  */
 
+import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -190,7 +191,7 @@ function getReliabilityConfig(score: number) {
   }
 }
 
-export function StandardCard({ escort, stats, type = 'normal' }: StandardCardProps) {
+export const StandardCard = React.memo(function StandardCard({ escort, stats, type = 'normal' }: StandardCardProps) {
   const { isLowPowerMode } = usePerformance();
   const isVerified = escort.isVerifiedByAdmin || type === 'verified';
   const isBoost = type === 'boost';
@@ -383,12 +384,12 @@ export function StandardCard({ escort, stats, type = 'normal' }: StandardCardPro
       </Link>
     </motion.div>
   );
-}
+});
 
 export default StandardCard;
 
 // Stats Tooltip Component
-export function StatsTooltip({ stats }: { stats: EscortStats }) {
+export const StatsTooltip = React.memo(function StatsTooltip({ stats }: { stats: EscortStats }) {
   const reliabilityScore = calculateReliabilityScore(stats);
   const completionRate = stats.totalBookings > 0
     ? Math.round((stats.completedBookings / stats.totalBookings) * 100)
@@ -478,4 +479,4 @@ export function StatsTooltip({ stats }: { stats: EscortStats }) {
       </CardContent>
     </Card>
   );
-}
+});

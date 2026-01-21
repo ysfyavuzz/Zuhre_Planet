@@ -43,7 +43,7 @@ export function BottomNav() {
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-t border-white/5 px-4 pb-safe">
-      <div className="flex justify-between items-center h-16">
+      <div className="flex justify-between items-center h-14">
         {navItems.map((item) => {
           const isActive = location === item.href;
           const Icon = item.icon;
@@ -58,7 +58,7 @@ export function BottomNav() {
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   />
                 )}
-                <Icon className={`w-6 h-6 transition-colors ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
+                <Icon className={`w-5 h-5 transition-colors ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
                 <span className={`text-[10px] mt-1 font-medium ${isActive ? 'text-primary' : 'text-muted-foreground'}`}>
                   {item.label}
                 </span>

@@ -4,7 +4,18 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Select = SelectPrimitive.Root
+// Wrapper component for className support on Root
+const SelectRoot = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & { className?: string }
+>(({ className, ...props }, ref) => (
+  <div className={className} ref={ref}>
+    <SelectPrimitive.Root {...props} />
+  </div>
+))
+SelectRoot.displayName = "SelectRoot"
+
+const Select = SelectRoot
 
 const SelectGroup = SelectPrimitive.Group
 

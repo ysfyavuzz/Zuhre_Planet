@@ -54,21 +54,31 @@ import {
   Crown, CheckCircle2, Heart, Clock, User, Ruler, Weight,
   Palette, Eye as EyeIcon, Sparkles, Shield, Info, AlertTriangle,
   Mail, Share2, Flag, ChevronLeft, ChevronRight, X, Lock, Play,
-  Video
+  Video, LogIn, Edit, BarChart3
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { mockMasseuses, getVisiblePhotoCount, getVisibleVideoCount, VIEW_LIMITS, type UserRole } from '@/mockData';
 import { useAuth } from '@/contexts/AuthContext';
+import { getStoredRole } from '@/components/RoleSelector';
+import ContactLock, { ContactLockCompact } from '@/components/ContactLock';
+import PhotoGalleryEnhanced from '@/components/PhotoGalleryEnhanced';
 
 export default function EscortProfile() {
   const { id } = useParams<{ id: string }>();
-  const { viewRole, isAuthenticated } = useAuth();
+  const { viewRole, isAuthenticated, user } = useAuth();
+  const userRole = getStoredRole();
 
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
+
+  // Escort profili görüntüleme kontrolü
+  // Escort kullanıcıları doğrudan kendi profillerini görebilir
+  // Müşteri kullanıcıları için giriş gerekli
+  const isEscortViewing = userRole === 'escort';
+  const requiresAuthForContact = !isAuthenticated && !isEscortViewing;
 
   // Mock data'dan profil bul
   const profile = mockMasseuses.find(m => m.id === id);
@@ -176,6 +186,27 @@ export default function EscortProfile() {
               </Button>
             </Link>
             <div className="flex items-center gap-2">
+              {/* Escort-specific actions */}
+              {isEscortViewing && (
+                <>
+                  <Link href="/escort/dashboard/private">
+                    <Button variant="outline" size="sm" className="hidden sm:flex">
+                      <Shield className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Button>
+                  </Link>
+                  <Link href="/escort/dashboard/analytics">
+                    <Button variant="outline" size="sm" className="hidden sm:flex">
+                      <BarChart3 className="w-4 h-4 mr-2" />
+                      Analitik
+                    </Button>
+                  </Link>
+                  <Button variant="outline" size="sm" className="hidden sm:flex">
+                    <Edit className="w-4 h-4 mr-2" />
+                    Düzenle
+                  </Button>
+                </>
+              )}
               <Button variant="outline" size="icon" onClick={() => setIsFavorite(!isFavorite)}>
                 <Heart className={`w-5 h-5 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
               </Button>
@@ -554,30 +585,31 @@ export default function EscortProfile() {
                   <CardHeader>
                     <CardTitle className="text-lg">İletişim</CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3">
-                    <Button
-                      onClick={() => setShowPhone(!showPhone)}
-                      className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-lg"
-                      size="lg"
-                    >
-                      <Phone className="w-5 h-5 mr-2" />
-                      {showPhone ? displayProfile.phone : 'Telefonu Göster'}
-                    </Button>
+                  <CardContent>
+                    {/* Contact Lock Component */}
+                    <ContactLock
+                      contact={{
+                        phone: displayProfile.phone,
+                        whatsapp: displayProfile.whatsapp,
+                      }}
+                      isLocked={requiresAuthForContact}
+                      isVip={user?.membership === 'vip'}
+                      lockMessage="İletişim Bilgileri Kilidi"
+                    />
 
-                    <Button className="w-full bg-green-600 hover:bg-green-700" size="lg">
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      WhatsApp
-                    </Button>
-
-                    <Button variant="outline" className="w-full" size="lg">
-                      <Mail className="w-5 h-5 mr-2" />
-                      Mesaj Gönder
-                    </Button>
-
-                    <Button variant="outline" className="w-full" size="lg">
-                      <Calendar className="w-5 h-5 mr-2" />
-                      Randevu Talebi
-                    </Button>
+                    {/* Additional Actions - Only visible when unlocked */}
+                    {!requiresAuthForContact && (
+                      <div className="mt-4 grid grid-cols-2 gap-2">
+                        <Button variant="outline" size="sm" className="w-full">
+                          <Mail className="w-4 h-4 mr-2" />
+                          Mesaj
+                        </Button>
+                        <Button variant="outline" size="sm" className="w-full">
+                          <Calendar className="w-4 h-4 mr-2" />
+                          Randevu
+                        </Button>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>
@@ -633,45 +665,23 @@ export default function EscortProfile() {
         </div>
       </div>
 
-      {/* Fullscreen Gallery Modal */}
-      {isGalleryOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center">
-          <button
-            onClick={() => setIsGalleryOpen(false)}
-            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          <button
-            onClick={prevPhoto}
-            disabled={selectedPhoto === 0}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            <ChevronLeft className="w-8 h-8" />
-          </button>
-
-          <button
-            onClick={nextPhoto}
-            disabled={selectedPhoto === visiblePhotos.length - 1}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            <ChevronRight className="w-8 h-8" />
-          </button>
-
-          <div className="max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center p-4">
-            <img
-              src={visiblePhotos[selectedPhoto]}
-              alt={displayProfile.name}
-              className="max-w-full max-h-full object-contain"
-            />
-          </div>
-
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-white/10 text-white text-sm">
-            {selectedPhoto + 1} / {hasLockedPhotos ? `${visiblePhotoCount}+` : totalPhotos}
-          </div>
-        </div>
-      )}
+      {/* Fullscreen Gallery Modal - Enhanced */}
+      <PhotoGalleryEnhanced
+        photos={visiblePhotos.map((url, index) => ({
+          id: `photo-${index}`,
+          url,
+          caption: displayProfile.name,
+          views: Math.floor(Math.random() * 500) + 100,
+          likes: Math.floor(Math.random() * 100) + 20,
+          isPrimary: index === 0,
+        }))}
+        initialIndex={selectedPhoto}
+        isOpen={isGalleryOpen}
+        onClose={() => setIsGalleryOpen(false)}
+        canEdit={isEscortViewing}
+        showShare={true}
+        showDownload={canViewAllPhotos}
+      />
 
       {/* Video Modal */}
       {selectedVideo !== null && (

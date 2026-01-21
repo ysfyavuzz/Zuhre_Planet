@@ -43,6 +43,10 @@ import { Toaster } from "@/components/ui/sonner";
 import { RouteErrorBoundary } from "@/components/ErrorBoundary";
 import { FullPageLoading } from "@/components/LoadingStates";
 import CookieConsent from "@/components/CookieConsent";
+import RoleSelector from "@/components/RoleSelector";
+import { NotificationProvider } from "@/contexts/NotificationContext";
+import { NotificationToast, NotificationCenter } from "@/components/Notifications";
+import { FloatingNavigation } from "@/components/FloatingNavigation";
 import { Route } from "wouter";
 import NotFound from "@/pages/NotFound";
 
@@ -94,6 +98,30 @@ const Contact = lazy(() => import("@/pages/Contact").then(m => ({ default: m.def
 const PaymentResult = lazy(() => import("@/pages/PaymentResult").then(m => ({ default: m.default })));
 const VerificationCenter = lazy(() => import("@/pages/VerificationCenter").then(m => ({ default: m.default })));
 const Blog = lazy(() => import("@/pages/Blog").then(m => ({ default: m.default })));
+
+// Phase 2 - Guest & Customer Pages
+const GuestCatalog = lazy(() => import("@/pages/GuestCatalog").then(m => ({ default: m.default })));
+const CustomerDashboard = lazy(() => import("@/pages/CustomerDashboard").then(m => ({ default: m.default })));
+
+// Phase 3 - Escort Dashboard Pages
+const EscortPrivateDashboard = lazy(() => import("@/pages/EscortPrivateDashboard").then(m => ({ default: m.default })));
+const EscortAnalyticsDashboard = lazy(() => import("@/pages/EscortAnalyticsDashboard").then(m => ({ default: m.default })));
+
+// Phase 5 - Billing & Payment Pages
+const MembershipUpgrade = lazy(() => import("@/pages/MembershipUpgrade").then(m => ({ default: m.default })));
+const BillingDashboard = lazy(() => import("@/pages/BillingDashboard").then(m => ({ default: m.default })));
+
+// Phase 6 - Advanced Features (Real-Time Messaging & Video Calls)
+const RealTimeMessaging = lazy(() => import("@/pages/RealTimeMessaging").then(m => ({ default: m.default })));
+const VideoCallPage = lazy(() => import("@/pages/VideoCallPage").then(m => ({ default: m.default })));
+
+// Phase 6 - Admin Enhancements
+const AdminRealTimeMonitoring = lazy(() => import("@/pages/AdminRealTimeMonitoring").then(m => ({ default: m.default })));
+const AdminReports = lazy(() => import("@/pages/AdminReports").then(m => ({ default: m.default })));
+
+// Phase 7 - Analytics & Reviews
+const Analytics = lazy(() => import("@/pages/Analytics").then(m => ({ default: m.default })));
+const Reviews = lazy(() => import("@/pages/Reviews").then(m => ({ default: m.default || m.Reviews })));
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LOADING FALLBACK COMPONENT
@@ -177,6 +205,20 @@ function AppRouter() {
         }}
       </Route>
 
+      {/* Guest Catalog - Phase 2 */}
+      <Route path="/guest-catalog">
+        {() => {
+          console.log('[Route] Matched: /guest-catalog');
+          return (
+            <RouteErrorBoundary>
+              <Suspense fallback={<RouteLoading />}>
+                <GuestCatalog />
+              </Suspense>
+            </RouteErrorBoundary>
+          );
+        }}
+      </Route>
+
       {/* Profile Pages */}
       <Route path="/escort/:id">
         {(params) => {
@@ -208,6 +250,16 @@ function AppRouter() {
         {() => <Suspense fallback={<RouteLoading />}><EscortMarket /></Suspense>}
       </Route>
 
+      {/* Escort Private Dashboard - Phase 3 */}
+      <Route path="/escort/dashboard/private">
+        {() => <Suspense fallback={<RouteLoading />}><EscortPrivateDashboard /></Suspense>}
+      </Route>
+
+      {/* Escort Analytics Dashboard - Phase 3 */}
+      <Route path="/escort/dashboard/analytics">
+        {() => <Suspense fallback={<RouteLoading />}><EscortAnalyticsDashboard /></Suspense>}
+      </Route>
+
       {/* Client/Customer Routes */}
       <Route path="/login">
         {() => <Suspense fallback={<RouteLoading />}><ClientLogin /></Suspense>}
@@ -232,6 +284,11 @@ function AppRouter() {
 
       <Route path="/appointments">
         {() => <Suspense fallback={<RouteLoading />}><MyAppointments /></Suspense>}
+      </Route>
+
+      {/* Customer Dashboard - Phase 2 */}
+      <Route path="/dashboard">
+        {() => <Suspense fallback={<RouteLoading />}><CustomerDashboard /></Suspense>}
       </Route>
 
       {/* Admin Routes */}
@@ -278,6 +335,11 @@ function AppRouter() {
         {() => <Suspense fallback={<RouteLoading />}><Contact /></Suspense>}
       </Route>
 
+      {/* Role Selection */}
+      <Route path="/role-selection">
+        {() => <RoleSelector />}
+      </Route>
+
       <Route path="/payment-result">
         {() => <Suspense fallback={<RouteLoading />}><PaymentResult /></Suspense>}
       </Route>
@@ -288,6 +350,54 @@ function AppRouter() {
 
       <Route path="/blog">
         {() => <Suspense fallback={<RouteLoading />}><Blog /></Suspense>}
+      </Route>
+
+      {/* Phase 5 - Billing & Payment Routes */}
+      <Route path="/upgrade">
+        {() => <Suspense fallback={<RouteLoading />}><MembershipUpgrade /></Suspense>}
+      </Route>
+
+      <Route path="/billing">
+        {() => <Suspense fallback={<RouteLoading />}><BillingDashboard /></Suspense>}
+      </Route>
+
+      <Route path="/dashboard/billing">
+        {() => <Suspense fallback={<RouteLoading />}><BillingDashboard /></Suspense>}
+      </Route>
+
+      <Route path="/faturalar">
+        {() => <Suspense fallback={<RouteLoading />}><BillingDashboard /></Suspense>}
+      </Route>
+
+      {/* Phase 6 - Real-Time Messaging Routes */}
+      <Route path="/messages/realtime">
+        {() => <Suspense fallback={<RouteLoading />}><RealTimeMessaging /></Suspense>}
+      </Route>
+
+      <Route path="/messages/video">
+        {() => <Suspense fallback={<RouteLoading />}><VideoCallPage /></Suspense>}
+      </Route>
+
+      <Route path="/video-call">
+        {() => <Suspense fallback={<RouteLoading />}><VideoCallPage /></Suspense>}
+      </Route>
+
+      {/* Phase 6 - Admin Enhancement Routes */}
+      <Route path="/admin/monitoring">
+        {() => <Suspense fallback={<RouteLoading />}><AdminRealTimeMonitoring /></Suspense>}
+      </Route>
+
+      <Route path="/admin/reports">
+        {() => <Suspense fallback={<RouteLoading />}><AdminReports /></Suspense>}
+      </Route>
+
+      {/* Phase 7 - Analytics & Reviews Routes */}
+      <Route path="/analytics">
+        {() => <Suspense fallback={<RouteLoading />}><Analytics /></Suspense>}
+      </Route>
+
+      <Route path="/reviews">
+        {() => <Suspense fallback={<RouteLoading />}><Reviews /></Suspense>}
       </Route>
 
       {/* 404 */}
@@ -306,16 +416,24 @@ function AppRouter() {
 
           // List of all valid paths - don't show 404 for these
           const validPaths = [
-            '/', '/catalog', '/escorts',
+            '/', '/catalog', '/escorts', '/guest-catalog',
             '/login', '/login-client', '/login-escort',
             '/register-escort', '/register-client',
             '/pricing', '/vip', '/seo',
             '/terms', '/privacy', '/cookies', '/kvkk',
-            '/favorites', '/messages', '/appointments',
+            '/favorites', '/messages', '/appointments', '/dashboard',
             '/escort/dashboard', '/escort/market',
+            '/escort/dashboard/private', '/escort/dashboard/analytics',
             '/admin/dashboard', '/admin/approvals',
             '/contact', '/payment-result', '/verification', '/blog',
-            '/404'
+            '/upgrade', '/billing', '/dashboard/billing', '/faturalar',
+            '/role-selection', '/404',
+            // Phase 6 - Real-Time Messaging
+            '/messages/realtime', '/messages/video', '/video-call',
+            // Phase 6 - Admin Enhancements
+            '/admin/monitoring', '/admin/reports',
+            // Phase 7 - Analytics & Reviews
+            '/analytics', '/reviews'
           ];
 
           // Also check for dynamic paths that start with these prefixes
@@ -338,12 +456,15 @@ function AppRouter() {
 
 export default function App() {
   return (
-    <>
+    <NotificationProvider>
       <AppRouter />
+      <FloatingNavigation />
       <TooltipProvider>
         <Toaster />
       </TooltipProvider>
+      <NotificationToast />
+      <NotificationCenter />
       <CookieConsent />
-    </>
+    </NotificationProvider>
   );
 }

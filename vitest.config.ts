@@ -19,7 +19,7 @@ export default defineConfig({
     
     // Global test setup
     globals: true,
-    setupFiles: ['./tests/setup.ts'],
+    setupFiles: ['./src/tests/setup.ts'],
     
     // Coverage configuration
     coverage: {

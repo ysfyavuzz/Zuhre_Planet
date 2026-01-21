@@ -80,18 +80,118 @@ export type NotificationType =
   | 'warning'
   | 'system';
 
+// Bildirim kategorileri
+export type NotificationCategory =
+  | 'messages'
+  | 'bookings'
+  | 'reviews'
+  | 'profile'
+  | 'vip'
+  | 'points'
+  | 'referral'
+  | 'warning'
+  | 'system'
+  | 'promotions';
+
+// Bildirim öncelik seviyeleri
+export type NotificationPriority = 'low' | 'normal' | 'high' | 'urgent';
+
 export interface Notification {
   id: string;
   userId: string;
   type: NotificationType;
+  category: NotificationCategory;
+  priority?: NotificationPriority;
   title: string;
   message: string;
+  icon?: string;
   data?: Record<string, any>;
   isRead: boolean;
+  read?: boolean; // Alternative isRead için
   createdAt: Date;
   expiresAt?: Date;
   actionUrl?: string;
 }
+
+// Notification category bilgileri
+export const NOTIFICATION_CATEGORY_INFO: Record<NotificationCategory, {
+  category: NotificationCategory;
+  label: string;
+  icon: string;
+  color: string;
+  description: string;
+}> = {
+  messages: {
+    category: 'messages',
+    label: 'Mesajlar',
+    icon: '💬',
+    color: 'text-blue-500',
+    description: 'Mesaj bildirimleri'
+  },
+  bookings: {
+    category: 'bookings',
+    label: 'Randevular',
+    icon: '📅',
+    color: 'text-green-500',
+    description: 'Randevu bildirimleri'
+  },
+  reviews: {
+    category: 'reviews',
+    label: 'Yorumlar',
+    icon: '⭐',
+    color: 'text-yellow-500',
+    description: 'Yorum bildirimleri'
+  },
+  profile: {
+    category: 'profile',
+    label: 'Profil',
+    icon: '👤',
+    color: 'text-purple-500',
+    description: 'Profil bildirimleri'
+  },
+  system: {
+    category: 'system',
+    label: 'Sistem',
+    icon: '⚙️',
+    color: 'text-gray-500',
+    description: 'Sistem bildirimleri'
+  },
+  promotions: {
+    category: 'promotions',
+    label: 'Promosyonlar',
+    icon: '🎁',
+    color: 'text-pink-500',
+    description: 'Promosyon bildirimleri'
+  },
+  vip: {
+    category: 'vip',
+    label: 'VIP',
+    icon: '👑',
+    color: 'text-amber-500',
+    description: 'VIP üyelik bildirimleri'
+  },
+  points: {
+    category: 'points',
+    label: 'Puanlar',
+    icon: '🏆',
+    color: 'text-orange-500',
+    description: 'Puan bildirimleri'
+  },
+  warning: {
+    category: 'warning',
+    label: 'Uyarılar',
+    icon: '⚠️',
+    color: 'text-red-500',
+    description: 'Uyarı bildirimleri'
+  },
+  referral: {
+    category: 'referral',
+    label: 'Davetler',
+    icon: '🔗',
+    color: 'text-cyan-500',
+    description: 'Davet bildirimleri'
+  }
+};
 
 export interface EmailNotification {
   to: string;
@@ -147,7 +247,8 @@ export const NOTIFICATION_TEMPLATES = {
     title: 'Yeni Mesaj',
     message: '{sender} size mesaj gönderdi',
     emailSubject: 'Yeni mesajınız var',
-    emailTemplate: 'new_message'
+    emailTemplate: 'new_message',
+    category: 'messages' as const
   },
 
   // Randevu bildirimleri
@@ -155,26 +256,30 @@ export const NOTIFICATION_TEMPLATES = {
     title: 'Yeni Randevu Talebi',
     message: '{customer} randevu talebiniz var: {date} {time}',
     emailSubject: 'Yeni randevu talebi',
-    emailTemplate: 'new_booking'
+    emailTemplate: 'new_booking',
+    category: 'bookings' as const
   },
   booking_confirmed: {
     title: 'Randevu Onaylandı',
     message: 'Randevunuz onaylandı: {date} {time}',
     emailSubject: 'Randevu onaylandı',
-    emailTemplate: 'booking_confirmed'
+    emailTemplate: 'booking_confirmed',
+    category: 'bookings' as const
   },
   booking_cancelled: {
     title: 'Randevu İptal Edildi',
     message: '{reason} nedeniyle randevu iptal edildi',
     emailSubject: 'Randevu iptal edildi',
-    emailTemplate: 'booking_cancelled'
+    emailTemplate: 'booking_cancelled',
+    category: 'bookings' as const
   },
   booking_reminder: {
     title: 'Randevu Hatırlatma',
     message: 'Yarınki randevunuz: {date} {time}. Lütfen zamanında gidin.',
     emailSubject: 'Randevu hatırlatması',
     emailTemplate: 'booking_reminder',
-    remindHoursBefore: [24, 2] // 24 saat ve 2 saat önce
+    remindHoursBefore: [24, 2], // 24 saat ve 2 saat önce
+    category: 'bookings' as const
   },
 
   // Yorum bildirimleri
@@ -182,7 +287,8 @@ export const NOTIFICATION_TEMPLATES = {
     title: 'Yeni Yorum Aldınız',
     message: '{customer} sizi {rating} yıldızla değerlendirdi',
     emailSubject: 'Yeni yorum aldınız',
-    emailTemplate: 'review_received'
+    emailTemplate: 'review_received',
+    category: 'reviews' as const
   },
 
   // Profil bildirimleri
@@ -190,13 +296,15 @@ export const NOTIFICATION_TEMPLATES = {
     title: 'Profiliniz Onaylandı',
     message: 'Tebrikler! Profiliniz artık yayında.',
     emailSubject: 'Profiliniz onaylandı',
-    emailTemplate: 'profile_approved'
+    emailTemplate: 'profile_approved',
+    category: 'profile' as const
   },
   profile_rejected: {
     title: 'Profil Güncellemesi Gerekli',
     message: 'Lütfen profili güncelleyin: {reason}',
     emailSubject: 'Profil güncellemesi gerekli',
-    emailTemplate: 'profile_rejected'
+    emailTemplate: 'profile_rejected',
+    category: 'profile' as const
   },
 
   // VIP bildirimleri
@@ -205,7 +313,8 @@ export const NOTIFICATION_TEMPLATES = {
     message: 'VIP üyeliğiniz {days} gün sonra sonlanıyor',
     emailSubject: 'VIP üyelik sonlanıyor',
     emailTemplate: 'vip_expiring',
-    warnDaysBefore: [7, 3, 1]
+    warnDaysBefore: [7, 3, 1],
+    category: 'vip' as const
   },
 
   // Puan bildirimleri
@@ -214,7 +323,8 @@ export const NOTIFICATION_TEMPLATES = {
     message: 'Tebrikler! {points} puan kazandınız',
     emailSubject: 'Puan kazandınız',
     emailTemplate: 'points_earned',
-    showOnlyIf: [100, 500, 1000] // Sadece bu miktarlarda bildirim
+    showOnlyIf: [100, 500, 1000], // Sadece bu miktarlarda bildirim
+    category: 'points' as const
   },
 
   // Davet bildirimleri
@@ -222,7 +332,8 @@ export const NOTIFICATION_TEMPLATES = {
     title: 'Davet Başarılı',
     message: '{referralName} üye oldu!',
     emailSubject: 'Davet başarılı',
-    emailTemplate: 'referral_success'
+    emailTemplate: 'referral_success',
+    category: 'referral' as const
   },
 
   // Uyarılar
@@ -231,7 +342,8 @@ export const NOTIFICATION_TEMPLATES = {
     message: '{warningMessage}',
     emailSubject: 'Platform uyarısı',
     emailTemplate: 'warning',
-    severity: 'medium'
+    severity: 'medium',
+    category: 'warning' as const
   },
 
   // Sistem
@@ -239,7 +351,8 @@ export const NOTIFICATION_TEMPLATES = {
     title: 'Platform Bilgisi',
     message: '{message}',
     emailSubject: 'Platform bilgisi',
-    emailTemplate: 'system'
+    emailTemplate: 'system',
+    category: 'system' as const
   }
 };
 
@@ -628,6 +741,7 @@ export function createNotification(
     data,
     isRead: false,
     createdAt: new Date(),
-    actionUrl: data.actionUrl
+    actionUrl: data.actionUrl,
+    category: template.category || 'system',
   };
 }
