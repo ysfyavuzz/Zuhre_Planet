@@ -62,6 +62,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { getStoredRole } from '@/components/RoleSelector';
 import ContactLock, { ContactLockCompact } from '@/components/ContactLock';
 import PhotoGalleryEnhanced from '@/components/PhotoGalleryEnhanced';
+import { ReportEscortDialog } from '@/components/ReportEscortDialog';
 
 export default function EscortProfile() {
   const { id } = useParams<{ id: string }>();
@@ -73,6 +74,7 @@ export default function EscortProfile() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
+  const [isReportDialogOpen, setIsReportDialogOpen] = useState(false);
 
   // Escort profili görüntüleme kontrolü
   // Escort kullanıcıları doğrudan kendi profillerini görebilir
@@ -110,8 +112,8 @@ export default function EscortProfile() {
     name: profile.displayName,
     location: `${profile.city}, ${profile.district}`,
     bio: 'Merhaba! Ben kaliteli zaman geçirmeyi seven, bakımlı ve zarif bir bayanım. ' +
-          'Güler yüzlü ve samimi tavırlarımla sizleri rahat ettirmeyi hedefliyorum. ' +
-          'Temizliğe ve hijyene önem veriyorum.',
+      'Güler yüzlü ve samimi tavırlarımla sizleri rahat ettirmeyi hedefliyorum. ' +
+      'Temizliğe ve hijyene önem veriyorum.',
     phone: '+90 555 123 4567',
     whatsapp: '+90 555 123 4567',
     services: ['Masaj', 'Eşlik Hizmeti', 'Akşam Yemeği', 'Etkinliklere Katılım', 'Gezi Turu'],
@@ -213,7 +215,12 @@ export default function EscortProfile() {
               <Button variant="outline" size="icon">
                 <Share2 className="w-5 h-5" />
               </Button>
-              <Button variant="outline" size="icon">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setIsReportDialogOpen(true)}
+                title="İhbar Et"
+              >
                 <Flag className="w-5 h-5" />
               </Button>
             </div>
@@ -311,11 +318,10 @@ export default function EscortProfile() {
                   <button
                     key={index}
                     onClick={() => setSelectedPhoto(index)}
-                    className={`aspect-square rounded-lg overflow-hidden border-2 transition-all hover:scale-105 ${
-                      selectedPhoto === index
-                        ? 'border-primary shadow-lg scale-105'
-                        : 'border-border/50 hover:border-primary/50'
-                    }`}
+                    className={`aspect-square rounded-lg overflow-hidden border-2 transition-all hover:scale-105 ${selectedPhoto === index
+                      ? 'border-primary shadow-lg scale-105'
+                      : 'border-border/50 hover:border-primary/50'
+                      }`}
                   >
                     <img
                       src={photo}
@@ -704,6 +710,15 @@ export default function EscortProfile() {
           </div>
         </div>
       )}
+
+      {/* Report Dialog */}
+      <ReportEscortDialog
+        open={isReportDialogOpen}
+        onOpenChange={setIsReportDialogOpen}
+        escortId={displayProfile.id}
+        escortName={displayProfile.name}
+        escortPhoto={displayProfile.avatar}
+      />
     </div>
   );
 }

@@ -41,7 +41,7 @@ import {
   Star, Clock, CheckCircle2, XCircle, AlertCircle,
   TrendingUp, Award, Crown, Sparkles, Eye, ChevronRight,
   Bell, MapPin, Phone, Filter, BarChart3, ThumbsUp,
-  FileText, DollarSign, Reply, Archive, Home
+  FileText, DollarSign, Reply, Archive, Home, Shield, Flag
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SEO } from '@/pages/SEO';
@@ -118,6 +118,61 @@ const mockMessages = [
 ];
 
 /**
+ * Mock review data (geçmiş değerlendirmeler)
+ */
+const mockReviews = [
+  {
+    id: '1',
+    escortId: '3',
+    escortName: 'Zeynep K.',
+    escortPhoto: mockEscorts[2]?.profilePhoto,
+    rating: 5,
+    comment: 'Harika bir deneyimdi, çok profesyonel ve nazikti.',
+    date: '2026-01-20',
+    bookingDate: '2026-01-15',
+  },
+  {
+    id: '2',
+    escortId: '2',
+    escortName: 'Mehmet A.',
+    escortPhoto: mockEscorts[1]?.profilePhoto,
+    rating: 4,
+    comment: 'Güzel bir akşam geçirdik, teşekkürler.',
+    date: '2026-01-10',
+    bookingDate: '2026-01-08',
+  },
+];
+
+/**
+ * Mock report data (yapılan şikayetler)
+ */
+const mockReports = [
+  {
+    id: '1',
+    escortId: '8',
+    escortName: 'Sahte Profil X',
+    reason: 'fake_profile' as const,
+    reasonLabel: 'Sahte Profil',
+    description: 'Profil fotoğrafları gerçeği yansıtmıyor, tamamen farklı bir kişi geldi.',
+    status: 'reviewing' as const,
+    statusLabel: 'İnceleniyor',
+    createdAt: '2026-01-18',
+  },
+  {
+    id: '2',
+    escortId: '9',
+    escortName: 'Test Kullanıcı Y',
+    reason: 'scam' as const,
+    reasonLabel: 'Dolandırıcılık',
+    description: 'Ödeme aldıktan sonra randevuya gelmedi.',
+    status: 'resolved' as const,
+    statusLabel: 'Çözüldü',
+    createdAt: '2026-01-05',
+    resolvedAt: '2026-01-07',
+  },
+];
+
+/**
  * Activity item
  */
 interface ActivityItem {
@@ -154,7 +209,7 @@ function StatusBadge({ status }: { status: AppointmentStatus }) {
  */
 export default function CustomerDashboard() {
   const { user } = useAuth();
-  const [activeTab, setActiveTab] = useState<'overview' | 'appointments' | 'favorites' | 'messages' | 'analytics' | 'settings'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'appointments' | 'favorites' | 'messages' | 'reviews' | 'reports' | 'analytics' | 'settings'>('overview');
 
   // Mock favorite escorts
   const favorites = useMemo(() => mockEscorts.slice(0, 6), []);
@@ -370,6 +425,14 @@ export default function CustomerDashboard() {
               <TabsTrigger value="messages">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Mesajlar
+              </TabsTrigger>
+              <TabsTrigger value="reviews">
+                <Star className="w-4 h-4 mr-2" />
+                Değerlendirmelerim
+              </TabsTrigger>
+              <TabsTrigger value="reports">
+                <Flag className="w-4 h-4 mr-2" />
+                Şikayetlerim
               </TabsTrigger>
               <TabsTrigger value="analytics">
                 <BarChart3 className="w-4 h-4 mr-2" />
@@ -600,73 +663,73 @@ export default function CustomerDashboard() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Tüm Randevular</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {mockAppointments.map((appointment) => (
-                      <div key={appointment.id} className="flex items-start gap-4 p-4 border rounded-lg hover:bg-muted/20 transition-colors">
-                        <div className="w-16 h-16 rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 flex-shrink-0">
-                          <img
-                            src={appointment.escortPhoto}
-                            alt={appointment.escortName}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-start justify-between mb-2">
-                            <div>
-                              <h4 className="font-bold text-lg">{appointment.escortName}</h4>
-                              <p className="text-sm text-muted-foreground">{appointment.service}</p>
-                            </div>
-                            <StatusBadge status={appointment.status} />
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {mockAppointments.map((appointment) => (
+                        <div key={appointment.id} className="flex items-start gap-4 p-4 border rounded-lg hover:bg-muted/20 transition-colors">
+                          <div className="w-16 h-16 rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 flex-shrink-0">
+                            <img
+                              src={appointment.escortPhoto}
+                              alt={appointment.escortName}
+                              className="w-full h-full object-cover"
+                            />
                           </div>
+                          <div className="flex-1">
+                            <div className="flex items-start justify-between mb-2">
+                              <div>
+                                <h4 className="font-bold text-lg">{appointment.escortName}</h4>
+                                <p className="text-sm text-muted-foreground">{appointment.service}</p>
+                              </div>
+                              <StatusBadge status={appointment.status} />
+                            </div>
 
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                            <div className="flex items-center gap-1">
-                              <Calendar className="w-4 h-4" />
-                              <span>{new Date(appointment.date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' })}</span>
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                              <div className="flex items-center gap-1">
+                                <Calendar className="w-4 h-4" />
+                                <span>{new Date(appointment.date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' })}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                <span>{appointment.time}</span>
+                              </div>
+                              <div className="flex items-center gap-1">
+                                <MapPin className="w-4 h-4" />
+                                <span>{appointment.location}</span>
+                              </div>
                             </div>
-                            <div className="flex items-center gap-1">
-                              <Clock className="w-4 h-4" />
-                              <span>{appointment.time}</span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <MapPin className="w-4 h-4" />
-                              <span>{appointment.location}</span>
-                            </div>
-                          </div>
 
-                          {appointment.price && (
-                            <div className="flex items-center gap-2 mb-3">
-                              <DollarSign className="w-4 h-4 text-green-600" />
-                              <span className="font-semibold">₺{appointment.price.toLocaleString('tr-TR')}</span>
-                            </div>
-                          )}
-
-                          <div className="flex gap-2">
-                            <Button size="sm" variant="outline">
-                              <MessageCircle className="w-4 h-4 mr-1" />
-                              Mesaj
-                            </Button>
-                            {appointment.status === 'upcoming' && (
-                              <Button size="sm" variant="outline" className="text-red-600">
-                                <XCircle className="w-4 h-4 mr-1" />
-                                İptal
-                              </Button>
+                            {appointment.price && (
+                              <div className="flex items-center gap-2 mb-3">
+                                <DollarSign className="w-4 h-4 text-green-600" />
+                                <span className="font-semibold">₺{appointment.price.toLocaleString('tr-TR')}</span>
+                              </div>
                             )}
-                            {appointment.status === 'completed' && (
-                              <Button size="sm" className="bg-green-600 hover:bg-green-700">
-                                <Star className="w-4 h-4 mr-1" />
-                                Değerlendir
+
+                            <div className="flex gap-2">
+                              <Button size="sm" variant="outline">
+                                <MessageCircle className="w-4 h-4 mr-1" />
+                                Mesaj
                               </Button>
-                            )}
+                              {appointment.status === 'upcoming' && (
+                                <Button size="sm" variant="outline" className="text-red-600">
+                                  <XCircle className="w-4 h-4 mr-1" />
+                                  İptal
+                                </Button>
+                              )}
+                              {appointment.status === 'completed' && (
+                                <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                                  <Star className="w-4 h-4 mr-1" />
+                                  Değerlendir
+                                </Button>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
 
@@ -746,6 +809,140 @@ export default function CustomerDashboard() {
               </div>
             </TabsContent>
 
+            {/* Reviews Tab - Değerlendirmelerim */}
+            <TabsContent value="reviews">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold">Değerlendirmelerim</h2>
+                  <Badge variant="secondary">{mockReviews.length} değerlendirme</Badge>
+                </div>
+
+                {mockReviews.length > 0 ? (
+                  <div className="space-y-4">
+                    {mockReviews.map((review) => (
+                      <Card key={review.id}>
+                        <CardContent className="p-6">
+                          <div className="flex items-start gap-4">
+                            <div className="w-16 h-16 rounded-xl overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 flex-shrink-0">
+                              <img
+                                src={review.escortPhoto}
+                                alt={review.escortName}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex items-start justify-between mb-2">
+                                <div>
+                                  <h3 className="font-bold text-lg">{review.escortName}</h3>
+                                  <p className="text-sm text-muted-foreground">
+                                    Randevu: {new Date(review.bookingDate).toLocaleDateString('tr-TR')}
+                                  </p>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  {[1, 2, 3, 4, 5].map((star) => (
+                                    <Star
+                                      key={star}
+                                      className={`w-5 h-5 ${star <= review.rating ? 'fill-amber-400 text-amber-400' : 'text-muted'}`}
+                                    />
+                                  ))}
+                                </div>
+                              </div>
+                              <p className="text-muted-foreground mb-2">{review.comment}</p>
+                              <p className="text-xs text-muted-foreground">
+                                Değerlendirildi: {new Date(review.date).toLocaleDateString('tr-TR')}
+                              </p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                ) : (
+                  <Card>
+                    <CardContent className="p-12 text-center">
+                      <Star className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+                      <h3 className="font-bold text-lg mb-2">Henüz değerlendirme yok</h3>
+                      <p className="text-muted-foreground">
+                        Tamamlanan randevularınızı değerlendirerek başlayabilirsiniz.
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </TabsContent>
+
+            {/* Reports Tab - Şikayetlerim */}
+            <TabsContent value="reports">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold">Şikayetlerim</h2>
+                  <Badge variant="secondary">{mockReports.length} şikayet</Badge>
+                </div>
+
+                {mockReports.length > 0 ? (
+                  <div className="space-y-4">
+                    {mockReports.map((report) => (
+                      <Card key={report.id}>
+                        <CardContent className="p-6">
+                          <div className="flex items-start gap-4">
+                            <div className={`p-3 rounded-xl ${report.status === 'resolved' ? 'bg-green-500/10' :
+                                report.status === 'reviewing' ? 'bg-amber-500/10' : 'bg-muted'
+                              }`}>
+                              <Flag className={`w-6 h-6 ${report.status === 'resolved' ? 'text-green-500' :
+                                  report.status === 'reviewing' ? 'text-amber-500' : 'text-muted-foreground'
+                                }`} />
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex items-start justify-between mb-2">
+                                <div>
+                                  <h3 className="font-bold text-lg">{report.escortName}</h3>
+                                  <Badge variant="outline" className="mt-1">{report.reasonLabel}</Badge>
+                                </div>
+                                <Badge className={`${report.status === 'resolved' ? 'bg-green-500 text-white' :
+                                    report.status === 'reviewing' ? 'bg-amber-500 text-white' :
+                                      'bg-muted text-muted-foreground'
+                                  }`}>
+                                  {report.statusLabel}
+                                </Badge>
+                              </div>
+                              <p className="text-muted-foreground mb-2">{report.description}</p>
+                              <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                                <span>Oluşturuldu: {new Date(report.createdAt).toLocaleDateString('tr-TR')}</span>
+                                {report.resolvedAt && (
+                                  <span>Çözüldü: {new Date(report.resolvedAt).toLocaleDateString('tr-TR')}</span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                ) : (
+                  <Card>
+                    <CardContent className="p-12 text-center">
+                      <Flag className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+                      <h3 className="font-bold text-lg mb-2">Şikayet yok</h3>
+                      <p className="text-muted-foreground">
+                        Henüz herhangi bir şikayette bulunmadınız.
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Info Box */}
+                <Card className="bg-muted/30 border-dashed">
+                  <CardContent className="p-4">
+                    <p className="text-sm text-muted-foreground">
+                      ⚠️ Şikayetleriniz gizli tutulur ve yöneticiler tarafından incelenir.
+                      Escort profil sayfalarından "<Flag className="w-4 h-4 inline mx-1" />İhbar Et"
+                      butonuyla yeni şikayet oluşturabilirsiniz.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
             {/* Analytics Tab */}
             <TabsContent value="analytics">
               <div className="space-y-6">
@@ -802,43 +999,161 @@ export default function CustomerDashboard() {
             {/* Settings Tab */}
             <TabsContent value="settings">
               <div className="max-w-3xl space-y-6">
+                {/* Profil Bilgileri */}
                 <Card>
                   <CardHeader>
-                    <CardTitle>Profil Ayarları</CardTitle>
+                    <CardTitle className="flex items-center gap-2">
+                      <User className="w-5 h-5" />
+                      Profil Bilgileri
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                        {user?.name?.charAt(0) || 'K'}
+                  <CardContent className="space-y-6">
+                    {/* Avatar */}
+                    <div className="flex items-center gap-6">
+                      <div className="relative">
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-3xl font-bold text-white">
+                          {user?.name?.charAt(0) || 'K'}
+                        </div>
+                        <Button size="sm" className="absolute -bottom-1 -right-1 h-8 w-8 rounded-full p-0">
+                          <Settings className="w-4 h-4" />
+                        </Button>
                       </div>
-                      <div>
-                        <h3 className="font-semibold">{user?.name || 'Müşteri'}</h3>
-                        <p className="text-sm text-muted-foreground">{user?.email}</p>
-                        <Badge className="mt-1" variant="secondary">
-                          {user?.membership || 'standart'} üye
-                        </Badge>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg">{user?.name || 'Müşteri'}</h3>
+                        <p className="text-muted-foreground">{user?.email}</p>
+                        <div className="flex gap-2 mt-2">
+                          <Badge variant="secondary">{user?.membership || 'Standart'} Üye</Badge>
+                          {user?.membership === 'vip' && (
+                            <Badge className="bg-amber-500 text-white">
+                              <Crown className="w-3 h-3 mr-1" />
+                              VIP
+                            </Badge>
+                          )}
+                        </div>
                       </div>
                     </div>
 
                     <Separator />
 
-                    <div className="space-y-3">
-                      <Link href="/settings">
-                        <Button variant="outline" className="w-full justify-start" size="sm">
-                          <Settings className="w-4 h-4 mr-2" />
-                          Hesap Ayarları
-                        </Button>
-                      </Link>
-                      <Link href="/vip">
-                        <Button className="w-full justify-start" size="sm">
-                          <Crown className="w-4 h-4 mr-2" />
-                          VIP Üyelik
-                        </Button>
-                      </Link>
+                    {/* Form Alanları */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Ad Soyad</label>
+                        <input
+                          type="text"
+                          defaultValue={user?.name || ''}
+                          placeholder="Ad Soyad"
+                          className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">E-posta</label>
+                        <input
+                          type="email"
+                          defaultValue={user?.email || ''}
+                          placeholder="E-posta"
+                          className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Telefon</label>
+                        <input
+                          type="tel"
+                          placeholder="+90 5xx xxx xx xx"
+                          className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Şehir</label>
+                        <select className="w-full px-4 py-3 bg-muted/30 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                          <option value="">Şehir Seçin</option>
+                          <option value="istanbul">İstanbul</option>
+                          <option value="ankara">Ankara</option>
+                          <option value="izmir">İzmir</option>
+                          <option value="bursa">Bursa</option>
+                          <option value="antalya">Antalya</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <Button className="w-full md:w-auto">
+                      <CheckCircle2 className="w-4 h-4 mr-2" />
+                      Değişiklikleri Kaydet
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Bildirim Ayarları */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Bell className="w-5 h-5" />
+                      Bildirim Tercihleri
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {[
+                      { label: 'Yeni mesaj bildirimleri', desc: 'Escort\'lardan gelen mesajları anında al', defaultChecked: true },
+                      { label: 'Randevu hatırlatmaları', desc: 'Randevu saatinden 1 saat önce bildirim', defaultChecked: true },
+                      { label: 'Promosyon ve fırsatlar', desc: 'VIP indirimleri ve özel fırsatlar', defaultChecked: false },
+                      { label: 'Yeni escort bildirimleri', desc: 'Favori şehirlerinde yeni escort eklendiğinde', defaultChecked: false },
+                      { label: 'E-posta bildirimleri', desc: 'Önemli bildirimler e-posta olarak da gönderilsin', defaultChecked: true },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-4 bg-muted/20 rounded-lg">
+                        <div>
+                          <p className="font-medium">{item.label}</p>
+                          <p className="text-sm text-muted-foreground">{item.desc}</p>
+                        </div>
+                        <label className="relative inline-flex items-center cursor-pointer">
+                          <input type="checkbox" defaultChecked={item.defaultChecked} className="sr-only peer" />
+                          <div className="w-11 h-6 bg-muted rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+
+                {/* Gizlilik ve Güvenlik */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Shield className="w-5 h-5" />
+                      Gizlilik ve Güvenlik
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex items-center justify-between p-4 border rounded-lg">
+                      <div>
+                        <p className="font-medium">Şifre Değiştir</p>
+                        <p className="text-sm text-muted-foreground">Hesap güvenliği için şifrenizi düzenli olarak değiştirin</p>
+                      </div>
+                      <Button variant="outline" size="sm">Değiştir</Button>
+                    </div>
+                    <div className="flex items-center justify-between p-4 border rounded-lg">
+                      <div>
+                        <p className="font-medium">İki Faktörlü Doğrulama</p>
+                        <p className="text-sm text-muted-foreground">Ek güvenlik katmanı ile hesabınızı koruyun</p>
+                      </div>
+                      <Button variant="outline" size="sm">Etkinleştir</Button>
+                    </div>
+                    <div className="flex items-center justify-between p-4 border rounded-lg">
+                      <div>
+                        <p className="font-medium">Oturum Geçmişi</p>
+                        <p className="text-sm text-muted-foreground">Aktif oturumlarınızı görüntüleyin ve yönetin</p>
+                      </div>
+                      <Button variant="outline" size="sm">Görüntüle</Button>
+                    </div>
+                    <div className="flex items-center justify-between p-4 border border-red-200 dark:border-red-900/50 rounded-lg bg-red-50/50 dark:bg-red-900/10">
+                      <div>
+                        <p className="font-medium text-red-600">Hesabı Sil</p>
+                        <p className="text-sm text-red-500/80">Hesabınızı ve tüm verilerinizi kalıcı olarak silin</p>
+                      </div>
+                      <Button variant="destructive" size="sm">Sil</Button>
                     </div>
                   </CardContent>
                 </Card>
 
+                {/* VIP Yükseltme */}
                 {user?.membership !== 'vip' && (
                   <Card className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-amber-500/30">
                     <CardContent className="p-6 text-center">

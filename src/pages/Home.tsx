@@ -54,9 +54,9 @@ import { mockEscorts, mockAds } from "@/mockData";
 import {
   Search, MapPin, Star, Shield, Heart, Sparkles,
   ArrowRight, Crown, CheckCircle2, Zap, Users,
-  Award, ChevronRight, ChevronLeft, Flame
+  Award, ChevronRight, ChevronLeft, Flame, TrendingUp, Eye
 } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
 
@@ -65,6 +65,47 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-coverflow';
+
+// Animated Counter Component
+function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number; duration?: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLSpanElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime: number;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+    requestAnimationFrame(step);
+  }, [isVisible, end, duration]);
+
+  return <span ref={countRef}>{count.toLocaleString()}{suffix}</span>;
+}
 
 // StandardCard bileşeni artık dışarıdan alınıyor
 
@@ -112,7 +153,7 @@ export default function Home() {
               </p>
 
               {/* Search Box */}
-              <Card className="glass shadow-2xl border-white/10 p-2 max-w-3xl mx-auto">
+              <Card className="glass shadow-2xl border-white/10 p-2 max-w-3xl mx-auto mb-16">
                 <div className="flex flex-col md:flex-row gap-2">
                   <div className="flex-1 relative">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -134,6 +175,51 @@ export default function Home() {
                   </Button>
                 </div>
               </Card>
+
+              {/* Animated Stats */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
+              >
+                <div className="frosted-glass rounded-2xl p-6 text-center card-depth">
+                  <div className="flex justify-center mb-2">
+                    <Users className="w-8 h-8 text-primary" />
+                  </div>
+                  <p className="text-3xl md:text-4xl font-black text-foreground">
+                    <AnimatedCounter end={1240} suffix="+" />
+                  </p>
+                  <p className="text-sm text-muted-foreground">Aktif İlan</p>
+                </div>
+                <div className="frosted-glass rounded-2xl p-6 text-center card-depth">
+                  <div className="flex justify-center mb-2">
+                    <Eye className="w-8 h-8 text-purple-500" />
+                  </div>
+                  <p className="text-3xl md:text-4xl font-black text-foreground">
+                    <AnimatedCounter end={45000} suffix="+" />
+                  </p>
+                  <p className="text-sm text-muted-foreground">Günlük Ziyaret</p>
+                </div>
+                <div className="frosted-glass rounded-2xl p-6 text-center card-depth">
+                  <div className="flex justify-center mb-2">
+                    <Shield className="w-8 h-8 text-green-500" />
+                  </div>
+                  <p className="text-3xl md:text-4xl font-black text-foreground">
+                    <AnimatedCounter end={850} suffix="+" />
+                  </p>
+                  <p className="text-sm text-muted-foreground">Doğrulanmış</p>
+                </div>
+                <div className="frosted-glass rounded-2xl p-6 text-center card-depth">
+                  <div className="flex justify-center mb-2">
+                    <TrendingUp className="w-8 h-8 text-amber-500" />
+                  </div>
+                  <p className="text-3xl md:text-4xl font-black text-foreground">
+                    <AnimatedCounter end={98} suffix="%" />
+                  </p>
+                  <p className="text-sm text-muted-foreground">Memnuniyet</p>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
