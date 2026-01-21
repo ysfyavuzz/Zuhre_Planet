@@ -1,0 +1,320 @@
+/**
+ * 3D Effects CSS Module
+ * 
+ * Provides common 3D utility classes and effects that can be used throughout the application.
+ * These classes complement the Tailwind configuration for 3D components.
+ * 
+ * @module styles/3d-effects
+ */
+
+/* ========================================
+   3D Perspective Container
+   ======================================== */
+
+.perspective-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* ========================================
+   3D Transform Utilities
+   ======================================== */
+
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* ========================================
+   3D Elevation Levels
+   ======================================== */
+
+.elevation-1 {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateZ(1px);
+}
+
+.elevation-2 {
+  box-shadow: 
+    0 3px 6px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateZ(2px);
+}
+
+.elevation-3 {
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.15),
+    0 3px 6px rgba(0, 0, 0, 0.10),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  transform: translateZ(3px);
+}
+
+.elevation-4 {
+  box-shadow: 
+    0 15px 25px rgba(0, 0, 0, 0.15),
+    0 5px 10px rgba(0, 0, 0, 0.05),
+    inset 0 2px 0 rgba(255, 255, 255, 0.25);
+  transform: translateZ(4px);
+}
+
+.elevation-5 {
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 10px 15px rgba(0, 0, 0, 0.1),
+    inset 0 3px 0 rgba(255, 255, 255, 0.3);
+  transform: translateZ(5px);
+}
+
+/* ========================================
+   3D Button Effects
+   ======================================== */
+
+.btn-3d {
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 2px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 15px 30px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 3px -1px rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   3D Card Effects
+   ======================================== */
+
+.card-3d {
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 10px 20px -5px rgba(0, 0, 0, 0.2),
+    0 6px 6px -3px rgba(0, 0, 0, 0.1);
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.card-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+.card-3d:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 40px -10px rgba(0, 0, 0, 0.25),
+    0 10px 10px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   3D Input Effects
+   ======================================== */
+
+.input-3d {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.input-3d:focus {
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 0 0 3px rgba(236, 72, 153, 0.1);
+}
+
+/* ========================================
+   3D Depth Layers
+   ======================================== */
+
+.layer-base {
+  transform: translateZ(0);
+}
+
+.layer-1 {
+  transform: translateZ(10px);
+}
+
+.layer-2 {
+  transform: translateZ(20px);
+}
+
+.layer-3 {
+  transform: translateZ(30px);
+}
+
+.layer-4 {
+  transform: translateZ(40px);
+}
+
+.layer-5 {
+  transform: translateZ(50px);
+}
+
+/* ========================================
+   3D Glow Effects
+   ======================================== */
+
+.glow-3d {
+  box-shadow: 
+    0 0 20px rgba(236, 72, 153, 0.3),
+    0 0 40px rgba(236, 72, 153, 0.1);
+}
+
+.glow-3d-strong {
+  box-shadow: 
+    0 0 30px rgba(236, 72, 153, 0.5),
+    0 0 60px rgba(236, 72, 153, 0.3),
+    0 0 90px rgba(236, 72, 153, 0.1);
+}
+
+.glow-3d-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ========================================
+   3D Surfaces
+   ======================================== */
+
+.surface-glossy {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+}
+
+.surface-matte {
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 245, 245, 1) 0%,
+    rgba(235, 235, 235, 1) 100%
+  );
+}
+
+.surface-metallic {
+  background: linear-gradient(
+    135deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(200, 200, 200, 1) 50%,
+    rgba(240, 240, 240, 1) 100%
+  );
+}
+
+/* ========================================
+   3D Animations
+   ======================================== */
+
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-10px) translateZ(10px);
+  }
+}
+
+@keyframes rotate-3d {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes tilt-3d {
+  0%, 100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: rotateX(5deg) rotateY(-5deg);
+  }
+  75% {
+    transform: rotateX(-5deg) rotateY(5deg);
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 3s ease-in-out infinite;
+}
+
+.animate-rotate-3d {
+  animation: rotate-3d 10s linear infinite;
+}
+
+.animate-tilt-3d {
+  animation: tilt-3d 4s ease-in-out infinite;
+}
+
+/* ========================================
+   Responsive 3D Effects (Reduce on mobile)
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card-3d,
+  .btn-3d,
+  .elevation-1,
+  .elevation-2,
+  .elevation-3,
+  .elevation-4,
+  .elevation-5 {
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  .animate-float-3d,
+  .animate-rotate-3d,
+  .animate-tilt-3d {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-3d:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .btn-3d:hover {
+    transform: translateY(-1px);
+  }
+}

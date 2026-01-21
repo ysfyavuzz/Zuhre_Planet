@@ -55,6 +55,11 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      boxShadow: {
+        '3d': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 2px 0 rgba(255, 255, 255, 0.15), inset 0 -2px 0 rgba(0, 0, 0, 0.1)',
+        '3d-lg': '0 10px 20px -5px rgba(0, 0, 0, 0.2), 0 6px 6px -3px rgba(0, 0, 0, 0.1)',
+        '3d-hover': '0 15px 30px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.15)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -77,12 +82,16 @@ export default {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
         "pulse-glow": {
           "0%, 100%": { 
-            boxShadow: "0 0 20px rgba(217, 70, 239, 0.3)",
+            boxShadow: "0 0 20px rgba(236, 72, 153, 0.3)",
           },
           "50%": { 
-            boxShadow: "0 0 40px rgba(217, 70, 239, 0.6)",
+            boxShadow: "0 0 40px rgba(236, 72, 153, 0.6)",
           },
         },
         "gradient": {
@@ -96,6 +105,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "shimmer": "shimmer 2s infinite",
         "floating": "floating 3s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "gradient": "gradient 15s ease infinite",
       },
