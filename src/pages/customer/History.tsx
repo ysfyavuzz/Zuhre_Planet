@@ -50,7 +50,7 @@ import {
 import { Card3D } from '@/components/3d/Card3D';
 import { Button3D } from '@/components/3d/Button3D';
 import { cn } from '@/lib/utils';
-import type { Appointment, AppointmentStatus } from '@/data/mockData/appointments';
+import type { Appointment, AppointmentStatus } from '@/data/mockData';
 
 /** Randevu durum konfigürasyonu */
 const durumKonfig: Record<AppointmentStatus, { renk: string; etiket: string; ikon: typeof CheckCircle }> = {
