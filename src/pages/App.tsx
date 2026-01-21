@@ -130,6 +130,9 @@ const Login = lazy(() => import("@/pages/Login").then(m => ({ default: m.default
 const AdminPanel = lazy(() => import("@/pages/AdminPanel").then(m => ({ default: m.default })));
 const CustomerSettings = lazy(() => import("@/pages/customer/CustomerSettings").then(m => ({ default: m.default })));
 const About = lazy(() => import("@/pages/general/About").then(m => ({ default: m.default })));
+const FAQ = lazy(() => import("@/pages/general/FAQ").then(m => ({ default: m.default })));
+const HowItWorks = lazy(() => import("@/pages/general/HowItWorks").then(m => ({ default: m.default })));
+const SupportPage = lazy(() => import("@/pages/general/Support").then(m => ({ default: m.default })));
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LOADING FALLBACK COMPONENT
@@ -333,6 +336,18 @@ function AppRouter() {
       {/* General Pages */}
       <Route path="/about">
         {() => <Suspense fallback={<RouteLoading />}><About /></Suspense>}
+      </Route>
+
+      <Route path="/faq">
+        {() => <Suspense fallback={<RouteLoading />}><FAQ /></Suspense>}
+      </Route>
+
+      <Route path="/how-it-works">
+        {() => <Suspense fallback={<RouteLoading />}><HowItWorks /></Suspense>}
+      </Route>
+
+      <Route path="/support">
+        {() => <Suspense fallback={<RouteLoading />}><SupportPage /></Suspense>}
       </Route>
 
       {/* Other */}
