@@ -82,10 +82,6 @@ export default {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        "float": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
         "pulse-glow": {
           "0%, 100%": { 
             boxShadow: "0 0 20px rgba(236, 72, 153, 0.3)",
@@ -105,7 +101,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "shimmer": "shimmer 2s infinite",
         "floating": "floating 3s ease-in-out infinite",
-        "float": "float 3s ease-in-out infinite",
+        "float": "floating 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "gradient": "gradient 15s ease infinite",
       },

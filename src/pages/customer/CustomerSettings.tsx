@@ -137,7 +137,7 @@ export default function CustomerSettings() {
                       <div className="flex flex-wrap gap-2 mt-2">
                         {['İstanbul', 'Ankara', 'İzmir'].map((city) => (
                           <Badge key={city} variant="secondary" className="cursor-pointer">
-                            {city} <X className="w-3 h-3 ml-1" />
+                            {city} <span className="ml-1">×</span>
                           </Badge>
                         ))}
                         <Button variant="outline" size="sm">+ Ekle</Button>
@@ -149,7 +149,7 @@ export default function CustomerSettings() {
                       <div className="flex flex-wrap gap-2 mt-2">
                         {['Klasik Masaj', 'Rahatlama'].map((service) => (
                           <Badge key={service} variant="secondary" className="cursor-pointer">
-                            {service} <X className="w-3 h-3 ml-1" />
+                            {service} <span className="ml-1">×</span>
                           </Badge>
                         ))}
                         <Button variant="outline" size="sm">+ Ekle</Button>
@@ -241,13 +241,5 @@ export default function CustomerSettings() {
         </div>
       </div>
     </div>
-  );
-}
-
-function X({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-    </svg>
   );
 }
