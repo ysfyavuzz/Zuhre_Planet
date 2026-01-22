@@ -51,12 +51,14 @@ import { cn } from '@/lib/utils';
  * @see {@link Badge3D} İlgili 3D badge component
  */
 
-export interface Card3DProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface Card3DProps {
   elevation?: 'low' | 'medium' | 'high';
   glow?: boolean;
   hover?: boolean;
   padding?: 'none' | 'sm' | 'md' | 'lg';
   children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
 }
 
 const elevationClasses = {
@@ -75,13 +77,13 @@ const paddingClasses = {
 export const Card3D = React.forwardRef<HTMLDivElement, Card3DProps>(
   (
     {
-      className,
       elevation = 'medium',
       glow = false,
       hover = true,
       padding = 'md',
       children,
-      ...props
+      className,
+      onClick,
     },
     ref
   ) => {
@@ -155,7 +157,7 @@ export const Card3D = React.forwardRef<HTMLDivElement, Card3DProps>(
         } : undefined}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        {...(props as any)}
+        onClick={onClick}
       >
         {/* Shine overlay - follows mouse */}
         <motion.div 

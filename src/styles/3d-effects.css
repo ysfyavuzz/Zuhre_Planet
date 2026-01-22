@@ -3,8 +3,13 @@
  * 
  * Provides common 3D utility classes and effects that can be used throughout the application.
  * These classes complement the Tailwind configuration for 3D components.
+ * Updated with enhanced effects for Phase 4.
  * 
  * @module styles/3d-effects
+ * @category Styles
+ * @author Escort Platform Team
+ * @version 2.0.0
+ * @since 4.0.0
  */
 
 /* ========================================
@@ -16,6 +21,11 @@
   transform-style: preserve-3d;
 }
 
+.perspective-1500 {
+  perspective: 1500px;
+  transform-style: preserve-3d;
+}
+
 /* ========================================
    3D Transform Utilities
    ======================================== */
@@ -24,8 +34,47 @@
   transform-style: preserve-3d;
 }
 
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
 .backface-hidden {
   backface-visibility: hidden;
+}
+
+/* Rotation utilities */
+.rotate-y-12 { transform: rotateY(12deg); }
+.rotate-x-12 { transform: rotateX(12deg); }
+.-rotate-y-12 { transform: rotateY(-12deg); }
+.-rotate-x-12 { transform: rotateX(-12deg); }
+
+/* Translate Z */
+.translate-z-10 { transform: translateZ(10px); }
+.translate-z-20 { transform: translateZ(20px); }
+.translate-z-50 { transform: translateZ(50px); }
+
+/* ========================================
+   3D Shadow Levels (Enhanced)
+   ======================================== */
+
+.shadow-3d-sm {
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-3d-md {
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.15),
+    0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-3d-lg {
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.2),
+    0 32px 64px rgba(0, 0, 0, 0.15);
 }
 
 /* ========================================
@@ -191,23 +240,98 @@
 }
 
 /* ========================================
-   3D Glow Effects
+   Gelişmiş Glow Effects
    ======================================== */
 
-.glow-3d {
-  box-shadow: 
-    0 0 20px rgba(236, 72, 153, 0.3),
-    0 0 40px rgba(236, 72, 153, 0.1);
+.glow-sm { 
+  box-shadow: 0 0 10px currentColor; 
 }
 
-.glow-3d-strong {
-  box-shadow: 
-    0 0 30px rgba(236, 72, 153, 0.5),
-    0 0 60px rgba(236, 72, 153, 0.3),
-    0 0 90px rgba(236, 72, 153, 0.1);
+.glow-md { 
+  box-shadow: 0 0 20px currentColor; 
 }
 
-.glow-3d-pulse {
+.glow-lg { 
+  box-shadow: 0 0 40px currentColor; 
+}
+
+.glow-xl { 
+  box-shadow: 0 0 60px currentColor; 
+}
+
+.glow-primary {
+  box-shadow: 0 0 40px rgba(225, 29, 72, 0.4);
+}
+
+.glow-accent {
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.4);
+}
+
+/* ========================================
+   Gradient Text
+   ======================================== */
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #E11D48, #F43F5E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   Shimmer Animation
+   ======================================== */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ========================================
+   Float Animation
+   ======================================== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ========================================
+   Pulse Glow Animation
+   ======================================== */
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(225, 29, 72, 0.4); 
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(225, 29, 72, 0.6); 
+  }
+}
+
+.animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 

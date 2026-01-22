@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type MotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 
@@ -53,12 +53,19 @@ import { Loader2 } from 'lucide-react';
  * @see {@link Input3D} İlgili 3D input component
  */
 
-export interface Button3DProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface Button3DProps {
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
   fullWidth?: boolean;
+  disabled?: boolean;
   children: React.ReactNode;
+  className?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type?: 'button' | 'submit' | 'reset';
+  form?: string;
+  name?: string;
+  value?: string | number | readonly string[];
 }
 
 const variantClasses = {
@@ -85,7 +92,11 @@ export const Button3D = React.forwardRef<HTMLButtonElement, Button3DProps>(
       fullWidth = false,
       disabled,
       children,
-      ...props
+      onClick,
+      type = 'button',
+      form,
+      name,
+      value,
     },
     ref
   ) => {
@@ -107,8 +118,8 @@ export const Button3D = React.forwardRef<HTMLButtonElement, Button3DProps>(
         setRipples((prev) => prev.filter((r) => r.id !== ripple.id));
       }, 600);
 
-      if (props.onClick) {
-        props.onClick(e);
+      if (onClick) {
+        onClick(e);
       }
     };
 
@@ -154,8 +165,11 @@ export const Button3D = React.forwardRef<HTMLButtonElement, Button3DProps>(
           scale: 0.98,
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         } : undefined}
+        type={type}
+        form={form}
+        name={name}
+        value={value}
         onClick={handleClick}
-        {...props}
       >
         {/* Gradient shine sweep */}
         <motion.div

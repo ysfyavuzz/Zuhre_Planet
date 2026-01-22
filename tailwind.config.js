@@ -57,8 +57,13 @@ export default {
       },
       boxShadow: {
         '3d': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), inset 0 2px 0 rgba(255, 255, 255, 0.15), inset 0 -2px 0 rgba(0, 0, 0, 0.1)',
+        '3d-sm': '0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
+        '3d-md': '0 4px 8px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.15), 0 16px 32px rgba(0, 0, 0, 0.1)',
         '3d-lg': '0 10px 20px -5px rgba(0, 0, 0, 0.2), 0 6px 6px -3px rgba(0, 0, 0, 0.1)',
         '3d-hover': '0 15px 30px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.15)',
+        'glow-primary': '0 0 40px rgba(225, 29, 72, 0.4)',
+        'glow-accent': '0 0 40px rgba(124, 58, 237, 0.4)',
+        'glow-success': '0 0 40px rgba(16, 185, 129, 0.4)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -95,6 +100,55 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        "wiggle": {
+          "0%, 100%": { transform: "rotate(0deg)" },
+          "25%": { transform: "rotate(-3deg)" },
+          "75%": { transform: "rotate(3deg)" },
+        },
+        "fadeIn": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "fadeInUp": {
+          from: {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "scaleIn": {
+          from: {
+            opacity: "0",
+            transform: "scale(0.9)",
+          },
+          to: {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
+        "slideInLeft": {
+          from: {
+            opacity: "0",
+            transform: "translateX(-100%)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+        },
+        "slideInRight": {
+          from: {
+            opacity: "0",
+            transform: "translateX(100%)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateX(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -104,6 +158,14 @@ export default {
         "float": "floating 3s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "gradient": "gradient 15s ease infinite",
+        "wiggle": "wiggle 1s ease-in-out infinite",
+        "fade-in": "fadeIn 0.3s ease-in-out",
+        "fade-in-up": "fadeInUp 0.5s ease-out",
+        "scale-in": "scaleIn 0.3s ease-out",
+        "slide-in-left": "slideInLeft 0.3s ease-out",
+        "slide-in-right": "slideInRight 0.3s ease-out",
+        "spin-slow": "spin 3s linear infinite",
+        "bounce-slow": "bounce 2s infinite",
       },
       screens: {
         'xs': '475px',
@@ -123,6 +185,17 @@ export default {
       maxWidth: {
         '8xl': '88rem',
         '9xl': '96rem',
+      },
+      // Perspective utilities
+      perspective: {
+        '1000': '1000px',
+        '1500': '1500px',
+        '2000': '2000px',
+      },
+      // Transition timing functions
+      transitionTimingFunction: {
+        'bounce-in': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+        'smooth': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
       },
     },
   },

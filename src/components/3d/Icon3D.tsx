@@ -50,7 +50,7 @@ import { cn } from '@/lib/utils';
  * @see {@link Button3D} İlgili 3D buton component
  */
 
-export interface Icon3DProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface Icon3DProps {
   icon: React.ReactNode;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'neutral';
@@ -59,6 +59,8 @@ export interface Icon3DProps extends React.HTMLAttributes<HTMLDivElement> {
   bounce?: boolean;
   rotate360?: boolean;
   children?: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
 }
 
 const sizeClasses = {
@@ -79,7 +81,6 @@ const variantClasses = {
 export const Icon3D = React.forwardRef<HTMLDivElement, Icon3DProps>(
   (
     {
-      className,
       icon,
       size = 'md',
       variant = 'primary',
@@ -88,7 +89,8 @@ export const Icon3D = React.forwardRef<HTMLDivElement, Icon3DProps>(
       bounce = false,
       rotate360 = false,
       children,
-      ...props
+      className,
+      onClick,
     },
     ref
   ) => {
@@ -142,7 +144,7 @@ export const Icon3D = React.forwardRef<HTMLDivElement, Icon3DProps>(
             rotate: { duration: 0.5 }
           }
         }}
-        {...(props as any)}
+        onClick={onClick}
       >
         {/* Top highlight */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-transparent pointer-events-none" />
