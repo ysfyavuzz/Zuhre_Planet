@@ -13,3 +13,5 @@ export { UserManagement } from './UserManagement';
 export { ListingManagement } from './ListingManagement';
 export { MediaModeration } from './MediaModeration';
 export { FinancialReports } from './FinancialReports';
+export { StatCard } from './StatCard';
+export type { StatCardProps, StatCardVariant } from './StatCard';

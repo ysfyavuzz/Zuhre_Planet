@@ -30,8 +30,9 @@
 
 import * as React from 'react';
 import { AdminSidebar } from '@/components/admin';
+import { StatCard } from '@/components/admin/StatCard';
 import { Card } from '@/components/ui/card';
-import { TrendingUp, Users, Eye, DollarSign, Calendar } from 'lucide-react';
+import { TrendingUp, Users, Eye, DollarSign } from 'lucide-react';
 
 export default function AdminAnalytics() {
   return (
@@ -47,57 +48,38 @@ export default function AdminAnalytics() {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">Toplam Ziyaret</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">125.4K</p>
-                  <p className="text-xs text-green-600 mt-1">+12% geçen aya göre</p>
-                </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Eye className="w-6 h-6 text-blue-600" />
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">Aktif Kullanıcı</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">8.2K</p>
-                  <p className="text-xs text-green-600 mt-1">+8% geçen aya göre</p>
-                </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-green-600" />
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">İlan Görüntülenme</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">45.8K</p>
-                  <p className="text-xs text-green-600 mt-1">+23% geçen aya göre</p>
-                </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-purple-600" />
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-500">Toplam Gelir</p>
-                  <p className="text-3xl font-bold text-gray-900 mt-1">₺325K</p>
-                  <p className="text-xs text-green-600 mt-1">+18% geçen aya göre</p>
-                </div>
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-                  <DollarSign className="w-6 h-6 text-yellow-600" />
-                </div>
-              </div>
-            </Card>
+            <StatCard
+              title="Toplam Ziyaret"
+              value="125.4K"
+              icon={Eye}
+              variant="default"
+              trend="+12%"
+              description="geçen aya göre"
+            />
+            <StatCard
+              title="Aktif Kullanıcı"
+              value="8.2K"
+              icon={Users}
+              variant="success"
+              trend="+8%"
+              description="geçen aya göre"
+            />
+            <StatCard
+              title="İlan Görüntülenme"
+              value="45.8K"
+              icon={TrendingUp}
+              variant="info"
+              trend="+23%"
+              description="geçen aya göre"
+            />
+            <StatCard
+              title="Toplam Gelir"
+              value="₺325K"
+              icon={DollarSign}
+              variant="warning"
+              trend="+18%"
+              description="geçen aya göre"
+            />
           </div>
 
           {/* Charts Section */}
