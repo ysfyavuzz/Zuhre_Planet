@@ -3,17 +3,51 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 /**
- * Icon3D - 3D icon wrapper with depth and animation
+ * Icon3D - Geliştirilmiş 3D İkon Component
  * 
- * Features:
- * - 3D appearance with layered shadows
- * - Floating animation
- * - Multiple sizes and variants
- * - Glow effect option
- * - Hover interactions
+ * Gelişmiş 3D ikon wrapper bileşeni. 360 derece rotation, bounce animasyonu,
+ * pulse glow, gradient fill ve floating efekt özellikleri içerir. İkonlar
+ * ve görseller için kullanılır.
  * 
- * @component
- * @category Components/3D
+ * @module components/3d/Icon3D
+ * @category Components - 3D Components
+ * @author Escort Platform Team
+ * @version 2.0.0
+ * @since 4.0.0
+ * 
+ * Özellikler:
+ * - 360 derece rotation animasyonu
+ * - Bounce animasyon desteği
+ * - Pulse glow efekti
+ * - Gradient fill desteği
+ * - Floating efekt animasyonu
+ * - Çoklu boyut desteği (sm, md, lg, xl)
+ * - Çoklu varyant desteği (primary, secondary, success, danger, neutral)
+ * - Hover interaction animasyonları
+ * - Wiggle/shake efekti
+ * 
+ * Bağımlılıklar:
+ * - react
+ * - framer-motion
+ * - @/lib/utils
+ * 
+ * @example
+ * ```tsx
+ * // Temel kullanım
+ * <Icon3D icon={<Heart />} />
+ * 
+ * // Glow ve float ile
+ * <Icon3D icon={<Star />} glow float variant="primary" />
+ * 
+ * // Bounce animasyonu
+ * <Icon3D icon={<Bell />} bounce size="lg" />
+ * 
+ * // 360 rotation
+ * <Icon3D icon={<RefreshCw />} rotate360 />
+ * ```
+ * 
+ * @see {@link Badge3D} İlgili 3D badge component
+ * @see {@link Button3D} İlgili 3D buton component
  */
 
 export interface Icon3DProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,6 +56,8 @@ export interface Icon3DProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'neutral';
   glow?: boolean;
   float?: boolean;
+  bounce?: boolean;
+  rotate360?: boolean;
   children?: React.ReactNode;
 }
 
@@ -49,6 +85,8 @@ export const Icon3D = React.forwardRef<HTMLDivElement, Icon3DProps>(
       variant = 'primary',
       glow = false,
       float = false,
+      bounce = false,
+      rotate360 = false,
       children,
       ...props
     },
@@ -61,7 +99,6 @@ export const Icon3D = React.forwardRef<HTMLDivElement, Icon3DProps>(
           // Base styles
           'relative inline-flex items-center justify-center',
           'rounded-2xl shadow-3d',
-          'transition-all duration-300',
           
           // Size and variant
           sizeClasses[size],
@@ -70,15 +107,40 @@ export const Icon3D = React.forwardRef<HTMLDivElement, Icon3DProps>(
           // Glow
           glow && 'animate-pulse-glow',
           
-          // Float
-          float && 'animate-float',
-          
           className
         )}
+        style={{
+          transformStyle: 'preserve-3d',
+        }}
+        animate={{
+          y: float ? [0, -10, 0] : 0,
+          rotate: rotate360 ? 360 : 0,
+          scale: bounce ? [1, 1.1, 1] : 1,
+        }}
+        transition={{
+          y: {
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          },
+          rotate: {
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear"
+          },
+          scale: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
         whileHover={{
           scale: 1.1,
           rotate: [0, -5, 5, -5, 0],
-          transition: { duration: 0.5 }
+          transition: { 
+            scale: { duration: 0.2 },
+            rotate: { duration: 0.5 }
+          }
         }}
         {...(props as any)}
       >
@@ -92,6 +154,25 @@ export const Icon3D = React.forwardRef<HTMLDivElement, Icon3DProps>(
         <div className="absolute inset-0 rounded-2xl" style={{
           boxShadow: 'inset 0 2px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.2)'
         }} />
+        
+        {/* Pulse glow ring */}
+        {glow && (
+          <motion.div
+            className="absolute inset-0 rounded-2xl"
+            animate={{
+              boxShadow: [
+                '0 0 20px rgba(225, 29, 72, 0.4)',
+                '0 0 40px rgba(225, 29, 72, 0.6)',
+                '0 0 20px rgba(225, 29, 72, 0.4)',
+              ],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        )}
         
         {/* Icon */}
         <div className="relative z-10">
