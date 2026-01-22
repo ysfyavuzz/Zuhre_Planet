@@ -437,7 +437,7 @@ export function NotificationSettings({
             >
               <Select
                 value={localPrefs.digest.frequency}
-                onValueChange={(value: any) =>
+                onValueChange={(value: 'immediate' | 'hourly' | 'daily' | 'weekly') =>
                   updateLocalPrefs({
                     digest: {
                       ...localPrefs.digest,

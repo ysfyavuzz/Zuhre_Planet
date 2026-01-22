@@ -33,7 +33,6 @@ export default function Support() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Replace with actual API call
-    console.log('Support request:', formData);
     setIsSubmitted(true);
     
     // Reset form after 3 seconds

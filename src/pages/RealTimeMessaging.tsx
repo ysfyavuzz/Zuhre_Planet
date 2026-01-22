@@ -27,14 +27,12 @@
  */
 
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'wouter';
+import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import { WebSocketProvider, useWebSocket, useChat } from '@/contexts/WebSocketContext';
-import ConversationList, { ConversationListCompact } from '@/components/ConversationList';
+import { WebSocketProvider } from '@/contexts/WebSocketContext';
+import ConversationList from '@/components/ConversationList';
 import MessageBubble, { TypingIndicator, SystemMessage } from '@/components/MessageBubble';
 import ChatInput from '@/components/ChatInput';
 import { useAuth } from '@/contexts/AuthContext';
@@ -233,7 +231,7 @@ export default function RealTimeMessaging() {
   };
 
   // Handle send message
-  const handleSendMessage = (content: string, attachments?: any[]) => {
+  const handleSendMessage = (content: string, attachments?: unknown[]) => {
     if (!selectedConversation) return;
 
     const newMessage: Message = {
@@ -255,7 +253,6 @@ export default function RealTimeMessaging() {
   // Handle typing indicator
   const handleTyping = (isTyping: boolean) => {
     // In real app, send via WebSocket
-    console.log('Typing:', isTyping);
   };
 
   // Handle mark as read

@@ -57,7 +57,7 @@ interface QuickStat {
 }
 
 export default function Analytics() {
-  const { userRole, user } = useAuth();
+  const { userRole } = useAuth();
   const [activeTab, setActiveTab] = useState<'dashboard' | 'reports'>('dashboard');
   const isEscort = userRole === 'escort';
 

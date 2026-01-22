@@ -261,7 +261,6 @@ export default function History() {
   /** Değerlendirme yap */
   const degerlendirmeYap = (randevu: Appointment) => {
     // TODO: Değerlendirme modalını aç
-    console.log('Değerlendirme yapılacak:', randevu.id);
   };
 
   /** Tekrar randevu al */
@@ -272,7 +271,6 @@ export default function History() {
   /** Fatura görüntüle */
   const faturaGoruntule = (randevu: Appointment) => {
     // TODO: Fatura modalını aç veya PDF indir
-    console.log('Fatura görüntülenecek:', randevu.id);
   };
 
   return (

@@ -200,7 +200,7 @@ export default function Pricing() {
 
   const currentPlans = activeTab === 'weekly' ? weeklyPlans : monthlyPlans;
 
-  const handlePurchaseVip = (plan: any) => {
+  const handlePurchaseVip = (plan: typeof weeklyPlans[number]) => {
     setLoading(plan.id);
     // Demo purposes - in real app, this would call the payment API
     setTimeout(() => {

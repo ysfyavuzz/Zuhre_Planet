@@ -100,7 +100,7 @@ export default function Report() {
   /**
    * Form alanı değişikliği handler
    */
-  const handleChange = (field: keyof ComplaintFormData, value: any) => {
+  const handleChange = (field: keyof ComplaintFormData, value: ComplaintFormData[typeof field]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: '' }));

@@ -185,79 +185,59 @@ function LazyRoute({ path, component: Component }: LazyRouteProps) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function AppRouter() {
-  // Debug: Geçerli path'i kontrol et
-  React.useEffect(() => {
-    console.log('[AppRouter] Current path:', window.location.pathname);
-  }, []);
-
   return (
     <>
       {/* Home & Catalog - High Priority */}
       <Route path="/">
-        {() => {
-          console.log('[Route] Matched: / (Home)');
-          return (
-            <RouteErrorBoundary>
-              <Suspense fallback={<RouteLoading />}>
-                <Home />
-              </Suspense>
-            </RouteErrorBoundary>
-          );
-        }}
+        {() => (
+          <RouteErrorBoundary>
+            <Suspense fallback={<RouteLoading />}>
+              <Home />
+            </Suspense>
+          </RouteErrorBoundary>
+        )}
       </Route>
 
       <Route path="/catalog">
-        {() => {
-          console.log('[Route] Matched: /catalog');
-          return (
-            <RouteErrorBoundary>
-              <Suspense fallback={<RouteLoading />}>
-                <Catalog />
-              </Suspense>
-            </RouteErrorBoundary>
-          );
-        }}
+        {() => (
+          <RouteErrorBoundary>
+            <Suspense fallback={<RouteLoading />}>
+              <Catalog />
+            </Suspense>
+          </RouteErrorBoundary>
+        )}
       </Route>
 
       <Route path="/escorts">
-        {() => {
-          console.log('[Route] Matched: /escorts');
-          return (
-            <RouteErrorBoundary>
-              <Suspense fallback={<RouteLoading />}>
-                <EscortList />
-              </Suspense>
-            </RouteErrorBoundary>
-          );
-        }}
+        {() => (
+          <RouteErrorBoundary>
+            <Suspense fallback={<RouteLoading />}>
+              <EscortList />
+            </Suspense>
+          </RouteErrorBoundary>
+        )}
       </Route>
 
       {/* Guest Catalog - Phase 2 */}
       <Route path="/guest-catalog">
-        {() => {
-          console.log('[Route] Matched: /guest-catalog');
-          return (
-            <RouteErrorBoundary>
-              <Suspense fallback={<RouteLoading />}>
-                <GuestCatalog />
-              </Suspense>
-            </RouteErrorBoundary>
-          );
-        }}
+        {() => (
+          <RouteErrorBoundary>
+            <Suspense fallback={<RouteLoading />}>
+              <GuestCatalog />
+            </Suspense>
+          </RouteErrorBoundary>
+        )}
       </Route>
 
       {/* Profile Pages */}
       <Route path="/escort/:id">
-        {(params) => {
-          console.log('[Route] Matched: /escort/:id', params);
-          return (
-            <RouteErrorBoundary>
-              <Suspense fallback={<RouteLoading />}>
-                <EscortProfile />
-              </Suspense>
-            </RouteErrorBoundary>
-          );
-        }}
+        {() => (
+          <RouteErrorBoundary>
+            <Suspense fallback={<RouteLoading />}>
+              <EscortProfile />
+            </Suspense>
+          </RouteErrorBoundary>
+        )}
       </Route>
 
       {/* Escort Routes */}
@@ -507,15 +487,12 @@ function AppRouter() {
 
       {/* 404 */}
       <Route path="/404">
-        {() => {
-          console.log('[Route] Matched: /404');
-          return <NotFound />;
-        }}
+        {() => <NotFound />}
       </Route>
 
       {/* Final fallback route - Only show for truly unmatched paths */}
       <Route>
-        {(params) => {
+        {() => {
           // Get current path
           const path = window.location.pathname;
 
@@ -529,7 +506,10 @@ function AppRouter() {
             '/favorites', '/messages', '/appointments', '/dashboard',
             '/escort/dashboard', '/escort/market',
             '/escort/dashboard/private', '/escort/dashboard/analytics',
-            '/admin/dashboard', '/admin/approvals',
+            '/escort/profile/edit', '/escort/photos', '/escort/calendar', '/escort/earnings',
+            '/customer/settings', '/customer/notifications', '/customer/history', '/customer/wallet',
+            '/admin/dashboard', '/admin/approvals', '/admin/panel',
+            '/about', '/faq', '/how-it-works', '/support', '/report',
             '/contact', '/payment-result', '/verification', '/blog',
             '/upgrade', '/billing', '/dashboard/billing', '/faturalar',
             '/role-selection', '/404',
@@ -547,7 +527,6 @@ function AppRouter() {
 
           if (isValidPath) return null;
 
-          console.log('[Route] No match - showing 404. Current path:', path);
           return <NotFound />;
         }}
       </Route>

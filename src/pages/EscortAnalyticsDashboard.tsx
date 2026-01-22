@@ -286,7 +286,6 @@ export default function EscortAnalyticsDashboard() {
     setIsExporting(true);
     // Simulate export
     await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log(`Exporting as ${format}`);
     setIsExporting(false);
   };
 

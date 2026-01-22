@@ -138,14 +138,12 @@ export default function BillingDashboard() {
   // Handle invoice download
   const handleInvoiceDownload = async (invoiceId: string) => {
     // In real app, download PDF from server
-    console.log('Downloading invoice:', invoiceId);
     alert('Fatura indiriliyor: ' + invoiceId);
   };
 
   // Handle view invoice details
   const handleViewInvoiceDetails = (invoiceId: string) => {
     // In real app, navigate to invoice detail page
-    console.log('View invoice details:', invoiceId);
   };
 
   return (

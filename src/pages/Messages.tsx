@@ -226,9 +226,9 @@ export default function Messages() {
               onEditMessage={editMessage}
               onDeleteMessage={deleteMessage}
               onReactToMessage={reactToMessage}
-              onCall={() => console.log('Call clicked')}
-              onVideoCall={() => console.log('Video call clicked')}
-              onShowInfo={() => console.log('Info clicked')}
+              onCall={() => {}}
+              onVideoCall={() => {}}
+              onShowInfo={() => {}}
               isMobile={false}
             />
           </Card>

@@ -245,16 +245,9 @@ export default function MyAppointments() {
     { enabled: !!user }
   );
 
-  const cancelMutation = trpc.appointments.getUserAppointments.useQuery as any;
-  // const cancelMutation = trpc.appointments.cancel.useMutation({
-  //   onSuccess: () => {
-  //     refetch();
-  //   },
-  // });
-
   const handleCancel = (appointmentId: number) => {
     if (confirm('Randevuyu iptal etmek istediğinizden emin misiniz?')) {
-      cancelMutation.mutate({ appointmentId });
+      // TODO: Implement cancel mutation
     }
   };
 

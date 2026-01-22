@@ -120,9 +120,8 @@ export default function MembershipUpgrade() {
     setShowCheckout(false);
   };
 
-  const handleCheckoutSubmit = async (data: any) => {
+  const handleCheckoutSubmit = async (data: unknown) => {
     // In real app, process payment with API
-    console.log('Processing payment:', data);
     // Redirect to success page or dashboard
     window.location.href = '/payment-result?status=success';
   };

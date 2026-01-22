@@ -180,8 +180,6 @@ export default function AdminRealTimeMonitoring() {
     { city: 'Diğer', users: 134, percentage: 11 },
   ]);
   const [isRealTimeEnabled, setIsRealTimeEnabled] = useState(true);
-  const [selectedMetric, setSelectedMetric] = useState<'users' | 'calls' | 'messages'>('users');
-  const [historyData, setHistoryData] = useState<number[]>([]);
 
   // Refs
   const updateIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -201,12 +199,6 @@ export default function AdminRealTimeMonitoring() {
         memoryUsage: Math.max(0, Math.min(100, prev.memoryUsage + Math.floor(Math.random() * 4) - 2)),
         apiLatency: Math.max(50, prev.apiLatency + Math.floor(Math.random() * 20) - 10),
       }));
-
-      // Update history data
-      setHistoryData(prev => {
-        const newData = [...prev, liveStats.onlineUsers];
-        return newData.slice(-20); // Keep last 20 data points
-      });
     }, 2000);
 
     return () => {

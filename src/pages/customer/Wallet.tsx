@@ -244,7 +244,6 @@ export default function Wallet() {
   const krediYukle = (paket: KrediPaketi) => {
     setSeciliPaket(paket);
     // TODO: Ödeme modalını aç
-    console.log('Kredi yüklenecek:', paket);
   };
 
   /** İşlem türü konfigurasyon */

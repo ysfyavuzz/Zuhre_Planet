@@ -32,44 +32,40 @@ export default function VideoCallPage() {
 
   // Mock handlers
   const handleEndCall = () => {
-    console.log('Call ended');
-    // Navigate back to messages
     window.location.href = '/messages';
   };
 
   const handleToggleMute = () => {
-    console.log('Toggle mute');
+    // TODO: Implement mute toggle
   };
 
   const handleToggleVideo = () => {
-    console.log('Toggle video');
+    // TODO: Implement video toggle
   };
 
   const handleToggleScreenShare = () => {
-    console.log('Toggle screen share');
+    // TODO: Implement screen share toggle
   };
 
   const handleToggleChat = () => {
-    console.log('Toggle chat');
     window.location.href = '/messages';
   };
 
   const handleOpenSettings = () => {
-    console.log('Open settings');
+    // TODO: Implement settings dialog
   };
 
   const handleToggleFullscreen = () => {
-    console.log('Toggle fullscreen');
+    // TODO: Implement fullscreen toggle
   };
 
   const handleTogglePiP = () => {
-    console.log('Toggle PiP');
+    // TODO: Implement PiP toggle
   };
 
   const handleCopyLink = async () => {
     const link = window.location.href;
     await navigator.clipboard.writeText(link);
-    console.log('Link copied:', link);
     return true;
   };
 
