@@ -205,7 +205,7 @@ export function validateCardNumber(cardNumber: string): boolean {
     return false;
   }
   
-  // Reject card numbers with all zeros or all same digit
+  // Reject card numbers with all same digit (e.g., 0000000000000000, 1111111111111111)
   if (/^(.)\1+$/.test(cleaned)) {
     return false;
   }
