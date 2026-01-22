@@ -176,10 +176,12 @@ export default function AdminReports() {
   // Calculate totals with proper typing
   const totals = React.useMemo((): ReportTotals => {
     if (reportType === 'revenue') {
+      const totalRevenue = revenueData.reduce((sum, item) => sum + item.revenue, 0);
+      const totalRating = revenueData.reduce((sum, item) => sum + item.rating, 0);
       return {
-        totalRevenue: revenueData.reduce((sum, item) => sum + item.revenue, 0),
+        totalRevenue,
         totalAppointments: revenueData.reduce((sum, item) => sum + item.appointments, 0),
-        avgRating: (revenueData.reduce((sum, item) => sum + item.rating, 0) / revenueData.length).toFixed(1),
+        avgRating: revenueData.length > 0 ? (totalRating / revenueData.length).toFixed(1) : '0.0',
         activeEscorts: revenueData.length,
       } satisfies RevenueReportTotals;
     } else if (reportType === 'person') {
@@ -197,7 +199,7 @@ export default function AdminReports() {
         totalRevenue,
         totalAppointments: dateData.reduce((sum, item) => sum + item.appointments, 0),
         totalNewUsers: dateData.reduce((sum, item) => sum + item.newUsers, 0),
-        avgDailyRevenue: Math.round(totalRevenue / dateData.length),
+        avgDailyRevenue: dateData.length > 0 ? Math.round(totalRevenue / dateData.length) : 0,
       } satisfies DateReportTotals;
     } else if (reportType === 'detailed') {
       return {

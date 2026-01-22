@@ -92,6 +92,12 @@ export interface StatCardProps {
   trend?: string;
 
   /**
+   * Type of trend indicator (affects color)
+   * @default "positive"
+   */
+  trendType?: 'positive' | 'negative' | 'neutral';
+
+  /**
    * Optional description text
    * @example "Monthly active users", "Last 30 days"
    */
@@ -156,6 +162,7 @@ export function StatCard({
   value,
   icon: Icon,
   trend,
+  trendType = 'positive',
   description,
   variant = 'blue',
   className,
@@ -167,6 +174,13 @@ export function StatCard({
     ? value.toLocaleString()
     : value;
 
+  // Determine trend color based on type
+  const trendColorClass = trendType === 'positive' 
+    ? 'text-green-600' 
+    : trendType === 'negative'
+    ? 'text-red-600'
+    : 'text-gray-600';
+
   return (
     <Card className={cn('transition-shadow hover:shadow-lg', className)}>
       <CardContent className="p-6">
@@ -177,7 +191,7 @@ export function StatCard({
               {formattedValue}
             </p>
             {trend && (
-              <p className="text-xs text-green-600 mt-1">{trend}</p>
+              <p className={cn('text-xs mt-1', trendColorClass)}>{trend}</p>
             )}
             {description && (
               <p className="text-xs text-muted-foreground mt-1">{description}</p>
