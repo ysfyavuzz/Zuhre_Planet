@@ -591,6 +591,7 @@ SMTP_PASS=your-app-password
 | **Deployment** | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) - Vercel, Netlify, Docker deployment rehberi |
 | **API Integration** | [docs/API_INTEGRATION.md](docs/API_INTEGRATION.md) - API kullanımı, mock'tan real API'ye geçiş |
 | **Testing** | [docs/TESTING.md](docs/TESTING.md) - Unit test, E2E test ve best practices |
+| **Competitor Analysis** | [docs/COMPETITOR_ANALYSIS.md](docs/COMPETITOR_ANALYSIS.md) - Feature gap analysis ve gelecek planlama |
 
 ### 📦 Modül Dökümantasyonları
 
@@ -598,6 +599,9 @@ SMTP_PASS=your-app-password
 |-------|---------------|
 | **Components** | [src/components/README.md](src/components/README.md) |
 | **Pages** | [src/pages/README.md](src/pages/README.md) |
+| **Hooks** | [src/hooks/README.md](src/hooks/README.md) |
+| **Services** | [src/services/README.md](src/services/README.md) |
+| **Utils** | [src/utils/README.md](src/utils/README.md) |
 | **Library** | [src/lib/README.md](src/lib/README.md) |
 | **Contexts** | [src/contexts/README.md](src/contexts/README.md) |
 | **Database** | [src/drizzle/README.md](src/drizzle/README.md) |
