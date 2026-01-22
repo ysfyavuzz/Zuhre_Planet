@@ -33,8 +33,7 @@ import type { CurrencyCode, PaymentMethod } from './types';
  * @returns Amount in smallest unit
  */
 export function convertToSmallestUnit(amount: number): number {
-  // Use toFixed to handle floating point precision issues, then convert to number and round
-  return Math.round(Number((amount * 100).toFixed(2)));
+  return Math.round(amount * 100);
 }
 
 /**
@@ -202,11 +201,6 @@ export function validateCardNumber(cardNumber: string): boolean {
   
   // Check length (13-19 digits)
   if (cleaned.length < 13 || cleaned.length > 19) {
-    return false;
-  }
-  
-  // Reject card numbers with all same digit (e.g., 0000000000000000, 1111111111111111)
-  if (/^(.)\1+$/.test(cleaned)) {
     return false;
   }
   
