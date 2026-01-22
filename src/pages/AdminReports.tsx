@@ -574,7 +574,7 @@ export default function AdminReports() {
                 />
                 <StatCard
                   title="Ort. Günlük Gelir"
-                  value={`₺${Math.round((totals as DateTotals).totalRevenue / dateData.length).toLocaleString('tr-TR')}`}
+                  value={`₺${dateData.length > 0 ? Math.round((totals as DateTotals).totalRevenue / dateData.length).toLocaleString('tr-TR') : '0'}`}
                   icon={TrendingUp}
                   variant="warning"
                 />
