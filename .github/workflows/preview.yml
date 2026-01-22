@@ -22,6 +22,8 @@ jobs:
   deploy-preview:
     name: Deploy Preview
     runs-on: ubuntu-latest
+    outputs:
+      preview-url: ${{ steps.deploy.outputs.preview-url }}
     permissions:
       contents: read
       pull-requests: write
@@ -46,6 +48,8 @@ jobs:
       - name: Deploy to Vercel Preview
         id: deploy
         uses: amondnet/vercel-action@v25
+        continue-on-error: true
+        if: ${{ secrets.VERCEL_TOKEN != '' }}
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
@@ -54,7 +58,43 @@ jobs:
           vercel-args: ''
           working-directory: ./
 
+      - name: Notify if secrets missing
+        if: ${{ secrets.VERCEL_TOKEN == '' }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const comment = `### ⚠️ Vercel Deployment Yapılandırması Gerekli
+
+            Preview deployment oluşturulamadı çünkü Vercel secret'ları tanımlanmamış.
+
+            #### Gerekli Ayarlar
+
+            Aşağıdaki secret'ları repository ayarlarına eklemelisiniz:
+
+            1. **VERCEL_TOKEN** - Vercel API token'ınız
+            2. **VERCEL_ORG_ID** - Vercel organizasyon ID'niz  
+            3. **VERCEL_PROJECT_ID** - Vercel proje ID'niz
+
+            #### Nasıl Yapılır?
+
+            1. [Vercel token oluşturun](https://vercel.com/account/tokens)
+            2. [Repository secrets sayfasına](https://github.com/${{ github.repository }}/settings/secrets/actions) gidin
+            3. Yukarıdaki secret'ları ekleyin
+            4. Workflow'u tekrar çalıştırın
+
+            ---
+            <sub>Bu mesaj otomatik olarak oluşturulmuştur.</sub>`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+
       - name: Comment PR with preview URL
+        if: ${{ steps.deploy.outcome == 'success' && steps.deploy.outputs.preview-url != '' }}
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -110,6 +150,7 @@ jobs:
             }
 
       - name: Add deployment status check
+        if: ${{ steps.deploy.outcome == 'success' }}
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -129,6 +170,7 @@ jobs:
     name: Lighthouse CI
     runs-on: ubuntu-latest
     needs: deploy-preview
+    if: ${{ needs.deploy-preview.outputs.preview-url != '' }}
     permissions:
       contents: read
     steps:
