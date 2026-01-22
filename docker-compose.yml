@@ -1,0 +1,123 @@
+# ==================================
+# Docker Compose Configuration
+# ==================================
+# Services:
+# - frontend: React/Vite application
+# - backend: Backend API (placeholder)
+# - redis: Caching service
+# - nginx: Reverse proxy
+# ==================================
+
+version: '3.8'
+
+services:
+  # Frontend service
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: escort-platform-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "/health-check.sh"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.escort-platform.service=frontend"
+      - "com.escort-platform.description=React frontend"
+
+  # Backend API service (placeholder)
+  # Uncomment and configure when backend is ready
+  # backend:
+  #   image: node:20-alpine
+  #   container_name: escort-platform-backend
+  #   restart: unless-stopped
+  #   working_dir: /app
+  #   volumes:
+  #     - ./backend:/app
+  #   command: npm start
+  #   ports:
+  #     - "3001:3001"
+  #   environment:
+  #     - NODE_ENV=production
+  #     - DATABASE_URL=${DATABASE_URL}
+  #     - JWT_SECRET=${JWT_SECRET}
+  #     - REDIS_URL=redis://redis:6379
+  #   depends_on:
+  #     - redis
+  #   networks:
+  #     - app-network
+  #   healthcheck:
+  #     test: ["CMD", "wget", "--spider", "-q", "http://localhost:3001/health"]
+  #     interval: 30s
+  #     timeout: 3s
+  #     retries: 3
+  #   labels:
+  #     - "com.escort-platform.service=backend"
+  #     - "com.escort-platform.description=Backend API"
+
+  # Redis caching service
+  redis:
+    image: redis:7-alpine
+    container_name: escort-platform-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-changeme}
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    labels:
+      - "com.escort-platform.service=redis"
+      - "com.escort-platform.description=Redis cache"
+
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: escort-platform-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - frontend
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+    labels:
+      - "com.escort-platform.service=nginx"
+      - "com.escort-platform.description=Reverse proxy"
+
+# Networks
+networks:
+  app-network:
+    driver: bridge
+    name: escort-platform-network
+
+# Volumes
+volumes:
+  redis-data:
+    driver: local
+    name: escort-platform-redis-data

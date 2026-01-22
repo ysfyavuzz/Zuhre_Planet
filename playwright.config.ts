@@ -34,7 +34,12 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html', { outputFolder: 'playwright-report' }],
+    ['json', { outputFile: 'test-results/results.json' }],
+    ['junit', { outputFile: 'test-results/junit.xml' }],
+    ['list'],
+  ],
   
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -49,6 +54,21 @@ export default defineConfig({
     
     /* Video on failure */
     video: 'retain-on-failure',
+    
+    /* Locale */
+    locale: 'tr-TR',
+    
+    /* Timezone */
+    timezoneId: 'Europe/Istanbul',
+    
+    /* Viewport */
+    viewport: { width: 1280, height: 720 },
+    
+    /* Action timeout */
+    actionTimeout: 10000,
+    
+    /* Navigation timeout */
+    navigationTimeout: 30000,
   },
 
   /* Configure projects for major browsers */
@@ -95,5 +115,18 @@ export default defineConfig({
     url: 'http://localhost:5173',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
+    stdout: 'ignore',
+    stderr: 'pipe',
   },
+
+  /* Global timeout for each test */
+  timeout: 60 * 1000,
+
+  /* Expect timeout */
+  expect: {
+    timeout: 10 * 1000,
+  },
+
+  /* Output folder for test artifacts */
+  outputDir: 'test-results',
 });

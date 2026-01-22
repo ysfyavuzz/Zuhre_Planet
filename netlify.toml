@@ -1,0 +1,119 @@
+/**
+ * Netlify Deployment Configuration
+ * 
+ * Configuration for deploying the escort platform to Netlify.
+ * Includes build settings, redirects, and security headers.
+ * 
+ * @see https://docs.netlify.com/configure-builds/file-based-configuration/
+ */
+
+# Build settings
+[build]
+  # Build command to execute
+  command = "npm run build"
+  
+  # Directory to deploy (must match Vite output)
+  publish = "dist"
+  
+  # Functions directory (if using Netlify Functions)
+  functions = "netlify/functions"
+
+# Redirects and rewrites
+[[redirects]]
+  # SPA fallback - redirect all routes to index.html
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  # Redirect /home to root
+  from = "/home"
+  to = "/"
+  status = 301
+  force = true
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Content Security Policy
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://plausible.io;
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data: https: blob:;
+      font-src 'self' data:;
+      connect-src 'self' https://www.google-analytics.com https://plausible.io wss:;
+      frame-ancestors 'none';
+      base-uri 'self';
+      form-action 'self';
+    """
+    
+    # Prevent MIME type sniffing
+    X-Content-Type-Options = "nosniff"
+    
+    # Prevent clickjacking
+    X-Frame-Options = "DENY"
+    
+    # XSS Protection
+    X-XSS-Protection = "1; mode=block"
+    
+    # Referrer policy
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Permissions policy
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(self), payment=(self)"
+    
+    # HSTS
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Cross-Origin policies
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+
+# Cache control for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# No cache for HTML files
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+
+# Environment variables (configure in Netlify UI)
+# VITE_API_URL
+# VITE_WS_URL
+# VITE_GA_MEASUREMENT_ID
+# VITE_PLAUSIBLE_DOMAIN
+# DATABASE_URL
+# JWT_SECRET
+# SMTP_HOST
+# SMTP_USER
+# SMTP_PASS
+
+# Plugin configuration
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  
+  [[plugins.inputs.audits]]
+    path = "/"
+    
+    [plugins.inputs.thresholds]
+      performance = 0.9
+      accessibility = 0.9
+      best-practices = 0.9
+      seo = 0.9
