@@ -199,6 +199,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className
         )}
         disabled={isDisabled}
+        aria-disabled={isDisabled}
         style={magnetic ? { x: magneticX, y: magneticY } : undefined}
         animate={showSuccess ? { scale: [1, 1.1, 1] } : showError ? { x: [-10, 10, -10, 10, 0] } : {}}
         transition={{ duration: showSuccess ? 0.3 : showError ? 0.4 : 0.2 }}
