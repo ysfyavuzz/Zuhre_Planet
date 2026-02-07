@@ -1,67 +1,142 @@
 /**
  * Premium Hero Banner Component
  * 
- * Ana sayfa için lüks ve etkileyici hero banner.
- * Gradient arka planı, animasyonlar ve premium tasarım öğeleri içerir.
+ * Ana sayfa için lüks ve etkileyici hero banner bileşeni.
+ * Kozmik arka plan, animasyonlu nebula efektleri ve yıldız parçacıkları içerir.
  * 
  * @module components/PremiumHeroBanner
  * @category Components - Sections
+ * 
+ * Features:
+ * - Kozmik nebula arka plan (cosmic-bg.jpg)
+ * - Animated nebula orbları (Gold, Purple, Rose)
+ * - 30 adet twinkle animasyonlu yıldız parçacığı
+ * - Responsive tasarım (mobile-first)
+ * - Framer Motion animasyonları
+ * - İstatistik kartları (Aktif İlan, Günlük Ziyaret, Doğrulanmış Profil)
+ * 
+ * @example
+ * ```tsx
+ * <PremiumHeroBanner
+ *   title="Lüks ve Seçkin Deneyim"
+ *   subtitle="Türkiye'nin en kaliteli platformu"
+ *   ctaText="Hemen Keşfet"
+ *   onCtaClick={() => navigate('/catalog')}
+ * />
+ * ```
+ * 
+ * @see {@link StatCard} - İstatistik kartı alt bileşeni
+ * @see {@link PremiumDivider} - Bölüm ayırıcı
+ * @see {@link PremiumSectionHeader} - Bölüm başlığı
  */
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FloatingElement, PulseGlow, AnimatedText } from './PremiumAnimations';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import '../styles/premium-theme.css';
 
+/**
+ * PremiumHeroBanner bileşeni için prop tanımları
+ */
 interface PremiumHeroBannerProps {
+  /** Ana başlık metni */
   title: string;
+  /** Alt başlık/açıklama metni */
   subtitle: string;
+  /** CTA butonu metni (varsayılan: 'Keşfet') */
   ctaText?: string;
+  /** CTA butonuna tıklama handler'ı */
   onCtaClick?: () => void;
-  backgroundImage?: string;
+  /** Parçacık animasyonlarını göster/gizle (varsayılan: true) */
   showParticles?: boolean;
 }
+
+/**
+ * Yıldız parçacığı veri yapısı
+ */
+interface StarParticle {
+  /** Benzersiz yıldız ID'si */
+  id: number;
+  /** Yatay konum (%) */
+  left: string;
+  /** Dikey konum (%) */
+  top: string;
+  /** Yıldız boyutu (px) */
+  size: number;
+  /** Animasyon gecikmesi (s) */
+  delay: number;
+}
+
 
 export const PremiumHeroBanner: React.FC<PremiumHeroBannerProps> = ({
   title,
   subtitle,
   ctaText = 'Keşfet',
   onCtaClick,
-  backgroundImage,
   showParticles = true,
 }) => {
-  return (
-    <div className="relative overflow-hidden h-screen min-h-[600px] max-h-[1000px]">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-premium-dark" />
-      
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-background">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-background z-0" />
-      </div>
+  // Generate random star positions
+  const stars = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    size: Math.random() * 3 + 2,
+    delay: Math.random() * 3,
+  }));
 
-      {/* Animated Background Elements */}
+  return (
+    <div className="cosmic-bg relative overflow-hidden h-screen min-h-[600px] max-h-[1000px]">
+      {/* Cosmic Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/cosmic-bg.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+      
+      {/* Dark Overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background z-[1]" />
+
+      {/* Animated Nebula Orbs */}
       {showParticles && (
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Floating Orbs */}
-          <FloatingElement
-            className="absolute top-10 left-10 w-20 md:w-32 h-20 md:h-32 rounded-full bg-gradient-gold-purple opacity-10 blur-3xl"
-            duration={4}
-          >
-            <div />
-          </FloatingElement>
-          <FloatingElement
-            className="absolute bottom-20 right-10 w-24 md:w-40 h-24 md:h-40 rounded-full bg-gradient-purple-rose opacity-10 blur-3xl"
-            duration={5}
-          >
-            <div />
-          </FloatingElement>
+        <div className="absolute inset-0 overflow-hidden z-[2] pointer-events-none">
+          {/* Gold Nebula */}
+          <div 
+            className="nebula-orb nebula-orb-gold absolute w-64 md:w-96 h-64 md:h-96"
+            style={{ top: '10%', left: '5%', animationDelay: '0s' }}
+          />
+          {/* Purple Nebula */}
+          <div 
+            className="nebula-orb nebula-orb-purple absolute w-80 md:w-[500px] h-80 md:h-[500px]"
+            style={{ bottom: '5%', right: '0%', animationDelay: '-5s' }}
+          />
+          {/* Rose Nebula */}
+          <div 
+            className="nebula-orb nebula-orb-rose absolute w-48 md:w-80 h-48 md:h-80"
+            style={{ top: '40%', right: '20%', animationDelay: '-10s' }}
+          />
+
+          {/* Star Particles */}
+          {stars.map((star) => (
+            <div
+              key={star.id}
+              className="star-particle"
+              style={{
+                left: star.left,
+                top: star.top,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+                animationDelay: `${star.delay}s`,
+              }}
+            />
+          ))}
         </div>
       )}
 
       {/* Content - Centered and Responsive */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-center pt-16 md:pt-20">
+      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-center pt-20 md:pt-24">
         {/* Large Logo - Responsive sizing */}
         <motion.div
           className="mb-4 md:mb-6"

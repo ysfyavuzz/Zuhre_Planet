@@ -1,15 +1,30 @@
 /**
- * Home Page
+ * Home Page - Ana Sayfa
  * 
- * Landing page showcasing the platform with premium hero section, VIP showcase, and main catalog.
+ * Platform ana sayfası - kozmik hero banner, VIP vitrini, özellik kartları,
+ * son ilanlar ve üyelik CTA bölümlerini içerir.
+ * 
+ * @module pages/Home
+ * @category Pages
+ * 
+ * Sections:
+ * 1. PremiumHeroBanner - Kozmik temalı ana banner
+ * 2. VIP Vitrin - Öne çıkan VIP profiller (3 adet)
+ * 3. Features - Platform özellikleri (4 kart)
+ * 4. Yeni İlanlar - Son eklenen profiller (6 adet)
+ * 5. Join CTA - Üyelik teşvik bölümü
+ * 
+ * @example
+ * ```tsx
+ * <Route path="/" component={Home} />
+ * ```
  */
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from "wouter";
-import { Header } from "@/components/Header";
 import Footer from '@/components/Footer';
-import BottomNav from "@/components/BottomNav";
+import CosmicNav from "@/components/CosmicNav";
 import { PremiumHeroBanner, PremiumSectionHeader, PremiumDivider } from "@/components/PremiumHeroBanner";
 import { VipPremiumCard } from "@/components/VipPremiumCard";
 import { StandardCard } from "@/components/StandardCard";
@@ -18,8 +33,16 @@ import { Crown, Shield, Star, Zap, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedContainer, AnimatedItem } from "@/components/PremiumAnimations";
 
-export default function Home() {
+/**
+ * Ana sayfa bileşeni
+ * 
+ * @returns {JSX.Element} Render edilmiş ana sayfa
+ */
+export default function Home(): JSX.Element {
+  /** VIP profiller - sadece ilk 3 tanesi gösteriliyor */
   const vipEscorts = mockEscorts.filter(e => e.isVip).slice(0, 3);
+  
+  /** Son eklenen profiller - VIP olmayanlardan ilk 6 tanesi */
   const recentEscorts = mockEscorts.filter(e => !e.isVip).slice(0, 6);
 
   return (
@@ -111,13 +134,14 @@ export default function Home() {
         </section>
 
         {/* Join CTA */}
-        <section className="relative rounded-3xl overflow-hidden py-20 px-8 text-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/40 to-gold-900/40 z-0" />
-          <div className="absolute inset-0 bg-black/60 z-0" />
+        <section className="card-cosmic relative rounded-3xl overflow-hidden py-16 md:py-20 px-8 text-center border-animated">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 to-amber-900/30 z-0" />
           <div className="relative z-10 max-w-3xl mx-auto">
-            <Crown className="w-16 h-16 text-gold-500 mx-auto mb-6" />
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Kendi İlanınızı Oluşturun</h2>
-            <p className="text-xl text-dark-text-secondary mb-10">
+            <div className="icon-3d p-4 mx-auto mb-6 w-fit">
+              <Crown className="w-12 h-12 md:w-16 md:h-16 text-primary" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-cosmic-glow">Kendi İlanınızı Oluşturun</h2>
+            <p className="text-lg md:text-xl text-muted-foreground mb-10">
               Siz de seçkin üyelerimiz arasına katılın ve binlerce kullanıcıya ulaşın. 
               Hemen kayıt olun ve profilinizi oluşturun.
             </p>
@@ -140,19 +164,19 @@ export default function Home() {
       
       <Footer />
 
-      <BottomNav />
+      <CosmicNav />
     </div>
   );
 }
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
   return (
-    <div className="flex flex-col items-center text-center space-y-4">
-      <div className="p-4 bg-dark-bg rounded-2xl border border-dark-border shadow-inner">
+    <div className="flex flex-col items-center text-center space-y-4 group">
+      <div className="icon-3d icon-floating p-5">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-white">{title}</h3>
-      <p className="text-dark-text-secondary text-sm leading-relaxed">{description}</p>
+      <h3 className="text-xl font-bold text-foreground group-hover:text-gradient-cosmic transition-all">{title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
     </div>
   );
 }

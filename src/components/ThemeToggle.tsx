@@ -1,6 +1,39 @@
+/**
+ * ThemeToggle Component
+ * 
+ * Tema değiştirme bileşeni - Açık/Koyu/Sistem modları arasında geçiş sağlar.
+ * Glass-morphism ve gold glow efektleri ile premium görünüm.
+ * 
+ * @module components/ThemeToggle
+ * @category Components - UI Controls
+ * 
+ * Features:
+ * - Açık tema (Light Mode)
+ * - Koyu tema (Dark Mode)  
+ * - Sistem teması (Tarayıcı tercihine göre)
+ * - LocalStorage ile kalıcı tema tercihi
+ * - Dropdown menü ile tema seçimi
+ * - Glass-card ve glow efektleri
+ * 
+ * @example
+ * ```tsx
+ * <ThemeToggle />
+ * ```
+ */
+
 import { Moon, Sun, Monitor } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useState, useRef, useEffect } from 'react';
+
+/** Tema seçenekleri için tip tanımı */
+type ThemeOption = {
+  /** Tema değeri: light, dark veya system */
+  value: 'light' | 'dark' | 'system';
+  /** Kullanıcıya gösterilen etiket */
+  label: string;
+  /** Tema ikonu */
+  icon: React.ElementType;
+};
 
 export function ThemeToggle() {
   const { theme, setTheme, actualTheme } = useTheme();

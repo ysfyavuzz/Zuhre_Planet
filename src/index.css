@@ -5,6 +5,7 @@
 @import "./styles/premium-theme.css";
 @import "./styles/animations.css";
 @import "./styles/3d-effects.css";
+@import "./styles/cosmic-theme.css";
 
 :root {
   /* ===== LIGHT THEME (Premium Cream & Gold) ===== */
