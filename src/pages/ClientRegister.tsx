@@ -33,7 +33,7 @@
  * ```
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -63,6 +63,8 @@ export default function ClientRegister() {
   const [isVerified, setIsVerified] = useState(false);
   const [codeTimer, setCodeTimer] = useState(0);
 
+
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -88,16 +90,19 @@ export default function ClientRegister() {
     // Simulate sending verification code
     setIsCodeSent(true);
     setCodeTimer(60); // 60 seconds countdown
-    const timer = setInterval(() => {
-      setCodeTimer((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
   };
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (codeTimer > 0) {
+      timer = setInterval(() => {
+        setCodeTimer((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [codeTimer]);
 
   const handleVerifyCode = () => {
     // Mock verification - accept any 4-digit code

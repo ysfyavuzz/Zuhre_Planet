@@ -38,7 +38,7 @@
  * ```
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -55,6 +55,7 @@ type Step = 1 | 2 | 3 | 4 | 5 | 6;
 export default function EscortRegister() {
   const [, setLocation] = useLocation();
   const [currentStep, setCurrentStep] = useState<Step>(1);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -127,16 +128,19 @@ export default function EscortRegister() {
     }
     setIsCodeSent(true);
     setCodeTimer(60);
-    const timer = setInterval(() => {
-      setCodeTimer((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
   };
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (codeTimer > 0) {
+      timer = setInterval(() => {
+        setCodeTimer((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [codeTimer]);
 
   const handleVerifyCode = () => {
     if (verificationCode.length === 4) {
@@ -284,7 +288,7 @@ export default function EscortRegister() {
                   <input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     className="w-full px-4 py-3 rounded-xl border border-border/50 bg-background focus:border-primary focus:ring-2 focus:ring-primary/20"
                     placeholder="Örn: Ayşe"
                     required
@@ -298,7 +302,7 @@ export default function EscortRegister() {
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                       className="w-full pl-12 pr-4 py-3 rounded-xl border border-border/50 bg-background focus:border-primary focus:ring-2 focus:ring-primary/20"
                       placeholder="ornek@email.com"
                       required
@@ -313,7 +317,7 @@ export default function EscortRegister() {
                     <input
                       type={showPassword ? 'text' : 'password'}
                       value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                      onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
                       className="w-full pl-12 pr-12 py-3 rounded-xl border border-border/50 bg-background focus:border-primary focus:ring-2 focus:ring-primary/20"
                       placeholder="En az 6 karakter"
                       required

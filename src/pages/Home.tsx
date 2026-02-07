@@ -8,6 +8,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from "wouter";
 import { Header } from "@/components/Header";
+import Footer from '@/components/Footer';
 import BottomNav from "@/components/BottomNav";
 import { PremiumHeroBanner, PremiumSectionHeader, PremiumDivider } from "@/components/PremiumHeroBanner";
 import { VipPremiumCard } from "@/components/VipPremiumCard";
@@ -22,8 +23,8 @@ export default function Home() {
   const recentEscorts = mockEscorts.filter(e => !e.isVip).slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-dark-bg text-white">
-      <Header />
+    <div className="min-h-screen bg-background text-foreground">
+
       
       <PremiumHeroBanner 
         title="Lüks ve Seçkin Deneyim"
@@ -63,7 +64,7 @@ export default function Home() {
         <PremiumDivider variant="gradient" />
 
         {/* Features Section */}
-        <section className="bg-dark-card rounded-3xl p-12 border border-dark-border relative overflow-hidden">
+        <section className="bg-card rounded-3xl p-12 border border-border relative overflow-hidden glass-frost">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-500 via-purple-500 to-gold-500" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <FeatureCard 
@@ -93,8 +94,8 @@ export default function Home() {
         <section>
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
-              <h2 className="text-4xl font-bold text-white mb-2">Yeni İlanlar</h2>
-              <p className="text-dark-text-secondary">Platformumuza en son katılan seçkin üyeler.</p>
+              <h2 className="text-4xl font-bold text-foreground mb-2">Yeni İlanlar</h2>
+              <p className="text-muted-foreground">Platformumuza en son katılan seçkin üyeler.</p>
             </div>
             <Link href="/catalog">
               <Button variant="outline" className="border-dark-border hover:border-gold-500">
@@ -137,23 +138,7 @@ export default function Home() {
 
       </main>
       
-      <footer className="bg-black py-12 border-t border-dark-border mt-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="text-2xl font-bold text-gradient-gold mb-6">ESCİLAN SİTESİ</div>
-          <p className="text-dark-text-secondary max-w-md mx-auto mb-8">
-            Türkiye'nin en prestijli eskort ilan platformu. Kalite, güven ve gizlilik esastır.
-          </p>
-          <div className="flex justify-center gap-8 text-sm text-dark-text-secondary mb-8">
-            <Link href="/terms">Kullanım Koşulları</Link>
-            <Link href="/privacy">Gizlilik Politikası</Link>
-            <Link href="/kvkk">KVKK</Link>
-            <Link href="/contact">İletişim</Link>
-          </div>
-          <div className="text-xs text-dark-text-secondary opacity-50">
-            &copy; 2024 EscilanSitesi. Tüm hakları saklıdır. +18
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <BottomNav />
     </div>

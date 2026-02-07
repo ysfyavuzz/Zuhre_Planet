@@ -36,7 +36,9 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
                     {/* Brand Section */}
                     <div className="md:col-span-2">
-                        <h2 className="text-3xl font-black mb-6 tracking-tighter">ESCORT PLATFORM</h2>
+                        <div className="flex items-center gap-2 mb-6">
+                            <img src="/logo-full.png" alt="ZEVK EVRENİ" className="h-16 md:h-20 w-auto" />
+                        </div>
                         <p className="text-muted-foreground max-w-md leading-relaxed mb-6">
                             Türkiye'nin en güvenilir ve seçkin escort ilan platformu. Profesyonel hizmet,
                             doğrulanmış profiller ve gizlilik odaklı yaklaşım.
@@ -147,4 +149,4 @@ export default function Footer() {
     );
 }
 
-export { Footer };
+

@@ -32,61 +32,53 @@ export const PremiumHeroBanner: React.FC<PremiumHeroBannerProps> = ({
   showParticles = true,
 }) => {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden h-screen min-h-[600px] max-h-[1000px]">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-premium-dark" />
       
       {/* Background Image with Overlay */}
-      {backgroundImage && (
-        <div className="absolute inset-0">
-          <img
-            src={backgroundImage}
-            alt="Hero Background"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-dark-overlay" />
-        </div>
-      )}
+      <div className="absolute inset-0 bg-background">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-background z-0" />
+      </div>
 
       {/* Animated Background Elements */}
       {showParticles && (
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating Orbs */}
           <FloatingElement
-            className="absolute top-10 left-10 w-32 h-32 rounded-full bg-gradient-gold-purple opacity-10 blur-3xl"
+            className="absolute top-10 left-10 w-20 md:w-32 h-20 md:h-32 rounded-full bg-gradient-gold-purple opacity-10 blur-3xl"
             duration={4}
           >
             <div />
           </FloatingElement>
           <FloatingElement
-            className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-gradient-purple-rose opacity-10 blur-3xl"
+            className="absolute bottom-20 right-10 w-24 md:w-40 h-24 md:h-40 rounded-full bg-gradient-purple-rose opacity-10 blur-3xl"
             duration={5}
-          >
-            <div />
-          </FloatingElement>
-          <FloatingElement
-            className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-gold-500 opacity-5 blur-2xl"
-            duration={3}
           >
             <div />
           </FloatingElement>
         </div>
       )}
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20 md:py-32 flex flex-col items-center justify-center text-center">
-        {/* Decorative Top Element */}
+      {/* Content - Centered and Responsive */}
+      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-center pt-16 md:pt-20">
+        {/* Large Logo - Responsive sizing */}
         <motion.div
-          className="mb-8"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          className="mb-4 md:mb-6"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-          <Sparkles className="w-12 h-12 text-gold-500 mx-auto" />
+          <img 
+            src="/logo-full.png" 
+            alt="ZEVK EVRENİ" 
+            className="w-48 sm:w-64 md:w-80 lg:w-96 h-auto drop-shadow-2xl mx-auto"
+          />
         </motion.div>
 
-        {/* Title */}
+        {/* Title - Responsive font sizes */}
         <motion.h1
-          className="text-5xl md:text-7xl font-bold mb-6 text-gradient-gold"
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 text-gradient-gold"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
@@ -94,9 +86,9 @@ export const PremiumHeroBanner: React.FC<PremiumHeroBannerProps> = ({
           {title}
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - Responsive */}
         <motion.p
-          className="text-xl md:text-2xl text-dark-text-secondary mb-8 max-w-2xl"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-4 md:mb-6 max-w-xs sm:max-w-md md:max-w-xl lg:max-w-2xl px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -104,10 +96,10 @@ export const PremiumHeroBanner: React.FC<PremiumHeroBannerProps> = ({
           {subtitle}
         </motion.p>
 
-        {/* CTA Button */}
+        {/* CTA Button - Responsive */}
         {onCtaClick && (
           <motion.button
-            className="btn-premium flex items-center gap-2 text-lg px-8 py-4 rounded-lg"
+            className="btn-premium flex items-center gap-2 text-sm md:text-base lg:text-lg px-6 md:px-8 py-3 md:py-4 rounded-lg"
             onClick={onCtaClick}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -116,13 +108,13 @@ export const PremiumHeroBanner: React.FC<PremiumHeroBannerProps> = ({
             whileTap={{ scale: 0.95 }}
           >
             {ctaText}
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
           </motion.button>
         )}
 
-        {/* Stats Row */}
+        {/* Stats Row - Responsive and Compact */}
         <motion.div
-          className="mt-16 grid grid-cols-3 gap-8 w-full max-w-2xl"
+          className="mt-6 md:mt-10 grid grid-cols-3 gap-4 md:gap-8 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -134,7 +126,7 @@ export const PremiumHeroBanner: React.FC<PremiumHeroBannerProps> = ({
       </div>
 
       {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark-bg to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-24 bg-gradient-to-t from-background to-transparent" />
     </div>
   );
 };
@@ -149,10 +141,10 @@ const StatCard: React.FC<StatCardProps> = ({ number, label }) => (
     className="text-center"
     whileHover={{ scale: 1.05 }}
   >
-    <div className="text-3xl md:text-4xl font-bold text-gradient-premium mb-2">
+    <div className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold text-gradient-premium mb-1">
       {number}
     </div>
-    <div className="text-dark-text-secondary text-sm md:text-base">
+    <div className="text-muted-foreground text-xs sm:text-sm md:text-base">
       {label}
     </div>
   </motion.div>

@@ -44,6 +44,7 @@ import {
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
+import ThemeToggle from './ThemeToggle';
 
 export const Header = React.memo(function Header() {
   const [location] = useLocation();
@@ -147,27 +148,24 @@ export const Header = React.memo(function Header() {
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
 
-            {/* 3D Logo */}
+            {/* Logo Image */}
             <Link href="/">
-              <div className="flex items-center gap-2 cursor-pointer group perspective-1000">
-                <motion.div
-                  className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    boxShadow: '0 4px 20px rgba(236, 72, 153, 0.4), 0 0 40px rgba(236, 72, 153, 0.2)',
-                  }}
-                  whileHover={{
-                    rotateY: 180,
-                    rotateX: 10,
-                    scale: 1.1,
-                    transition: { duration: 0.6 }
-                  }}
-                >
-                  <Crown className="w-4 h-4 text-white" style={{ transform: 'translateZ(20px)' }} />
-                </motion.div>
-                <h1 className={`font-black tracking-tighter hidden sm:block transition-all duration-300 ${isNavExpanded ? 'text-lg' : 'text-sm'}`}>
-                  ESCORT<span className="text-primary">PLATFORM</span>
-                </h1>
+              <div className="flex items-center gap-2 cursor-pointer group">
+                <motion.img
+                  src="/logo-full.png"
+                  alt="ZEVK EVRENİ"
+                  className="h-16 md:h-20 w-auto object-contain hidden sm:block"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                />
+                 {/* Mobile Logo (Symbol Only) */}
+                <motion.img
+                  src="/logo-symbol.png"
+                  alt="ZEVK EVRENİ"
+                  className="h-12 w-auto object-contain sm:hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                />
               </div>
             </Link>
           </div>
@@ -206,6 +204,9 @@ export const Header = React.memo(function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-1">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* Messenger Button - Popup */}
             <div className="relative">
               <Button

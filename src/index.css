@@ -7,75 +7,97 @@
 @import "./styles/3d-effects.css";
 
 :root {
-  /* Elegant rose gold and deep purple palette */
-  --primary: oklch(0.55 0.18 340); /* Rose gold */
-  --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.55 0.18 340);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: oklch(0.65 0.15 340);
-  --chart-2: oklch(0.60 0.15 280);
-  --chart-3: oklch(0.55 0.18 340);
-  --chart-4: oklch(0.50 0.18 340);
-  --chart-5: oklch(0.45 0.15 280);
+  /* ===== LIGHT THEME (Premium Cream & Gold) ===== */
+  
+  /* Primary: Rich Gold */
+  --primary: 43 74% 49%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Background: Warm Cream/Off-White */
+  --background: 40 33% 98%;
+  --foreground: 20 14% 15%;
+
+  /* Card: Slightly darker cream for contrast */
+  --card: 40 30% 96%;
+  --card-foreground: 20 14% 15%;
+
+  /* Popover */
+  --popover: 40 30% 96%;
+  --popover-foreground: 20 14% 15%;
+
+  /* Secondary: Warm Gray */
+  --secondary: 30 10% 90%;
+  --secondary-foreground: 20 14% 20%;
+
+  /* Muted */
+  --muted: 30 10% 92%;
+  --muted-foreground: 20 10% 40%;
+
+  /* Accent: Deep Gold */
+  --accent: 45 71% 41%;
+  --accent-foreground: 0 0% 100%;
+
+  /* Destructive */
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Border & Input */
+  --border: 30 15% 85%;
+  --input: 30 15% 85%;
+  --ring: 43 74% 49%;
+
   --radius: 0.75rem;
-  --background: oklch(0.98 0.01 320);
-  --foreground: oklch(0.20 0.02 280);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.02 280);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.02 280);
-  --secondary: oklch(0.92 0.03 320);
-  --secondary-foreground: oklch(0.25 0.02 280);
-  --muted: oklch(0.94 0.02 320);
-  --muted-foreground: oklch(0.50 0.02 280);
-  --accent: oklch(0.60 0.15 280); /* Deep purple */
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.90 0.02 320);
-  --input: oklch(0.90 0.02 320);
-  --ring: oklch(0.55 0.18 340);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.20 0.02 280);
-  --sidebar-accent: oklch(0.94 0.02 320);
-  --sidebar-accent-foreground: oklch(0.25 0.02 280);
-  --sidebar-border: oklch(0.90 0.02 320);
-  --sidebar-ring: oklch(0.55 0.18 340);
+
+  /* Glass Effect Variables */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
 }
 
 .dark {
-  --primary: oklch(0.65 0.18 340);
-  --primary-foreground: oklch(0.15 0.02 280);
-  --sidebar-primary: oklch(0.65 0.18 340);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --background: oklch(0.15 0.02 280);
-  --foreground: oklch(0.95 0.01 320);
-  --card: oklch(0.18 0.02 280);
-  --card-foreground: oklch(0.95 0.01 320);
-  --popover: oklch(0.18 0.02 280);
-  --popover-foreground: oklch(0.95 0.01 320);
-  --secondary: oklch(0.25 0.03 280);
-  --secondary-foreground: oklch(0.95 0.01 320);
-  --muted: oklch(0.25 0.03 280);
-  --muted-foreground: oklch(0.65 0.02 320);
-  --accent: oklch(0.65 0.15 280);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.60 0.22 25);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.25 0.03 280);
-  --input: oklch(0.25 0.03 280);
-  --ring: oklch(0.65 0.18 340);
-  --chart-1: oklch(0.65 0.15 340);
-  --chart-2: oklch(0.60 0.15 280);
-  --chart-3: oklch(0.55 0.18 340);
-  --chart-4: oklch(0.50 0.18 340);
-  --chart-5: oklch(0.45 0.15 280);
-  --sidebar: oklch(0.18 0.02 280);
-  --sidebar-foreground: oklch(0.95 0.01 320);
-  --sidebar-accent: oklch(0.25 0.03 280);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.25 0.03 280);
-  --sidebar-ring: oklch(0.65 0.18 340);
+  /* ===== DARK THEME (Premium Black & Gold) ===== */
+  
+  /* Primary: Bright Gold */
+  --primary: 43 74% 55%;
+  --primary-foreground: 0 0% 5%;
+
+  /* Background: Deep Rich Black */
+  --background: 0 0% 4%;
+  --foreground: 0 0% 98%;
+
+  /* Card: Slightly lighter black */
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 98%;
+
+  /* Popover */
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 98%;
+
+  /* Secondary: Dark Charcoal */
+  --secondary: 240 4% 16%;
+  --secondary-foreground: 0 0% 98%;
+
+  /* Muted */
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+
+  /* Accent: Warm Gold */
+  --accent: 45 71% 45%;
+  --accent-foreground: 0 0% 98%;
+
+  /* Destructive */
+  --destructive: 0 62.8% 40%;
+  --destructive-foreground: 0 0% 98%;
+
+  /* Border & Input */
+  --border: 240 4% 20%;
+  --input: 240 4% 16%;
+  --ring: 43 74% 55%;
+
+  /* Glass Effect Variables */
+  --glass-bg: rgba(0, 0, 0, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(212, 175, 55, 0.15);
 }
 
 @layer base {
@@ -142,17 +164,128 @@
     background-clip: text;
   }
 
-  /* Glass Morphism */
-  .glass-morphism {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
+  /* ===== PREMIUM GLASS CARDS ===== */
+  
+  /* Base Glass Card - Light Theme */
+  .glass-card {
+    background: var(--glass-bg);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+      0 8px 32px var(--glass-shadow),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .dark .glass-morphism {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+  .glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 16px 48px var(--glass-shadow),
+      0 8px 24px var(--glass-shadow),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  /* Frosted Glass - More blur, more premium */
+  .glass-frost {
+    background: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius);
+  }
+
+  .dark .glass-frost {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      0 0 60px rgba(212, 175, 55, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* 3D Gold Shadow */
+  .shadow-3d-gold {
+    box-shadow: 
+      0 4px 16px rgba(212, 175, 55, 0.15),
+      0 8px 32px rgba(212, 175, 55, 0.1),
+      0 16px 48px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .shadow-3d-gold:hover {
+    box-shadow: 
+      0 8px 24px rgba(212, 175, 55, 0.25),
+      0 16px 48px rgba(212, 175, 55, 0.15),
+      0 24px 64px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+  }
+
+  /* 3D Depth Card */
+  .card-depth {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .card-depth::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    border-radius: inherit;
+    transform: translateZ(-20px);
+    filter: blur(10px);
+    opacity: 0.5;
+  }
+
+  .card-depth:hover {
+    transform: translateY(-8px) rotateX(5deg);
+  }
+
+  /* Premium Card with Gold Accent */
+  .card-premium {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(43 74% 49%), transparent);
+    opacity: 0.6;
+  }
+
+  .dark .card-premium {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(212, 175, 55, 0.1);
+  }
+
+  .dark .card-premium::before {
+    opacity: 0.8;
+  }
+
+  /* Legacy Glass Morphism (Updated) */
+  .glass-morphism {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
   }
 
   /* Animated Gradient Background */
