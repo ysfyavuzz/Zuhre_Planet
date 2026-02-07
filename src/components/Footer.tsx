@@ -25,9 +25,19 @@
 
 import { Link } from 'wouter';
 import { Separator } from '@/components/ui/separator';
-import { Shield, CheckCircle2, Heart, Mail, Phone, MapPin } from 'lucide-react';
+/**
+ * Global Footer Component
+ * 
+ * Displays site navigation, legal links, social media, and copyright info.
+ * appearing on every page.
+ * 
+ * @module components/Footer
+ * @category Components - Layout
+ */
 
-export default function Footer() {
+import { Shield, CheckCircle2, Heart, Mail, MapPin } from 'lucide-react';
+
+export function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (

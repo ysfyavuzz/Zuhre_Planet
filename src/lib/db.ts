@@ -21,8 +21,9 @@
  * - Alternative providers supported: PostgreSQL, MySQL, SQLite
  * 
  * Environment Variables Required:
- * - VITE_TURSO_URL: Database connection URL
- * - VITE_TURSO_AUTH_TOKEN: Authentication token for database
+ * - DATABASE_URL: PostgreSQL connection string (Supabase Transaction Pooler URL recommended)
+ * - VITE_SUPABASE_URL: Supabase API URL
+ * - VITE_SUPABASE_ANON_KEY: Supabase Anon Key
  * 
  * @example
  * ```typescript
@@ -46,30 +47,17 @@
  * @todo Add proper view count tracking with separate table
  */
 
-import { drizzle } from 'drizzle-orm/libsql';
-import { createClient } from '@libsql/client';
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
 import { users, escortProfiles, escortPhotos } from '../drizzle/schema';
 import { eq, desc, like, and, or, sql } from 'drizzle-orm';
 
-// Database client setup for production
-// Note: This is for Turso (libsql), you can replace with your preferred database
+// Database client setup for Supabase (Postgres)
+const connectionString = process.env.DATABASE_URL || '';
 
-const isDev = process.env.NODE_ENV === 'development';
-
-// Get environment variables
-const TURSO_URL = process.env.VITE_TURSO_URL || process.env.TURSO_URL || '';
-const TURSO_AUTH_TOKEN = process.env.VITE_TURSO_AUTH_TOKEN || process.env.TURSO_AUTH_TOKEN || '';
-
-// Create Turso client
-const turso = createClient({
-  url: TURSO_URL,
-  authToken: TURSO_AUTH_TOKEN,
-});
-
-// Create Drizzle instance
-export const db = drizzle(turso, {
-  logger: isDev,
-});
+// Disable prefetch as it is not supported for "Transaction" pool mode
+const client = postgres(connectionString, { prepare: false });
+export const db = drizzle(client);
 
 // Alternative: For other databases, you can use:
 
@@ -255,28 +243,30 @@ export async function getCities() {
 // Payment & Credit Functions (Mock implementations)
 export async function createCreditTransaction(userId: number, amount: number, type: 'purchase' | 'spend'): Promise<any>;
 export async function createCreditTransaction(data: any): Promise<any>;
-export async function createCreditTransaction(userIdOrData: number | any, amount?: number, type?: 'purchase' | 'spend') {
+export async function createCreditTransaction(userIdOrData: number | any, _amount?: number, _type?: 'purchase' | 'spend') {
   // Handle both signatures
   if (typeof userIdOrData === 'object') {
     // TODO: Implement actual credit transaction logic with full data object
     return { success: true, balance: userIdOrData.balanceAfter || 0 };
   }
   // TODO: Implement actual credit transaction logic
-  return { success: true, balance: amount || 0 };
+  return { success: true, balance: 0 };
 }
 
-export async function getUserCredits(userId: number) {
+export async function getUserCredits(_userId: number) {
   // TODO: Implement actual credit retrieval logic
   return 0;
 }
 
-export async function activateVip(profileId: number, duration: number | string) {
+export async function activateVip(profileId: number, _duration: number | string) {
   // TODO: Implement VIP activation logic
+  // Use profileId to identify the escort
+  if (!profileId) return { success: false };
   return { success: true };
 }
 
 // User Management Functions
-export async function getUserBalance(userId: number) {
+export async function getUserBalance(_userId: number) {
   // TODO: Implement actual balance retrieval
   return 0;
 }
@@ -286,52 +276,52 @@ export async function updateUserBalance(userId: number, amount: number) {
   return { success: true, balance: amount };
 }
 
-export async function getUserFavorites(userId: number, limit?: number, offset?: number) {
+export async function getUserFavorites(_userId: number, _limit?: number, _offset?: number) {
   // TODO: Implement favorites retrieval
   return [];
 }
 
-export async function addFavorite(userId: number, escortId: number) {
+export async function addFavorite(_userId: number, _escortId: number) {
   // TODO: Implement add favorite
   return { success: true };
 }
 
-export async function removeFavorite(userId: number, escortId: number) {
+export async function removeFavorite(_userId: number, _escortId: number) {
   // TODO: Implement remove favorite
   return { success: true };
 }
 
-export async function isFavorite(userId: number, escortId: number) {
+export async function isFavorite(_userId: number, _escortId: number) {
   // TODO: Implement favorite check
   return false;
 }
 
-export async function getUserById(userId: number) {
+export async function getUserById(_userId: number) {
   // TODO: Implement user retrieval
   return null;
 }
 
-export async function getAllUsers(limit?: number, offset?: number) {
+export async function getAllUsers(_limit?: number, _offset?: number) {
   // TODO: Implement all users retrieval
   return [];
 }
 
-export async function blockUser(userId: number) {
+export async function blockUser(_userId: number) {
   // TODO: Implement block user
   return { success: true };
 }
 
-export async function unblockUser(userId: number) {
+export async function unblockUser(_userId: number) {
   // TODO: Implement unblock user
   return { success: true };
 }
 
-export async function deleteUser(userId: number) {
+export async function deleteUser(_userId: number) {
   // TODO: Implement delete user
   return { success: true };
 }
 
-export async function updateLastActive(userId: number) {
+export async function updateLastActive(_userId: number) {
   // TODO: Implement update last active
   return { success: true };
 }
@@ -342,52 +332,52 @@ export async function getPendingEscorts() {
   return [];
 }
 
-export async function getAllEscortsByStatus(status: string) {
+export async function getAllEscortsByStatus(_status: string) {
   // TODO: Implement escorts by status retrieval
   return [];
 }
 
-export async function updateEscortStatus(escortId: number, status: string) {
+export async function updateEscortStatus(_escortId: number, _status: string) {
   // TODO: Implement escort status update
   return { success: true };
 }
 
-export async function updateEscortVerifiedBadge(escortId: number, verified: boolean) {
+export async function updateEscortVerifiedBadge(_escortId: number, _verified: boolean) {
   // TODO: Implement verified badge update
   return { success: true };
 }
 
-export async function deactivateVip(escortId: number) {
+export async function deactivateVip(_escortId: number) {
   // TODO: Implement VIP deactivation
   return { success: true };
 }
 
-export async function getAllEscorts(limit?: number, offset?: number) {
+export async function getAllEscorts(_limit?: number, _offset?: number) {
   // TODO: Implement all escorts retrieval
   return [];
 }
 
-export async function updateEscortProfile(escortId: number, data: any) {
+export async function updateEscortProfile(_escortId: number, _data: any) {
   // TODO: Implement escort profile update
   return { success: true };
 }
 
-export async function deleteEscort(escortId: number) {
+export async function deleteEscort(_escortId: number) {
   // TODO: Implement escort deletion
   return { success: true };
 }
 
-export async function updateEscortVisibility(escortId: number, visible: boolean) {
+export async function updateEscortVisibility(_escortId: number, _visible: boolean) {
   // TODO: Implement visibility update
   return { success: true };
 }
 
-export async function createEscortProfile(data: any) {
+export async function createEscortProfile(_data: any) {
   // TODO: Implement escort profile creation
   return { success: true, id: 1 };
 }
 
-export async function addEscortPhoto(escortIdOrData: number | any, photoUrl?: string, isPrimary: boolean = false) {
+export async function addEscortPhoto(escortIdOrData: number | any, _photoUrl?: string, _isPrimary: boolean = false) {
   // Handle both signatures
   if (typeof escortIdOrData === 'object') {
     // TODO: Implement photo addition with full data object
@@ -397,7 +387,7 @@ export async function addEscortPhoto(escortIdOrData: number | any, photoUrl?: st
   return { success: true };
 }
 
-export async function getVipEscorts(limit?: number) {
+export async function getVipEscorts(_limit?: number) {
   // TODO: Implement VIP escorts retrieval
   return [];
 }
@@ -408,22 +398,22 @@ export async function getPendingReviews() {
   return [];
 }
 
-export async function updateReviewVerification(reviewId: number, verified: boolean) {
+export async function updateReviewVerification(_reviewId: number, _verified: boolean) {
   // TODO: Implement review verification update
   return { success: true };
 }
 
-export async function deleteReview(reviewId: number) {
+export async function deleteReview(_reviewId: number) {
   // TODO: Implement review deletion
   return { success: true };
 }
 
-export async function updateReview(reviewId: number, data: any) {
+export async function updateReview(_reviewId: number, _data: any) {
   // TODO: Implement review update
   return { success: true };
 }
 
-export async function getAllReviews(limit?: number, offset?: number) {
+export async function getAllReviews(_limit?: number, _offset?: number) {
   // TODO: Implement all reviews retrieval
   return [];
 }
@@ -440,17 +430,17 @@ export async function getTotalEscortsCount() {
 }
 
 // Appointment Functions
-export async function createAppointment(data: any) {
+export async function createAppointment(_data: any) {
   // TODO: Implement appointment creation
   return { success: true, id: 1 };
 }
 
-export async function getUserAppointments(userId: number) {
+export async function getUserAppointments(_userId: number) {
   // TODO: Implement user appointments retrieval
   return [];
 }
 
-export async function getEscortAppointments(escortId: number) {
+export async function getEscortAppointments(_escortId: number) {
   // TODO: Implement escort appointments retrieval
   return [];
 }

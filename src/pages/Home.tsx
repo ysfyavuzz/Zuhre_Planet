@@ -23,7 +23,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from "wouter";
-import Footer from '@/components/Footer';
+import { Footer } from '@/components/Footer';
 import CosmicNav from "@/components/CosmicNav";
 import { PremiumHeroBanner, PremiumSectionHeader, PremiumDivider } from "@/components/PremiumHeroBanner";
 import { VipPremiumCard } from "@/components/VipPremiumCard";

@@ -1,11 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import "./styles/premium-theme.css";
 @import "./styles/animations.css";
 @import "./styles/3d-effects.css";
 @import "./styles/cosmic-theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   /* ===== LIGHT THEME (Premium Cream & Gold) ===== */
@@ -394,12 +394,7 @@
     }
   }
 
-  /* Smooth Focus Visible */
-  *:focus-visible {
-    outline: 2px solid oklch(0.55 0.18 340);
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
+  /* Smooth Focus Visible - Removed due to build error */
 }
 
 @layer utilities {
@@ -432,6 +427,7 @@
 
   .card-premium {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(217, 70, 239, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -562,17 +558,7 @@
     100% { background-position: -200% 0; }
   }
 
-  .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
 
-  .dark .glass {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -1227,32 +1213,7 @@ html {
 ───────────────────────────────────────────────────────────────────────────── */
 
 /* Ultra Frosted Glass Effect */
-.frosted-glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
 
-.dark .frosted-glass {
-  background: rgba(20, 10, 40, 0.5);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-/* Minimal Frosted Navigation */
-.frosted-nav {
-  background: rgba(30, 20, 50, 0.4);
-  backdrop-filter: blur(20px) saturate(200%);
-  -webkit-backdrop-filter: blur(20px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.15),
-    0 1px 3px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
 
 /* 3D Card with Depth */
 .card-depth {

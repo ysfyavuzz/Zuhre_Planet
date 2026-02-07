@@ -28,16 +28,16 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
+
 import { Link } from 'wouter';
 import { SEO } from '@/pages/SEO';
-import Footer from '@/components/Footer';
+import { Footer } from '@/components/Footer';
 import {
-    Shield, Lock, Eye, AlertTriangle, CheckCircle2,
+    Shield, Lock, Eye, AlertTriangle,
     UserCheck, MessageSquare, Phone, MapPin, Clock,
-    Flag, Ban, HelpCircle, ChevronRight, Heart,
-    Camera, CreditCard, Users, Sparkles, AlertCircle,
-    FileText, ExternalLink
+    Flag, Ban, HelpCircle, ChevronRight,
+    Camera, CreditCard, Sparkles, AlertCircle,
+    FileText
 } from 'lucide-react';
 
 const fadeInUp = {

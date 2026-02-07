@@ -5,7 +5,7 @@
  * Features advanced multi-criteria filtering with URL state persistence.
  */
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 import { useSearchParams } from 'wouter';
 import { Header } from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
@@ -27,7 +27,7 @@ export default function Catalog() {
 
   // Active filters from URL
   const activeFilters = useMemo(() => {
-    const filters: Record<string, any> = {};
+    const filters: Record<string, string> = {};
     searchParams.forEach((value, key) => {
       filters[key] = value;
     });
@@ -52,12 +52,12 @@ export default function Catalog() {
 
       return true;
     });
-  }, [mockEscorts, searchParams, searchQuery]);
+  }, [searchParams, searchQuery]);
 
   const vipEscorts = useMemo(() => filteredEscorts.filter(e => e.isVip), [filteredEscorts]);
   const standardEscorts = useMemo(() => filteredEscorts.filter(e => !e.isVip), [filteredEscorts]);
 
-  const handleFilterChange = (newFilters: Record<string, any>) => {
+  const handleFilterChange = (newFilters: Record<string, string | number | boolean | null>) => {
     const params = new URLSearchParams();
     Object.entries(newFilters).forEach(([key, value]) => {
       if (value !== undefined && value !== null && value !== '') {
@@ -80,7 +80,6 @@ export default function Catalog() {
       <PremiumHeroBanner 
         title="Seçkin Katalog"
         subtitle="Türkiye'nin en seçkin ve doğrulanmış profillerini keşfedin."
-        backgroundImage="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=1200"
       />
 
       <main className="container mx-auto px-4 py-8">

@@ -28,7 +28,7 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 │   └──────────────────────┬──────────────────────────────┘         │
 │                          │                                        │
 │   ┌──────────────────────▼──────────────────────────────┐         │
-│   │              DATABASE (Turso/LibSQL)                 │         │
+│   │              DATABASE (Supabase/Postgres)            │         │
 │   └─────────────────────────────────────────────────────┘         │
 │                                                                   │
 └─────────────────────────────────────────────────────────────────┘
@@ -41,10 +41,12 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 ### 1. Müşteri (Customer)
 
 **Kayıt ve Giriş:**
+
 - `/register`, `/register-client`, `/signup` → Müşteri kaydı
 - `/login`, `/login-client` → Müşteri girişi
 
 **Erişilebilir Sayfalar:**
+
 | Sayfa | Route | Açıklama |
 |-------|-------|----------|
 | Ana Sayfa | `/` | Featured escort'lar, arama |
@@ -56,6 +58,7 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 | Dashboard | `/dashboard` | Müşteri paneli |
 
 **Özellikler:**
+
 - ✅ Escort profillerini görüntüleme
 - ✅ Favorilere ekleme
 - ✅ Mesaj gönderme
@@ -69,10 +72,12 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 ### 2. Escort
 
 **Kayıt ve Giriş:**
+
 - `/register-escort` → Escort kaydı
 - `/login-escort` → Escort girişi
 
 **Erişilebilir Sayfalar:**
+
 | Sayfa | Route | Açıklama |
 |-------|-------|----------|
 | Dashboard | `/escort/dashboard` | Ana kontrol paneli |
@@ -83,6 +88,7 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 | Randevular | `/appointments` | Randevu yönetimi |
 
 **Özellikler:**
+
 - ✅ Profil oluşturma ve düzenleme
 - ✅ Fotoğraf yükleme
 - ✅ Fiyat belirleme
@@ -99,10 +105,12 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 ### 3. Admin
 
 **Giriş:**
+
 - Admin hesabı özel olarak oluşturulur
 - Rol: `admin`
 
 **Erişilebilir Sayfalar:**
+
 | Sayfa | Route | Açıklama |
 |-------|-------|----------|
 | Dashboard | `/admin/dashboard` | Ana yönetim paneli |
@@ -126,6 +134,7 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 12. **Üyeler** - VIP/Boost yönetimi
 
 **Yetkiler:**
+
 - ✅ Tüm kullanıcıları görüntüleme
 - ✅ Kullanıcı yasaklama/askıya alma
 - ✅ İlan onaylama/reddetme
@@ -160,6 +169,7 @@ Escort Platform, üç ana kullanıcı türünü (Müşteri, Escort, Admin) ayrı
 ```
 
 ### JWT Token Yapısı
+
 ```typescript
 {
   id: string,

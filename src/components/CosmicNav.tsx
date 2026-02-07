@@ -223,7 +223,7 @@ export function CosmicNav() {
             </div>
 
             {/* VIP Banner */}
-            {!user?.isVip && (
+            {user?.membership !== 'vip' && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

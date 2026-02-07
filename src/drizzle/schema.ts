@@ -1,21 +1,21 @@
 /**
  * Drizzle Schema
  *
- * Veritabanı şema tanımlamaları
+ * Veritabanı şema tanımlamaları (PostgreSQL / Supabase)
  */
 
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { pgTable, serial, text, integer, boolean, timestamp } from 'drizzle-orm/pg-core';
 
-export const users = sqliteTable('users', {
-  id: integer('id').primaryKey(),
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
   openId: text('open_id').notNull().unique(),
   role: text('role').notNull(),
   email: text('email'),
   displayName: text('display_name'),
 });
 
-export const escortProfiles = sqliteTable('escort_profiles', {
-  id: integer('id').primaryKey(),
+export const escortProfiles = pgTable('escort_profiles', {
+  id: serial('id').primaryKey(),
   userId: integer('user_id').notNull(),
   displayName: text('display_name').notNull(),
   city: text('city').notNull(),
@@ -23,29 +23,29 @@ export const escortProfiles = sqliteTable('escort_profiles', {
   bio: text('bio'),
   age: integer('age'),
   hourlyRate: integer('hourly_rate'),
-  isVip: integer('is_vip', { mode: 'boolean' }).notNull().default(false),
-  isVerifiedByAdmin: integer('is_verified', { mode: 'boolean' }).notNull().default(false),
+  isVip: boolean('is_vip').notNull().default(false),
+  isVerifiedByAdmin: boolean('is_verified').notNull().default(false),
 });
 
-export const escortPhotos = sqliteTable('escort_photos', {
-  id: integer('id').primaryKey(),
+export const escortPhotos = pgTable('escort_photos', {
+  id: serial('id').primaryKey(),
   profileId: integer('profile_id').notNull(),
   url: text('url').notNull(),
   order: integer('order').notNull(),
 });
 
-export const conversations = sqliteTable('conversations', {
-  id: integer('id').primaryKey(),
+export const conversations = pgTable('conversations', {
+  id: serial('id').primaryKey(),
   participant1Id: integer('participant1_id').notNull(),
   participant2Id: integer('participant2_id').notNull(),
-  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
-export const messages = sqliteTable('messages', {
-  id: integer('id').primaryKey(),
+export const messages = pgTable('messages', {
+  id: serial('id').primaryKey(),
   conversationId: integer('conversation_id').notNull(),
   senderId: integer('sender_id').notNull(),
   content: text('content').notNull(),
-  readAt: integer('read_at', { mode: 'timestamp' }),
-  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+  readAt: timestamp('read_at'),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
 });

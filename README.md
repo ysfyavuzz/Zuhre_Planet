@@ -109,9 +109,10 @@ VITE_APP_NAME=Escort Platform
 VITE_APP_URL=https://your-domain.com
 VITE_APP_ENV=production
 
-# === DATABASE (LibSQL/Turso) ===
-DATABASE_URL=libsql://your-db.turso.io
-TURSO_AUTH_TOKEN=your-turso-auth-token
+# === DATABASE (Supabase / Postgres) ===
+DATABASE_URL=postgres://postgres.your-project:password@aws-0-region.pooler.supabase.com:6543/postgres
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 
 # === ÖDEME (iyzico) ===
 VITE_IYZICO_API_KEY=your-iyzico-api-key
@@ -174,7 +175,7 @@ Escort Platform, Türkiye'de hizmet veren escortların ilanlarını yayınlayabi
 | **Routing** | Wouter | 3.3.5 |
 | **Backend API** | tRPC | 11.0 |
 | **Database ORM** | Drizzle ORM | - |
-| **Database** | Turso (LibSQL) | - |
+| **Database** | Supabase (PostgreSQL) | - |
 | **Authentication** | JWT + bcrypt | - |
 | **Animations** | Framer Motion | 12.26.2 |
 | **Testing** | Vitest + Playwright | 1.2.0 |
@@ -575,9 +576,10 @@ docker run -p 80:80 escort-platform
 Production'a deploy etmeden önce şu environment variables'ları ayarlayın:
 
 ```env
-# Database
-DATABASE_URL=libsql://your-db.turso.io
-TURSO_AUTH_TOKEN=your-auth-token
+# Database (Supabase)
+DATABASE_URL=postgres://...
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
 
 # Authentication
 JWT_SECRET=your-super-secret-32-char-minimum
