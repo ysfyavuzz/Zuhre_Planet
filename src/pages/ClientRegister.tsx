@@ -466,6 +466,7 @@ export default function ClientRegister() {
                               setVerificationCode(newCode.join(''));
                             }}
                             className="w-14 h-14 text-center text-2xl font-bold rounded-xl border border-border/50 bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                            aria-label={`Doğrulama Kodu ${index + 1}`}
                           />
                         ))}
                       </div>
