@@ -107,7 +107,7 @@ export interface StatCardProps {
    * Color variant for the icon background
    * @default "blue"
    */
-  variant?: 'blue' | 'green' | 'purple' | 'orange' | 'yellow' | 'red';
+  variant?: 'blue' | 'green' | 'purple' | 'orange' | 'yellow' | 'red' | 'sky';
 
   /**
    * Additional CSS classes
@@ -148,6 +148,11 @@ const variantStyles = {
     background: 'bg-red-100',
     icon: 'text-red-600',
     value: 'text-red-600',
+  },
+  sky: {
+    background: 'bg-sky-100',
+    icon: 'text-sky-600',
+    value: 'text-sky-600',
   },
 } as const;
 

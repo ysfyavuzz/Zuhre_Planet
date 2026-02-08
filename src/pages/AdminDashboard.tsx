@@ -31,6 +31,7 @@
  * ```
  */
 
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Select,
@@ -1459,7 +1460,7 @@ export function AdminDashboard() {
                             <p className="font-medium">Otomatik Resize</p>
                             <p className="text-sm text-muted-foreground">Yüklenen resimleri otomatik boyutlandır</p>
                           </div>
-                          <input type="checkbox" defaultChecked className="w-5 h-5" />
+                          <input type="checkbox" defaultChecked className="w-5 h-5" aria-label="Otomatik Resize" />
                         </div>
 
                         <div className="flex items-center justify-between p-3 border rounded-lg">
@@ -1473,6 +1474,7 @@ export function AdminDashboard() {
                             max="100"
                             defaultValue="85"
                             className="w-24"
+                            aria-label="Sıkıştırma Kalitesi"
                           />
                         </div>
                       </CardContent>

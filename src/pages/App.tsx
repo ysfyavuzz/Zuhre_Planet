@@ -5,7 +5,6 @@
 import React, { Suspense, lazy } from 'react';
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
-import { RouteErrorBoundary } from "@/components/ErrorBoundary";
 import { FullPageLoading } from "@/components/LoadingStates";
 import CookieConsent from "@/components/CookieConsent";
 import { NotificationProvider } from "@/contexts/NotificationContext";
@@ -14,6 +13,7 @@ import { FloatingNavigation } from "@/components/FloatingNavigation";
 import { Header } from "@/components/Header";
 import { Route, Switch } from "wouter";
 import NotFound from "@/pages/NotFound";
+import { SpaceBackground } from "@/components/SpaceBackground";
 
 // LAZY LOADED ROUTES
 const Home = lazy(() => import("@/pages/Home"));
@@ -181,7 +181,8 @@ export default function App() {
   return (
     <NotificationProvider>
       <TooltipProvider>
-        <div className="min-h-screen bg-background font-sans antialiased">
+        <div className="min-h-screen bg-background font-sans antialiased relative selection:bg-primary/30">
+          <SpaceBackground />
           <AdSpace position="left" />
           <AdSpace position="right" />
           <Header />
