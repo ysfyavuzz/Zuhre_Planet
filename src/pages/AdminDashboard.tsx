@@ -113,6 +113,15 @@ import {
 } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────────────────────
+// TYPE DEFINITIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+type UserStatus = 'active' | 'pending' | 'suspended' | 'banned';
+type ListingStatus = 'active' | 'pending' | 'rejected' | 'hidden' | 'flagged' | 'expired';
+type ReviewStatus = 'pending' | 'approved' | 'rejected' | 'hidden';
+type ReportStatus = 'pending' | 'reviewing' | 'resolved' | 'dismissed';
+
+// ─────────────────────────────────────────────────────────────────────────────
 // ANIMATION VARIANTS
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -121,7 +130,6 @@ const fadeInVariants = {
   visible: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -10 },
 };
-
 
 
 // ─────────────────────────────────────────────────────────────────────────────
