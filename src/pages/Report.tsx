@@ -218,7 +218,7 @@ export default function Report() {
   const priorities = [
     { value: 'low', label: 'Düşük', color: 'text-blue-600' },
     { value: 'medium', label: 'Orta', color: 'text-yellow-600' },
-    { value: 'high', label: 'Yüksek', color: 'text-orange-600' },
+    { value: 'high', label: 'Yüksek', color: 'text-sky-600' },
     { value: 'urgent', label: 'Acil', color: 'text-red-600' },
   ];
 

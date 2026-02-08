@@ -88,7 +88,7 @@ export default function Safety() {
                     {[
                         { icon: Lock, title: 'Şifrenizi Paylaşmayın', color: 'text-blue-500', bg: 'bg-blue-500/10' },
                         { icon: MapPin, title: 'Herkese Açık Yerlerde Buluşun', color: 'text-green-500', bg: 'bg-green-500/10' },
-                        { icon: Phone, title: 'Yakınlarınızı Bilgilendirin', color: 'text-amber-500', bg: 'bg-amber-500/10' },
+                        { icon: Phone, title: 'Yakınlarınızı Bilgilendirin', color: 'text-sky-500', bg: 'bg-sky-500/10' },
                         { icon: Flag, title: 'Şüpheli Durumları Bildirin', color: 'text-red-500', bg: 'bg-red-500/10' },
                     ].map((tip, index) => (
                         <motion.div
@@ -190,7 +190,7 @@ export default function Safety() {
                                         },
                                         {
                                             badge: 'VIP',
-                                            color: 'bg-amber-500',
+                                            color: 'bg-sky-500',
                                             description: 'Premium üye, ekstra güvenlik'
                                         },
                                         {
@@ -253,7 +253,7 @@ export default function Safety() {
 
                                     <div className="p-4 rounded-xl bg-white/5 space-y-3">
                                         <div className="flex items-center gap-2">
-                                            <Ban className="w-5 h-5 text-orange-500" />
+                                            <Ban className="w-5 h-5 text-sky-500" />
                                             <h4 className="font-bold">Nasıl Engellerim?</h4>
                                         </div>
                                         <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
@@ -284,8 +284,8 @@ export default function Safety() {
                         <Card className="glass border-white/10 overflow-hidden">
                             <CardHeader className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-b border-white/10">
                                 <CardTitle className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-purple-500/20">
-                                        <Eye className="w-6 h-6 text-purple-500" />
+                                    <div className="p-2 rounded-lg bg-blue-500/20">
+                                        <Eye className="w-6 h-6 text-blue-500" />
                                     </div>
                                     Gizlilik Koruması
                                 </CardTitle>
@@ -315,8 +315,8 @@ export default function Safety() {
                                         },
                                     ].map((item, index) => (
                                         <div key={index} className="flex gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
-                                            <div className="p-2 rounded-lg bg-purple-500/10 h-fit">
-                                                <item.icon className="w-5 h-5 text-purple-500" />
+                                            <div className="p-2 rounded-lg bg-blue-500/10 h-fit">
+                                                <item.icon className="w-5 h-5 text-blue-500" />
                                             </div>
                                             <div>
                                                 <h4 className="font-bold mb-1">{item.title}</h4>
@@ -334,8 +334,8 @@ export default function Safety() {
                         <Card className="glass border-white/10 overflow-hidden">
                             <CardHeader className="bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border-b border-white/10">
                                 <CardTitle className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-amber-500/20">
-                                        <HelpCircle className="w-6 h-6 text-amber-500" />
+                                    <div className="p-2 rounded-lg bg-sky-500/20">
+                                        <HelpCircle className="w-6 h-6 text-sky-500" />
                                     </div>
                                     Sık Sorulan Sorular
                                 </CardTitle>
@@ -361,7 +361,7 @@ export default function Safety() {
                                 ].map((faq, index) => (
                                     <div key={index} className="p-4 rounded-xl bg-white/5">
                                         <h4 className="font-bold mb-2 flex items-center gap-2">
-                                            <ChevronRight className="w-4 h-4 text-amber-500" />
+                                            <ChevronRight className="w-4 h-4 text-sky-500" />
                                             {faq.question}
                                         </h4>
                                         <p className="text-sm text-muted-foreground pl-6">{faq.answer}</p>

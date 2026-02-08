@@ -298,10 +298,10 @@ export default function ClientRegister() {
                 </div>
 
                 {/* Referral Code Section */}
-                <div className="p-4 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl">
+                <div className="p-4 bg-gradient-to-r from-sky-500/10 to-blue-500/10 border border-sky-500/30 rounded-xl">
                   <div className="flex items-center gap-2 mb-3">
-                    <Gift className="w-5 h-5 text-amber-500" />
-                    <span className="font-semibold text-amber-700 dark:text-amber-400">Arkadaşından mı geldin? 🎁</span>
+                    <Gift className="w-5 h-5 text-sky-500" />
+                    <span className="font-semibold text-sky-700 dark:text-sky-400">Arkadaşından mı geldin? 🎁</span>
                   </div>
                   <p className="text-xs text-muted-foreground mb-3">
                     Bir arkadaşının davet kodunu girerek %15 indirim ve 100 karşılama puanı kazan!
@@ -318,7 +318,7 @@ export default function ClientRegister() {
                       onBlur={handleReferralCodeCheck}
                       placeholder="DAVETKODU (8 karakter)"
                       maxLength={8}
-                      className="w-full px-4 py-3 rounded-xl border border-border/50 bg-background focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all font-mono uppercase text-center tracking-widest"
+                      className="w-full px-4 py-3 rounded-xl border border-border/50 bg-background focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 transition-all font-mono uppercase text-center tracking-widest"
                     />
 
                     {referralStatus.valid === true && (
@@ -610,14 +610,14 @@ export default function ClientRegister() {
         </Card>
 
         {/* VIP CTA */}
-        <Card className="card-premium mt-6 bg-gradient-to-r from-amber-500/10 to-orange-500/10 border-amber-500/30">
+        <Card className="card-premium mt-6 bg-gradient-to-r from-sky-500/10 to-blue-500/10 border-sky-500/30">
           <CardContent className="p-6 text-center">
-            <Crown className="w-12 h-12 text-amber-500 mx-auto mb-3" />
+            <Crown className="w-12 h-12 text-sky-500 mx-auto mb-3" />
             <h3 className="text-xl font-bold mb-2">VIP Üyelik</h3>
             <p className="text-sm text-muted-foreground mb-4">
               Sınırsız fotoğraf ve video görüntüleme ayrıcalığına sahip olun
             </p>
-            <Button variant="outline" className="border-amber-500/50 hover:bg-amber-500/10">
+            <Button variant="outline" className="border-sky-500/50 hover:bg-sky-500/10">
               VIP'e Geç
             </Button>
           </CardContent>

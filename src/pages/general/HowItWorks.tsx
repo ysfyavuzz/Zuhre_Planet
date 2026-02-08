@@ -44,7 +44,7 @@ const customerSteps: Step[] = [
     title: 'Favorilere Ekle',
     description: 'Beğendiğiniz profilleri favorilerinize ekleyerek daha sonra kolayca ulaşın.',
     icon: Heart,
-    color: 'from-pink-500 to-pink-600',
+    color: 'from-blue-500 to-blue-600',
   },
   {
     title: 'Mesaj Gönder',
@@ -56,13 +56,13 @@ const customerSteps: Step[] = [
     title: 'Randevu Al',
     description: 'Tarih, saat ve hizmet seçimi yaparak randevu talebi oluşturun.',
     icon: Calendar,
-    color: 'from-orange-500 to-orange-600',
+    color: 'from-cyan-500 to-blue-600',
   },
   {
     title: 'Değerlendirme Yap',
     description: 'Deneyiminizi paylaşın ve diğer kullanıcılara yardımcı olun.',
     icon: Star,
-    color: 'from-yellow-500 to-yellow-600',
+    color: 'from-sky-500 to-blue-500',
   },
 ];
 
@@ -83,7 +83,7 @@ const escortSteps: Step[] = [
     title: 'Fotoğraf Yükle',
     description: 'Profesyonel fotoğraflarınızı yükleyin. Tüm fotoğraflar moderatörler tarafından onaylanır.',
     icon: Image,
-    color: 'from-pink-500 to-pink-600',
+    color: 'from-blue-500 to-blue-600',
   },
   {
     title: 'Ayarları Yönet',
@@ -95,13 +95,13 @@ const escortSteps: Step[] = [
     title: 'Randevuları Kabul Et',
     description: 'Gelen randevu taleplerini inceleyin, onaylayın veya reddedin.',
     icon: Calendar,
-    color: 'from-orange-500 to-orange-600',
+    color: 'from-cyan-500 to-blue-600',
   },
   {
     title: 'Kazanç Takibi',
     description: 'Dashboard\'dan kazançlarınızı takip edin ve detaylı raporlara ulaşın.',
     icon: TrendingUp,
-    color: 'from-yellow-500 to-yellow-600',
+    color: 'from-sky-500 to-blue-500',
   },
 ];
 
@@ -195,7 +195,7 @@ export default function HowItWorks() {
                 <div className="mt-12 text-center">
                   <Button 
                     size="lg"
-                    className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-lg px-8 py-6"
+                    className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-lg px-8 py-6"
                   >
                     Hemen Başla
                   </Button>
@@ -255,8 +255,8 @@ export default function HowItWorks() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
                 <Card key={index} className="text-center p-6">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-pink-100 to-purple-100 rounded-full flex items-center justify-center">
-                    <feature.icon className="w-8 h-8 text-pink-600" />
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center">
+                    <feature.icon className="w-8 h-8 text-blue-600" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
                     {feature.title}

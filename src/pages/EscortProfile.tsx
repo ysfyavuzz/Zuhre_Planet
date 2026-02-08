@@ -555,7 +555,7 @@ export default function EscortProfile() {
 
                     <div className="flex items-center gap-4 mb-4">
                       <div className="flex items-center gap-1">
-                        <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
+                        <Star className="w-5 h-5 text-sky-500 fill-sky-500" />
                         <span className="font-bold">{displayProfile.rating || 5.0}</span>
                         <span className="text-sm text-muted-foreground">(128 yorum)</span>
                       </div>

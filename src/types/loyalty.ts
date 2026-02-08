@@ -116,10 +116,10 @@ export const LOYALTY_LEVELS = {
   bronze: {
     name: 'Bronz',
     minPoints: 0,
-    color: 'from-amber-700 to-orange-800',
-    textColor: 'text-amber-700',
-    bgColor: 'bg-amber-700/10',
-    border: 'border-amber-700/30',
+    color: 'from-sky-700 to-blue-800',
+    textColor: 'text-sky-700',
+    bgColor: 'bg-sky-700/10',
+    border: 'border-sky-700/30',
     benefits: [
       '%5 daha fazla görünürlük',
       '1 indirim hakkı'
@@ -143,7 +143,7 @@ export const LOYALTY_LEVELS = {
   gold: {
     name: 'Altın',
     minPoints: 500,
-    color: 'from-yellow-500 to-amber-600',
+    color: 'from-sky-400 to-blue-500',
     textColor: 'text-yellow-500',
     bgColor: 'bg-yellow-500/10',
     border: 'border-yellow-500/30',

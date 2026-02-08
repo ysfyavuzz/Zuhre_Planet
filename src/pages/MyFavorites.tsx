@@ -107,8 +107,8 @@ export default function MyFavorites() {
 
   const getMembershipBadge = (membership: string) => {
     const badges = {
-      vip: { bg: 'bg-yellow-100', text: 'text-yellow-800', label: 'VIP' },
-      premium: { bg: 'bg-purple-100', text: 'text-purple-800', label: 'PREMIUM' },
+      vip: { bg: 'bg-sky-100', text: 'text-sky-800', label: 'VIP' },
+      premium: { bg: 'bg-blue-100', text: 'text-blue-800', label: 'PREMIUM' },
       standard: { bg: 'bg-gray-100', text: 'text-gray-800', label: 'STANDARD' }
     };
     return badges[membership as keyof typeof badges];
@@ -132,8 +132,8 @@ export default function MyFavorites() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
-              <Heart className="w-6 h-6 text-pink-600 fill-current" />
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+              <Heart className="w-6 h-6 text-blue-600 fill-current" />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Favorilerim</h1>
@@ -152,7 +152,7 @@ export default function MyFavorites() {
             </p>
             <button
               onClick={() => setLocation('/')}
-              className="bg-pink-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-pink-700"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700"
             >
               Escortları Keşfet
             </button>
@@ -189,7 +189,7 @@ export default function MyFavorites() {
                           <div className="flex items-center gap-2 mb-1">
                             <h3 className="text-xl font-bold text-gray-900">{escort.name}</h3>
                             <div className="flex items-center gap-1 text-sm">
-                              <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                              <Star className="w-4 h-4 text-sky-400 fill-current" />
                               <span className="font-medium">{escort.rating}</span>
                             </div>
                           </div>
@@ -213,7 +213,7 @@ export default function MyFavorites() {
                         {escort.services.map((service, index) => (
                           <span
                             key={index}
-                            className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm"
+                            className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm"
                           >
                             {service}
                           </span>
@@ -229,7 +229,7 @@ export default function MyFavorites() {
                       <div className="flex gap-3">
                         <button
                           onClick={() => setLocation(`/escort/${escort.id}`)}
-                          className="flex-1 bg-pink-600 text-white py-2 rounded-lg font-medium hover:bg-pink-700 flex items-center justify-center gap-2"
+                          className="flex-1 bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 flex items-center justify-center gap-2"
                         >
                           Profili Gör
                         </button>

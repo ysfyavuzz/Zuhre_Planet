@@ -305,7 +305,7 @@ export default function CookiePolicy() {
                 >
                   <CardHeader className="flex flex-row items-center justify-between cursor-pointer hover:bg-muted/50 transition-colors">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center">
                         <Settings className="w-6 h-6 text-white" />
                       </div>
                       <CardTitle>Çerez Türleri</CardTitle>
@@ -367,12 +367,12 @@ export default function CookiePolicy() {
                           Kullanıcı deneyimini kişiselleştirmek ve daha kolay hale getirmek için kullanılır. 
                           Bunlar da devre dışı bırakılabilir.
                         </p>
-                        <div className="bg-purple-500/5 border border-purple-500/20 rounded-lg p-3 space-y-2 text-sm">
-                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-600" /> Son arama geçmişi</p>
-                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-600" /> Filtre tercihleri</p>
-                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-600" /> Sıralama seçimleri</p>
-                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-600" /> Favori listeler</p>
-                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-600" /> Son ziyaret edilen profiller</p>
+                        <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-3 space-y-2 text-sm">
+                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600" /> Son arama geçmişi</p>
+                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600" /> Filtre tercihleri</p>
+                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600" /> Sıralama seçimleri</p>
+                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600" /> Favori listeler</p>
+                          <p className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-blue-600" /> Son ziyaret edilen profiller</p>
                         </div>
                       </div>
 
@@ -415,7 +415,7 @@ export default function CookiePolicy() {
                 >
                   <CardHeader className="flex flex-row items-center justify-between cursor-pointer hover:bg-muted/50 transition-colors">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-500 to-blue-500 flex items-center justify-center">
                         <AlertCircle className="w-6 h-6 text-white" />
                       </div>
                       <CardTitle>Üçüncü Taraf Çerezleri</CardTitle>

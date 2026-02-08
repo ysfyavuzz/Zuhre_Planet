@@ -184,7 +184,7 @@ export default function MembershipUpgrade() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-500/10 via-background to-pink-500/10 border-b border-border/50">
+      <section className="bg-gradient-to-br from-blue-500/10 via-background to-cyan-500/10 border-b border-border/50">
         <div className="container py-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
             <Crown className="w-4 h-4" />
@@ -268,58 +268,58 @@ export default function MembershipUpgrade() {
                     <tr className="border-b">
                       <th className="text-left p-4 font-semibold">Özellik</th>
                       <th className="text-center p-4 font-semibold">Ücretsiz</th>
-                      <th className="text-center p-4 font-semibold bg-purple-500/10">Premium</th>
-                      <th className="text-center p-4 font-semibold bg-amber-500/10">VIP</th>
+                      <th className="text-center p-4 font-semibold bg-blue-500/10">Premium</th>
+                      <th className="text-center p-4 font-semibold bg-cyan-500/10">VIP</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-b hover:bg-muted/50">
                       <td className="p-4">Fotoğraf Sayısı</td>
                       <td className="p-4 text-center font-medium">10</td>
-                      <td className="p-4 text-center font-medium bg-purple-500/5">30</td>
-                      <td className="p-4 text-center font-medium bg-amber-500/5">Sınırsız</td>
+                      <td className="p-4 text-center font-medium bg-blue-500/5">30</td>
+                      <td className="p-4 text-center font-medium bg-cyan-500/5">Sınırsız</td>
                     </tr>
                     <tr className="border-b hover:bg-muted/50">
                       <td className="p-4">Video Sayısı</td>
                       <td className="p-4 text-center font-medium">3</td>
-                      <td className="p-4 text-center font-medium bg-purple-500/5">20</td>
-                      <td className="p-4 text-center font-medium bg-amber-500/5">Sınırsız</td>
+                      <td className="p-4 text-center font-medium bg-blue-500/5">20</td>
+                      <td className="p-4 text-center font-medium bg-cyan-500/5">Sınırsız</td>
                     </tr>
                     <tr className="border-b hover:bg-muted/50">
                       <td className="p-4">Video Süresi</td>
                       <td className="p-4 text-center font-medium">2 dk</td>
-                      <td className="p-4 text-center font-medium bg-purple-500/5">5 dk</td>
-                      <td className="p-4 text-center font-medium bg-amber-500/5">Sınırsız</td>
+                      <td className="p-4 text-center font-medium bg-blue-500/5">5 dk</td>
+                      <td className="p-4 text-center font-medium bg-cyan-500/5">Sınırsız</td>
                     </tr>
                     <tr className="border-b hover:bg-muted/50">
                       <td className="p-4">Öne Çıkarma</td>
                       <td className="p-4 text-center text-muted-foreground">✕</td>
-                      <td className="p-4 text-center text-purple-500 font-medium bg-purple-500/5">Haftalık</td>
-                      <td className="p-4 text-center text-amber-500 font-medium bg-amber-500/5">Günlük</td>
+                      <td className="p-4 text-center text-blue-500 font-medium bg-blue-500/5">Haftalık</td>
+                      <td className="p-4 text-center text-cyan-500 font-medium bg-cyan-500/5">Günlük</td>
                     </tr>
                     <tr className="border-b hover:bg-muted/50">
                       <td className="p-4">Arama Sırası</td>
                       <td className="p-4 text-center text-muted-foreground">Normal</td>
-                      <td className="p-4 text-center text-purple-500 font-medium bg-purple-500/5">Öncelikli</td>
-                      <td className="p-4 text-center text-amber-500 font-medium bg-amber-500/5">Her Zaman Üstte</td>
+                      <td className="p-4 text-center text-blue-500 font-medium bg-blue-500/5">Öncelikli</td>
+                      <td className="p-4 text-center text-cyan-500 font-medium bg-cyan-500/5">Her Zaman Üstte</td>
                     </tr>
                     <tr className="border-b hover:bg-muted/50">
                       <td className="p-4">Ana Sayfa</td>
                       <td className="p-4 text-center text-muted-foreground">✕</td>
-                      <td className="p-4 text-center text-muted-foreground bg-purple-500/5">✕</td>
-                      <td className="p-4 text-center text-amber-500 font-medium bg-amber-500/5">✓</td>
+                      <td className="p-4 text-center text-muted-foreground bg-blue-500/5">✕</td>
+                      <td className="p-4 text-center text-cyan-500 font-medium bg-cyan-500/5">✓</td>
                     </tr>
                     <tr className="border-b hover:bg-muted/50">
                       <td className="p-4">Destek</td>
                       <td className="p-4 text-center text-muted-foreground">Standart</td>
-                      <td className="p-4 text-center text-purple-500 font-medium bg-purple-500/5">Öncelikli</td>
-                      <td className="p-4 text-center text-amber-500 font-medium bg-amber-500/5">7/24 VIP</td>
+                      <td className="p-4 text-center text-blue-500 font-medium bg-blue-500/5">Öncelikli</td>
+                      <td className="p-4 text-center text-cyan-500 font-medium bg-cyan-500/5">7/24 VIP</td>
                     </tr>
                     <tr className="hover:bg-muted/50">
                       <td className="p-4">Fiyat (Aylık)</td>
                       <td className="p-4 text-center font-medium">Ücretsiz</td>
-                      <td className="p-4 text-center font-bold text-purple-500 bg-purple-500/5">₺199</td>
-                      <td className="p-4 text-center font-bold text-amber-500 bg-amber-500/5">₺499</td>
+                      <td className="p-4 text-center font-bold text-blue-500 bg-blue-500/5">₺199</td>
+                      <td className="p-4 text-center font-bold text-cyan-500 bg-cyan-500/5">₺499</td>
                     </tr>
                   </tbody>
                 </table>
@@ -357,9 +357,9 @@ export default function MembershipUpgrade() {
       {/* CTA Section */}
       <section className="py-16">
         <div className="container max-w-4xl">
-          <Card className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-primary/20">
+          <Card className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-primary/20">
             <CardContent className="p-12 text-center">
-              <Crown className="w-16 h-16 mx-auto mb-6 text-amber-500" />
+              <Crown className="w-16 h-16 mx-auto mb-6 text-cyan-500" />
               <h2 className="text-3xl font-black tracking-tighter mb-4">
                 Hemen Yükseltin
               </h2>
@@ -368,7 +368,7 @@ export default function MembershipUpgrade() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/pricing">
-                  <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500">
+                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-cyan-500">
                     <Sparkles className="w-4 h-4 mr-2" />
                     Planları İncele
                   </Button>

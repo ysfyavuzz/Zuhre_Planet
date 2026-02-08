@@ -719,7 +719,7 @@ export default function PrivacyPolicy() {
                         </tbody>
                       </table>
 
-                      <div className="bg-amber-500/5 border border-amber-500/20 rounded-lg p-3 text-sm">
+                      <div className="bg-sky-500/5 border border-sky-500/20 rounded-lg p-3 text-sm">
                         <p className="text-muted-foreground">
                           Yasal yükümlülükler, uyuşmazlıklara karşı koruma veya adli taleplerle ilgili verileri 
                           belirtilen sürelerden daha uzun süre saklayabiliriz.
@@ -933,11 +933,11 @@ export default function PrivacyPolicy() {
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <Card className="border-amber-500/30 bg-amber-500/5">
+              <Card className="border-sky-500/30 bg-sky-500/5">
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5 text-amber-600" />
-                    <CardTitle className="text-amber-600">ÖNEMLİ BİLDİRİM</CardTitle>
+                    <AlertCircle className="w-5 h-5 text-sky-600" />
+                    <CardTitle className="text-sky-600">ÖNEMLİ BİLDİRİM</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-3">

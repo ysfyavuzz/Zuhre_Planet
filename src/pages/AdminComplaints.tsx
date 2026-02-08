@@ -105,8 +105,8 @@ interface ReportCardProps {
 function getCategoryBadge(category: ReportCategory) {
   const config = {
     harassment: { label: 'Taciz', icon: <Shield className="w-3 h-3" />, color: 'bg-red-500/10 text-red-600 border-red-500/20' },
-    fake_profile: { label: 'Sahte Profil', icon: <User className="w-3 h-3" />, color: 'bg-amber-500/10 text-amber-600 border-amber-500/20' },
-    inappropriate_content: { label: 'Uygunsuz İçerik', icon: <AlertTriangle className="w-3 h-3" />, color: 'bg-purple-500/10 text-purple-600 border-purple-500/20' },
+    fake_profile: { label: 'Sahte Profil', icon: <User className="w-3 h-3" />, color: 'bg-sky-500/10 text-sky-600 border-sky-500/20' },
+    inappropriate_content: { label: 'Uygunsuz İçerik', icon: <AlertTriangle className="w-3 h-3" />, color: 'bg-indigo-500/10 text-indigo-600 border-indigo-500/20' },
     scam: { label: 'Dolandırıcılık', icon: <AlertCircle className="w-3 h-3" />, color: 'bg-red-500/20 text-red-700 border-red-500/30' },
     spam: { label: 'Spam', icon: <MessageCircle className="w-3 h-3" />, color: 'bg-blue-500/10 text-blue-600 border-blue-500/20' },
     other: { label: 'Diğer', icon: <FileText className="w-3 h-3" />, color: 'bg-gray-500/10 text-gray-600 border-gray-500/20' },
@@ -127,7 +127,7 @@ function getPriorityBadge(priority: ReportPriority) {
   const config = {
     low: { label: 'Düşük', color: 'bg-gray-500/10 text-gray-600' },
     medium: { label: 'Orta', color: 'bg-blue-500/10 text-blue-600' },
-    high: { label: 'Yüksek', color: 'bg-amber-500/10 text-amber-600' },
+    high: { label: 'Yüksek', color: 'bg-sky-500/10 text-sky-600' },
     urgent: { label: 'Acil', color: 'bg-red-500/10 text-red-600 animate-pulse' },
   };
   const { label, color } = config[priority];
@@ -139,7 +139,7 @@ function getPriorityBadge(priority: ReportPriority) {
  */
 function getStatusBadge(status: ReportStatus) {
   const config = {
-    pending: { label: 'Bekliyor', icon: <Clock className="w-3 h-3" />, color: 'bg-yellow-500/10 text-yellow-600' },
+    pending: { label: 'Bekliyor', icon: <Clock className="w-3 h-3" />, color: 'bg-sky-500/10 text-sky-600' },
     investigating: { label: 'İnceleniyor', icon: <Search className="w-3 h-3" />, color: 'bg-blue-500/10 text-blue-600' },
     resolved: { label: 'Çözüldü', icon: <CheckCircle2 className="w-3 h-3" />, color: 'bg-green-500/10 text-green-600' },
     dismissed: { label: 'Reddedildi', icon: <XCircle className="w-3 h-3" />, color: 'bg-gray-500/10 text-gray-600' },
@@ -193,7 +193,7 @@ function ReportCard({ report, onView, onResolve, onDismiss }: ReportCardProps) {
                     className="w-6 h-6 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-xs text-white font-bold">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-xs text-white font-bold">
                     {report.reporterName.charAt(0)}
                   </div>
                 )}
@@ -454,7 +454,7 @@ export default function AdminReports() {
             <Card>
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-yellow-500/10">
+                  <div className="p-2 rounded-lg bg-sky-500/10">
                     <Clock className="w-5 h-5 text-yellow-600" />
                   </div>
                   <div>
@@ -621,7 +621,7 @@ export default function AdminReports() {
                           className="w-10 h-10 rounded-full object-cover"
                         />
                       ) : (
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold">
                           {selectedReport.reporterName.charAt(0)}
                         </div>
                       )}

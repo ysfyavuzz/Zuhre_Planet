@@ -371,10 +371,10 @@ export default function PaymentResult() {
           transition={{ delay: 0.7 }}
           className="mb-6"
         >
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
-            <HeadphonesIcon className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+          <div className="flex items-start gap-3 p-4 rounded-xl bg-sky-500/10 border border-sky-500/20">
+            <HeadphonesIcon className="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-medium text-orange-500 mb-1">
+              <p className="text-sm font-medium text-sky-500 mb-1">
                 Yardıma mı ihtiyacınız var?
               </p>
               <p className="text-sm text-muted-foreground">

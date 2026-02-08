@@ -213,12 +213,12 @@ interface StatusBadgeProps {
 function StatusBadge({ status, size = 'md' }: StatusBadgeProps) {
   const statusConfig: Record<string, { color: string; label: string; icon: React.ElementType }> = {
     active: { color: 'bg-green-500/10 text-green-600 border-green-500/30', label: 'Aktif', icon: CheckCircle2 },
-    pending: { color: 'bg-yellow-500/10 text-yellow-600 border-yellow-500/30', label: 'Bekliyor', icon: Clock },
-    suspended: { color: 'bg-orange-500/10 text-orange-600 border-orange-500/30', label: 'Askıya Alındı', icon: AlertTriangle },
-    banned: { color: 'bg-red-500/10 text-red-600 border-red-500/30', label: 'Yasaklandı', icon: XCircle },
+    pending: { color: 'bg-sky-500/10 text-sky-600 border-sky-500/30', label: 'Bekliyor', icon: Clock },
+    suspended: { color: 'bg-red-500/10 text-red-600 border-red-500/30', label: 'Askıya Alındı', icon: AlertTriangle },
+    banned: { color: 'bg-red-900/10 text-red-700 border-red-900/30', label: 'Yasaklandı', icon: XCircle },
     rejected: { color: 'bg-red-500/10 text-red-600 border-red-500/30', label: 'Reddedildi', icon: XCircle },
     hidden: { color: 'bg-gray-500/10 text-gray-600 border-gray-500/30', label: 'Gizli', icon: Eye },
-    flagged: { color: 'bg-orange-500/10 text-orange-600 border-orange-500/30', label: 'İşaretlendi', icon: AlertTriangle },
+    flagged: { color: 'bg-indigo-500/10 text-indigo-600 border-indigo-500/30', label: 'İşaretlendi', icon: AlertTriangle },
     visible: { color: 'bg-green-500/10 text-green-600 border-green-500/30', label: 'Görünür', icon: CheckCircle2 },
     reviewing: { color: 'bg-blue-500/10 text-blue-600 border-blue-500/30', label: 'İnceleniyor', icon: Search },
     resolved: { color: 'bg-green-500/10 text-green-600 border-green-500/30', label: 'Çözüldü', icon: CheckCircle2 },
@@ -518,7 +518,7 @@ export function AdminDashboard() {
         change: stats.pendingListings,
         changeType: 'neutral' as const,
         icon: Clock,
-        color: 'bg-yellow-500/20 text-yellow-600',
+        color: 'bg-sky-500/20 text-sky-600',
       },
       {
         label: 'Aylık Gelir',
@@ -526,7 +526,7 @@ export function AdminDashboard() {
         change: stats.monthlyRevenue,
         changeType: 'increase' as const,
         icon: DollarSign,
-        color: 'bg-purple-500/20 text-purple-600',
+        color: 'bg-blue-500/20 text-blue-600',
       },
       {
         label: 'Şu An Aktif',
@@ -551,7 +551,7 @@ export function AdminDashboard() {
     <DashboardAuthGuard requiredRole="admin">
       <div className="min-h-screen bg-background">
         {/* Header */}
-        <header className="bg-gradient-to-r from-red-500/10 via-orange-500/10 to-amber-500/10 border-b border-red-500/20">
+        <header className="bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-cyan-500/10 border-b border-blue-500/20">
           <div className="container py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -1114,7 +1114,7 @@ export function AdminDashboard() {
                                           key={i}
                                           className={`w-4 h-4 ${
                                             i < review.rating
-                                              ? 'fill-yellow-400 text-yellow-400'
+                                              ? 'fill-sky-400 text-sky-400'
                                               : 'text-gray-300'
                                           }`}
                                         />
@@ -1436,7 +1436,7 @@ export function AdminDashboard() {
                                   <p className="font-semibold">{escort.name}</p>
                                   <p className="text-sm text-muted-foreground">{escort.location}</p>
                                 </div>
-                                <Badge className="bg-amber-500">{escort.badge}</Badge>
+                                <Badge className="bg-sky-500">{escort.badge}</Badge>
                               </div>
                               <div className="flex gap-2">
                                 <Button variant="outline" size="sm" className="flex-1">
@@ -1651,7 +1651,7 @@ export function AdminDashboard() {
                                   page.status === 'active'
                                     ? 'bg-green-500/10 text-green-600'
                                     : page.status === 'draft'
-                                      ? 'bg-yellow-500/10 text-yellow-600'
+                                      ? 'bg-sky-500/10 text-sky-600'
                                       : 'bg-gray-500/10 text-gray-600'
                                 }
                               >
@@ -1808,8 +1808,8 @@ export function AdminDashboard() {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                       <Card className="p-4">
                         <div className="flex items-center gap-3">
-                          <div className="p-2 bg-purple-500/20 rounded-lg">
-                            <Crown className="w-5 h-5 text-purple-600" />
+                          <div className="p-2 bg-blue-500/20 rounded-lg">
+                            <Crown className="w-5 h-5 text-blue-600" />
                           </div>
                           <div>
                             <p className="text-2xl font-bold">45</p>
@@ -1830,8 +1830,8 @@ export function AdminDashboard() {
                       </Card>
                       <Card className="p-4">
                         <div className="flex items-center gap-3">
-                          <div className="p-2 bg-yellow-500/20 rounded-lg">
-                            <Clock className="w-5 h-5 text-yellow-600" />
+                          <div className="p-2 bg-sky-500/20 rounded-lg">
+                            <Clock className="w-5 h-5 text-sky-600" />
                           </div>
                           <div>
                             <p className="text-2xl font-bold">3</p>
@@ -1978,7 +1978,7 @@ export function AdminDashboard() {
                                     <div className="flex items-center gap-2 mb-1">
                                       <p className="font-bold text-lg">{member.name}</p>
                                       {member.membership === 'vip' && (
-                                        <Badge className="bg-gradient-to-r from-amber-400 to-amber-600 text-white">
+                                        <Badge className="bg-gradient-to-r from-sky-400 to-sky-600 text-white">
                                           <Crown className="w-3 h-3 mr-1" />
                                           VIP
                                         </Badge>
@@ -2101,7 +2101,7 @@ export function AdminDashboard() {
                                     <Button
                                       variant={member.status === 'banned' ? 'outline' : 'outline'}
                                       size="sm"
-                                      className={`flex-1 h-8 ${member.status === 'banned' ? 'text-green-600' : 'text-orange-600'}`}
+                                      className={`flex-1 h-8 ${member.status === 'banned' ? 'text-green-600' : 'text-sky-600'}`}
                                     >
                                       {member.status === 'banned' ? <Unlock className="w-3 h-3" /> : <Ban className="w-3 h-3" />}
                                     </Button>

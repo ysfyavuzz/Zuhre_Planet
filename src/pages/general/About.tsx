@@ -14,7 +14,7 @@ export default function About() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <div className="bg-gradient-to-r from-pink-600 to-purple-600 text-white py-20">
+      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20">
         <div className="container mx-auto max-w-4xl px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Hakkımızda</h1>
           <p className="text-xl opacity-90">
@@ -38,8 +38,8 @@ export default function About() {
         {/* Values */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           <Card className="p-6">
-            <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
-              <Shield className="w-6 h-6 text-pink-600" />
+            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+              <Shield className="w-6 h-6 text-blue-600" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Güvenlik</h3>
             <p className="text-gray-600">
@@ -86,7 +86,7 @@ export default function About() {
         <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl font-bold text-pink-600 mb-2">500+</p>
+              <p className="text-4xl font-bold text-blue-600 mb-2">500+</p>
               <p className="text-gray-600">Doğrulanmış Eskort</p>
             </div>
             <div>
@@ -112,7 +112,7 @@ export default function About() {
           </p>
           <a 
             href="/contact" 
-            className="inline-block bg-pink-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pink-700 transition-colors"
+            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             İletişime Geç
           </a>

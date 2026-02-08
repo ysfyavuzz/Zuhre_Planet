@@ -358,7 +358,7 @@ export default function AdminReports() {
               onClick={() => setReportType('detailed')}
             >
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg">
+                <div className="p-3 bg-gradient-to-br from-sky-500 to-blue-600 rounded-lg">
                   <FileText className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -554,7 +554,7 @@ export default function AdminReports() {
                   title="Aktif Kullanıcı"
                   value={totals.activeUsers}
                   icon={Users}
-                  variant="orange"
+                  variant="sky"
                 />
               </>
             )}
@@ -582,7 +582,7 @@ export default function AdminReports() {
                   title="Ort. Günlük Gelir"
                   value={`₺${totals.avgDailyRevenue.toLocaleString()}`}
                   icon={BarChart3}
-                  variant="orange"
+                  variant="sky"
                 />
               </>
             )}
@@ -610,7 +610,7 @@ export default function AdminReports() {
                   title="Bekleyen"
                   value={totals.pending}
                   icon={Eye}
-                  variant="orange"
+                  variant="sky"
                 />
               </>
             )}
@@ -711,7 +711,7 @@ export default function AdminReports() {
                               }
                               className={
                                 item.status === 'completed' ? 'bg-green-500' :
-                                item.status === 'pending' ? 'bg-orange-500' : ''
+                                item.status === 'pending' ? 'bg-sky-500' : ''
                               }
                             >
                               {item.status === 'completed' ? 'Tamamlandı' :

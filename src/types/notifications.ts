@@ -146,7 +146,7 @@ export const NOTIFICATION_CATEGORY_INFO: Record<NotificationCategory, {
     category: 'profile',
     label: 'Profil',
     icon: '👤',
-    color: 'text-purple-500',
+    color: 'text-blue-500',
     description: 'Profil bildirimleri'
   },
   system: {
@@ -160,21 +160,21 @@ export const NOTIFICATION_CATEGORY_INFO: Record<NotificationCategory, {
     category: 'promotions',
     label: 'Promosyonlar',
     icon: '🎁',
-    color: 'text-pink-500',
+    color: 'text-cyan-500',
     description: 'Promosyon bildirimleri'
   },
   vip: {
     category: 'vip',
     label: 'VIP',
     icon: '👑',
-    color: 'text-amber-500',
+    color: 'text-sky-500',
     description: 'VIP üyelik bildirimleri'
   },
   points: {
     category: 'points',
     label: 'Puanlar',
     icon: '🏆',
-    color: 'text-orange-500',
+    color: 'text-sky-500',
     description: 'Puan bildirimleri'
   },
   warning: {
@@ -528,8 +528,8 @@ export const WARNING_LEVELS = {
   },
   medium: {
     label: 'Orta Seviye Uyarı',
-    color: 'text-orange-600',
-    bgColor: 'bg-orange-100',
+    color: 'text-sky-600',
+    bgColor: 'bg-sky-100',
     icon: '🔶',
     action: 'suspend_24h'
   },

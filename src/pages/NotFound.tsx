@@ -47,11 +47,11 @@ export default function NotFound() {
   const [, setLocation] = useLocation();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 flex items-center justify-center pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 flex items-center justify-center pb-20">
       <div className="max-w-lg w-full mx-4 text-center">
         {/* 404 Animation/Graphic */}
         <div className="mb-8 relative">
-          <div className="text-[180px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 leading-none">
+          <div className="text-[180px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600 leading-none">
             404
           </div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -73,7 +73,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => setLocation('/')}
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition shadow-lg"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition shadow-lg"
           >
             <Home className="w-5 h-5" />
             Ana Sayfaya Dön
@@ -96,21 +96,21 @@ export default function NotFound() {
               onClick={() => setLocation('/')}
               className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition text-left"
             >
-              <Search className="w-5 h-5 text-pink-600" />
+              <Search className="w-5 h-5 text-sky-600" />
               <span className="text-gray-700">Katalog</span>
             </button>
             <button
               onClick={() => setLocation('/catalog')}
               className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition text-left"
             >
-              <Search className="w-5 h-5 text-purple-600" />
+              <Search className="w-5 h-5 text-blue-600" />
               <span className="text-gray-700">Şehirlere Göre</span>
             </button>
             <button
               onClick={() => setLocation('/favorites')}
               className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-50 transition text-left"
             >
-              <Search className="w-5 h-5 text-red-500" />
+              <Search className="w-5 h-5 text-cyan-500" />
               <span className="text-gray-700">Favorilerim</span>
             </button>
             <button
@@ -126,7 +126,7 @@ export default function NotFound() {
         {/* Support */}
         <div className="mt-8 text-sm text-gray-500">
           Sorun yaşıyorsanız{' '}
-          <a href="mailto:destek@example.com" className="text-pink-600 hover:underline">
+          <a href="mailto:destek@example.com" className="text-sky-600 hover:underline">
             destek@example.com
           </a>
           {' '}adresinden bizimle iletişime geçin.

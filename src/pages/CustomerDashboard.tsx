@@ -331,8 +331,8 @@ export default function CustomerDashboard() {
                 <Card className="glass">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-xl bg-pink-500/10">
-                        <Heart className="w-6 h-6 text-pink-500" />
+                      <div className="p-3 rounded-xl bg-cyan-500/10">
+                        <Heart className="w-6 h-6 text-cyan-500" />
                       </div>
                       <div>
                         <div className="text-2xl font-black">{stats.favorites}</div>
@@ -371,8 +371,8 @@ export default function CustomerDashboard() {
                 <Card className="glass">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-xl bg-purple-500/10">
-                        <MessageCircle className="w-6 h-6 text-purple-500" />
+                      <div className="p-3 rounded-xl bg-blue-500/10">
+                        <MessageCircle className="w-6 h-6 text-blue-500" />
                       </div>
                       <div>
                         <div className="text-2xl font-black">{stats.unreadMessages}</div>
@@ -653,7 +653,7 @@ export default function CustomerDashboard() {
                   </Card>
                   <Card>
                     <CardContent className="p-6 text-center">
-                      <p className="text-3xl font-bold text-purple-600">₺{stats.totalSpent.toLocaleString('tr-TR')}</p>
+                      <p className="text-3xl font-bold text-blue-600">₺{stats.totalSpent.toLocaleString('tr-TR')}</p>
                       <p className="text-sm text-muted-foreground">Toplam Harcama</p>
                     </CardContent>
                   </Card>

@@ -173,7 +173,7 @@ export default function AdminMessages() {
                 <p className="text-gray-500 mt-1">Kullanıcı mesajlarını görüntüleyin ve yönetin</p>
               </div>
               {isSuperAdmin && (
-                <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1">
+                <Badge className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-3 py-1">
                   <Shield className="w-4 h-4 mr-1" />
                   Super Admin
                 </Badge>
@@ -189,7 +189,7 @@ export default function AdminMessages() {
             </Card>
             <Card className="p-6">
               <p className="text-sm text-gray-500">Okunmamış</p>
-              <p className="text-2xl font-bold text-orange-600 mt-1">
+              <p className="text-2xl font-bold text-sky-600 mt-1">
                 {conversations.filter(m => m.status === 'unread').length}
               </p>
             </Card>
@@ -209,13 +209,13 @@ export default function AdminMessages() {
 
           {/* Super Admin Alert */}
           {isSuperAdmin && (
-            <Card className="bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200">
+            <Card className="bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-200">
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
-                  <Shield className="w-6 h-6 text-purple-600" />
+                  <Shield className="w-6 h-6 text-blue-600" />
                   <div>
-                    <p className="font-semibold text-purple-900">Sınırsız Erişim</p>
-                    <p className="text-sm text-purple-700">
+                    <p className="font-semibold text-blue-900">Sınırsız Erişim</p>
+                    <p className="text-sm text-blue-700">
                       Tüm mesajları okuyabilir, silebilir ve moderasyon yapabilirsiniz.
                     </p>
                   </div>

@@ -68,9 +68,9 @@ const statusConfig: Record<AppointmentStatus, {
 }> = {
   pending: {
     label: 'Onay Bekliyor',
-    color: 'text-amber-600',
+    color: 'text-sky-600',
     icon: AlertCircle,
-    bgColor: 'bg-amber-500/10 border-amber-500/20',
+    bgColor: 'bg-sky-500/10 border-sky-500/20',
   },
   confirmed: {
     label: 'Onaylandı',
@@ -138,7 +138,7 @@ function AppointmentCard({ appointment, onCancel }: { appointment: any; onCancel
                   {appointment.escort?.city}
                 </div>
                 <div className="flex items-center gap-1">
-                  <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                  <Star className="w-3.5 h-3.5 text-sky-500 fill-sky-500" />
                   5.0
                 </div>
               </div>
@@ -313,8 +313,8 @@ export default function MyAppointments() {
                     <p className="text-sm text-muted-foreground mb-1">Yaklaşan</p>
                     <p className="text-3xl font-bold">{upcomingAppointments.length}</p>
                   </div>
-                  <div className="p-3 rounded-xl bg-amber-500/10">
-                    <AlertCircle className="w-6 h-6 text-amber-600" />
+                  <div className="p-3 rounded-xl bg-sky-500/10">
+                    <AlertCircle className="w-6 h-6 text-sky-600" />
                   </div>
                 </div>
               </CardContent>

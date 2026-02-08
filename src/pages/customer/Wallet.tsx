@@ -250,7 +250,7 @@ export default function Wallet() {
   const islemTurKonfig: Record<IslemTuru, { ikon: typeof ArrowUpRight; renk: string; etiket: string }> = {
     yukleme: { ikon: ArrowUpRight, renk: 'text-green-600', etiket: 'Yükleme' },
     harcama: { ikon: ArrowDownRight, renk: 'text-red-600', etiket: 'Harcama' },
-    puan_kazanma: { ikon: Star, renk: 'text-yellow-600', etiket: 'Puan Kazanma' },
+    puan_kazanma: { ikon: Star, renk: 'text-sky-600', etiket: 'Puan Kazanma' },
     puan_harcama: { ikon: Gift, renk: 'text-purple-600', etiket: 'Puan Harcama' },
     iade: { ikon: ArrowUpRight, renk: 'text-blue-600', etiket: 'İade' },
   };
@@ -360,7 +360,7 @@ export default function Wallet() {
               </Card3D>
 
               <Card3D padding="sm" className="text-center">
-                <Star className="h-8 w-8 mx-auto text-yellow-600 mb-2" />
+                <Star className="h-8 w-8 mx-auto text-sky-600 mb-2" />
                 <div className="text-xl font-bold text-gray-900 dark:text-gray-100">
                   {istatistikler.toplamPuan.toLocaleString('tr-TR')}
                 </div>
@@ -422,7 +422,7 @@ export default function Wallet() {
                         
                         <div className="text-sm text-gray-600 dark:text-gray-400 mb-4">
                           <div className="flex items-center justify-center gap-1">
-                            <Star className="h-4 w-4 text-yellow-600" />
+                            <Star className="h-4 w-4 text-sky-600" />
                             +{paket.ekPuan} Sadakat Puanı
                           </div>
                         </div>
@@ -500,7 +500,7 @@ export default function Wallet() {
                                     {islem.aciklama}
                                   </div>
                                   {islem.puan !== undefined && islem.puan !== 0 && (
-                                    <div className="text-xs text-yellow-600 flex items-center gap-1">
+                                    <div className="text-xs text-sky-600 flex items-center gap-1">
                                       <Star className="h-3 w-3" />
                                       {islem.puan > 0 ? '+' : ''}{islem.puan} puan
                                     </div>
@@ -538,7 +538,7 @@ export default function Wallet() {
             >
               <Card3D>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="p-2 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-lg">
+                  <div className="p-2 bg-gradient-to-br from-sky-500 to-blue-500 rounded-lg">
                     <Info className="h-5 w-5 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
@@ -547,7 +547,7 @@ export default function Wallet() {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <Star className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <Star className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-medium text-gray-900 dark:text-gray-100 text-sm">
                         Randevu Tamamlama
@@ -558,7 +558,7 @@ export default function Wallet() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Star className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <Star className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-medium text-gray-900 dark:text-gray-100 text-sm">
                         Kredi Yükleme
@@ -569,7 +569,7 @@ export default function Wallet() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Star className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <Star className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-medium text-gray-900 dark:text-gray-100 text-sm">
                         Arkadaş Daveti
@@ -580,7 +580,7 @@ export default function Wallet() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Star className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <Star className="h-5 w-5 text-sky-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="font-medium text-gray-900 dark:text-gray-100 text-sm">
                         Değerlendirme Yapma
@@ -679,7 +679,7 @@ export default function Wallet() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <Card3D className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border-2 border-amber-200 dark:border-amber-800">
+              <Card3D className="bg-gradient-to-br from-sky-50 to-blue-50 dark:from-sky-900/20 dark:to-blue-900/20 border-2 border-sky-200 dark:border-sky-800">
                 <div className="flex items-center gap-2 mb-3">
                   <Zap className="h-6 w-6 text-amber-600" />
                   <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">

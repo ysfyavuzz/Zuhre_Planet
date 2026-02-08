@@ -56,7 +56,7 @@ import type { Appointment, AppointmentStatus } from '@/data/mockData';
 const durumKonfig: Record<AppointmentStatus, { renk: string; etiket: string; ikon: typeof CheckCircle }> = {
   completed: { renk: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300', etiket: 'Tamamlandı', ikon: CheckCircle },
   cancelled: { renk: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300', etiket: 'İptal Edildi', ikon: XCircle },
-  pending: { renk: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300', etiket: 'Bekliyor', ikon: AlertCircle },
+  pending: { renk: 'bg-sky-100 text-sky-700 dark:bg-sky-900 dark:text-sky-300', etiket: 'Bekliyor', ikon: AlertCircle },
   confirmed: { renk: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300', etiket: 'Onaylandı', ikon: CheckCircle },
   'no-show': { renk: 'bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-300', etiket: 'Gelmedi', ikon: XCircle },
 };
@@ -335,7 +335,7 @@ export default function History() {
 
           <Card3D padding="md" className="text-center">
             <div className="flex items-center justify-center mb-2">
-              <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full">
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full">
                 <TrendingUp className="h-6 w-6 text-white" />
               </div>
             </div>

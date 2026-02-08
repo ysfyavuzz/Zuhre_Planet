@@ -161,7 +161,7 @@ export type ServiceType =
   | 'lesbian'          // Lezbiyen şov
   | 'gay'              // - Gay hizmeti
   | 'toy_show'         // Oyuncak şov
-  | 'golden_shower'    // Altın yağmur
+  | 'golden_shower'    // Altın yağmur (Terim kalabilir, UI rengi değişecek)
   | 'strap_on'         // Strapon
   | 'trampling'        // Çiğnem
   | 'facesitting'      // Yüz oturma

@@ -1,140 +1,149 @@
-/**
- * Premium Theme Styles
- * EscilanSitesi için lüks ve premium görsel efektler.
- */
-
 :root {
-  --gold-primary: #d4af37;
-  --gold-secondary: #f9e29c;
-  --gold-dark: #aa8412;
-  --purple-premium: #4b0082;
-  --rose-premium: #e0115f;
-  --dark-bg: #0a0a0a;
-  --dark-card: #141414;
-  --dark-border: #262626;
+  /* =========================================
+     ICE THEME ENFORCEMENT - VARIABLE MAPPING
+     =========================================
+     Mapping legacy "Premium" colors (Gold, Purple, Rose)
+     to the new "Ice & Frost" palette (Sky, Cyan, Blue).
+  */
+
+  /* GOLD -> SKY BLUE (Primary Ice) */
+  --gold-50: #f0f9ff;
+  --gold-100: #e0f2fe;
+  --gold-200: #bae6fd;
+  --gold-300: #7dd3fc;
+  --gold-400: #38bdf8;
+  --gold-500: #0ea5e9; /* Main Ice Color */
+  --gold-600: #0284c7;
+  --gold-700: #0369a1;
+  --gold-800: #075985;
+  --gold-900: #0c4a6e;
+
+  --gold-primary: var(--gold-500);
+  --gold-secondary: var(--gold-300);
+  --gold-dark: var(--gold-700);
+  --gold-light: var(--gold-200);
+
+  /* PURPLE -> ROYAL BLUE (Deep Ice) */
+  --purple-50: #eff6ff;
+  --purple-100: #dbeafe;
+  --purple-200: #bfdbfe;
+  --purple-300: #93c5fd;
+  --purple-400: #60a5fa;
+  --purple-500: #3b82f6; /* Royal Blue */
+  --purple-600: #2563eb;
+  --purple-700: #1d4ed8;
+  --purple-premium: var(--purple-500);
+  --purple-light: var(--purple-300);
+
+  /* ROSE -> CYAN (Frost) */
+  --rose-50: #ecfeff;
+  --rose-100: #cffafe;
+  --rose-200: #a5f3fc;
+  --rose-300: #67e8f9;
+  --rose-400: #22d3ee;
+  --rose-500: #06b6d4; /* Cyan */
+  --rose-600: #0891b2;
+  --rose-premium: var(--rose-500);
+  --rose-light: var(--rose-300);
+
+  /* Theme Colors Re-mapped */
+  --dark-bg: #0F172A; /* Slate 900 */
+  --dark-card: #1E293B; /* Slate 800 */
+  --dark-border: #334155; /* Slate 700 */
 }
 
-/* Premium Card Base */
-.premium-card {
-  background: var(--dark-card);
-  border: 1px solid var(--dark-border);
-  border-radius: 1rem;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.3s ease;
-}
+/* 
+   UTILITY CLASS OVERRIDES 
+   Ensuring any remaining usage of these classes renders in Ice Theme
+*/
 
-/* Glow Effects */
-.hover\:glow-gold:hover {
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-  border-color: var(--gold-primary);
-}
+.text-gold-500 { color: var(--gold-500) !important; }
+.text-purple-500 { color: var(--purple-500) !important; }
+.text-rose-500 { color: var(--rose-500) !important; }
+.text-amber-500 { color: var(--rose-500) !important; } /* Map Amber to Cyan */
+.text-orange-500 { color: var(--gold-400) !important; } /* Map Orange to Sky */
 
-.hover\:glow-purple:hover {
-  box-shadow: 0 0 20px rgba(75, 0, 130, 0.3);
-  border-color: var(--purple-premium);
-}
+.bg-gold-500 { background-color: var(--gold-500) !important; }
+.bg-purple-500 { background-color: var(--purple-500) !important; }
+.bg-rose-500 { background-color: var(--rose-500) !important; }
+.bg-amber-500 { background-color: var(--rose-500) !important; }
+.bg-orange-500 { background-color: var(--gold-400) !important; }
 
-.hover\:glow-rose:hover {
-  box-shadow: 0 0 20px rgba(224, 17, 95, 0.3);
-  border-color: var(--rose-premium);
-}
+/* Gradient Overrides - Turning Warm Gradients into Cold Gradients */
 
-/* Badges */
-.badge-premium {
-  background: linear-gradient(45deg, var(--gold-dark), var(--gold-secondary));
-  color: #000;
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.badge-verified {
-  background: #10b981;
-  color: #fff;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-}
-
-.badge-vip {
-  background: linear-gradient(45deg, #4b0082, #8a2be2);
-  color: #fff;
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-}
-
-.badge-boost {
-  background: linear-gradient(45deg, #e0115f, #ff69b4);
-  color: #fff;
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-}
-
-/* Gradients */
 .bg-gradient-gold-purple {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(75, 0, 130, 0.1));
-}
-
-.bg-gradient-dark-overlay {
-  background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
-}
-
-.bg-gradient-premium-dark {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, var(--gold-500) 0%, var(--purple-500) 100%) !important;
 }
 
 .bg-gradient-purple-rose {
-  background: linear-gradient(135deg, #4b0082, #e0115f);
+  background: linear-gradient(135deg, var(--purple-500) 0%, var(--rose-500) 100%) !important;
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-600) 100%) !important;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(45deg, #d4af37, #f9e29c, #aa8412);
+  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-600) 100%) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-premium {
-  background: linear-gradient(45deg, #d4af37, #e0115f, #4b0082);
+  background: linear-gradient(135deg, var(--gold-500), var(--purple-500), var(--rose-500)) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Badge Overrides */
+.badge-premium {
+  background: linear-gradient(45deg, var(--gold-500), var(--gold-300)) !important;
+  color: white !important;
+  border: 1px solid var(--gold-200) !important;
+}
+
+.badge-vip {
+  background: linear-gradient(45deg, var(--purple-500), var(--purple-400)) !important;
+  color: white !important;
+  border: 1px solid var(--purple-200) !important;
+}
+
+.badge-new {
+  background: linear-gradient(45deg, var(--rose-500), var(--rose-400)) !important;
+  color: white !important;
+}
+
+/* Button Overrides */
 .btn-premium {
-  background: linear-gradient(45deg, #d4af37, #f9e29c);
-  color: #000;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(45deg, var(--gold-500), var(--gold-400)) !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3) !important; /* Sky Blue Shadow */
 }
 
 .btn-premium:hover {
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5) !important;
   transform: translateY(-2px);
 }
 
-.text-dark-text-secondary {
-  color: #a0a0a0;
+/* Glow Effects */
+.hover\:glow-gold:hover {
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.5) !important;
+  border-color: var(--gold-primary) !important;
 }
 
-.gold-500 {
-  background-color: #d4af37;
+.hover\:glow-purple:hover {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5) !important;
+  border-color: var(--purple-premium) !important;
 }
 
+.hover\:glow-rose:hover {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.5) !important;
+  border-color: var(--rose-premium) !important;
+}
+
+/* Separators */
 .separator-gold {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  background: linear-gradient(90deg, transparent, var(--gold-500), transparent) !important;
 }
-

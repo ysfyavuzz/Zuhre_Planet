@@ -97,13 +97,13 @@ export default function Reviews() {
         { icon: Star, value: stats.average, label: 'Ortalama Puan', color: 'bg-yellow-500/20 text-yellow-600' },
         { icon: MessageSquare, value: stats.total, label: 'Toplam Değerlendirme', color: 'bg-blue-500/20 text-blue-600' },
         { icon: TrendingUp, value: `+${stats.lastMonthCount}`, label: 'Bu Ay', color: 'bg-green-500/20 text-green-600' },
-        { icon: Eye, value: stats.verifiedCount, label: 'Onaylı Randevu', color: 'bg-purple-500/20 text-purple-600' },
+        { icon: Eye, value: stats.verifiedCount, label: 'Onaylı Randevu', color: 'bg-blue-500/20 text-blue-600' },
       ];
     } else {
       return [
         { icon: Star, value: '12', label: 'Yazılan Değerlendirme', color: 'bg-yellow-500/20 text-yellow-600' },
         { icon: Heart, value: '24', label: 'Favori Escort', color: 'bg-red-500/20 text-red-600' },
-        { icon: Award, value: '8', label: 'VIP Değerlendirme', color: 'bg-purple-500/20 text-purple-600' },
+        { icon: Award, value: '8', label: 'VIP Değerlendirme', color: 'bg-blue-500/20 text-blue-600' },
         { icon: ThumbsUp, value: '45', label: 'Faydalı Oy', color: 'bg-green-500/20 text-green-600' },
       ];
     }
@@ -132,7 +132,7 @@ export default function Reviews() {
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">
                   DEĞERLENDİRMELER
                 </h1>
-                <Badge variant="outline" className={isEscort ? 'bg-purple-500/10 text-purple-600 border-purple-500/30' : 'bg-blue-500/10 text-blue-600 border-blue-500/30'}>
+                <Badge variant="outline" className={isEscort ? 'bg-blue-500/10 text-blue-600 border-blue-500/30' : 'bg-sky-500/10 text-sky-600 border-sky-500/30'}>
                   <Shield className="w-3 h-3 mr-1" />
                   {isEscort ? 'Escort Paneli' : 'Müşteri Paneli'}
                 </Badge>

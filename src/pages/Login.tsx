@@ -30,7 +30,7 @@ export default function Login() {
       description: 'Profilini yönet ve kazanç elde et',
       icon: Briefcase,
       href: '/login-escort',
-      color: 'from-pink-500 to-pink-600',
+      color: 'from-blue-500 to-sky-600',
     },
     {
       id: 'admin',
@@ -38,7 +38,7 @@ export default function Login() {
       description: 'Platform yönetimi ve denetim',
       icon: Shield,
       href: '/admin/login',
-      color: 'from-purple-500 to-purple-600',
+      color: 'from-blue-500 to-blue-600',
     },
   ];
 
@@ -90,7 +90,7 @@ export default function Login() {
         <div className="text-center mt-12">
           <p className="text-gray-600">
             Hesabınız yok mu?{' '}
-            <a href="/register" className="text-pink-600 font-semibold hover:underline">
+            <a href="/register" className="text-blue-600 font-semibold hover:underline">
               Kayıt Olun
             </a>
           </p>

@@ -351,7 +351,7 @@ export const DASHBOARD_TEMPLATES: Record<string, DashboardConfig> = {
         content: {
           metric: MetricType.BOOKINGS,
           icon: '📅',
-          color: 'purple',
+          color: 'blue',
           format: 'number',
         },
       },
@@ -410,7 +410,7 @@ export const DASHBOARD_TEMPLATES: Record<string, DashboardConfig> = {
         content: {
           metric: MetricType.RESPONSE_TIME,
           icon: '⚡',
-          color: 'orange',
+          color: 'sky',
           format: 'duration',
         },
       },

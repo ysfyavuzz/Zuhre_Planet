@@ -87,7 +87,7 @@ export default function Home(): JSX.Element {
 
         {/* Features Section */}
         <section className="bg-card rounded-3xl p-12 border border-border relative overflow-hidden glass-frost">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-500 via-purple-500 to-gold-500" />
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-500" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <FeatureCard 
               icon={<Shield className="w-8 h-8 text-gold-500" />}
@@ -134,7 +134,7 @@ export default function Home(): JSX.Element {
 
         {/* Join CTA */}
         <section className="card-cosmic relative rounded-3xl overflow-hidden py-16 md:py-20 px-8 text-center border-animated">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 to-amber-900/30 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-sky-900/30 z-0" />
           <div className="relative z-10 max-w-3xl mx-auto">
             <div className="icon-3d p-4 mx-auto mb-6 w-fit">
               <Crown className="w-12 h-12 md:w-16 md:h-16 text-primary" />

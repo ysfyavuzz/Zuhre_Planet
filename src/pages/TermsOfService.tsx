@@ -930,11 +930,11 @@ export default function TermsOfService() {
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <Card className="border-amber-500/30 bg-amber-500/5">
+              <Card className="border-sky-500/30 bg-sky-500/5">
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5 text-amber-600" />
-                    <CardTitle className="text-amber-600">ÖNEMLİ BİLDİRİM</CardTitle>
+                    <AlertCircle className="w-5 h-5 text-sky-600" />
+                    <CardTitle className="text-sky-600">ÖNEMLİ BİLDİRİM</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-3">

@@ -1,444 +1,131 @@
-/**
- * 3D Effects CSS Module
- * 
- * Provides common 3D utility classes and effects that can be used throughout the application.
- * These classes complement the Tailwind configuration for 3D components.
- * Updated with enhanced effects for Phase 4.
- * 
- * @module styles/3d-effects
- * @category Styles
- * @author Escort Platform Team
- * @version 2.0.0
- * @since 4.0.0
- */
+/* ============================
+   3D EFFECTS - ICE EDITION
+   ============================
+   Re-colored for Cool Blue/Cyan aesthetics.
+*/
 
-/* ========================================
-   3D Perspective Container
-   ======================================== */
-
-.perspective-container {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-.perspective-1500 {
-  perspective: 1500px;
-  transform-style: preserve-3d;
-}
-
-/* ========================================
-   3D Transform Utilities
-   ======================================== */
-
-.transform-3d {
-  transform-style: preserve-3d;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-/* Rotation utilities */
-.rotate-y-12 { transform: rotateY(12deg); }
-.rotate-x-12 { transform: rotateX(12deg); }
-.-rotate-y-12 { transform: rotateY(-12deg); }
-.-rotate-x-12 { transform: rotateX(-12deg); }
-
-/* Translate Z */
-.translate-z-10 { transform: translateZ(10px); }
-.translate-z-20 { transform: translateZ(20px); }
-.translate-z-50 { transform: translateZ(50px); }
-
-/* ========================================
-   3D Shadow Levels (Enhanced)
-   ======================================== */
-
-.shadow-3d-sm {
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.shadow-3d-md {
-  box-shadow: 
-    0 4px 8px rgba(0, 0, 0, 0.15),
-    0 8px 16px rgba(0, 0, 0, 0.15),
-    0 16px 32px rgba(0, 0, 0, 0.1);
-}
-
-.shadow-3d-lg {
-  box-shadow: 
-    0 8px 16px rgba(0, 0, 0, 0.2),
-    0 16px 32px rgba(0, 0, 0, 0.2),
-    0 32px 64px rgba(0, 0, 0, 0.15);
-}
-
-/* ========================================
-   3D Elevation Levels
-   ======================================== */
-
-.elevation-1 {
-  box-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transform: translateZ(1px);
-}
-
-.elevation-2 {
-  box-shadow: 
-    0 3px 6px rgba(0, 0, 0, 0.15),
-    0 2px 4px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateZ(2px);
-}
-
-.elevation-3 {
-  box-shadow: 
-    0 10px 20px rgba(0, 0, 0, 0.15),
-    0 3px 6px rgba(0, 0, 0, 0.10),
-    inset 0 2px 0 rgba(255, 255, 255, 0.2);
-  transform: translateZ(3px);
-}
-
-.elevation-4 {
-  box-shadow: 
-    0 15px 25px rgba(0, 0, 0, 0.15),
-    0 5px 10px rgba(0, 0, 0, 0.05),
-    inset 0 2px 0 rgba(255, 255, 255, 0.25);
-  transform: translateZ(4px);
-}
-
-.elevation-5 {
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.2),
-    0 10px 15px rgba(0, 0, 0, 0.1),
-    inset 0 3px 0 rgba(255, 255, 255, 0.3);
-  transform: translateZ(5px);
-}
-
-/* ========================================
-   3D Button Effects
-   ======================================== */
-
-.btn-3d {
-  position: relative;
-  transition: all 0.2s ease;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06),
-    inset 0 2px 0 rgba(255, 255, 255, 0.15),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-}
-
-.btn-3d:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 15px 30px -5px rgba(0, 0, 0, 0.3),
-    0 10px 10px -5px rgba(0, 0, 0, 0.15),
-    inset 0 2px 0 rgba(255, 255, 255, 0.2),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
-}
-
-.btn-3d:active {
-  transform: translateY(1px);
-  box-shadow: 
-    0 2px 3px -1px rgba(0, 0, 0, 0.1),
-    0 1px 2px -1px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
-}
-
-/* ========================================
-   3D Card Effects
-   ======================================== */
-
-.card-3d {
-  position: relative;
-  transition: all 0.3s ease;
-  box-shadow: 
-    0 10px 20px -5px rgba(0, 0, 0, 0.2),
-    0 6px 6px -3px rgba(0, 0, 0, 0.1);
-}
-
-.card-3d::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.4) 0%,
-    transparent 50%
-  );
-  pointer-events: none;
-}
-
-.card-3d::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.15),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-  pointer-events: none;
-}
-
-.card-3d:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 
-    0 20px 40px -10px rgba(0, 0, 0, 0.25),
-    0 10px 10px -5px rgba(0, 0, 0, 0.15);
-}
-
-/* ========================================
-   3D Input Effects
-   ======================================== */
-
+/* INPUT FIELDS */
 .input-3d {
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .input-3d:focus {
+  transform: translateY(-1px);
+  background: #fff;
+  border-color: #38BDF8; /* Sky 400 */
   box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.1),
-    0 0 0 3px rgba(236, 72, 153, 0.1);
+    inset 0 2px 4px rgba(0, 0, 0, 0.05),
+    0 0 0 3px rgba(14, 165, 233, 0.2), /* Sky Ring */
+    0 8px 16px -4px rgba(14, 165, 233, 0.1);
 }
 
-/* ========================================
-   3D Depth Layers
-   ======================================== */
-
-.layer-base {
-  transform: translateZ(0);
+.dark .input-3d {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(51, 65, 85, 0.8);
+  color: #fff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.layer-1 {
-  transform: translateZ(10px);
+.dark .input-3d:focus {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: #0EA5E9; /* Sky 500 */
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 0 0 3px rgba(14, 165, 233, 0.3),
+    0 8px 16px -4px rgba(0, 0, 0, 0.3);
 }
 
-.layer-2 {
-  transform: translateZ(20px);
+/* BUTTONS */
+.btn-3d-primary {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  color: white;
+  box-shadow: 
+    0 4px 6px -1px rgba(14, 165, 233, 0.2),
+    0 2px 4px -1px rgba(14, 165, 233, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.layer-3 {
-  transform: translateZ(30px);
+.btn-3d-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(14, 165, 233, 0.3),
+    0 4px 6px -2px rgba(14, 165, 233, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);
 }
 
-.layer-4 {
-  transform: translateZ(40px);
-}
-
-.layer-5 {
-  transform: translateZ(50px);
-}
-
-/* ========================================
-   Gelişmiş Glow Effects
-   ======================================== */
-
-.glow-sm { 
-  box-shadow: 0 0 10px currentColor; 
-}
-
-.glow-md { 
-  box-shadow: 0 0 20px currentColor; 
-}
-
-.glow-lg { 
-  box-shadow: 0 0 40px currentColor; 
-}
-
-.glow-xl { 
-  box-shadow: 0 0 60px currentColor; 
-}
-
+/* GLOW UTILITIES (Legacy Override) */
 .glow-primary {
-  box-shadow: 0 0 40px rgba(225, 29, 72, 0.4);
+  box-shadow: 0 0 40px rgba(14, 165, 233, 0.5) !important;
 }
 
 .glow-accent {
-  box-shadow: 0 0 40px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.5) !important;
 }
 
-/* ========================================
-   Gradient Text
-   ======================================== */
+.glow-success {
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.4) !important;
+}
 
+.glow-danger {
+  box-shadow: 0 0 40px rgba(244, 63, 94, 0.4) !important;
+}
+
+/* TEXT GRADIENTS (Legacy Override) */
 .text-gradient-primary {
-  background: linear-gradient(135deg, #E11D48, #F43F5E);
+  background: linear-gradient(135deg, #0EA5E9 0%, #38BDF8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  background: linear-gradient(135deg, #06B6D4 0%, #67E8F9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ========================================
-   Shimmer Animation
-   ======================================== */
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+/* CARDS */
+.card-3d {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 4px 6px -1px rgba(14, 165, 233, 0.1),
+    0 2px 4px -1px rgba(14, 165, 233, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
 }
 
-.animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+.card-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(14, 165, 233, 0.15),
+    0 4px 6px -2px rgba(14, 165, 233, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  border-color: rgba(56, 189, 248, 0.5);
 }
 
-/* ========================================
-   Float Animation
-   ======================================== */
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.dark .card-3d {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* ========================================
-   Pulse Glow Animation
-   ======================================== */
-
-@keyframes pulse-glow {
-  0%, 100% { 
-    box-shadow: 0 0 20px rgba(225, 29, 72, 0.4); 
-  }
-  50% { 
-    box-shadow: 0 0 40px rgba(225, 29, 72, 0.6); 
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* ========================================
-   3D Surfaces
-   ======================================== */
-
-.surface-glossy {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-}
-
-.surface-matte {
-  background: linear-gradient(
-    to bottom,
-    rgba(245, 245, 245, 1) 0%,
-    rgba(235, 235, 235, 1) 100%
-  );
-}
-
-.surface-metallic {
-  background: linear-gradient(
-    135deg,
-    rgba(240, 240, 240, 1) 0%,
-    rgba(200, 200, 200, 1) 50%,
-    rgba(240, 240, 240, 1) 100%
-  );
-}
-
-/* ========================================
-   3D Animations
-   ======================================== */
-
-@keyframes float-3d {
-  0%, 100% {
-    transform: translateY(0) translateZ(0);
-  }
-  50% {
-    transform: translateY(-10px) translateZ(10px);
-  }
-}
-
-@keyframes rotate-3d {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
-}
-
-@keyframes tilt-3d {
-  0%, 100% {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  25% {
-    transform: rotateX(5deg) rotateY(-5deg);
-  }
-  75% {
-    transform: rotateX(-5deg) rotateY(5deg);
-  }
-}
-
-.animate-float-3d {
-  animation: float-3d 3s ease-in-out infinite;
-}
-
-.animate-rotate-3d {
-  animation: rotate-3d 10s linear infinite;
-}
-
-.animate-tilt-3d {
-  animation: tilt-3d 4s ease-in-out infinite;
-}
-
-/* ========================================
-   Responsive 3D Effects (Reduce on mobile)
-   ======================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .card-3d,
-  .btn-3d,
-  .elevation-1,
-  .elevation-2,
-  .elevation-3,
-  .elevation-4,
-  .elevation-5 {
-    transform: none !important;
-    transition: none !important;
-  }
-  
-  .animate-float-3d,
-  .animate-rotate-3d,
-  .animate-tilt-3d {
-    animation: none !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .card-3d:hover {
-    transform: translateY(-2px) scale(1.01);
-  }
-  
-  .btn-3d:hover {
-    transform: translateY(-1px);
-  }
+.dark .card-3d:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 
+    0 10px 25px -5px rgba(14, 165, 233, 0.15),
+    0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  background: rgba(30, 41, 59, 0.8);
 }

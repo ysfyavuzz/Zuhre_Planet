@@ -83,7 +83,7 @@ function GuestLimitedCard({ escort }: { escort: any }) {
           {/* Badges */}
           <div className="absolute top-3 left-3 flex gap-2">
             {escort.isVip && (
-              <Badge className="bg-gradient-to-r from-amber-500 to-amber-600 text-white border-0 shadow-lg">
+              <Badge className="bg-gradient-to-r from-sky-500 to-blue-600 text-white border-0 shadow-lg">
                 <Crown className="w-3 h-3 mr-1" />
                 VIP
               </Badge>
@@ -123,7 +123,7 @@ function GuestLimitedCard({ escort }: { escort: any }) {
 
         <div className="flex items-center gap-3 text-sm mb-3">
           <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+            <Star className="w-4 h-4 text-sky-500 fill-sky-500" />
             <span className="font-semibold">{escort.rating || 5.0}</span>
           </div>
           <div className="flex items-center gap-1 text-muted-foreground">
@@ -133,7 +133,7 @@ function GuestLimitedCard({ escort }: { escort: any }) {
         </div>
 
         {/* Hidden details indicator */}
-        <div className="flex items-center gap-2 p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-300">
+        <div className="flex items-center gap-2 p-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-xs text-sky-700 dark:text-sky-300">
           <Lock className="w-3 h-3" />
           <span>Giriş yaparak tüm detayları görün</span>
         </div>
@@ -485,7 +485,7 @@ export default function GuestCatalog() {
           <section className="py-16 bg-gradient-to-br from-primary/10 via-accent/10 to-pink-500/10">
             <div className="container">
               <div className="max-w-3xl mx-auto text-center">
-                <Crown className="w-16 h-16 mx-auto mb-6 text-amber-500" />
+                <Crown className="w-16 h-16 mx-auto mb-6 text-sky-500" />
                 <h2 className="text-3xl font-black mb-4">Sınırsız Erişim İçin Üye Olun</h2>
                 <p className="text-lg text-muted-foreground mb-8">
                   Tüm profilleri, fotoğrafları ve iletişim bilgilerini görüntüleyin.

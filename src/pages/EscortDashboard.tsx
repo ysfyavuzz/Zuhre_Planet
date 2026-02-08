@@ -355,8 +355,8 @@ export default function EscortDashboard() {
                   <Card>
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4">
-                        <div className="p-3 rounded-xl bg-yellow-500/10">
-                          <Star className="w-6 h-6 text-yellow-500" />
+                        <div className="p-3 rounded-xl bg-sky-500/10">
+                          <Star className="w-6 h-6 text-sky-500" />
                         </div>
                         <div>
                           <div className="text-2xl font-black">{stats.rating}</div>
@@ -535,7 +535,7 @@ export default function EscortDashboard() {
                           Onaylı Profil
                         </Badge>
                         <Badge variant="secondary">
-                          <Star className="w-3 h-3 mr-1 text-yellow-500" />
+                          <Star className="w-3 h-3 mr-1 text-sky-500" />
                           {stats.rating} ({stats.totalReviews} değerlendirme)
                         </Badge>
                       </div>
@@ -651,7 +651,7 @@ export default function EscortDashboard() {
                 </Card>
                 <Card>
                   <CardContent className="p-6 text-center">
-                    <p className="text-3xl font-bold text-purple-600">₺{stats.revenue.toLocaleString('tr-TR')}</p>
+                    <p className="text-3xl font-bold text-blue-600">₺{stats.revenue.toLocaleString('tr-TR')}</p>
                     <p className="text-sm text-muted-foreground">Toplam Gelir</p>
                   </CardContent>
                 </Card>
@@ -884,7 +884,7 @@ export default function EscortDashboard() {
                                     key={star}
                                     className={`w-4 h-4 ${
                                       star <= review.rating
-                                        ? 'fill-yellow-400 text-yellow-400'
+                                        ? 'fill-sky-400 text-sky-400'
                                         : 'text-gray-300'
                                     }`}
                                   />

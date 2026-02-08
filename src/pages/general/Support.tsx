@@ -71,7 +71,7 @@ export default function Support() {
       title: 'SSS',
       description: 'Sıkça sorulan soruları inceleyin',
       icon: HelpCircle,
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-cyan-500 to-blue-600',
       action: 'SSS\'ye Git',
       available: 'Her zaman erişilebilir',
     },
@@ -212,7 +212,7 @@ export default function Support() {
                   <Button 
                     type="submit"
                     disabled={isSubmitted}
-                    className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 disabled:opacity-50"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:opacity-50"
                   >
                     <Send className="w-4 h-4 mr-2" />
                     {isSubmitted ? 'Gönderildi' : 'Gönder'}
@@ -227,7 +227,7 @@ export default function Support() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-pink-600" />
+                    <Clock className="w-5 h-5 text-blue-600" />
                     Çalışma Saatleri
                   </CardTitle>
                 </CardHeader>
@@ -248,7 +248,7 @@ export default function Support() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-pink-600" />
+                    <MapPin className="w-5 h-5 text-blue-600" />
                     Ofis Adresi
                   </CardTitle>
                 </CardHeader>
@@ -281,7 +281,7 @@ export default function Support() {
                     <button className="w-12 h-12 rounded-full bg-sky-500 hover:bg-sky-600 flex items-center justify-center transition-colors">
                       <Twitter className="w-6 h-6 text-white" />
                     </button>
-                    <button className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 flex items-center justify-center transition-colors">
+                    <button className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 flex items-center justify-center transition-colors">
                       <Instagram className="w-6 h-6 text-white" />
                     </button>
                   </div>
@@ -292,7 +292,7 @@ export default function Support() {
 
           {/* Quick Links */}
           <div className="mt-12 max-w-6xl mx-auto">
-            <Card className="bg-gradient-to-r from-pink-50 to-purple-50 border-pink-200">
+            <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
                   Hızlı Bağlantılar

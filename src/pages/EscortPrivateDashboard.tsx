@@ -215,7 +215,7 @@ export default function EscortPrivateDashboard() {
         />
 
         {/* Header */}
-        <section className="bg-gradient-to-br from-purple-500/10 via-background to-pink-500/10 border-b border-border/50">
+        <section className="bg-gradient-to-br from-blue-500/10 via-background to-cyan-500/10 border-b border-border/50">
           <div className="container py-8">
             <div className="flex items-center justify-between">
               <div>
@@ -241,7 +241,7 @@ export default function EscortPrivateDashboard() {
                   </Button>
                 </Link>
                 <Link href="/">
-                  <Button size="sm" className="bg-gradient-to-r from-purple-500 to-pink-500">
+                  <Button size="sm" className="bg-gradient-to-r from-blue-500 to-cyan-500">
                     <Home className="w-4 h-4 mr-2" />
                     Ana Sayfa
                   </Button>
@@ -263,8 +263,8 @@ export default function EscortPrivateDashboard() {
                 <Card className="glass">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-xl bg-purple-500/10">
-                        <Eye className="w-6 h-6 text-purple-500" />
+                      <div className="p-3 rounded-xl bg-blue-500/10">
+                        <Eye className="w-6 h-6 text-blue-500" />
                       </div>
                       <div>
                         <div className="text-2xl font-black">{stats.views}</div>
@@ -283,8 +283,8 @@ export default function EscortPrivateDashboard() {
                 <Card className="glass">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-xl bg-pink-500/10">
-                        <Heart className="w-6 h-6 text-pink-500" />
+                      <div className="p-3 rounded-xl bg-cyan-500/10">
+                        <Heart className="w-6 h-6 text-cyan-500" />
                       </div>
                       <div>
                         <div className="text-2xl font-black">{stats.favorites}</div>
@@ -387,7 +387,7 @@ export default function EscortPrivateDashboard() {
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-black tracking-tighter">Randevular</h2>
                   <Link href="/escort/dashboard/bookings">
-                    <Button variant="link" className="text-purple-500 dark:text-purple-400 font-bold p-0">
+                    <Button variant="link" className="text-blue-500 dark:text-blue-400 font-bold p-0">
                       Tümünü Gör <ChevronRight className="w-4 h-4 ml-1" />
                     </Button>
                   </Link>
@@ -468,7 +468,7 @@ export default function EscortPrivateDashboard() {
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-black tracking-tighter">Mesajlar</h2>
                   <Link href="/messages">
-                    <Button variant="link" className="text-purple-500 dark:text-purple-400 font-bold p-0">
+                    <Button variant="link" className="text-blue-500 dark:text-blue-400 font-bold p-0">
                       Tümünü Gör <ChevronRight className="w-4 h-4 ml-1" />
                     </Button>
                   </Link>
@@ -592,7 +592,7 @@ export default function EscortPrivateDashboard() {
                       <span className="font-semibold">{mockEarnings.todayViews} görüntülenme</span>
                     </div>
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500" style={{ width: '70%' }} />
+                      <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-500" style={{ width: '70%' }} />
                     </div>
                   </div>
 
@@ -602,7 +602,7 @@ export default function EscortPrivateDashboard() {
                       <span className="font-semibold">{mockEarnings.weekViews} görüntülenme</span>
                     </div>
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500" style={{ width: '85%' }} />
+                      <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-500" style={{ width: '85%' }} />
                     </div>
                   </div>
 
