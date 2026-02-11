@@ -1,6 +1,6 @@
-# Proje Mimarisi: Escilan Platformu
+# Proje Mimarisi: Zuhre Planet
 
-Bu doküman, Escilan projesinin teknik mimarisini, kullanılan teknolojileri ve klasör yapısını detaylı bir şekilde açıklamaktadır.
+Bu doküman, Zuhre Planet projesinin teknik mimarisini, kullanılan teknolojileri ve klasör yapısını detaylı bir şekilde açıklamaktadır.
 
 ## 1. Genel Bakış
 

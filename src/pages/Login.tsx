@@ -49,7 +49,7 @@ export default function Login() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight"
           >
-            ESCİLAN <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-purple-500">GALAXY</span>
+            ZUHRE <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-purple-500">PLANET</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}

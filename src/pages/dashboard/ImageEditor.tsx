@@ -203,7 +203,7 @@ export default function ImageEditor() {
                   className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-white focus:outline-none focus:border-purple-500 transition-colors"
                 >
                   <option value="none">Maske Yok</option>
-                  <option value="escilan-logo">Escilan Logo</option>
+                  <option value="zuhre-planet-logo">Zuhre Planet Logo</option>
                   <option value="galaxy-blur">Galaksi Blur</option>
                 </select>
               </div>

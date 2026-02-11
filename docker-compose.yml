@@ -4,40 +4,40 @@ services:
   # --- VERİTABANI (PostgreSQL) ---
   db:
     image: postgres:15-alpine
-    container_name: escilan_db
+    container_name: zuhre_db
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER:-nexus_admin}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-nexus_pass_123}
-      POSTGRES_DB: ${DB_NAME:-escilan_prod}
+      POSTGRES_DB: ${DB_NAME:-zuhre_prod}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
-      - escilan_network
+      - zuhre_network
 
   # --- BACKEND (Node.js/API) ---
   api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: escilan_api
+    container_name: zuhre_api
     restart: always
     environment:
       NODE_ENV: production
-      DATABASE_URL: postgres://${DB_USER:-nexus_admin}:${DB_PASSWORD:-nexus_pass_123}@db:5432/${DB_NAME:-escilan_prod}
+      DATABASE_URL: postgres://${DB_USER:-nexus_admin}:${DB_PASSWORD:-nexus_pass_123}@db:5432/${DB_NAME:-zuhre_prod}
       JWT_SECRET: ${JWT_SECRET}
       PORT: 3000
     depends_on:
       - db
     networks:
-      - escilan_network
+      - zuhre_network
 
   # --- REVERSE PROXY (Nginx) ---
   nginx:
     image: nginx:alpine
-    container_name: escilan_nginx
+    container_name: zuhre_nginx
     restart: always
     ports:
       - "80:80"
@@ -50,10 +50,10 @@ services:
     depends_on:
       - api
     networks:
-      - escilan_network
+      - zuhre_network
 
 networks:
-  escilan_network:
+  zuhre_network:
     driver: bridge
 
 volumes:

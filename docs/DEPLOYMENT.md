@@ -1,6 +1,6 @@
 # 🚀 Deployment (Yayınlama) Rehberi
 
-Bu dokümantasyon, Escort Platform projesini production ortamına deploy etmek için gereken tüm adımları ve konfigürasyonları içerir.
+Bu dokümantasyon, Zuhre Planet projesini production ortamına deploy etmek için gereken tüm adımları ve konfigürasyonları içerir.
 
 ---
 
@@ -24,7 +24,7 @@ Production ortamında aşağıdaki environment variables'ların tanımlanması z
 
 ```env
 # === UYGULAMA ===
-VITE_APP_NAME=Escort Platform
+VITE_APP_NAME=Zuhre Planet
 VITE_APP_URL=https://your-domain.com
 VITE_APP_ENV=production
 
@@ -57,7 +57,7 @@ VITE_SENTRY_DSN=https://your-sentry-dsn@sentry.io/project-id
 
 | Variable | Açıklama | Örnek |
 |----------|----------|-------|
-| `VITE_APP_NAME` | Uygulama adı | `Escort Platform` |
+| `VITE_APP_NAME` | Uygulama adı | `Zuhre Planet` |
 | `VITE_APP_URL` | Production domain | `https://example.com` |
 | `VITE_APP_ENV` | Ortam tipi | `production` |
 | `DATABASE_URL` | Turso database URL'i | `libsql://db.turso.io` |

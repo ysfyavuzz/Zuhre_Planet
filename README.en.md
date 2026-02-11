@@ -1,6 +1,6 @@
-# Escort Platform - Project Documentation
+# Zuhre Planet - Project Documentation
 
-> Modern, scalable, and user-friendly escort listing platform.
+> Modern, scalable, and user-friendly premium listing platform.
 
 [🇹🇷 Türkçe Dokümantasyon](./README.md)
 
@@ -134,7 +134,7 @@
 
 ## 📋 Project Overview
 
-The Escort Platform is a modern web application where escorts in Turkey can publish their listings, and customers can search and filter these listings.
+Zuhre Planet is a modern web application where service providers in Turkey can publish their listings, and customers can search and filter these listings.
 
 ### Technology Stack
 

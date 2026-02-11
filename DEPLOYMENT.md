@@ -1,6 +1,6 @@
 # Projeyi Canlıya Alma Rehberi (A'dan Z'ye)
 
-Bu rehber, Escilan projesini sıfırdan bir VPS (Sanal Özel Sunucu) üzerinde canlıya almak için gereken sunucu seçimi, maliyet analizi ve teknik kurulum adımlarını detaylı bir şekilde açıklamaktadır.
+Bu rehber, Zuhre Planet projesini sıfırdan bir VPS (Sanal Özel Sunucu) üzerinde canlıya almak için gereken sunucu seçimi, maliyet analizi ve teknik kurulum adımlarını detaylı bir şekilde açıklamaktadır.
 
 ## Bölüm 1: Sunucu Seçimi ve Satın Alma
 

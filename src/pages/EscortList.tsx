@@ -60,7 +60,7 @@ export default function EscortList() {
   return (
     <div className="min-h-screen bg-[#020205] text-white">
       <SEO 
-        title="Escilan Galaxy | Seçkin İlanlar" 
+        title="Zuhre Planet | Seçkin İlanlar" 
         description="Galaksinin en parlak yıldızlarını keşfedin." 
       />
 

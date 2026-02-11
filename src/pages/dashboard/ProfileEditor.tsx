@@ -256,7 +256,7 @@ export default function ProfileEditor() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="none">Maske Yok</SelectItem>
-                      <SelectItem value="escilan-logo">Escilan Logo</SelectItem>
+                      <SelectItem value="zuhre-planet-logo">Zuhre Planet Logo</SelectItem>
                       <SelectItem value="galaxy-blur">Galaksi Blur</SelectItem>
                     </SelectContent>
                   </Select>

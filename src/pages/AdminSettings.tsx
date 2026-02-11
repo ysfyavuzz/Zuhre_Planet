@@ -169,7 +169,7 @@ export default function AdminSettings() {
                 </label>
                 <input
                   type="url"
-                  defaultValue="https://escilan.com"
+                  defaultValue="https://zuhreplanet.com"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 />
               </div>
@@ -216,7 +216,7 @@ export default function AdminSettings() {
                 </label>
                 <input
                   type="email"
-                  placeholder="noreply@escilan.com"
+                  placeholder="noreply@zuhreplanet.com"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 />
               </div>

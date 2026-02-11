@@ -172,7 +172,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'E-posta',
-      content: 'info@escilansitesi.com',
+      content: 'info@zuhreplanet.com',
       color: 'text-green-500',
     },
     {

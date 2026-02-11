@@ -1,7 +1,7 @@
 {
-  "name": "Escort Platform - Türkiye'nin Premier Escort İlan Sitesi",
-  "short_name": "Escort Platform",
-  "description": "Türkiye'nin en güvenilir ve kaliteli escort ilan platformu. Gerçek profiller, güvenli iletişim ve premium özellikler.",
+  "name": "Zuhre Planet - Seçkin İlanlar ve Randevu Platformu",
+  "short_name": "Zuhre Planet",
+  "description": "Zuhre Planet - Türkiye'nin en seçkin ilan ve randevu platformu. Gerçek profiller, güvenli iletişim ve premium özellikler.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

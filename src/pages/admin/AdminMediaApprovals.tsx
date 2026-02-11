@@ -32,7 +32,7 @@ const mockFetchPendingMedia = (): Promise<MediaItem[]> => {
           imageProcessingOptions: {
             faceMaskingEnabled: true,
             blurBackground: true,
-            customMaskId: 'escilan-logo',
+            customMaskId: 'zuhre-planet-logo',
             brightnessAdjustment: 0.2,
             contrastAdjustment: 0.1,
           }

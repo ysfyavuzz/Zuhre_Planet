@@ -1,6 +1,6 @@
 # Geliştirme Ortamı Kurulum Rehberi
 
-Bu rehber, Escilan projesini yerel geliştirme ortamınızda (localhost) kurmak ve çalıştırmak için gerekli adımları içerir.
+Bu rehber, Zuhre Planet projesini yerel geliştirme ortamınızda (localhost) kurmak ve çalıştırmak için gerekli adımları içerir.
 
 ## Ön Gereksinimler
 
@@ -18,8 +18,8 @@ Bu rehber, Escilan projesini yerel geliştirme ortamınızda (localhost) kurmak 
 Projeyi bilgisayarınıza klonlayın ve proje dizinine gidin.
 
 ```bash
-git clone [PROJE_GITHUB_URL] escilan-project
-cd escilan-project
+git clone [PROJE_GITHUB_URL] zuhre-planet
+cd zuhre-planet
 ```
 
 ### 2. Bağımlılıkları Yükleme

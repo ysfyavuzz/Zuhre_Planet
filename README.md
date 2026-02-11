@@ -1,6 +1,6 @@
-# Escilan Platformu
+# Zuhre Planet
 
-**Escilan**, modern teknolojilerle geliştirilmiş, yüksek performanslı ve ölçeklenebilir bir "Yetişkin İlan ve Randevu" platformudur. Bu proje, hem son kullanıcılar (müşteriler) hem de hizmet sağlayıcılar (escortlar) için zengin özelliklere sahip, güvenli ve type-safe bir ortam sunar.
+**Zuhre Planet**, modern teknolojilerle geliştirilmiş, yüksek performanslı ve ölçeklenebilir bir "Yetişkin İlan ve Randevu" platformudur. Bu proje, hem son kullanıcılar (müşteriler) hem de hizmet sağlayıcılar (escortlar) için zengin özelliklere sahip, güvenli ve type-safe bir ortam sunar.
 
 ![Proje Önizlemesi](https://i.imgur.com/gI2Fz1i.png) <!-- TODO: Gerçek bir ekran görüntüsü ekle -->
 
@@ -40,8 +40,8 @@ Projenin yapısını ve kurulum süreçlerini anlamak için aşağıdaki doküma
 
 1.  **Projeyi klonlayın:**
     ```bash
-    git clone [PROJE_GITHUB_URL] escilan-project
-    cd escilan-project
+    git clone [PROJE_GITHUB_URL] zuhre-planet
+    cd zuhre-planet
     ```
 
 2.  **Bağımlılıkları yükleyin:**
