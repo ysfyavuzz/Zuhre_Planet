@@ -143,7 +143,7 @@ export default function TermsOfService() {
             Hizmet Şartları ve Koşulları
           </h1>
           <p className="text-lg text-white/90 max-w-2xl">
-            Escilanımız platformunu kullanarak, aşağıdaki şartları ve koşulları kabul etmiş sayılırsınız.
+            Zuhre Planet platformunu kullanarak, aşağıdaki şartları ve koşulları kabul etmiş sayılırsınız.
             Lütfen dikkatle okuyunuz.
           </p>
           <p className="text-sm text-white/70 mt-4">
@@ -279,7 +279,7 @@ export default function TermsOfService() {
                           <h4 className="font-bold mb-1">Dış Platform Bağlantıları</h4>
                           <p className="text-sm text-muted-foreground">
                             Profilinizde diğer web siteleri veya sosyal medya hesaplarına yönlendirme yapmak yasaktır. 
-                            Tüm işlemler Escilanımız platformu üzerinden gerçekleştirilmelidir.
+                            Tüm işlemler Zuhre Planet platformu üzerinden gerçekleştirilmelidir.
                           </p>
                         </div>
                       </div>
@@ -334,7 +334,7 @@ export default function TermsOfService() {
                         <div>
                           <h4 className="font-bold mb-1">Dolandırıcılıktan Koruma</h4>
                           <p className="text-sm text-muted-foreground">
-                            Platform dışında hiçbir yerde ödeme yapmayınız. Tüm ödemeler Escilanımız güvenli ödeme 
+                            Platform dışında hiçbir yerde ödeme yapmayınız. Tüm ödemeler Zuhre Planet güvenli ödeme 
                             sistemi üzerinden yapılmalıdır. Ödeme yöntemlerinizi hiçbir kişiye söylemeyin.
                           </p>
                         </div>
@@ -545,7 +545,7 @@ export default function TermsOfService() {
                         <div>
                           <h4 className="font-bold mb-1">Platform Ücreti</h4>
                           <p className="text-sm text-muted-foreground">
-                            Tüm randevular platform tarafından %15 işlem ücreti ile işlenir. Bu ücret Escilanımız 
+                            Tüm randevular platform tarafından %15 işlem ücreti ile işlenir. Bu ücret Zuhre Planet 
                             hizmetlerini yürütmek için kullanılır.
                           </p>
                         </div>
@@ -939,14 +939,14 @@ export default function TermsOfService() {
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-3">
                   <p>
-                    Bu Hizmet Şartları ve Koşulları, Escilanımız tarafından herhangi bir yasal ihbar olmaksızın 
+                    Bu Hizmet Şartları ve Koşulları, Zuhre Planet tarafından herhangi bir yasal ihbar olmaksızın 
                     değiştirilebilir. Değişiklikler yayınlandığında yürürlüğe girer.
                   </p>
                   <p>
                     Platform'u kullanmaya devam ettiğiniz takdirde, bu değişiklikleri kabul etmiş sayılırsınız.
                   </p>
                   <p>
-                    Sorularınız veya endişeleriniz için lütfen destek@escilanimiz.com adresine e-posta gönderin.
+                    Sorularınız veya endişeleriniz için lütfen destek@zuhreplanet.com adresine e-posta gönderin.
                   </p>
                 </CardContent>
               </Card>

@@ -170,7 +170,7 @@ export default function CookiePolicy() {
             Çerez Politikası
           </h1>
           <p className="text-lg text-white/90 max-w-2xl">
-            Escilanımız platformu çerezler kullanır. Bu politika, çerezlerin ne olduğu, 
+            Zuhre Planet platformu çerezler kullanır. Bu politika, çerezlerin ne olduğu, 
             neden kullanıldığı ve nasıl kontrol edilebileceği hakkında bilgi verir.
           </p>
           <p className="text-sm text-white/70 mt-4">
@@ -430,7 +430,7 @@ export default function CookiePolicy() {
                   <CardContent className="space-y-4 border-t border-white/10 pt-6">
                     <div className="space-y-3">
                       <p className="text-sm text-muted-foreground">
-                        Üçüncü taraf çerezleri, Escilanımız dışında başka şirketler tarafından ayarlanan çerezlerdir. 
+                        Üçüncü taraf çerezleri, Zuhre Planet dışında başka şirketler tarafından ayarlanan çerezlerdir. 
                         Platform'a embedded hizmetler aracılığıyla yerleştirilirler.
                       </p>
 
@@ -523,7 +523,7 @@ export default function CookiePolicy() {
                       <div>
                         <h4 className="font-bold mb-2">Platform'da Çerez Kontrol</h4>
                         <p className="text-sm text-muted-foreground mb-3">
-                          Escilanımız platformunda çerez tercihlerinizi kontrol edebilirsiniz:
+                          Zuhre Planet platformunda çerez tercihlerinizi kontrol edebilirsiniz:
                         </p>
                         <div className="space-y-2 text-sm">
                           <div className="flex items-start gap-2">
@@ -737,14 +737,14 @@ export default function CookiePolicy() {
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-3">
                   <p>
-                    Bu Çerez Politikası, Escilanımız tarafından herhangi bir yasal ihbar olmaksızın değiştirilebilir. 
+                    Bu Çerez Politikası, Zuhre Planet tarafından herhangi bir yasal ihbar olmaksızın değiştirilebilir. 
                     Değişiklikler yayınlandığında yürürlüğe girer.
                   </p>
                   <p>
                     Platform'u kullanmaya devam ettiğiniz takdirde, bu değişiklikleri kabul etmiş sayılırsınız.
                   </p>
                   <p>
-                    Sorularınız veya endişeleriniz için lütfen privacy@escilanimiz.com adresine e-posta gönderin.
+                    Sorularınız veya endişeleriniz için lütfen privacy@zuhreplanet.com adresine e-posta gönderin.
                   </p>
                 </CardContent>
               </Card>

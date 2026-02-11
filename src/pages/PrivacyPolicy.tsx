@@ -144,7 +144,7 @@ export default function PrivacyPolicy() {
             Gizlilik Politikası
           </h1>
           <p className="text-lg text-white/90 max-w-2xl">
-            Escilanımız, kişisel verilerinizin gizliliğini ve korunmasını ciddiye alır. 
+            Zuhre Planet, kişisel verilerinizin gizliliğini ve korunmasını ciddiye alır. 
             Bu politika, verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu hakkında bilgi verir.
           </p>
           <p className="text-sm text-white/70 mt-4">
@@ -557,7 +557,7 @@ export default function PrivacyPolicy() {
                       <div className="bg-green-500/5 border border-green-500/20 rounded-lg p-3 text-sm">
                         <p className="text-muted-foreground">
                           <strong>HAKLARI KULLANMAK İÇİN:</strong> Aşağıdaki bilgileri içeren bir e-posta gönderin: 
-                          Ad-soyad, e-posta adresi, talebiniz, imza. E-posta: privacy@escilanimiz.com
+                          Ad-soyad, e-posta adresi, talebiniz, imza. E-posta: privacy@zuhreplanet.com
                         </p>
                       </div>
                     </div>
@@ -839,7 +839,7 @@ export default function PrivacyPolicy() {
 
                       <div className="bg-green-500/5 border border-green-500/20 rounded-lg p-3 text-sm">
                         <p className="text-muted-foreground">
-                          <strong>GÜVENLİK AÇIĞINI BİLDİRMEK İÇİN:</strong> security@escilanimiz.com adresine e-posta gönderin.
+                          <strong>GÜVENLİK AÇIĞINI BİLDİRMEK İÇİN:</strong> security@zuhreplanet.com adresine e-posta gönderin.
                           Açıkları sorumlu şekilde açıklamaya karşı harekete geçeceğiz.
                         </p>
                       </div>
@@ -881,7 +881,7 @@ export default function PrivacyPolicy() {
                       <div>
                         <h4 className="font-bold mb-2">Veri Sorumlusu</h4>
                         <p className="text-sm text-muted-foreground">
-                          <strong>Escilanımız Platformu</strong><br />
+                          <strong>Zuhre Planet Platformu</strong><br />
                           Çevrimiçi İçerik Sağlama Hizmetleri
                         </p>
                       </div>
@@ -891,15 +891,15 @@ export default function PrivacyPolicy() {
                         <div className="bg-muted/30 rounded-lg p-3 space-y-2 text-sm">
                           <p className="flex items-center gap-2">
                             <Mail className="w-4 h-4 text-primary" />
-                            <span><strong>E-posta:</strong> privacy@escilanimiz.com</span>
+                            <span><strong>E-posta:</strong> privacy@zuhreplanet.com</span>
                           </p>
                           <p className="flex items-center gap-2">
                             <Mail className="w-4 h-4 text-primary" />
-                            <span><strong>Destek:</strong> support@escilanimiz.com</span>
+                            <span><strong>Destek:</strong> support@zuhreplanet.com</span>
                           </p>
                           <p className="flex items-center gap-2">
                             <Mail className="w-4 h-4 text-primary" />
-                            <span><strong>Güvenlik:</strong> security@escilanimiz.com</span>
+                            <span><strong>Güvenlik:</strong> security@zuhreplanet.com</span>
                           </p>
                         </div>
                       </div>
@@ -942,14 +942,14 @@ export default function PrivacyPolicy() {
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-3">
                   <p>
-                    Bu Gizlilik Politikası, Escilanımız tarafından herhangi bir yasal ihbar olmaksızın değiştirilebilir. 
+                    Bu Gizlilik Politikası, Zuhre Planet tarafından herhangi bir yasal ihbar olmaksızın değiştirilebilir. 
                     Değişiklikler yayınlandığında yürürlüğe girer.
                   </p>
                   <p>
                     Platform'u kullanmaya devam ettiğiniz takdirde, bu değişiklikleri kabul etmiş sayılırsınız.
                   </p>
                   <p>
-                    Sorularınız veya endişeleriniz için lütfen privacy@escilanimiz.com adresine e-posta gönderin.
+                    Sorularınız veya endişeleriniz için lütfen privacy@zuhreplanet.com adresine e-posta gönderin.
                   </p>
                 </CardContent>
               </Card>
