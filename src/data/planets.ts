@@ -1,3 +1,15 @@
+export interface CharacterData {
+  name: string;
+  race: string;
+  skinColor: string;
+  hairStyle: string;
+  hairColor: string;
+  eyeColor: string;
+  clothingStyle: string;
+  pose: string;
+  isNsfw: boolean;
+}
+
 export interface PlanetTheme {
   color: string;
   emissive: string;
@@ -15,6 +27,7 @@ export interface PlanetData {
   path: string;
   description: string;
   theme: PlanetTheme;
+  character?: CharacterData;
 }
 
 export const PLANETS: PlanetData[] = [
@@ -29,6 +42,17 @@ export const PLANETS: PlanetData[] = [
       glow: "#7c3aed",
       materialType: 'plasma',
       rotationSpeed: 0.005
+    },
+    character: {
+      name: "Nova",
+      race: "Plasma Entity",
+      skinColor: "Glowing Purple",
+      hairStyle: "Fluid/Liquid",
+      hairColor: "Silver",
+      eyeColor: "Neon Purple",
+      clothingStyle: "Transparent Energy Strips",
+      pose: "Dancing in Core Currents",
+      isNsfw: true
     }
   },
   {
@@ -44,6 +68,17 @@ export const PLANETS: PlanetData[] = [
       ringColor: "#60a5fa",
       materialType: 'gas',
       rotationSpeed: 0.008
+    },
+    character: {
+      name: "Lyra",
+      race: "Gas Cloud Nymph",
+      skinColor: "Pale Blue Translucent",
+      hairStyle: "Cloud-like Long",
+      hairColor: "White",
+      eyeColor: "Sky Blue",
+      clothingStyle: "Sheer Gas Tulle",
+      pose: "Lying on Rings",
+      isNsfw: true
     }
   },
   {
@@ -57,6 +92,17 @@ export const PLANETS: PlanetData[] = [
       glow: "#f59e0b",
       materialType: 'metallic',
       rotationSpeed: 0.003
+    },
+    character: {
+      name: "Midasia",
+      race: "Metallic Goddess",
+      skinColor: "Gold Metallic",
+      hairStyle: "Short Pixie",
+      hairColor: "Black",
+      eyeColor: "Amber",
+      clothingStyle: "Gold Chains & Armor Plates",
+      pose: "Sitting on Surface",
+      isNsfw: true
     }
   },
   {
@@ -70,6 +116,17 @@ export const PLANETS: PlanetData[] = [
       glow: "#10b981",
       materialType: 'bio',
       rotationSpeed: 0.006
+    },
+    character: {
+      name: "Gaia",
+      race: "Bio-Organic Spirit",
+      skinColor: "Olive Green",
+      hairStyle: "Vine-like",
+      hairColor: "Vibrant Green",
+      eyeColor: "Forest Glow",
+      clothingStyle: "Bioluminescent Leaves",
+      pose: "Embracing Organic Texture",
+      isNsfw: true
     }
   },
   {
@@ -83,6 +140,17 @@ export const PLANETS: PlanetData[] = [
       glow: "#ec4899",
       materialType: 'crystal',
       rotationSpeed: 0.004
+    },
+    character: {
+      name: "Krystal",
+      race: "Crystalline Being",
+      skinColor: "Diamond Translucent",
+      hairStyle: "Crystallized Sharp",
+      hairColor: "Pink",
+      eyeColor: "Diamond",
+      clothingStyle: "Sharp Crystal Shards",
+      pose: "Standing in Light",
+      isNsfw: true
     }
   },
   {
@@ -96,6 +164,17 @@ export const PLANETS: PlanetData[] = [
       glow: "#6366f1",
       materialType: 'ice',
       rotationSpeed: 0.002
+    },
+    character: {
+      name: "Lumi",
+      race: "Ice Queen",
+      skinColor: "Snow White",
+      hairStyle: "Long Frozen",
+      hairColor: "Ice Blue",
+      eyeColor: "Silver",
+      clothingStyle: "Ice Crystal Wrap",
+      pose: "Sitting on Ice Throne",
+      isNsfw: true
     }
   },
   {
@@ -111,6 +190,17 @@ export const PLANETS: PlanetData[] = [
       ringColor: "#facc15",
       materialType: 'lava',
       rotationSpeed: 0.01
+    },
+    character: {
+      name: "Ember",
+      race: "Volcanic Siren",
+      skinColor: "Dark Bronze/Ash",
+      hairStyle: "Flaming Long",
+      hairColor: "Fiery Red",
+      eyeColor: "Burning Ember",
+      clothingStyle: "Leather & Lava Strips",
+      pose: "Provocative in Lava",
+      isNsfw: true
     }
   }
 ];
