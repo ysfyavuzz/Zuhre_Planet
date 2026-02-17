@@ -143,3 +143,19 @@ Bu dosya her önemli işlem sonrasında güncellenecektir. Sonraki güncelleme: 
 ### Sonraki Adımlar
 - Karakterlerin `SpaceBackground.tsx` içindeki gezegenlerin üzerinde veya yanında dinamik olarak render edilmesi.
 - `CharacterGallery.tsx` bileşeninin bu 3D modelleri önizleme olarak kullanacak şekilde güncellenmesi.
+
+## Güncelleme: 2026-02-17 01:45
+
+### 360 Derece Etkileşimli 3D Yapı Kuruldu
+
+1. **Universal3DViewer:** Karakterleri ve gezegenleri 360 derece döndürerek incelemeye olanak tanıyan, `OrbitControls` ve `Stage` entegrasyonlu evrensel bir görüntüleyici bileşeni oluşturuldu.
+2. **HighQualityCharacter:** Karakterler için `MeshDistortMaterial` ve `MeshWobbleMaterial` kullanılarak, dokuların ve ışığın daha şehvetli ve dinamik hissedildiği yüksek kaliteli R3F bileşenleri geliştirildi.
+3. **Galeri Entegrasyonu:** `CharacterGallery.tsx` bileşeni güncellenerek, statik görseller yerine bu yeni 3D görüntüleyici entegre edildi. Artık kullanıcılar karakterleri her açıdan inceleyebilir.
+
+### Kalınan Yer
+- **Aşama:** Final Senkronizasyon.
+- **Durum:** 3D bileşenler tamamlandı, UI entegrasyonu yapıldı.
+
+### Sonraki Adım
+- Tüm yeni 3D bileşenleri ve galeri güncellemelerini GitHub'a pushlamak.
+- Kullanıcıya final halini sunmak.

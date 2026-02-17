@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PLANETS, PlanetData } from '../data/planets';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Universal3DViewer } from './3d/Universal3DViewer';
 
 export const CharacterGallery: React.FC = () => {
   const [selectedPlanet, setSelectedPlanet] = useState<PlanetData>(PLANETS[0]);
@@ -92,14 +93,9 @@ export const CharacterGallery: React.FC = () => {
                 </div>
               </div>
 
-              {/* 3D Görsel Placeholder (Gelecekteki Renderlar İçin) */}
-              <div className="absolute top-0 right-0 w-full h-full -z-10 opacity-10 pointer-events-none">
-                <div 
-                  className="w-full h-full"
-                  style={{ 
-                    background: `radial-gradient(circle at center, ${selectedPlanet.theme.glow}44 0%, transparent 70%)` 
-                  }}
-                />
+              {/* 3D Görsel Render */}
+              <div className="mt-8 flex-grow">
+                <Universal3DViewer planetId={selectedPlanet.id} showCharacter={true} />
               </div>
             </motion.div>
           </AnimatePresence>
