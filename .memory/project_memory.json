@@ -5,12 +5,12 @@
   "last_state": {
     "phase": "Başlangıç Analizi",
     "current_file": "project_memory.json",
-    "status": "360 derece etkileşimli Universal3DViewer entegre edildi. Karakterler ve gezegenler için yüksek kaliteli R3F bileşenleri oluşturuldu."
+    "status": "İnsan ırkları ve vücut tipleri (balık etli, minyon vb.) odaklı tasarım rehberi güncellendi."
   },
   "pending_tasks": [
-    "360 derece karakter inceleme modülünün (CharacterGallery) yayına alınması",
-    "Performans optimizasyonu için WebP geçişleri",
-    "Kullanıcı etkileşimli 3D kontrol panelinin geliştirilmesi"
+    "Her karakter için ilk görsel taslaklarını oluştur ve onaya sun",
+    "Onaylanan karakterlerin poz varyasyonlarını ve 3D entegrasyonunu hazırla",
+    "Final galeri kurulumu ve GitHub senkronizasyonu"
   ],
   "visual_assets_status": {
     "2d_assets": [

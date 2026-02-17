@@ -159,3 +159,33 @@ Bu dosya her önemli işlem sonrasında güncellenecektir. Sonraki güncelleme: 
 ### Sonraki Adım
 - Tüm yeni 3D bileşenleri ve galeri güncellemelerini GitHub'a pushlamak.
 - Kullanıcıya final halini sunmak.
+
+## Güncelleme: 2026-02-17 02:00
+
+### Karakter ve Gezegen Tasarım Rehberleri Hazırlandı
+
+1.  **DESIGN_SPECS.md Oluşturuldu:** Her bir kadın karakter (Nova, Lyra, Midasia, Gaia, Krystal, Lumi, Ember) için detaylı yüz ve fiziksel tanım, anahtar özellikler, estetik beklentiler ve 3D materyal/doku önerileri içeren kapsamlı bir tasarım rehberi hazırlandı.
+2.  **Gezegen Spesifikasyonları:** Her gezegen için renk paleti, yüzey dokusu, halkalar/atmosfer ve 3D materyal/shader önerileri detaylandırıldı.
+3.  **Onay Süreci Tanımlandı:** Karakterlerin ilk taslaklarının (yüz ve fizik sabitlenmiş haliyle) ayrı ayrı kullanıcı onayına sunulacağı ve onay sonrası poz varyasyonlarının geliştirileceği belirtildi.
+
+### Kalınan Yer
+- **Aşama:** Karakter bazlı prompt ve görsel analiz stratejisinin oluşturulması.
+- **Durum:** Detaylı tasarım rehberleri tamamlandı.
+
+### Sonraki Adım
+- Her karakter için tutarlı promptlar oluşturarak, bu promptları kullanarak görsel analiz ve ilk taslakları hazırlamak.
+
+## Güncelleme: 2026-02-17 04:15
+
+### İnsan Irkları ve Vücut Tipleri Odaklı Yapı Kuruldu
+
+1.  **Irk ve Vücut Matrisi:** Her karakter için gerçek insan ırkları (Latin, İskandinav, Arap, Afrikalı, Asyalı, Slav, Akdenizli) ve spesifik vücut tipleri (Balık etli, Minyon, Atletik vb.) belirlendi.
+2.  **Tasarım Rehberi Revizyonu:** `DESIGN_SPECS.md` bu yeni insan odaklı yapıya göre güncellendi. Karakterlerin coğrafi kökenlerini yansıtan fiziksel özellikler ve kışkırtıcı "günlük" temalar (Sekreter, Doktor, Patron vb.) entegre edildi.
+3.  **8K Kalite Standartı:** Tüm görsel üretimlerin pürüzsüz cilt dokuları ve yüksek çözünürlüklü (8K) detaylarla gerçekleştirilmesi kararlaştırıldı.
+
+### Kalınan Yer
+- **Aşama:** 8K İnsan odaklı görsel taslakların üretimi.
+- **Durum:** Tasarım rehberi güncellendi, prompt stratejisi hazır.
+
+### Sonraki Adım
+- Nova (Latin/Balık Etli) ve Lyra (İskandinav/Slender) karakterlerinin 8K taslaklarını üretmek.
