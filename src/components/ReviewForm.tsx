@@ -240,19 +240,17 @@ export function ReviewForm({
           <div key={stepNumber} className="flex items-center">
             <motion.div
               animate={{ scale: [1, 1] }}
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                step >= stepNumber
+              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= stepNumber
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted text-muted-foreground'
-              }`}
+                }`}
             >
               {stepNumber}
             </motion.div>
             {stepNumber < 3 && (
               <div
-                className={`w-16 h-1 mx-1 ${
-                  step > stepNumber ? 'bg-primary' : 'bg-muted'
-                }`}
+                className={`w-16 h-1 mx-1 ${step > stepNumber ? 'bg-primary' : 'bg-muted'
+                  }`}
               />
             )}
           </div>
@@ -364,13 +362,12 @@ export function ReviewForm({
                     <Badge
                       key={tag.id}
                       variant={selectedTags.includes(tag.id) ? 'default' : 'outline'}
-                      className={`cursor-pointer hover:opacity-80 transition-opacity ${
-                        tag.category === 'positive' && selectedTags.includes(tag.id)
+                      className={`cursor-pointer hover:opacity-80 transition-opacity ${tag.category === 'positive' && selectedTags.includes(tag.id)
                           ? 'bg-green-500'
                           : tag.category === 'negative' && selectedTags.includes(tag.id)
-                          ? 'bg-red-500'
-                          : ''
-                      }`}
+                            ? 'bg-red-500'
+                            : ''
+                        }`}
                       onClick={() => toggleTag(tag.id)}
                     >
                       {tag.icon && <span className="mr-1">{tag.icon}</span>}
@@ -477,7 +474,7 @@ export function ReviewForm({
                     <div className="text-4xl font-bold text-primary">
                       {rating}
                     </div>
-                    <Star className="w-6 h-6 text-yellow-400 fill-yellow-400 mx-auto mt-1" />
+                    <Star className="w-6 h-6 text-cyan-400 fill-cyan-400 mx-auto mt-1" />
                   </div>
                   <Separator orientation="vertical" className="h-16" />
                   <div className="grid grid-cols-5 gap-2 text-sm">

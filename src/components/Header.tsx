@@ -27,10 +27,10 @@ export function Header() {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 py-4 md:py-6
+    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 py-4 md:py-6 pointer-events-auto
       ${isScrolled ? 'backdrop-blur-2xl bg-background/60 border-b border-white/5' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        
+
         {/* Logo */}
         <Link href="/">
           <motion.div whileHover={{ scale: 1.05 }} className="cursor-pointer">
@@ -56,7 +56,7 @@ export function Header() {
         {/* Actions */}
         <div className="flex items-center gap-4 md:gap-6">
           <ThemeToggle />
-          
+
           <div className="hidden md:flex items-center gap-4">
             {isAuthenticated ? (
               <div className="flex items-center gap-4">

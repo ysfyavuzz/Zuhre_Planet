@@ -145,19 +145,19 @@ export default function CustomerWallet() {
                 >
                   <Card className="relative overflow-hidden border-none bg-gradient-to-br from-[#1a1a2e] to-[#16213e] p-8 text-white border border-white/5 shadow-2xl">
                     <div className="absolute top-0 right-0 p-8 opacity-10">
-                      <Star className="w-32 h-32 text-yellow-500" />
+                      <Star className="w-32 h-32 text-fuchsia-500" />
                     </div>
                     <div className="relative z-10 space-y-6">
                       <div className="flex justify-between items-center">
                         <span className="text-blue-400 font-medium tracking-wider uppercase">Galaxy Puan</span>
-                        <Award className="w-6 h-6 text-yellow-500" />
+                        <Award className="w-6 h-6 text-fuchsia-500" />
                       </div>
                       <div>
                         <span className="text-5xl font-black text-white">{points.toLocaleString('tr-TR')}</span>
                         <p className="text-xs text-blue-400 mt-2 font-medium">₺125 Değerinde</p>
                       </div>
                       <div className="pt-4">
-                        <Button className="w-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 hover:bg-yellow-500/20 font-bold">
+                        <Button className="w-full bg-fuchsia-500/10 text-fuchsia-500 border border-fuchsia-500/30 hover:bg-fuchsia-500/20 font-bold">
                           Bakiyeye Dönüştür
                         </Button>
                       </div>
@@ -169,7 +169,7 @@ export default function CustomerWallet() {
               {/* Credit Packages */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-yellow-500" />
+                  <Zap className="w-5 h-5 text-fuchsia-500" />
                   <h2 className="text-xl font-bold font-orbitron text-white">Hızlı Kredi Yükleme</h2>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -212,13 +212,13 @@ export default function CustomerWallet() {
                         <div className="flex items-center gap-4">
                           <div className={cn(
                             "w-10 h-10 rounded-full flex items-center justify-center",
-                            tx.type === 'deposit' ? "bg-green-500/10 text-green-500" : 
-                            tx.type === 'bonus' ? "bg-yellow-500/10 text-yellow-500" : 
-                            "bg-blue-500/10 text-blue-500"
+                            tx.type === 'deposit' ? "bg-green-500/10 text-green-500" :
+                              tx.type === 'bonus' ? "bg-fuchsia-500/10 text-fuchsia-500" :
+                                "bg-blue-500/10 text-blue-500"
                           )}>
-                            {tx.type === 'deposit' ? <ArrowUpRight className="w-5 h-5" /> : 
-                             tx.type === 'bonus' ? <Star className="w-5 h-5" /> : 
-                             <ArrowDownRight className="w-5 h-5" />}
+                            {tx.type === 'deposit' ? <ArrowUpRight className="w-5 h-5" /> :
+                              tx.type === 'bonus' ? <Star className="w-5 h-5" /> :
+                                <ArrowDownRight className="w-5 h-5" />}
                           </div>
                           <div>
                             <p className="text-sm font-bold text-white">{tx.description}</p>

@@ -200,7 +200,7 @@ export function ReviewCard({
               <div key={key} className="flex items-center gap-2">
                 <span className="text-lg">{info?.icon}</span>
                 <span className="text-sm">{info?.label}:</span>
-                <span className="text-sm font-bold text-yellow-600">{value}.0</span>
+                <span className="text-sm font-bold text-cyan-600">{value}.0</span>
               </div>
             );
           })}

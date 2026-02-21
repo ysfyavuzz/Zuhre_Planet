@@ -280,13 +280,12 @@ export function PlatformBenefits({ userType }: PlatformBenefitsProps) {
                 ].map((risk, i) => (
                   <div
                     key={i}
-                    className={`p-4 rounded-lg border ${
-                      risk.severity === 'critical'
+                    className={`p-4 rounded-lg border ${risk.severity === 'critical'
                         ? 'bg-red-500/10 border-red-500/30'
                         : risk.severity === 'high'
-                        ? 'bg-orange-500/10 border-orange-500/30'
-                        : 'bg-yellow-500/10 border-yellow-500/30'
-                    }`}
+                          ? 'bg-orange-500/10 border-orange-500/30'
+                          : 'bg-cyan-500/10 border-cyan-500/30'
+                      }`}
                   >
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{risk.icon}</span>

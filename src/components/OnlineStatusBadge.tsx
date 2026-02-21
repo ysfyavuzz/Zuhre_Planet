@@ -94,7 +94,7 @@ export function OnlineStatusBadge({
       showPulse: showPulse !== false,
     },
     away: {
-      color: 'bg-yellow-500',
+      color: 'bg-fuchsia-500',
       label: 'Uzakta',
       showPulse: false,
     },
@@ -222,7 +222,7 @@ export function OnlineStatusText({
 }: OnlineStatusTextProps) {
   const statusConfig = {
     online: { label: 'Çevrimiçi', color: 'text-green-600 dark:text-green-400' },
-    away: { label: 'Uzakta', color: 'text-yellow-600 dark:text-yellow-400' },
+    away: { label: 'Uzakta', color: 'text-fuchsia-600 dark:text-fuchsia-400' },
     busy: { label: 'Meşgul', color: 'text-red-600 dark:text-red-400' },
     offline: { label: 'Çevrimdışı', color: 'text-gray-500 dark:text-gray-400' },
   };

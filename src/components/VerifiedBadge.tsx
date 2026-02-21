@@ -31,16 +31,16 @@ export const VerifiedBadge: React.FC<VerifiedBadgeProps> = ({
         >
             <div className="relative">
                 {/* Glow Effect */}
-                <div className="absolute inset-0 bg-yellow-400/30 blur-md rounded-full animate-pulse" />
+                <div className="absolute inset-0 bg-cyan-400/30 blur-md rounded-full animate-pulse" />
 
                 {/* Badge Icon */}
-                <div className="relative bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-600 p-1 rounded-full border border-yellow-200/50 shadow-lg">
+                <div className="relative bg-gradient-to-br from-cyan-300 via-cyan-500 to-cyan-600 p-1 rounded-full border border-cyan-200/50 shadow-lg">
                     <ShieldCheck className={`${sizeClasses[size]} text-black fill-black/10`} strokeWidth={2.5} />
                 </div>
             </div>
 
             {showText && (
-                <span className={`font-orbitron font-bold bg-gradient-to-r from-yellow-200 to-yellow-500 bg-clip-text text-transparent uppercase tracking-wider ${textClasses[size]}`}>
+                <span className={`font-orbitron font-bold bg-gradient-to-r from-cyan-200 to-cyan-500 bg-clip-text text-transparent uppercase tracking-wider ${textClasses[size]}`}>
                     Onaylı Üye
                 </span>
             )}

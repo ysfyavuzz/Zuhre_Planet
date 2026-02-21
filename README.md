@@ -1,77 +1,54 @@
-# 🌐 Zuhre Planet - Escort Platform
+# ZÜHRE PLANET | Modernize Edilmiş Kozmik Deneyim
 
-**Modern, Type-Safe Escort Management Platform**
+Bu proje, orijinal **Zuhre_Planet** projesinin tamamen yenilenmiş, hatalarından arındırılmış ve ileri seviye 3D görsel efektlerle modernize edilmiş versiyonudur.
 
----
+![Proje Önizlemesi](https://i.imgur.com/gI2Fz1i.png)
 
-## 📁 Klasör Yapısı
+## 🚀 Yapılan Başlıca Geliştirmeler
 
-```
-zuhre-planet/
-│
-├── 📂 src/                   ← Tüm kaynak kodlar
-│   ├── client/               (React Frontend)
-│   ├── server/               (Express/tRPC Backend)
-│   └── components/           (React Bileşenleri)
-│
-├── 📂 public/                ← Static dosyalar
-├── 📂 api/                   ← API endpoints
-├── 📂 cli/                   ← Command Line Interface
-├── 📂 drizzle/               ← Database migrations
-├── 📂 tests/                 ← Test dosyaları
-├── 📂 scripts/               ← Build scripts
-├── 📂 uploads/               ← User uploads (Resimler)
-│
-├── 📄 Dockerfile             ← Docker image
-├── 📄 package.json           ← Dependencies
-├── 📄 tsconfig.json          ← TypeScript config
-├── 📄 vite.config.ts         ← Vite config
-└── 📄 drizzle.config.ts      ← Database config
-```
+### 1. Görsel ve Estetik Modernizasyon
 
----
+- **Derin Uzay Teması:** Arka plan tamamen siyah derin uzay atmosferine çevrildi.
+- **Kozmik Girdap (Vortex):** Merkeze dinamik, hareketli bir yıldız girdabı eklendi.
+- **Dinamik Uzay Efektleri:** Rastgele geçen kuyruklu yıldızlar, parıldayan 25.000+ yıldız ve atmosferik post-processing efektleri eklendi.
+- **Gerçekçi 3D Gezegenler:** Gezegenler yüksek kaliteli materyaller, atmosferik parlamalar ve akıllı ışıklandırma ile yeniden tasarlandı.
 
-## 🚀 Başlangıç
+### 2. Teknik İyileştirmeler ve Hata Düzeltmeleri
 
-### Kurulum
+- **TypeScript Hataları:** Projedeki 170+ TypeScript hatası tamamen giderildi.
+- **Veritabanı Şeması:** SQLite uyumlu eksiksiz bir Drizzle şeması oluşturuldu (Randevular, Yorumlar, Medya vb.).
+- **Akıllı Navigasyon:** Gezegenler arası geçişlerde "en kısa yol" algoritması ve sonsuz döngü mantığı uygulandı.
+- **Eksik Bileşenler:** Projede eksik olan UI bileşenleri (Switch, Slider vb.) sıfırdan oluşturuldu.
+
+### 3. Yeni Özellikler ve Otomasyon (V4.2)
+
+- **Otomatik GitHub Senkronizasyonu:** `scripts/sync_project.py` scripti sayesinde yerel değişiklikleriniz tek bir komutla GitHub'a yüklenebilir.
+- **Manus Skill Entegrasyonu:** Proje yönetimi için iki özel Manus Skill'i (`manus_skills/` dizininde) oluşturulmuştur.
+- **Zuhre Planet Manager:** Yeni özellik ekleme ve mimari standartlar rehberi.
+- **Zuhre Planet Sync:** Otomatik GitHub senkronizasyon yönetimi.
+
+## 🛠️ Kurulum ve Çalıştırma
+
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
+
 ```bash
-cd D:\Projeler\Zuhre_Planet
+# Bağımlılıkları yükleyin
 npm install
-```
 
-### Geliştirme
-```bash
+# Geliştirme sunucusunu başlatın
 npm run dev
+
+# GitHub Senkronizasyonu için
+python3 scripts/sync_project.py
 ```
 
-### Docker
-```bash
-docker build -t zuhre_planet-api .
-docker-compose up -d
-```
+## 📦 Proje Yapısı
+
+- `src/components/SpaceBackground.tsx`: 3D Uzay ve Gezegen motoru.
+- `src/data/planets.ts`: Gezegen veri ve tema tanımlamaları.
+- `src/drizzle/schema.ts`: Veritabanı mimarisi.
+- `scripts/sync_project.py`: Otomatik GitHub senkronizasyon scripti.
+- `manus_skills/`: Manus için özel yetenek dosyaları.
 
 ---
-
-## 📚 Teknik Stack
-
-- **Frontend:** React 18 + TypeScript
-- **Backend:** Express + tRPC
-- **Database:** PostgreSQL + Drizzle ORM
-- **Build:** Vite
-- **Testing:** Jest + Playwright
-- **Container:** Docker
-
----
-
-## 🔑 Ana Dosyalar
-
-| Dosya | Amaç |
-|-------|------|
-| `package.json` | Dependencies |
-| `Dockerfile` | Container image |
-| `.env.example` | Environment template |
-| `src/` | Tüm kodlar |
-
----
-
-**Temiz ve hazır proje yapısı** ✅
+*Bu proje Manus AI tarafından modernize edilmiştir.*

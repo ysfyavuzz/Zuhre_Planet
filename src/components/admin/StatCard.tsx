@@ -140,9 +140,9 @@ const variantStyles = {
     value: 'text-orange-600',
   },
   yellow: {
-    background: 'bg-yellow-100',
-    icon: 'text-yellow-600',
-    value: 'text-yellow-600',
+    background: 'bg-cyan-100',
+    icon: 'text-cyan-600',
+    value: 'text-cyan-600',
   },
   red: {
     background: 'bg-red-100',

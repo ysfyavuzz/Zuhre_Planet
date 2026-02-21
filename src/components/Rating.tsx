@@ -81,34 +81,31 @@ export function Rating({
         onMouseEnter={() => handleMouseEnter(starValue)}
         onMouseLeave={handleMouseLeave}
         disabled={readonly || disabled}
-        className={`shrink-0 focus:outline-none transition-all ${
-          readonly
+        className={`shrink-0 focus:outline-none transition-all ${readonly
             ? ''
             : disabled
-            ? 'cursor-not-allowed opacity-50'
-            : 'cursor-pointer hover:scale-110 active:scale-95'
-        }`}
+              ? 'cursor-not-allowed opacity-50'
+              : 'cursor-pointer hover:scale-110 active:scale-95'
+          }`}
         aria-label={`${starValue} yıldız`}
         style={{ width: sizeStyles.w * 4, height: sizeStyles.h * 4 }}
       >
         {isFull ? (
           <Star
-            className={`w-full h-full fill-yellow-400 text-yellow-400 ${
-              hoverValue > 0 ? 'transition-colors' : ''
-            }`}
-            style={{ color: hoverValue > 0 ? '#fbbf24' : '#fbbf24' }}
+            className={`w-full h-full fill-cyan-400 text-cyan-400 ${hoverValue > 0 ? 'transition-colors' : ''
+              }`}
+            style={{ color: hoverValue > 0 ? '#22d3ee' : '#22d3ee' }}
           />
         ) : isHalf ? (
           <div className="relative w-full h-full">
-            <Star className="absolute inset-0 w-full h-full fill-yellow-400/50 text-yellow-400/50" />
-            <StarHalf className="relative w-full h-full fill-yellow-400 text-yellow-400" />
+            <Star className="absolute inset-0 w-full h-full fill-cyan-400/50 text-cyan-400/50" />
+            <StarHalf className="relative w-full h-full fill-cyan-400 text-cyan-400" />
           </div>
         ) : (
           <Star
-            className={`w-full h-full ${
-              hoverValue > 0 ? 'text-yellow-200' : 'text-gray-300'
-            } transition-colors`}
-            style={{ color: hoverValue > 0 && starValue <= hoverValue ? '#fde047' : '#d1d5db' }}
+            className={`w-full h-full ${hoverValue > 0 ? 'text-cyan-200' : 'text-gray-300'
+              } transition-colors`}
+            style={{ color: hoverValue > 0 && starValue <= hoverValue ? '#67e8f9' : '#d1d5db' }}
           />
         )}
       </motion.button>
@@ -197,17 +194,16 @@ export function InteractiveRating({
             whileTap={{ scale: 0.95 }}
           >
             <Star
-              className={`w-8 h-8 transition-colors ${
-                internalValue && internalValue >= starValue
-                  ? 'fill-yellow-400 text-yellow-400'
-                  : 'text-gray-300 hover:text-yellow-200'
-              }`}
+              className={`w-8 h-8 transition-colors ${internalValue && internalValue >= starValue
+                  ? 'fill-cyan-400 text-cyan-400'
+                  : 'text-gray-300 hover:text-cyan-200'
+                }`}
             />
             {internalValue === starValue && (
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute inset-0 bg-yellow-400/20 rounded-full"
+                className="absolute inset-0 bg-cyan-400/20 rounded-full"
               />
             )}
           </motion.button>
@@ -292,19 +288,17 @@ export function MultiCriteriaRating({
                   type="button"
                   onClick={() => handleChange(config.key, starValue)}
                   disabled={readonly}
-                  className={`shrink-0 focus:outline-none transition-all ${
-                    readonly
+                  className={`shrink-0 focus:outline-none transition-all ${readonly
                       ? 'cursor-default'
                       : 'cursor-pointer hover:scale-110 active:scale-95'
-                  }`}
+                    }`}
                   style={{ width: size === 'sm' ? 16 : size === 'md' ? 20 : 24 }}
                 >
                   <Star
-                    className={`w-full h-full ${
-                      value && value >= starValue
-                        ? 'fill-yellow-400 text-yellow-400'
+                    className={`w-full h-full ${value && value >= starValue
+                        ? 'fill-cyan-400 text-cyan-400'
                         : 'text-gray-300'
-                    }`}
+                      }`}
                   />
                 </motion.button>
               ))}
@@ -312,7 +306,7 @@ export function MultiCriteriaRating({
 
             {/* Value */}
             {value !== undefined && (
-              <span className="text-sm font-bold text-yellow-600 min-w-[20px]">
+              <span className="text-sm font-bold text-cyan-600 min-w-[20px]">
                 {value}.0
               </span>
             )}
@@ -374,11 +368,10 @@ export function RatingSummary({
             {Array.from({ length: 5 }).map((_, index) => (
               <Star
                 key={index}
-                className={`w-5 h-5 ${
-                  average >= index + 1
-                    ? 'fill-yellow-400 text-yellow-400'
+                className={`w-5 h-5 ${average >= index + 1
+                    ? 'fill-cyan-400 text-cyan-400'
                     : 'text-gray-300'
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -394,10 +387,10 @@ export function RatingSummary({
           {percentages.map(({ star, count, percentage }) => (
             <div key={star} className="flex items-center gap-2">
               <span className="text-sm w-3">{star}</span>
-              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400 shrink-0" />
+              <Star className="w-4 h-4 fill-cyan-400 text-cyan-400 shrink-0" />
               <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-yellow-400 transition-all duration-500"
+                  className="h-full bg-cyan-400 transition-all duration-500"
                   style={{ width: `${percentage}%` }}
                 />
               </div>
