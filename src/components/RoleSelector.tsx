@@ -17,8 +17,13 @@ interface RoleSelectorProps {
   autoRedirect?: boolean;
 }
 
-const ROLE_STORAGE_KEY = 'user-role-selection';
+export const ROLE_STORAGE_KEY = 'user-role-selection';
 const ROLE_LAST_SEEN = 'role-selection-date';
+
+export function getStoredRole(): UserRole {
+  if (typeof window === 'undefined') return null;
+  return localStorage.getItem(ROLE_STORAGE_KEY) as UserRole;
+}
 
 export default function RoleSelector({
   onRoleSelect,

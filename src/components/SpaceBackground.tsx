@@ -240,6 +240,36 @@ const Carousel = () => {
   );
 };
 
+// --- FROSTED CARD COMPONENT ---
+const FloatingCard = ({ 
+  children, 
+  position, 
+  rotation = [0, 0, 0],
+  delay = 0 
+}: { 
+  children: React.ReactNode; 
+  position: [number, number, number]; 
+  rotation?: [number, number, number];
+  delay?: number;
+}) => {
+  return (
+    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1}>
+      <Html
+        position={position}
+        rotation={rotation}
+        transform
+        occlude="blending"
+        distanceFactor={20}
+        style={{ transition: 'all 0.5s ease-out', transitionDelay: `${delay}s` }}
+      >
+        <div className="backdrop-blur-xl bg-white/5 border border-white/10 p-10 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-w-[300px] text-center select-none pointer-events-none hover:bg-white/10 transition-colors duration-500">
+          {children}
+        </div>
+      </Html>
+    </Float>
+  );
+};
+
 // --- SCENE SETUP ---
 const Scene = () => {
   const { cameraPos } = useResponsive();
@@ -262,6 +292,29 @@ const Scene = () => {
         <Comet />
         <Carousel />
 
+        {/* Floating Content Cards in 3D Space - Deep Universe Position */}
+        <FloatingCard position={[0, 25, -100]} delay={0.2}>
+          <div className="text-violet-400 text-[10px] font-black tracking-[0.5em] mb-6 uppercase italic opacity-70">Kozmik Deneyim Aktif</div>
+          <h2 className="text-white text-8xl font-black tracking-tighter italic uppercase mb-2 drop-shadow-2xl">ZÜHRE</h2>
+          <div className="h-1 w-32 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-transparent mx-auto mb-4 opacity-50" />
+          <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-600 text-8xl font-black italic uppercase drop-shadow-2xl">PLANET</h2>
+        </FloatingCard>
+
+        <FloatingCard position={[-50, -10, -40]} rotation={[0, 0.4, 0]} delay={0.4}>
+          <p className="text-white/40 text-xl font-bold tracking-[0.3em] uppercase italic">
+            Sınırların Ötesinde<br />Bir Yolculuk
+          </p>
+        </FloatingCard>
+
+        <FloatingCard position={[60, 15, -20]} rotation={[0, -0.3, 0]} delay={0.6}>
+          <div className="flex flex-col items-center gap-6">
+            <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center animate-bounce bg-white/5">
+              <span className="text-white/50 text-2xl">↓</span>
+            </div>
+            <p className="text-white/30 text-xs font-black tracking-[0.6em] uppercase italic">Keşfet</p>
+          </div>
+        </FloatingCard>
+
         <Stars radius={400} depth={150} count={25000} factor={10} fade speed={2} />
         <Stars radius={200} depth={80} count={5000} factor={15} fade speed={1} />
       </Suspense>
@@ -271,12 +324,14 @@ const Scene = () => {
 
 export const SpaceBackground: React.FC = () => {
   return (
-    <div className="fixed inset-0 z-0 bg-black">
+    <div className="fixed inset-0 z-0 bg-black pointer-events-none select-none" style={{ pointerEvents: 'none' }}>
       <Canvas
         shadows
         dpr={typeof window !== 'undefined' && window.innerWidth < 768 ? [1, 1.5] : [1, 2]}
         gl={{ antialias: true, powerPreference: "high-performance" }}
         frameloop="demand"
+        className="pointer-events-none"
+        style={{ pointerEvents: 'none' }}
       >
         <Scene />
       </Canvas>

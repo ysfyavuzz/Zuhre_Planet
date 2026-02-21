@@ -1,0 +1,175 @@
+/* Space Theme Background - Generated CSS */
+:root {
+  --space-dark: #0a0e27;
+  --space-darker: #050810;
+  --cosmic-purple: #6d28d9;
+  --cosmic-blue: #3b82f6;
+  --cosmic-cyan: #06b6d4;
+  --star-white: #f0f9ff;
+  --nebula-pink: #ec4899;
+  --nebula-violet: #a855f7;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, var(--space-darker) 0%, var(--space-dark) 50%, var(--cosmic-blue) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Animated stars background */
+.stars-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--star-white);
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Nebula effect */
+.nebula {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.nebula-1 {
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(ellipse at center, rgba(106, 28, 217, 0.2) 0%, transparent 70%);
+  animation: float 20s infinite;
+}
+
+.nebula-2 {
+  bottom: -100px;
+  left: -100px;
+  background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+  animation: float 25s infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(20px); }
+}
+
+/* Glowing card container */
+.card-container {
+  background: rgba(10, 14, 39, 0.6);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(106, 28, 217, 0.2);
+  transition: all 0.3s ease;
+}
+
+.card-container:hover {
+  border-color: rgba(106, 28, 217, 0.5);
+  box-shadow: 0 8px 32px rgba(106, 28, 217, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--cosmic-cyan), var(--nebula-violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Navigation bar styling */
+.navbar {
+  background: rgba(10, 14, 39, 0.8);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-link {
+  color: rgba(240, 249, 255, 0.8);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.navbar-link:hover {
+  background: rgba(106, 28, 217, 0.2);
+  color: var(--cosmic-cyan);
+}
+
+/* Icon styles */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--cosmic-purple), var(--nebula-violet));
+  border-radius: 8px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.icon-container:hover {
+  opacity: 1;
+}
+
+/* Glowing button */
+.btn-glow {
+  background: linear-gradient(135deg, var(--cosmic-purple), var(--cosmic-blue));
+  color: var(--star-white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(106, 28, 217, 0.4);
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(106, 28, 217, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-container {
+    padding: 16px;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

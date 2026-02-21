@@ -1,32 +1,13 @@
-import { drizzle } from 'drizzle-orm/libsql';
-import { createClient } from '@libsql/client';
+import { db } from '../drizzle/db';
 import * as schema from '../drizzle/schema';
 import { eq, desc, and, sql } from 'drizzle-orm';
 
 /**
- * Turso/LibSQL Veritabanı İstemcisi
- * Environment nesnesi tanımlı değilse "file:local.db" Fallback yapar.
+ * Veritabanı yardımcı fonksiyonları (PostgreSQL uyumlu)
  */
-const dbUrl = process.env.DATABASE_URL || 'file:local.db';
-const dbAuthToken = process.env.DATABASE_AUTH_TOKEN;
 
-if (!process.env.DATABASE_URL) {
-  console.warn("⚠️ DATABASE_URL dotenv üzerinden algılanamadı! Yerel (local.db) SQLite kullanılıyor.");
-}
-
-const client = createClient({
-  url: dbUrl,
-  ...(dbAuthToken ? { authToken: dbAuthToken } : {})
-});
-
-export const db = drizzle(client, { schema });
-
-// Destructure tables for convenience
+export { db };
 export const { users, escortProfiles, escortPhotos, customerProfiles } = schema;
-
-/**
- * Veritabanı yardımcı fonksiyonları (LibSQL/SQLite uyumlu)
- */
 
 export async function getAllApprovedEscorts(limit: number = 50, offset: number = 0) {
   return await db

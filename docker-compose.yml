@@ -1,19 +1,19 @@
 version: '3.8'
 
 services:
-  # --- VERİTABANI (PostgreSQL) ---
+  # --- DATABASE (PostgreSQL) ---
   db:
     image: postgres:15-alpine
     container_name: zuhre_db
     restart: always
     environment:
-      POSTGRES_USER: ${DB_USER:-nexus_admin}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-nexus_pass_123}
-      POSTGRES_DB: ${DB_NAME:-zuhre_prod}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      POSTGRES_USER: ${DB_USER:-zuhre_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-your_strong_db_password}
+      POSTGRES_DB: ${DB_NAME:-zuhre_db}
     ports:
       - "5432:5432"
+    volumes:
+      - zuhre_postgres_data:/var/lib/postgresql/data
     networks:
       - zuhre_network
 
@@ -24,13 +24,17 @@ services:
       dockerfile: Dockerfile
     container_name: zuhre_api
     restart: always
-    environment:
-      NODE_ENV: production
-      DATABASE_URL: postgres://${DB_USER:-nexus_admin}:${DB_PASSWORD:-nexus_pass_123}@db:5432/${DB_NAME:-zuhre_prod}
-      JWT_SECRET: ${JWT_SECRET}
-      PORT: 3000
     depends_on:
       - db
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://${DB_USER:-zuhre_user}:${DB_PASSWORD:-your_strong_db_password}@db:5432/${DB_NAME:-zuhre_db}
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: 3000
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:3000/api}
+      VITE_WS_URL: ${VITE_WS_URL:-ws://localhost:3000}
+    ports:
+      - "3000:3000"
     networks:
       - zuhre_network
 
@@ -45,16 +49,14 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./dist:/usr/share/nginx/html:ro
-      - ./certbot/conf:/etc/letsencrypt:ro
-      - ./certbot/www:/var/www/certbot:ro
     depends_on:
       - api
     networks:
       - zuhre_network
 
+volumes:
+  zuhre_postgres_data:
+
 networks:
   zuhre_network:
     driver: bridge
-
-volumes:
-  postgres_data:

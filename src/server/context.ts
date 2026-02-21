@@ -4,7 +4,7 @@ import type { User } from '@/drizzle/schema';
 
 // Define the shape of the user object we'll have in the context
 interface UserContext {
-  id: string;
+  id: number;
   email: string;
   role: User['role'];
 }

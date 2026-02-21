@@ -6,7 +6,7 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { trpc } from '@/utils/trpc';
+import { trpc } from '@/lib/trpc';
 import { Star, MapPin, ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { ListingProfile } from '@/types/domain';

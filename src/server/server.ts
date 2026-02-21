@@ -4,7 +4,7 @@ import { appRouter } from './router';
 import { createContext } from './context';
 import cors from 'cors';
 import http from 'http';
-import WebSocket from 'ws'; // WebSocket için
+import { WebSocketServer } from 'ws'; // WebSocket için
 
 const app = express();
 const port = process.env.PORT ? parseInt(process.env.PORT as string) : 3000;
@@ -33,7 +33,7 @@ app.get('/health', (req, res) => {
 const server = http.createServer(app);
 
 // WebSocket Server
-const wss = new WebSocket.Server({ server, path: '/ws' });
+const wss = new WebSocketServer({ server, path: '/ws' });
 
 wss.on('connection', (ws) => {
   console.log('Client connected to WebSocket');

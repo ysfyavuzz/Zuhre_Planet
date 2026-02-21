@@ -91,10 +91,13 @@ export default function CookieConsent() {
       ...prefs,
       timestamp: Date.now()
     };
-    localStorage.setItem('cookieConsent', JSON.stringify(withTimestamp));
-    setPreferences(withTimestamp);
+    
+    // Anında gizle
     setShowBanner(false);
     setShowSettings(false);
+    
+    localStorage.setItem('cookieConsent', JSON.stringify(withTimestamp));
+    setPreferences(withTimestamp);
 
     // Trigger custom event for other components to listen
     window.dispatchEvent(
@@ -160,25 +163,28 @@ export default function CookieConsent() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-24 left-0 right-0 z-50 p-4 md:p-6"
+            className="fixed bottom-24 left-0 right-0 z-[9999] p-4 md:p-6 pointer-events-auto"
           >
-            <Card className="border-white/20 bg-gradient-to-r from-slate-900/95 to-slate-800/95 backdrop-blur-xl shadow-2xl max-w-4xl mx-auto">
-              <CardContent className="p-6">
-                <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+            <Card className="border-white/10 bg-white/5 backdrop-blur-3xl shadow-[0_30px_100px_rgba(0,0,0,0.5)] max-w-4xl mx-auto overflow-hidden">
+              <CardContent className="p-6 relative">
+                {/* Decorative background glow */}
+                <div className="absolute -top-24 -left-24 w-48 h-48 bg-violet-600/20 blur-[100px] pointer-events-none" />
+                
+                <div className="flex flex-col md:flex-row gap-6 items-start md:items-center relative z-10">
                   {/* Icon and Text */}
-                  <div className="flex gap-3 flex-1 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center shrink-0">
-                      <Cookie className="w-5 h-5 text-white" />
+                  <div className="flex gap-4 flex-1 min-w-0">
+                    <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-inner">
+                      <Cookie className="w-5 h-5 text-violet-400" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-bold text-white mb-1">Çerez Kullanımı</h3>
-                      <p className="text-sm text-gray-300">
-                        Web sitesi deneyiminizi iyileştirmek için çerezler kullanıyoruz.
+                      <h3 className="font-black text-white uppercase tracking-widest text-xs mb-1 italic">Kozmik Tanımlama</h3>
+                      <p className="text-sm text-white/60 leading-relaxed">
+                        Yörüngedeki deneyiminizi optimize etmek için kristal veriler kullanıyoruz.
                         <a
                           href="/cookies"
-                          className="text-amber-400 hover:text-amber-300 underline ml-1 inline-flex items-center gap-1"
+                          className="text-violet-400 hover:text-white transition-colors underline underline-offset-4 ml-2 inline-flex items-center gap-1"
                         >
-                          Daha Fazla Bilgi
+                          Protokolü İncele
                           <ExternalLink className="w-3 h-3" />
                         </a>
                       </p>
@@ -186,30 +192,21 @@ export default function CookieConsent() {
                   </div>
 
                   {/* Buttons */}
-                  <div className="flex gap-2 w-full md:w-auto">
+                  <div className="flex gap-3 w-full md:w-auto">
                     <Button
                       onClick={handleRejectAll}
-                      variant="outline"
+                      variant="ghost"
                       size="sm"
-                      className="flex-1 md:flex-none border-gray-600 text-gray-200 hover:bg-gray-800"
+                      className="flex-1 md:flex-none text-white/40 hover:text-white hover:bg-white/5 uppercase font-black text-[10px] tracking-widest italic"
                     >
-                      Reddet
-                    </Button>
-                    <Button
-                      onClick={handleOpenSettings}
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 md:flex-none border-gray-600 text-gray-200 hover:bg-gray-800 gap-2"
-                    >
-                      <Settings className="w-4 h-4" />
-                      <span className="hidden md:inline">Ayarla</span>
+                      Yoksay
                     </Button>
                     <Button
                       onClick={handleAcceptAll}
                       size="sm"
-                      className="flex-1 md:flex-none bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white"
+                      className="flex-1 md:flex-none bg-white text-black hover:bg-violet-500 hover:text-white transition-all duration-500 rounded-full px-8 py-6 uppercase font-black text-[10px] tracking-[0.2em] italic shadow-xl shadow-white/5"
                     >
-                      Kabul Et
+                      Onayla
                     </Button>
                   </div>
                 </div>

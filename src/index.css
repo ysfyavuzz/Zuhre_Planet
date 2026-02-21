@@ -4,59 +4,59 @@
 
 @layer base {
   :root {
-    /* --- Dinamik Kozmik Açık Tema (Gün Batımı) --- */
-    --primary: #f97316;
-    --primary-rgb: 249, 115, 22;
+    /* --- Dinamik Kozmik Premium Tema (Kristal) --- */
+    --primary: #8b5cf6; /* Violet 500 */
+    --primary-rgb: 139, 92, 246;
     
-    --background: 255 247 237; /* Sunset Light Orange #fff7ed */
-    --foreground: 24 24 27; /* Zinc 950 #18181b */
+    --background: 250 250 250; /* Ultra Clean White */
+    --foreground: 15 15 20; /* Deep Charcoal */
     --card: 255 255 255;
-    --card-foreground: 24 24 27;
+    --card-foreground: 15 15 20;
     --popover: 255 255 255;
-    --popover-foreground: 24 24 27;
-    --secondary: 251 191 36;
-    --secondary-foreground: 124 45 18; /* Daha koyu turuncu-kahve okunaklılık için */
-    --muted: 254 243 199;
-    --muted-foreground: 87 83 78; /* Daha koyu taş rengi okunaklılık için */
-    --accent: 251 191 36;
-    --accent-foreground: 124 45 18;
+    --popover-foreground: 15 15 20;
+    --secondary: 226 232 240; /* Slate 200 */
+    --secondary-foreground: 30 41 59; /* Slate 800 */
+    --muted: 241 245 249;
+    --muted-foreground: 71 85 105;
+    --accent: 139 92 246;
+    --accent-foreground: 255 255 255;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 251 191 36;
-    --input: 254 243 199;
-    --ring: 249 115 22;
-    --radius: 1.5rem;
+    --border: 226 232 240;
+    --input: 241 245 249;
+    --ring: 139 92 246;
+    --radius: 2rem;
     
-    /* Glass Effect (Açık Tema) - Daha opak okunaklılık için */
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(249, 115, 22, 0.2);
-    --glass-shadow: rgba(249, 115, 22, 0.1);
+    /* Premium Glass Effect */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
   }
 
   .dark {
-    /* --- Dinamik Kozmik Koyu Tema (Derin Uzay) --- */
-    --background: 222 47% 4%; /* Deep Space Navy #020617 */
-    --foreground: 210 40% 98%; /* Slate 50 */
-    --card: 222 47% 6%; /* Daha koyu Slate 950 */
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 6%;
-    --popover-foreground: 210 40% 98%;
-    --secondary: 217.2 32.6% 12%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 12%;
-    --muted-foreground: 215 20.2% 75%; /* Daha parlak metin okunaklılık için */
-    --accent: 217.2 32.6% 12%;
-    --accent-foreground: 210 40% 98%;
+    /* --- Dinamik Kozmik Koyu Tema (Derin Evren) --- */
+    --background: 240 10% 2%; /* Absolute Space Black */
+    --foreground: 255 255 255;
+    --card: 240 10% 4%;
+    --card-foreground: 255 255 255;
+    --popover: 240 10% 4%;
+    --popover-foreground: 255 255 255;
+    --secondary: 15 15 25;
+    --secondary-foreground: 255 255 255;
+    --muted: 15 15 25;
+    --muted-foreground: 148 163 184; /* Slate 400 */
+    --accent: 139 92 246;
+    --accent-foreground: 255 255 255;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 15%;
-    --input: 217.2 32.6% 15%;
-    --ring: 224.3 76.3% 48%;
+    --destructive-foreground: 255 255 255;
+    --border: 255 255 255 0.1;
+    --input: 255 255 255 0.05;
+    --ring: 139 92 246;
     
-    /* Glass Effect (Koyu Tema) - Daha opak okunaklılık için */
-    --glass-bg: rgba(0, 0, 0, 0.5);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: rgba(0, 0, 0, 0.6);
+    /* Dark Premium Glass Effect */
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: rgba(0, 0, 0, 0.8);
   }
 
   body {

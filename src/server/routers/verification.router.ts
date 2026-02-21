@@ -1,4 +1,4 @@
-import { router, protectedProcedure } from '../router';
+import { router, protectedProcedure } from '../router.core';
 import { z } from 'zod';
 import { db } from '@/drizzle/db';
 import * as schema from '@/drizzle/schema';
@@ -27,8 +27,8 @@ export const verificationRouter = router({
             // 1. Kullanıcının escort profilini bul
             const [profile] = await db.select()
                 .from(schema.escortProfiles)
-                .where(eq(schema.escortProfiles.userId, parseInt(ctx.user.id)));
-
+                .where(eq(schema.escortProfiles.userId, ctx.user.id));
+                
             if (!profile) {
                 throw new TRPCError({
                     code: 'NOT_FOUND',
@@ -85,8 +85,8 @@ export const verificationRouter = router({
         .query(async ({ ctx }) => {
             const [profile] = await db.select()
                 .from(schema.escortProfiles)
-                .where(eq(schema.escortProfiles.userId, parseInt(ctx.user.id)));
-
+                .where(eq(schema.escortProfiles.userId, ctx.user.id));
+                
             if (!profile) return { status: 'none' };
 
             return {

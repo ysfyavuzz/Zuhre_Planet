@@ -1,4 +1,4 @@
-import { router, adminProcedure } from '../router';
+import { router, adminProcedure } from '../router.core';
 import { z } from 'zod';
 import { db } from '@/drizzle/db';
 import * as schema from '@/drizzle/schema';
@@ -19,7 +19,7 @@ async function logAdminAction(ctx: any, input: {
     try {
         // @ts-ignore - Drizzle types might not be updated in the IDE yet
         await db.insert(schema.auditLogs).values({
-            adminId: parseInt(ctx.user.id),
+            adminId: ctx.user.id,
             action: input.action,
             targetType: input.targetType,
             targetId: input.targetId,

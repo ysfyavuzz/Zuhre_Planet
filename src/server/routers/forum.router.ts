@@ -1,4 +1,4 @@
-import { router, publicProcedure, protectedProcedure } from '../router';
+import { router, publicProcedure, protectedProcedure } from '../router.core';
 import { z } from 'zod';
 import { db } from '@/drizzle/db';
 import * as schema from '@/drizzle/schema';
@@ -61,14 +61,14 @@ export const forumRouter = router({
             return await db.transaction(async (tx) => {
                 const [topic] = await tx.insert(schema.forumTopics).values({
                     categoryId: input.categoryId,
-                    authorId: parseInt(ctx.user.id),
+                    authorId: ctx.user.id,
                     title: input.title,
                     slug: slug
                 }).returning();
 
                 await tx.insert(schema.forumPosts).values({
                     topicId: topic.id,
-                    authorId: parseInt(ctx.user.id),
+                    authorId: ctx.user.id,
                     content: input.content
                 });
 
@@ -80,7 +80,7 @@ export const forumRouter = router({
                         // @ts-ignore
                         loyaltyPoints: sql`${schema.users.loyaltyPoints} + 2`
                     })
-                    .where(eq(schema.users.id, parseInt(ctx.user.id)));
+                    .where(eq(schema.users.id, ctx.user.id));
 
                 return topic;
             });
@@ -129,7 +129,7 @@ export const forumRouter = router({
         .mutation(async ({ ctx, input }) => {
             const [post] = await db.insert(schema.forumPosts).values({
                 topicId: input.topicId,
-                authorId: parseInt(ctx.user.id),
+                authorId: ctx.user.id,
                 content: input.content
             }).returning();
 
@@ -139,7 +139,7 @@ export const forumRouter = router({
                     // @ts-ignore
                     experiencePoints: sql`${schema.users.experiencePoints} + 5`
                 })
-                .where(eq(schema.users.id, parseInt(ctx.user.id)));
+                .where(eq(schema.users.id, ctx.user.id));
 
             return post;
         })

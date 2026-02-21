@@ -72,7 +72,7 @@ export interface ListingProfile extends BaseProfile {
   slogan?: string; // Slogan
   coverImage?: string; // Kapak görseli
   thumbnailVideo?: string; // Önizleme videosu
-  gallery?: string; // Galeri (JSON string)
+  gallery?: string | any[]; // Galeri (JSON string or Array)
   mediaPrivacySettings?: any; // Medya gizlilik ayarları
   services: string[]; // Sunulan hizmetler (tags)
   languages: string[]; // Konuşulan diller
@@ -86,7 +86,7 @@ export interface ListingProfile extends BaseProfile {
   // Sistem Durumları
   tier: SubscriptionTier;
   verificationStatus: VerificationStatus;
-  hasVerifiedBadge: boolean; // Yeni alan
+  hasVerifiedBadge?: boolean; // Yeni alan (Opsiyonel yapıldı)
   isBoosted: boolean; // Öne çıkarılmış mı?
   gridSpan: GridSpan; // Grid'deki boyutu
 

@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zuhre_api_dev
+    restart: unless-stopped
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgres://${DB_USER:-nexus_admin}:${DB_PASSWORD:-nexus_pass_123}@db:5432/${DB_NAME:-zuhre_prod}
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-key}
+      PORT: 3000
+    volumes:
+      - ./src:/app/src
+      - ./api:/app/api
+      - ./package.json:/app/package.json
+      - /app/node_modules
+    depends_on:
+      - db
+    networks:
+      - zuhre_network
+    develop:
+      watch:
+        - path: ./src
+          action: rebuild
+        - path: ./api
+          action: rebuild
+        - path: ./package.json
+          action: rebuild

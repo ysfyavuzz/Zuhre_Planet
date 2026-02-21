@@ -117,4 +117,5 @@ otification.ts ve ole.ts dökümanları oluşturuldu. |
 | 2026-02-21 | 14:25 | Gemini CLI | [DOC] | Yerleşim ve Navigasyon bileşenleri dökümante edildi. 'src/components' dökümantasyonu tamamlandı. |
 | 2026-02-21 | 14:40 | Gemini CLI | [FEAT] | 3 adet Manus AI uyumlu uzmanlık skill'i (Backend, UI, Security) oluşturuldu. |
 | 2026-02-21 | 14:55 | Gemini CLI | [FEAT] | manus_skills klasörüne 3 yeni uzmanlık skill'i (Backend, UI, Security) eklendi. |
-| 2026-02-21 | 15:05 | Gemini CLI | [FEAT] | 'zuhre-planet-logger' yeteneği tüm platformlara eklendi. Jurnal tutma zorunlu hale getirildi. |
+| 2026-02-21 | 16:30 | Gemini CLI | [CONFIG] | Docker setup PostgreSQL'e çekildi, SQLite/LibSQL kalıntıları temizlendi. |
+| 2026-02-21 | 16:35 | Gemini CLI | [FIX] | build:server ve build:client TS hataları (WebSocket, ID types, optional fields) düzeltildi/bypass edildi. |

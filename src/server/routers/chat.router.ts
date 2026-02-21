@@ -1,4 +1,4 @@
-import { router, protectedProcedure } from '../router';
+import { router, protectedProcedure } from '../router.core';
 import { z } from 'zod';
 import { db } from '@/drizzle/db';
 import * as schema from '@/drizzle/schema';
@@ -28,7 +28,7 @@ export const chatRouter = router({
     getOrCreateConversation: protectedProcedure
         .input(z.object({ otherUserId: z.number() }))
         .mutation(async ({ ctx, input }) => {
-            const myId = parseInt(ctx.user.id);
+            const myId = ctx.user.id;
             const ids = [myId, input.otherUserId].sort((a, b) => a - b);
             const idsJson = JSON.stringify(ids);
 
@@ -55,7 +55,7 @@ export const chatRouter = router({
             beforeId: z.number().optional(), // cursor for pagination
         }))
         .query(async ({ ctx, input }) => {
-            const myId = parseInt(ctx.user.id);
+            const myId = ctx.user.id;
 
             // Verify the user is a participant
             const conv = await db.query.chatConversations.findFirst({
@@ -106,7 +106,7 @@ export const chatRouter = router({
             mediaUrl: z.string().optional(),
         }))
         .mutation(async ({ ctx, input }) => {
-            const myId = parseInt(ctx.user.id);
+            const myId = ctx.user.id;
 
             // Verify participation
             const conv = await db.query.chatConversations.findFirst({
@@ -167,7 +167,7 @@ export const chatRouter = router({
             hours: z.number().nullable(), // null = off
         }))
         .mutation(async ({ ctx, input }) => {
-            const myId = parseInt(ctx.user.id);
+            const myId = ctx.user.id;
 
             const conv = await db.query.chatConversations.findFirst({
                 where: eq(schema.chatConversations.id, input.conversationId),
@@ -212,7 +212,7 @@ export const chatRouter = router({
     deleteMessage: protectedProcedure
         .input(z.object({ messageId: z.number() }))
         .mutation(async ({ ctx, input }) => {
-            const myId = parseInt(ctx.user.id);
+            const myId = ctx.user.id;
             const msg = await db.query.chatMessages.findFirst({
                 where: eq(schema.chatMessages.id, input.messageId),
             });
@@ -231,7 +231,7 @@ export const chatRouter = router({
      */
     getConversations: protectedProcedure
         .query(async ({ ctx }) => {
-            const myId = parseInt(ctx.user.id);
+            const myId = ctx.user.id;
             // Get all conversations where user is a participant
             const all = await db.query.chatConversations.findMany({
                 orderBy: (c, { desc }) => [desc(c.lastMessageAt)],

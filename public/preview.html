@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuhre Planet - Space Theme Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --space-dark: #0a0e27;
+            --space-darker: #050810;
+            --cosmic-purple: #6d28d9;
+            --cosmic-blue: #3b82f6;
+            --cosmic-cyan: #06b6d4;
+            --star-white: #f0f9ff;
+            --nebula-pink: #ec4899;
+            --nebula-violet: #a855f7;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--space-darker) 0%, var(--space-dark) 50%, var(--cosmic-blue) 100%);
+            color: var(--star-white);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(5, 8, 16, 0.9);
+            border-right: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 20px;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .sidebar-title {
+            background: linear-gradient(135deg, var(--cosmic-cyan), var(--nebula-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding: 10px 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: var(--cosmic-cyan);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+
+        .section-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu-item {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--star-white);
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            text-align: left;
+        }
+
+        .menu-item:hover {
+            background: rgba(106, 28, 217, 0.2);
+            border-color: var(--cosmic-purple);
+            border-left-color: var(--cosmic-purple);
+            transform: translateX(5px);
+        }
+
+        .menu-item.active {
+            background: rgba(106, 28, 217, 0.3);
+            border-color: var(--cosmic-purple);
+            border-left-color: var(--nebula-violet);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--cosmic-cyan), var(--nebula-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--star-white);
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            min-width: 200px;
+        }
+
+        input::placeholder {
+            color: rgba(240, 249, 255, 0.5);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--cosmic-cyan);
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--cosmic-blue));
+            color: var(--star-white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(106, 28, 217, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(106, 28, 217, 0.5);
+        }
+
+        /* Preview Grid */
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .preview-card {
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(106, 28, 217, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .preview-card:hover {
+            border-color: rgba(106, 28, 217, 0.5);
+            box-shadow: 0 8px 32px rgba(106, 28, 217, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(106, 28, 217, 0.3), rgba(6, 182, 212, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: rgba(240, 249, 255, 0.3);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .preview-info {
+            padding: 15px;
+        }
+
+        .preview-title {
+            color: var(--cosmic-cyan);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .preview-description {
+            color: rgba(240, 249, 255, 0.6);
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .preview-actions button {
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        /* Component Preview */
+        .component-preview {
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(106, 28, 217, 0.2);
+        }
+
+        .component-title {
+            color: var(--cosmic-cyan);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .navbar-preview {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 8, 16, 0.8);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cosmic-cyan), var(--nebula-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-link {
+            color: rgba(240, 249, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .navbar-link:hover {
+            color: var(--cosmic-cyan);
+        }
+
+        .card-preview {
+            background: linear-gradient(135deg, rgba(106, 28, 217, 0.2), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card-preview h3 {
+            color: var(--star-white);
+            margin-bottom: 8px;
+        }
+
+        .card-preview p {
+            color: rgba(240, 249, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+        }
+
+        .icon-preview {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-preview:hover {
+            background: rgba(106, 28, 217, 0.2);
+            border-color: var(--cosmic-purple);
+            transform: scale(1.05);
+        }
+
+        .icon-emoji {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .icon-name {
+            font-size: 12px;
+            color: rgba(240, 249, 255, 0.6);
+        }
+
+        /* Color Palette */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .color-box {
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .color-box:hover {
+            transform: scale(1.05);
+        }
+
+        .color-name {
+            color: rgba(240, 249, 255, 0.8);
+            margin-top: 8px;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            border-top-color: var(--cosmic-cyan);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -300px;
+                width: 300px;
+                height: 100vh;
+                z-index: 1000;
+                transition: left 0.3s ease;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .preview-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--cosmic-purple);
+            color: var(--star-white);
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(106, 28, 217, 0.5);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-title">🚀 Preview Studio</div>
+            
+            <div class="sidebar-section">
+                <div class="section-title">Gallery</div>
+                <div class="section-items">
+                    <div class="menu-item active" onclick="showSection('gallery')">📸 Görseller</div>
+                    <div class="menu-item" onclick="showSection('components')">🎨 Bileşenler</div>
+                    <div class="menu-item" onclick="showSection('colors')">🎭 Renkler</div>
+                    <div class="menu-item" onclick="showSection('icons')">✨ İkonlar</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-title">Üretim</div>
+                <div class="section-items">
+                    <div class="menu-item" onclick="showGenerationPanel()">🤖 Görsel Üret</div>
+                    <div class="menu-item" onclick="showPromptPanel()">💬 Prompt Yap</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-title">Araçlar</div>
+                <div class="section-items">
+                    <div class="menu-item" onclick="exportAssets()">⬇️ İndir</div>
+                    <div class="menu-item" onclick="copyToClipboard()">📋 Kopyala</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div>
+                    <h1>Space Theme Preview</h1>
+                    <p style="color: rgba(240, 249, 255, 0.6); margin-top: 5px;">Zuhre Planet UI Assets</p>
+                </div>
+                <div class="controls">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" placeholder="Ara..." onkeyup="searchAssets()">
+                        <button onclick="showRefresh()">🔄 Yenile</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div id="gallerySection" class="preview-grid" style="display: grid;">
+                <!-- Arka Planlar -->
+                <div class="preview-card">
+                    <div class="preview-image">🌌</div>
+                    <div class="preview-info">
+                        <div class="preview-title">Space Background</div>
+                        <div class="preview-description">Cosmic theme arka planı</div>
+                        <div class="preview-actions">
+                            <button onclick="previewAsset('background')">👁️ Önizle</button>
+                            <button onclick="copyCode('background')">📋 Kod</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nebula -->
+                <div class="preview-card">
+                    <div class="preview-image">🌀</div>
+                    <div class="preview-info">
+                        <div class="preview-title">Nebula Effect</div>
+                        <div class="preview-description">Nebula animasyonları</div>
+                        <div class="preview-actions">
+                            <button onclick="previewAsset('nebula')">👁️ Önizle</button>
+                            <button onclick="copyCode('nebula')">📋 Kod</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stars -->
+                <div class="preview-card">
+                    <div class="preview-image">⭐</div>
+                    <div class="preview-info">
+                        <div class="preview-title">Star Field</div>
+                        <div class="preview-description">Yıldız alanı efekti</div>
+                        <div class="preview-actions">
+                            <button onclick="previewAsset('stars')">👁️ Önizle</button>
+                            <button onclick="copyCode('stars')">📋 Kod</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glow Cards -->
+                <div class="preview-card">
+                    <div class="preview-image">✨</div>
+                    <div class="preview-info">
+                        <div class="preview-title">Glow Cards</div>
+                        <div class="preview-description">Parlayan kartlar</div>
+                        <div class="preview-actions">
+                            <button onclick="previewAsset('cards')">👁️ Önizle</button>
+                            <button onclick="copyCode('cards')">📋 Kod</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="preview-card">
+                    <div class="preview-image">🔘</div>
+                    <div class="preview-info">
+                        <div class="preview-title">Buttons</div>
+                        <div class="preview-description">Glow butonlar</div>
+                        <div class="preview-actions">
+                            <button onclick="previewAsset('buttons')">👁️ Önizle</button>
+                            <button onclick="copyCode('buttons')">📋 Kod</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navbar -->
+                <div class="preview-card">
+                    <div class="preview-image">📱</div>
+                    <div class="preview-info">
+                        <div class="preview-title">Navbar</div>
+                        <div class="preview-description">Navigation bar</div>
+                        <div class="preview-actions">
+                            <button onclick="previewAsset('navbar')">👁️ Önizle</button>
+                            <button onclick="copyCode('navbar')">📋 Kod</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Components Section -->
+            <div id="componentsSection" style="display: none;">
+                <div class="component-preview">
+                    <div class="component-title">Navbar Bileşeni</div>
+                    <div class="navbar-preview">
+                        <div class="navbar-brand">⚡ Zuhre</div>
+                        <div class="navbar-links">
+                            <a class="navbar-link">Profiller</a>
+                            <a class="navbar-link">Sohbet</a>
+                            <a class="navbar-link">Rezervasyonlar</a>
+                            <a class="navbar-link">Ayarlar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="component-preview" style="margin-top: 20px;">
+                    <div class="component-title">Card Bileşenleri</div>
+                    <div class="card-preview">
+                        <h3>Premium Profile</h3>
+                        <p>Cosmic theme arka planı ile tasarlanmış escort profili kartı</p>
+                    </div>
+                    <div class="card-preview">
+                        <h3>Booking Card</h3>
+                        <p>Rezervasyon bilgilerini gösteren parlayan kart</p>
+                    </div>
+                    <div class="card-preview">
+                        <h3>Message Card</h3>
+                        <p>Mesaj gösterimi için özelleştirilmiş kart</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colors Section -->
+            <div id="colorsSection" style="display: none;">
+                <div class="component-preview">
+                    <div class="component-title">Renk Paleti</div>
+                    <div class="color-palette">
+                        <div class="color-box" style="background: #050810;">
+                            <div class="color-name">Space Darker</div>
+                            <code>#050810</code>
+                        </div>
+                        <div class="color-box" style="background: #0a0e27;">
+                            <div class="color-name">Space Dark</div>
+                            <code>#0a0e27</code>
+                        </div>
+                        <div class="color-box" style="background: #6d28d9;">
+                            <div class="color-name">Cosmic Purple</div>
+                            <code>#6d28d9</code>
+                        </div>
+                        <div class="color-box" style="background: #3b82f6;">
+                            <div class="color-name">Cosmic Blue</div>
+                            <code>#3b82f6</code>
+                        </div>
+                        <div class="color-box" style="background: #06b6d4;">
+                            <div class="color-name">Cosmic Cyan</div>
+                            <code>#06b6d4</code>
+                        </div>
+                        <div class="color-box" style="background: #f0f9ff;">
+                            <div class="color-name">Star White</div>
+                            <code>#f0f9ff</code>
+                        </div>
+                        <div class="color-box" style="background: #ec4899;">
+                            <div class="color-name">Nebula Pink</div>
+                            <code>#ec4899</code>
+                        </div>
+                        <div class="color-box" style="background: #a855f7;">
+                            <div class="color-name">Nebula Violet</div>
+                            <code>#a855f7</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icons Section -->
+            <div id="iconsSection" style="display: none;">
+                <div class="component-preview">
+                    <div class="component-title">İkon Seti</div>
+                    <div class="icons-grid">
+                        <div class="icon-preview">
+                            <div class="icon-emoji">👤</div>
+                            <div class="icon-name">Profile</div>
+                        </div>
+                        <div class="icon-preview">
+                            <div class="icon-emoji">📅</div>
+                            <div class="icon-name">Booking</div>
+                        </div>
+                        <div class="icon-preview">
+                            <div class="icon-emoji">💬</div>
+                            <div class="icon-name">Chat</div>
+                        </div>
+                        <div class="icon-preview">
+                            <div class="icon-emoji">🖼️</div>
+                            <div class="icon-name">Gallery</div>
+                        </div>
+                        <div class="icon-preview">
+                            <div class="icon-emoji">⚙️</div>
+                            <div class="icon-name">Settings</div>
+                        </div>
+                        <div class="icon-preview">
+                            <div class="icon-emoji">🔔</div>
+                            <div class="icon-name">Notification</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Preview -->
+    <div id="previewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; overflow: auto;">
+        <div style="background: rgba(10, 14, 39, 0.9); margin: 50px auto; width: 90%; max-width: 1000px; border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.2); padding: 30px; position: relative;">
+            <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: var(--nebula-violet); border: none; color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px;">✕</button>
+            <div id="previewContent"></div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('[id$="Section"]').forEach(el => el.style.display = 'none');
+            document.getElementById(section + 'Section').style.display = 'block';
+            document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function previewAsset(asset) {
+            const previews = {
+                background: '<h2 style="color: #06b6d4; margin-bottom: 20px;">🌌 Space Background</h2><div style="height: 400px; background: linear-gradient(135deg, #050810 0%, #0a0e27 50%, #3b82f6 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center;"><p style="font-size: 24px;">Cosmic Arka Planı</p></div>',
+                nebula: '<h2 style="color: #06b6d4; margin-bottom: 20px;">🌀 Nebula Effects</h2><div style="height: 400px; background: radial-gradient(ellipse at center, rgba(236, 72, 153, 0.3) 0%, transparent 70%); border-radius: 8px; display: flex; align-items: center; justify-content: center;"><p style="font-size: 24px;">Nebula Animasyonu</p></div>',
+                stars: '<h2 style="color: #06b6d4; margin-bottom: 20px;">⭐ Star Field</h2><div style="height: 400px; background: #050810; border-radius: 8px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;"><div style="position: absolute; width: 100%; height: 100%; background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 50px 50px; opacity: 0.3;"></div><p style="font-size: 24px; z-index: 1;">Yıldız Alanı</p></div>',
+                cards: '<h2 style="color: #06b6d4; margin-bottom: 20px;">✨ Glow Cards</h2><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;"><div style="background: rgba(106, 28, 217, 0.2); border: 1px solid rgba(106, 28, 217, 0.5); padding: 20px; border-radius: 8px; box-shadow: 0 0 20px rgba(106, 28, 217, 0.3);"><h3 style="color: #06b6d4;">Card 1</h3><p>Parlayan kart bileşeni</p></div><div style="background: rgba(6, 182, 212, 0.2); border: 1px solid rgba(6, 182, 212, 0.5); padding: 20px; border-radius: 8px; box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);"><h3 style="color: #06b6d4;">Card 2</h3><p>Cyan tema kartı</p></div></div>',
+                buttons: '<h2 style="color: #06b6d4; margin-bottom: 20px;">🔘 Buttons</h2><div style="display: flex; gap: 15px; flex-wrap: wrap;"><button style="background: linear-gradient(135deg, #6d28d9, #3b82f6); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; box-shadow: 0 0 20px rgba(106, 28, 217, 0.4);">Purple Button</button><button style="background: linear-gradient(135deg, #06b6d4, #3b82f6); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);">Cyan Button</button><button style="background: linear-gradient(135deg, #ec4899, #a855f7); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);">Pink Button</button></div>',
+                navbar: '<h2 style="color: #06b6d4; margin-bottom: 20px;">📱 Navbar</h2><div style="background: rgba(5, 8, 16, 0.8); padding: 15px 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;"><div style="font-size: 20px; font-weight: 700; background: linear-gradient(135deg, #06b6d4, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">⚡ Zuhre</div><div style="display: flex; gap: 30px;"><a style="color: rgba(240, 249, 255, 0.8); text-decoration: none;">Profiller</a><a style="color: rgba(240, 249, 255, 0.8); text-decoration: none;">Sohbet</a><a style="color: rgba(240, 249, 255, 0.8); text-decoration: none;">Rezervasyonlar</a></div></div>'
+            };
+            
+            document.getElementById('previewContent').innerHTML = previews[asset];
+            document.getElementById('previewModal').style.display = 'flex';
+            document.getElementById('previewModal').style.alignItems = 'center';
+            document.getElementById('previewModal').style.justifyContent = 'center';
+        }
+
+        function closeModal() {
+            document.getElementById('previewModal').style.display = 'none';
+        }
+
+        function copyCode(asset) {
+            const codes = {
+                background: 'background: linear-gradient(135deg, #050810 0%, #0a0e27 50%, #3b82f6 100%);',
+                nebula: 'filter: blur(80px); radial-gradient(ellipse at center, rgba(236, 72, 153, 0.3) 0%, transparent 70%);',
+                stars: 'background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 50px 50px;',
+                cards: 'box-shadow: 0 0 20px rgba(106, 28, 217, 0.3); border: 1px solid rgba(106, 28, 217, 0.5);',
+                buttons: 'background: linear-gradient(135deg, #6d28d9, #3b82f6); box-shadow: 0 0 20px rgba(106, 28, 217, 0.4);',
+                navbar: 'background: rgba(5, 8, 16, 0.8); backdrop-filter: blur(10px);'
+            };
+            
+            navigator.clipboard.writeText(codes[asset]);
+            showToast('Kod kopyalandı!');
+        }
+
+        function exportAssets() {
+            showToast('Varlıklar indiriliyor...');
+        }
+
+        function copyToClipboard() {
+            showToast('CSS kodu kopyalandı!');
+        }
+
+        function showGenerationPanel() {
+            showToast('Görsel üretim paneli yakında geliyor...');
+        }
+
+        function showPromptPanel() {
+            showToast('Prompt üretici yakında geliyor...');
+        }
+
+        function showRefresh() {
+            showToast('Varlıklar yenilendi!');
+        }
+
+        function searchAssets() {
+            showToast('Arama yapılıyor...');
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Close modal on outside click
+        document.getElementById('previewModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>

@@ -10,7 +10,6 @@ import CookieConsent from "@/components/CookieConsent";
 import { NotificationProvider } from "@/contexts/NotificationContext";
 import { NotificationToast, NotificationCenter } from "@/components/Notifications";
 import { FloatingNavigation } from "@/components/FloatingNavigation";
-import { Header } from "@/components/Header";
 import { Route, Switch, useLocation } from "wouter";
 import NotFound from "@/pages/NotFound";
 import { StarryBackground } from "@/components/StarryBackground";
@@ -57,28 +56,31 @@ export default function App() {
       <TooltipProvider>
         <div className="min-h-screen bg-[#010103] font-sans antialiased relative selection:bg-primary/30 text-foreground transition-colors duration-500 overflow-x-hidden">
           
-          {/* 3D EVREN KATMANI (Ana Sayfadaysak Arka Plan) */}
-          {isHomePage ? (
-            <div className="fixed inset-0 z-0">
-              <SpaceBackground />
-            </div>
-          ) : (
-            <div className="fixed inset-0 z-0 pointer-events-none">
-              <StarryBackground />
-            </div>
-          )}
+          {/* 1. KATMAN: 3D EVREN (En Arka) */}
+          <div className="fixed inset-0 z-0 pointer-events-none">
+            {isHomePage ? <SpaceBackground /> : <StarryBackground />}
+          </div>
 
-          {/* UI KATMANI */}
+          {/* 2. KATMAN: UI (Ön Plan) */}
           <div className="relative z-10 min-h-screen flex flex-col pointer-events-none">
-            <Header />
-            <main className="flex-grow">
+            <main className="flex-grow pointer-events-auto">
               <AppRouter />
             </main>
-            <FloatingNavigation />
-            <NotificationCenter />
-            <NotificationToast />
-            <CookieConsent />
-            <Toaster position="top-right" />
+            
+            {/* Çerez Barı - En Üstte ve Tıklanabilir */}
+            <div className="fixed bottom-0 left-0 right-0 z-[9999] pointer-events-none">
+              <div className="pointer-events-auto">
+                <CookieConsent />
+              </div>
+            </div>
+
+            {/* Navigasyon ve Bildirimler */}
+            <div className="relative z-50 pointer-events-auto">
+              <FloatingNavigation />
+              <NotificationCenter />
+              <NotificationToast />
+              <Toaster position="top-right" />
+            </div>
           </div>
 
         </div>

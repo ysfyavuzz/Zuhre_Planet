@@ -1,4 +1,4 @@
-import { router, publicProcedure, protectedProcedure } from '../router';
+import { router, publicProcedure, protectedProcedure } from '../router.core';
 import { z } from 'zod';
 import { db } from '@/drizzle/db';
 import * as schema from '@/drizzle/schema';

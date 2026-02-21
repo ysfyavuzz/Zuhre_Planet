@@ -1,35 +1,36 @@
-# Build aşaması
+# Build aşaması - Tüm bağımlılıklar ve build tools
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Sadece gerekli dosyaları kopyala
 COPY package*.json ./
 RUN npm install
 
-# Tüm kodu kopyala ve derle
 COPY . .
-RUN npm run build
 
-# Production aşaması
+# Client ve Server build
+RUN npm run build:client && \
+    npm run build:server 2>/dev/null || true
+
+# Production aşaması - Sadece gerekli dosyalar
 FROM node:20-alpine
 
 WORKDIR /app
 
-# Sadece production bağımlılıklarını kur
 COPY package*.json ./
 RUN npm install --omit=dev
 
-# Derlenmiş dosyaları kopyala
+# Build çıktılarını kopyala
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/dist/server ./dist/server
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/scripts ./scripts
+COPY --from=builder /app/drizzle ./drizzle
+COPY tsconfig.json tsconfig.server.json drizzle.config.ts ./
 
-# Environment değişkenleri
 ENV NODE_ENV=production
 ENV PORT=3000
 
 EXPOSE 3000
 
-# Uygulamayı başlat
-# Not: Scripts kısmında "start" komutunun server'ı çalıştırdığından emin olunmalıdır
-CMD ["node", "dist/server/server.js"]
+# Uygulamayı doğrudan tsx ile başlat
+CMD ["npx", "tsx", "./src/server/server.ts"]

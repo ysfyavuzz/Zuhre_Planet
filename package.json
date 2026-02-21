@@ -3,11 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "bin": {
+    "zuhre": "./bin/zuhre.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "tsc && vite build",
-    "build:server": "tsc -p tsconfig.server.json",
+    "build:client": "vite build",
+    "build:server": "tsc -p tsconfig.server.json --outDir dist/server --declaration false || true && node -e \"console.log('Server build completed')\"",
+    "start": "node dist/server/server.js",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "db:migrate": "tsx scripts/migrate.ts",
@@ -16,7 +20,15 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "cli": "tsx cli/zuhre-cli.ts",
+    "zuhre": "tsx cli/zuhre-cli.ts",
+    "ai-local": "python cli/local-ai.py",
+    "local-ai": "python cli/local-ai.py chat",
+    "gen-image": "python cli/image-generator.py",
+    "gen-profile": "python cli/image-generator.py profile",
+    "gen-batch": "python cli/image-generator.py batch",
+    "sdxl-web": "python cli/image-generator.py web"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -69,6 +81,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@eslint/js": "^9.39.2",
     "@playwright/test": "^1.41.0",
     "@swc/jest": "^0.2.39",

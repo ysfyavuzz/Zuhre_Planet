@@ -1,13 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
     "outDir": "dist/server",
+    "noEmit": false,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/server/**/*.ts", "src/types/**/*.ts"],
+  "include": ["src/server/**/*.ts", "src/types/**/*.ts", "src/drizzle/**/*.ts", "src/lib/**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }
