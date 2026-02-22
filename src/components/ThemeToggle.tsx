@@ -30,7 +30,7 @@ export function ThemeToggle() {
             animate={{ opacity: 1, rotate: 0, scale: 1 }}
             exit={{ opacity: 0, rotate: 45, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            src="/moon.png"
+            src="/icons/theme-moon.png"
             alt="Gece Modu"
             className="absolute w-[130%] h-[130%] object-cover contrast-[1.15] brightness-90 pointer-events-none mix-blend-lighten"
           />
@@ -41,7 +41,7 @@ export function ThemeToggle() {
             animate={{ opacity: 1, rotate: 0, scale: 1 }}
             exit={{ opacity: 0, rotate: -45, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            src="/sun.png"
+            src="/icons/theme-sun.png"
             alt="Gündüz Modu"
             className="absolute w-[140%] h-[140%] object-cover contrast-125 pointer-events-none mix-blend-lighten"
           />
