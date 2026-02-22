@@ -10,25 +10,21 @@ export const StarryBackground: React.FC = () => {
   const isDark = theme === 'dark';
 
   return (
-    <div className={`fixed inset-0 z-[-1] transition-colors duration-1000 overflow-hidden ${
-      isDark ? 'bg-[#020617]' : 'bg-[#fff7ed]'
-    }`}>
+    <div className={`fixed inset-0 z-[-1] transition-colors duration-1000 overflow-hidden ${isDark ? 'bg-[#020617]' : 'bg-white'
+      }`}>
       {/* Nebula / Glow Effects */}
-      <div className={`absolute top-[-10%] left-[-10%] w-[80%] h-[80%] rounded-full blur-[150px] transition-all duration-1000 ${
-        isDark ? 'bg-violet-900/10 opacity-60' : 'bg-orange-300/20 opacity-40'
-      }`} />        
-      <div className={`absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] rounded-full blur-[150px] transition-all duration-1000 ${
-        isDark ? 'bg-indigo-900/10 opacity-60' : 'bg-red-200/20 opacity-40'
-      }`} style={{ animationDelay: '2s' }} />
+      <div className={`absolute top-[-10%] left-[-10%] w-[80%] h-[80%] rounded-full blur-[150px] transition-all duration-1000 ${isDark ? 'bg-violet-900/10 opacity-60' : 'bg-gray-100 opacity-40'
+        }`} />
+      <div className={`absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] rounded-full blur-[150px] transition-all duration-1000 ${isDark ? 'bg-indigo-900/10 opacity-60' : 'bg-gray-50 opacity-40'
+        }`} style={{ animationDelay: '2s' }} />
 
       {/* Stars Layer */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(80)].map((_, i) => (
           <div
             key={i}
-            className={`absolute rounded-full animate-twinkle ${
-              isDark ? 'bg-white' : 'bg-orange-400'
-            }`}
+            className={`absolute rounded-full animate-twinkle ${isDark ? 'bg-white' : 'bg-gray-300'
+              }`}
             style={{
               width: Math.random() * 2.5 + 'px',
               height: Math.random() * 2.5 + 'px',
@@ -41,7 +37,8 @@ export const StarryBackground: React.FC = () => {
         ))}
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes twinkle {
           0%, 100% { opacity: 0.2; transform: scale(1); }
           50% { opacity: 1; transform: scale(1.3); }

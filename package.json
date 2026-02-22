@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:server": "tsx watch src/server/server.ts",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.server.json --outDir dist/server --declaration false || true && node -e \"console.log('Server build completed')\"",

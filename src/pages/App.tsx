@@ -54,12 +54,13 @@ export default function App() {
   return (
     <NotificationProvider>
       <TooltipProvider>
-        <div className="min-h-screen bg-[#010103] font-sans antialiased relative selection:bg-primary/30 text-foreground transition-colors duration-500 overflow-x-hidden">
+        <div className="min-h-screen bg-transparent font-sans antialiased relative selection:bg-primary/30 text-foreground transition-colors duration-500 overflow-x-hidden">
 
-          {/* 1. KATMAN: 3D EVREN (En Arka) */}
+          {/* 1. KATMAN: 3D EVREN (Gizli Kaldı) 
           <div className="fixed inset-0 z-0 pointer-events-none">
             {isHomePage ? <SpaceBackground /> : <StarryBackground />}
           </div>
+          */}
 
           {/* 2. KATMAN: UI (Ön Plan) */}
           <div className="relative z-10 min-h-screen flex flex-col pointer-events-none">
@@ -67,20 +68,24 @@ export default function App() {
               <AppRouter />
             </main>
 
-            {/* Çerez Barı - En Üstte ve Tıklanabilir */}
+            {/* Çerez Barı - En Üstte ve Tıklanabilir (Gizlendi) */}
+            {/* 
             <div className="fixed bottom-0 left-0 right-0 z-[9999] pointer-events-none">
               <div className="pointer-events-auto">
                 <CookieConsent />
               </div>
             </div>
+            */}
 
-            {/* Navigasyon ve Bildirimler */}
+            {/* Navigasyon ve Bildirimler (Gizlendi) */}
+            {/* 
             <div className={`relative z-50 ${isHomePage ? 'pointer-events-none' : 'pointer-events-auto'}`}>
               {!isHomePage && <FloatingNavigation />}
               <NotificationCenter />
               <NotificationToast />
               <Toaster position="top-right" />
             </div>
+            */}
           </div>
 
         </div>

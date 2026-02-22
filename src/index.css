@@ -5,28 +5,34 @@
 @layer base {
   :root {
     /* --- Dinamik Kozmik Premium Tema (Kristal) --- */
-    --primary: #8b5cf6; /* Violet 500 */
+    --primary: 262.1 83.3% 57.8%;
+    /* Violet 500 */
     --primary-rgb: 139, 92, 246;
-    
-    --background: 250 250 250; /* Ultra Clean White */
-    --foreground: 15 15 20; /* Deep Charcoal */
-    --card: 255 255 255;
-    --card-foreground: 15 15 20;
-    --popover: 255 255 255;
-    --popover-foreground: 15 15 20;
-    --secondary: 226 232 240; /* Slate 200 */
-    --secondary-foreground: 30 41 59; /* Slate 800 */
-    --muted: 241 245 249;
-    --muted-foreground: 71 85 105;
-    --accent: 139 92 246;
-    --accent-foreground: 255 255 255;
-    --destructive: 0 84% 60%;
+    /* Glow efektleri için RGB */
+
+    --background: 0 0% 100%;
+    /* SIFIR SARI - ULTRA BEYAZ */
+    --foreground: 240 10% 3.9%;
+    /* Deep Charcoal */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --secondary: 240 4.8% 95.9%;
+    /* Slate 200 */
+    --secondary-foreground: 240 5.9% 10%;
+    /* Slate 800 */
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 262.1 83.3% 57.8%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 226 232 240;
-    --input: 241 245 249;
-    --ring: 139 92 246;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262.1 83.3% 57.8%;
     --radius: 2rem;
-    
+
     /* Premium Glass Effect */
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
@@ -35,24 +41,26 @@
 
   .dark {
     /* --- Dinamik Kozmik Koyu Tema (Derin Evren) --- */
-    --background: 240 10% 2%; /* Absolute Space Black */
-    --foreground: 255 255 255;
-    --card: 240 10% 4%;
-    --card-foreground: 255 255 255;
-    --popover: 240 10% 4%;
-    --popover-foreground: 255 255 255;
-    --secondary: 15 15 25;
-    --secondary-foreground: 255 255 255;
-    --muted: 15 15 25;
-    --muted-foreground: 148 163 184; /* Slate 400 */
-    --accent: 139 92 246;
-    --accent-foreground: 255 255 255;
+    --background: 240 10% 3.9%;
+    /* Absolute Space Black */
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    /* Slate 400 */
+    --accent: 262.1 83.3% 57.8%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 255 255 255;
-    --border: 255 255 255 0.1;
-    --input: 255 255 255 0.05;
-    --ring: 139 92 246;
-    
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 262.1 83.3% 57.8%;
+
     /* Dark Premium Glass Effect */
     --glass-bg: rgba(255, 255, 255, 0.02);
     --glass-border: rgba(255, 255, 255, 0.05);
@@ -98,15 +106,28 @@
 }
 
 /* Başlıklar için Ekstra Kontrast */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply tracking-tighter font-black italic uppercase;
   color: hsl(var(--foreground));
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .animate-gradient {
@@ -118,13 +139,16 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(var(--primary-rgb), 0.3);
   border-radius: 100px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(var(--primary-rgb), 0.5);
 }
